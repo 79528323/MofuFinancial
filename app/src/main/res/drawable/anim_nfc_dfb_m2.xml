@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false">
+
+    <item
+        android:drawable="@drawable/dfb_m2_nfc_gif0"
+        android:duration="300"></item>
+    <item
+        android:drawable="@drawable/dfb_m2_nfc_gif1"
+        android:duration="300"></item>
+    <item
+        android:drawable="@drawable/dfb_m2_nfc_gif2"
+        android:duration="300"></item>
+    <item
+        android:drawable="@drawable/dfb_m2_nfc_gif3"
+        android:duration="300"></item>
+    <item
+        android:drawable="@drawable/dfb_m2_nfc_gif4"
+        android:duration="300"></item>
+    <item
+        android:drawable="@drawable/dfb_m2_nfc_gif5"
+        android:duration="300"></item>
+    <item
+        android:drawable="@drawable/dfb_m2_nfc_gif6"
+        android:duration="300"></item>
+    <item
+        android:drawable="@drawable/dfb_m2_nfc_gif7"
+        android:duration="300"></item>
+
+</animation-list>

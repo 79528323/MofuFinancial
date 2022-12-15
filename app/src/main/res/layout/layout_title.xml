@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <variable name="handlers" type="cn.mofufin.morf.ui.base.BaseBinding"/>
+        <variable name="titleName" type="String"/>
+        <variable name="leftText" type="String"/>
+        <variable name="rightText" type="String"/>
+        <variable name="canSubmit" type="boolean"/>
+        <variable name="submitIcon" type="android.graphics.drawable.Drawable"/>
+        <variable name="backIcon" type="android.graphics.drawable.Drawable"/>
+        <variable name="gameRecordIcon" type="android.graphics.drawable.Drawable"/>
+        <variable name="isReceiver" type="boolean"/>
+        <variable name="isBlock" type="boolean"/>
+        <variable name="isRightTextBlack" type="boolean"/>
+        <variable
+            name="isTitleBlack"
+            type="boolean"/>
+        <variable
+            name="invisiableBack"
+            type="boolean"/>
+        <variable
+            name="isTranslate"
+            type="boolean"/>
+    </data>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:id="@+id/layout_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:clipToPadding="true"
+        android:background="@{isTranslate?@color/transparent:@color/app_blue}">
+
+        <ImageView
+            android:layout_width="@dimen/chat_image_min_width"
+            android:layout_height="@dimen/title_height"
+            android:layout_gravity="center_vertical"
+            android:scaleType="centerInside"
+            android:src="@{backIcon}"
+            android:visibility="@{invisiableBack?View.GONE:View.VISIBLE}"
+            android:onClick="@{backIcon == null ? null : handlers.exit}"/>
+
+        <TextView
+            android:id="@+id/left_text_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/title_height"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="@dimen/default_padding"
+            android:textColor="@color/title_bg"
+            android:textSize="@dimen/text_size_normal"
+            android:text="@{leftText}"
+            android:onClick="@{handlers.exit}"/>
+
+        <LinearLayout
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:onClick="@{handlers.title}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/title_center_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:ellipsize="end"
+                android:maxWidth="280dp"
+                android:textColor="@{isTitleBlack?@color/black:@color/white}"
+                android:textSize="@dimen/text_size_title"
+                android:text="@{titleName}"
+                tools:text="title"/>
+
+            <!--<FrameLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content">-->
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:gravity="center"-->
+                    <!--android:orientation="horizontal">-->
+
+                    <!--<ImageView-->
+                        <!--android:layout_width="12dp"-->
+                        <!--android:layout_height="16dp"-->
+                        <!--tools:visibility="visible"-->
+                        <!--android:layout_marginLeft="5dp"-->
+                        <!--android:visibility="@{isReceiver?View.VISIBLE:View.GONE}"-->
+                        <!--android:background="@drawable/icon_receiver"/>-->
+
+                    <!--<ImageView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--tools:visibility="visible"-->
+                        <!--android:layout_marginLeft="5dp"-->
+                        <!--android:visibility="@{isBlock?View.VISIBLE:View.GONE}"-->
+                        <!--android:background="@drawable/block"/>-->
+                <!--</LinearLayout>-->
+
+                <!--<ImageView-->
+                    <!--android:paddingLeft="@dimen/drawable_padding"-->
+                    <!--android:layout_gravity="center_vertical"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:src="@{gameRecordIcon}"/>-->
+            <!--</FrameLayout>-->
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/dynamic"
+            android:layout_width="@dimen/title_height"
+            android:layout_height="@dimen/title_height"
+            android:scaleType="centerInside"
+            android:layout_gravity="center_vertical|right"
+            android:onClick="@{submitIcon == null ? null : handlers.submit}"
+            android:src="@{submitIcon}"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/title_height"
+            android:gravity="center_vertical"
+            android:layout_marginRight="@dimen/default_padding"
+            android:layout_gravity="right"
+            android:textColor="@{isRightTextBlack?@color/dark_gray:@color/white}"
+            android:textSize="@dimen/text_size_normal"
+            android:onClick="@{handlers.submit}"
+            android:enabled="@{canSubmit}"
+            android:text="@{rightText}"/>
+
+        <LinearLayout
+            android:id="@+id/title_layout_click"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:layout_marginLeft="@dimen/title_height"
+            android:layout_marginRight="@dimen/title_height"/>
+
+        <!--<View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line"
+            android:layout_gravity="bottom"
+            android:background="@color/line"/>-->
+    </FrameLayout>
+</layout>

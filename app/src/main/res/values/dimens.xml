@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_size_small">12sp</dimen>
+    <dimen name="text_size_medium">13sp</dimen>
+    <dimen name="text_size_normal">14sp</dimen>
+    <dimen name="text_size_title">16sp</dimen>
+    <dimen name="text_size_game_record">17sp</dimen>
+    <dimen name="niuniu_number">15sp</dimen>
+    <dimen name="red_dingding">10sp</dimen>
+    <dimen name="location_detail_title">22sp</dimen>
+    <dimen name="social_contat_text">15sp</dimen>
+    <dimen name="topic_contat_text">25sp</dimen>
+    <dimen name="inter_rank_title_size">26sp</dimen>
+    <dimen name="mark_font">19sp</dimen>
+    <dimen name="text_size_big">38sp</dimen>
+    <dimen name="balance_text_size">32sp</dimen>
+    <dimen name="mall_text_size">20sp</dimen>
+    <dimen name="project_num_text_size">28sp</dimen>
+    <dimen name="coupon_item_height">120dp</dimen>
+
+    <dimen name="line">1px</dimen>
+    <dimen name="title_height">44dp</dimen>
+    <dimen name="default_padding">10dp</dimen>
+    <dimen name="default_margin">15dp</dimen>
+    <dimen name="lineSpacingExtra">5dp</dimen>
+    <dimen name="icon_padding">5dp</dimen>
+    <dimen name="default_item_margin">20dp</dimen>
+
+    <dimen name="tab_height">48dp</dimen>
+    <dimen name="tab_pager_icon_size">23dp</dimen>
+    <dimen name="tab_pager_text_size">10sp</dimen>
+
+    <dimen name="icon_small">40dp</dimen>
+    <dimen name="icon_normal">50dp</dimen>
+    <dimen name="icon_large">65dp</dimen>
+
+    <dimen name="folder_menu_item_height">80dp</dimen>
+    <dimen name="image_selector_item_padding">1dp</dimen>
+
+    <dimen name="input_height">32dp</dimen>
+    <dimen name="button_corners">5dp</dimen>
+    <dimen name="button_height">40dp</dimen>
+    <dimen name="item_height">@dimen/title_height</dimen>
+    <dimen name="stroke_button_height">24dp</dimen>
+    <dimen name="menu_width">130dp</dimen>
+    <dimen name="menu_item_width">96dp</dimen>
+    <dimen name="menu_item_height">40dp</dimen>
+
+    <dimen name="menu_delete_width">72dp</dimen>
+    <dimen name="message_text_width">200dp</dimen>
+    <dimen name="chat_content_margin">5dp</dimen>
+    <dimen name="chat_content_margins">2dp</dimen>
+    <dimen name="chat_name_margin">10dp</dimen>
+    <dimen name="chat_talk_max_width">210dp</dimen>
+    <dimen name="chat_talk_min_width">60dp</dimen>
+    <dimen name="chat_talk_min_height">30dp</dimen>
+    <dimen name="chat_loading">16dp</dimen>
+    <dimen name="chat_error">22dp</dimen>
+    <dimen name="chat_game_item_height">108dp</dimen>
+    <dimen name="chat_image_min_width">50dp</dimen>
+    <dimen name="chat_image_min_height">36dp</dimen>
+    <dimen name="chat_image_max">200dp</dimen>
+    <dimen name="chat_image_max_b">130dp</dimen>
+    <dimen name="chat_expression">100dp</dimen>
+    <dimen name="chat_expression_item_padding">8dp</dimen>
+    <dimen name="chat_more_margin">25dp</dimen>
+    <dimen name="chat_game_layout_height">300dp</dimen>
+    <dimen name="group_user_margin">@dimen/default_margin</dimen>
+    <dimen name="pager_tip_margin">2dp</dimen>
+    <dimen name="qrcode_size">200dp</dimen>
+    <dimen name="search_content_item_width">190dp</dimen>
+    <dimen name="search_group_name_width">136dp</dimen>
+    <dimen name="add_contact_item_width">220dp</dimen>
+
+    <dimen name="dynamic_tip_icon">30dp</dimen>
+    <dimen name="dynamic_image_max">150dp</dimen>
+    <dimen name="dynamic_image_max_height">180dp</dimen>
+    <dimen name="dynamic_image_min_width">60dp</dimen>
+    <dimen name="dynamic_image_min_height">90dp</dimen>
+    <dimen name="dynamic_image_size">72dp</dimen>
+    <dimen name="dynamic_image_margin">4dp</dimen>
+    <dimen name="dynamic_image_layout_width">228dp</dimen>
+    <dimen name="chat_image_layout_width">130dp</dimen>
+    <dimen name="dynamic_margin_left">50dp</dimen>
+    <dimen name="found_icon">@dimen/icon_small</dimen>
+    <dimen name="dynamic_more_item_width">65dp</dimen>
+    <dimen name="dynamic_more_item_height">32dp</dimen>
+    <dimen name="dynamic_more_offset">18dp</dimen>
+    <dimen name="dynamic_detail_more_item_height">44dp</dimen>
+    <dimen name="dynamic_detail_icon">30dp</dimen>
+    <dimen name="dynamic_remind_icon">30dp</dimen>
+    <dimen name="dynamic_remind_icon_margin">4dp</dimen>
+    <dimen name="love_icon_margin">2dp</dimen>
+    <dimen name="get_code_width">96dp</dimen>
+    <dimen name="get_code_height">24dp</dimen>
+    <dimen name="captcha_width">102dp</dimen>
+    <dimen name="captcha_height">36dp</dimen>
+    <dimen name="game_icon">16dp</dimen>
+    <dimen name="user_info_max_width">240dp</dimen>
+    <dimen name="pay_item_height">53dp</dimen>
+    <dimen name="goods_size">62dp</dimen>
+    <dimen name="game_record_item_height">80dp</dimen>
+    <dimen name="card_type_item_height">50dp</dimen>
+    <dimen name="input_delete">24dp</dimen>
+    <dimen name="add_friend_width">74dp</dimen>
+    <dimen name="add_friend_height">30dp</dimen>
+    <dimen name="photo_book_day_width">60dp</dimen>
+    <dimen name="photo_image_size">50dp</dimen>
+    <dimen name="photo_image">75dp</dimen>
+    <dimen name="photo_image_gap">3dp</dimen>
+    <dimen name="group_icon_gap">2dp</dimen>
+    <dimen name="dynamic_message_image">60dp</dimen>
+    <dimen name="friend_icon">36dp</dimen>
+    <dimen name="dynamic_permission_item_height">80dp</dimen>
+    <dimen name="drawable_padding">7dp</dimen>
+    <dimen name="more_offset_x">13dp</dimen>
+    <dimen name="photo_top">22dp</dimen>
+
+    <dimen name="niuniu_history_margin">11dp</dimen>
+    <dimen name="dingding_service_height">42dp</dimen>
+    <dimen name="my_gold_button_top">45dp</dimen>
+
+    <dimen name="user_head_margin_left">29dp</dimen>
+    <dimen name="user_head_margin_top">17dp</dimen>
+    <dimen name="user_head_margin_right">26dp</dimen>
+    <dimen name="user_head_margin_bottom">7dp</dimen>
+
+    <dimen name="mahjong_text_spacing_top">12dp</dimen>
+    <dimen name="score_font_distance">28dp</dimen>
+    <dimen name="my_diamond_margin_top">80dp</dimen>
+    <dimen name="diamond_coins">10dp</dimen>
+    <dimen name="chat_game_room_margin">6dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+
+    <dimen name="btn_cm_padding">3dp</dimen>
+    <dimen name="btn_cm_textSize">16sp</dimen>
+    <dimen name="editext_padding">5dp</dimen>
+
+    <dimen name="photo_bg_width">375dp</dimen>
+    <dimen name="calendar_view_height">140dp</dimen>
+
+    <dimen name="text_line_spacing">4dp</dimen>
+</resources>

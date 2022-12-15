@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ruis="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="cn.mofufin.morf.ui.fragment.MaskHomeFragment"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.fragment.MaskHomeFragment"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/white">
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:id="@+id/layout_parent"
+            android:fitsSystemWindows="true"
+            android:elevation="1dp"
+            android:layout_height="50dp">
+
+            <ImageView
+                android:layout_width="@dimen/title_height"
+                android:layout_height="@dimen/title_height"
+                android:layout_gravity="center_vertical"
+                android:scaleType="centerInside"
+                android:src="@drawable/mask_back"
+                android:onClick="@{handlers.back}"/>
+
+            <LinearLayout
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/title_center_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:lines="1"
+                    android:ellipsize="end"
+                    android:maxWidth="280dp"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_title"
+                    android:text="口罩领取"
+                    tools:text="title"/>
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/dynamic"
+                android:layout_width="@dimen/title_height"
+                android:layout_height="@dimen/title_height"
+                android:scaleType="centerInside"
+                android:layout_gravity="center_vertical|right"/>
+
+            <TextView
+                android:id="@+id/right_text"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/title_height"
+                android:gravity="center_vertical"
+                android:layout_marginRight="@dimen/default_padding"
+                android:layout_gravity="right"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_normal"/>
+
+            <LinearLayout
+                android:id="@+id/title_layout_click"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="vertical"
+                android:visibility="gone"
+                android:layout_marginLeft="@dimen/title_height"
+                android:layout_marginRight="@dimen/title_height"/>
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/topPanel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/mask_home_bg">
+
+            <ImageView
+                android:layout_marginTop="75dp"
+                android:layout_marginStart="@dimen/default_margin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/mask_rule"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/bottom"
+            android:layout_below="@id/topPanel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/chat_more_margin"
+            android:paddingEnd="@dimen/chat_more_margin"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/default_padding"
+                android:background="@color/white"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="收货人"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/text_size_title"/>
+
+                <EditText
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text=""
+                    android:inputType="number"
+                    android:paddingLeft="@dimen/default_padding"
+                    android:textSize="@dimen/text_size_title"
+                    android:textColorHint="@color/light_gray"
+                    android:gravity="center_vertical|end"
+                    android:background="@null"/>
+
+            </LinearLayout>
+
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/app_background"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/default_padding"
+                android:background="@color/white"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="手机号码"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/text_size_title"/>
+
+                <EditText
+                    android:id="@+id/phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text=""
+                    android:inputType="number"
+                    android:paddingLeft="@dimen/default_padding"
+                    android:textSize="@dimen/text_size_title"
+                    android:textColorHint="@color/light_gray"
+                    android:gravity="center_vertical|end"
+                    android:background="@null"/>
+
+            </LinearLayout>
+
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/app_background"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal"
+                android:background="@color/white"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="所在地区"
+                    android:drawableLeft="@drawable/asterisk"
+                    android:drawablePadding="@dimen/lineSpacingExtra"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/text_size_title"/>
+
+                <EditText
+                    android:id="@+id/region"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text=""
+                    android:inputType="number"
+                    android:paddingLeft="@dimen/default_padding"
+                    android:textSize="@dimen/text_size_title"
+                    android:textColorHint="@color/light_gray"
+                    android:gravity="center_vertical|end"
+                    android:background="@null"/>
+
+            </LinearLayout>
+
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/app_background"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/white"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_marginTop="@dimen/default_item_margin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="详细地址"
+                    android:drawableLeft="@drawable/asterisk"
+                    android:drawablePadding="@dimen/lineSpacingExtra"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/text_size_title"/>
+
+                <EditText
+                    android:id="@+id/num"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/default_item_margin"
+                    android:paddingLeft="@dimen/default_padding"
+                    android:hint="请输入所在街道、门牌号"
+                    android:textSize="@dimen/text_size_title"
+                    android:textColorHint="@color/light_gray"
+                    android:background="@null"/>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
+
+        <ImageView
+            android:layout_below="@id/bottom"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="60dp"
+            android:background="@drawable/confirm_getnow"/>
+
+
+    </RelativeLayout>
+
+</layout>

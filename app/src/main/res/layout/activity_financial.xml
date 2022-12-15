@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ruis="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:id="@+id/financial"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <!--第三方底部导航栏-->
+        <cc.ruis.lib.widget.BottomTab
+            android:id="@+id/financial_tab"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            ruis:ruis_tabIconSize="@dimen/tab_pager_icon_size"
+            ruis:ruis_tabTextSize="@dimen/tab_pager_text_size"
+            android:background="@color/white"
+            ruis:ruis_textCheckColor="#F94545"
+            ruis:ruis_textNormalColor="#bebebe" />
+    </LinearLayout>
+
+</layout>

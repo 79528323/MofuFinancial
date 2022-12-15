@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:apps="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.util.DataUtils"/>
+        <variable
+            name="listbean"
+            type="cn.mofufin.morf.ui.entity.MerchantBag.DataBean.ListBean"/>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:layout_marginBottom="@dimen/default_padding"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/main_bg"
+            android:background="@drawable/gold_coupon_ed"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/coupon_item_height">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_marginLeft="4dp"
+                android:visibility="gone"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:id="@+id/rate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        tools:text="钻石会员券"
+                        android:text="@{listbean.gdGoodsBranchType==14?@string/mall_bran_type_14:@string/mall_bran_type_15}"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/text_size_game_record"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_weight="2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="单笔满5000可用"
+                        android:text="@{listbean.gdGoodsBranchType==14?@string/mall_gold_item:@string/mall_diamond_item}"
+                        android:textColor="@color/white"
+                        android:gravity="center"
+                        android:paddingLeft="@dimen/default_margin"
+                        android:paddingRight="@dimen/default_margin"
+                        android:textSize="@dimen/text_size_normal"/>
+
+
+                    <TextView
+                        android:layout_marginTop="@dimen/default_item_margin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="有效期至:2018.06.07 23:22"
+                        android:text='@{"有效期至:"+listbean.mcbValidDateEnd}'
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_small"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@{listbean.mcbGoodsState==1?@drawable/used:@drawable/expired}"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+</layout>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.mine.AddNewAdressActivity"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.mine.AddNewAdressActivity"/>
+        <variable
+            name="title"
+            type="String"/>
+        <variable
+            name="address"
+            type="cn.mofufin.morf.ui.entity.Address.DataBean.AddressInfoBean"/>
+        <variable
+            name="type"
+            type="int"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:background="@color/app_background"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/layout_title"
+            bind:backIcon="@{@drawable/title_back}"
+            bind:handlers="@{handlers}"
+            bind:canSubmit="@{true}"
+            bind:rightText="@{@string/address_3}"
+            bind:titleName="@{title}" />
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/default_item_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/name"
+                android:background="@null"
+                android:padding="@dimen/default_margin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/address_5"
+                android:text='@{address==null?"":address.takePersonName}'
+                android:textColor="@color/dark_gray"
+                android:textColorHint="@color/light_gray"
+                android:textSize="@dimen/text_size_normal"
+                android:inputType="text"
+                tools:ignore="UnusedAttribute" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/default_padding"
+                android:background="@color/app_background"/>
+
+            <EditText
+                android:id="@+id/phone"
+                android:background="@null"
+                android:padding="@dimen/default_margin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/address_6"
+                android:inputType="number"
+                android:maxLength="11"
+                android:text='@{address==null?"":address.takePersonPhone}'
+                android:textColor="@color/dark_gray"
+                android:textColorHint="@color/light_gray"
+                android:textSize="@dimen/text_size_normal"
+                tools:ignore="TextFields" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/default_padding"
+                android:background="@color/app_background"/>
+
+            <EditText
+                android:id="@+id/address"
+                android:background="@null"
+                android:padding="@dimen/default_margin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/folder_menu_item_height"
+                android:hint="@string/address_7"
+                android:gravity="top"
+                android:text='@{address==null?"":address.takeAddress}'
+                android:textColor="@color/dark_gray"
+                android:textColorHint="@color/light_gray"
+                android:textSize="@dimen/text_size_normal"
+                android:maxLength="200"
+                android:inputType="textImeMultiLine"
+                android:singleLine="false"
+                android:scrollHorizontally="false"
+                android:importantForAutofill="no"
+                tools:targetApi="o" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/default_padding"
+                android:background="@color/app_background"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+
+            <TextView
+                android:gravity="center"
+                android:background="@color/white"
+                android:padding="@dimen/default_margin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/address_5"
+                android:text="@string/address_del"
+                android:onClick="@{handlers.del}"
+                android:visibility="@{type== AddNewAdressActivity.TYPE_ADD?View.GONE:View.VISIBLE}"
+                android:layout_marginTop="-80dp"
+                android:textColor="@color/app_blue"
+                android:textColorHint="@color/light_gray"
+                android:textSize="@dimen/text_size_normal"
+                tools:ignore="UnusedAttribute" />
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

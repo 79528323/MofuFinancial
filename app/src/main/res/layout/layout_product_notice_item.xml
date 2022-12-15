@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:apps="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <import type="android.text.TextUtils"/>
+        <variable
+            name="detail"
+            type="cn.mofufin.morf.ui.entity.Order.OrderDetails"/>
+        <variable
+            name="notice"
+            type="cn.mofufin.morf.ui.entity.ProductNotice.InformListBean"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/default_padding"
+        android:background="@drawable/shape_white_shadow"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/dark_gray"
+            android:padding="@dimen/default_padding"
+            android:textSize="@dimen/text_size_normal"
+            android:text="@{notice.informMessage}"
+            tools:text="摩富金服是国内领先的互联网移动支付平台通过模式创新和对传统金融的颠覆，致力于信用卡用户痛
+点解决及金融效率的提升，特点在于一站式信用卡
+的服务，提供资金管理、收款交易、资金解决方案、
+余额增值、理财服务等金融增值技术服务，专注于
+为不同行业、不同领域等提供全场景金融技术解决
+方案。"/>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="@dimen/default_padding"
+            android:background="@color/line"/>
+
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:textColor="@color/light_gray"
+            android:padding="@dimen/default_padding"
+            android:textSize="@dimen/text_size_normal"
+            android:text="@{notice.infoDate}"
+            tools:text="@string/order_mpos"/>
+    </LinearLayout>
+</layout>

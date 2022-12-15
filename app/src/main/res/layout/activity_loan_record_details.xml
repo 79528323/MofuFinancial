@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.loan.LoanRecordDetailsActivity"/>
+        <import type="android.text.TextUtils"/>
+        <import type="cn.mofufin.morf.ui.util.DataUtils"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.loan.LoanRecordDetailsActivity"/>
+        <variable
+            name="details"
+            type="cn.mofufin.morf.ui.entity.LoanApplyRecord.ApplyLoansListBean"/>
+        
+        <variable
+            name="OnClickListener"
+            type="android.view.View.OnClickListener"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/layout_title"
+            bind:backIcon="@{@drawable/financial_back}"
+            bind:handlers="@{handlers}"
+            bind:titleName="@{@string/inverst_record_detail_title}"
+            bind:canSubmit="@{true}"
+            bind:isTranslate="@{true}"
+            bind:isTitleBlack="@{true}"
+            bind:isRightTextBlack="@{true}"
+            bind:rightText="@{@string/service_number}"/>
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="@dimen/default_item_margin"
+                android:background="@color/app_background"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/default_padding"
+                    tools:visibility="visible"
+                    android:background="@color/white"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="产品"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_title"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:text="@{details.productName}"
+                        android:textSize="@dimen/text_size_title"
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
+
+                <!--订单生成时间 境外-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/default_padding"
+                    tools:visibility="visible"
+                    android:background="@color/white"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="订单号"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_title"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235"
+                        android:text="@{details.applyRecordCode}"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_title"
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
+
+                <!--结算类型-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/default_padding"
+                    tools:visibility="visible"
+                    android:background="@color/white"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="申请时间"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_title"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:text="@{details.applyDate}"
+                        android:textSize="@dimen/text_size_title"
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
+
+                <!--境外订单号-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/default_padding"
+                    android:background="@color/white"
+                    android:visibility="gone"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="开始还款时间"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_title"/>
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235"
+                        android:gravity="right"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_title"
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="@dimen/default_padding"
+                    android:background="@color/app_bg"/>
+
+                <!--MPOS/扫码/快捷 手续费-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/default_padding"
+                    tools:visibility="visible"
+                    android:background="@color/white"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="贷款金额"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_title"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:text="@{String.valueOf(details.applyMoney)}"
+                        android:textSize="@dimen/text_size_title"
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
+
+                <!--快捷清算费-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/default_padding"
+                    tools:visibility="visible"
+                    android:background="@color/white"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="日利率"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_title"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_title"
+                        android:text="@{DataUtils.scientificMatchPercent(details.loansRate,5)}"
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
+
+
+                <!--MPOS/扫码/快捷 应到账金额-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/default_padding"
+                    tools:visibility="visible"
+                    android:background="@color/white"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="计息方式"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_title"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_title"
+                        android:text='@{details.loansInterestWay==0?"等额本息":"先息后本"}'
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="@dimen/default_padding"
+                    android:background="@color/app_bg"/>
+
+                <!--跨境金额-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/default_padding"
+                    tools:visibility="visible"
+                    android:background="@color/white"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="贷款周期"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_title"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_title"
+                        android:text='@{details.loansPeriod+"个月"}'
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
+
+
+                <!--跨境手续费-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/default_padding"
+                    android:visibility="gone"
+                    android:background="@color/white"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="到账账户"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_title"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_title"
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
+
+                <!--跨境通信费-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/default_padding"
+                    tools:visibility="visible"
+                    android:background="@color/white"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="贷款状态"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_title"/>
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text='@{details.applyState==0?"申贷成功":details.applyState==1?"申贷失败":"申贷中"}'
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_title"
+                        android:gravity="right"
+                        android:textColor="#FF8330"/>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/default_padding"
+                    android:text="@string/inverst_record_detail_2"
+                    android:textColor="@color/light_gray"
+                    android:background="@color/app_bg"
+                    android:gravity="center"
+                    android:textSize="@dimen/text_size_title"/>
+
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/default_padding"
+                    android:text="@{details.applyMsg}"
+                    android:textColor="@color/dark_gray"
+                    android:layout_marginBottom="@dimen/default_item_margin"
+                    android:textSize="@dimen/text_size_small"/>
+
+
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+</layout>

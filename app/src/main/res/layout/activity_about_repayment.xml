@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.repayment.AboutRepayMentActivity"/>
+        <import type="cn.mofufin.morf.ui.util.DataUtils"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.repayment.AboutRepayMentActivity"/>
+
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#0559d6"
+        android:orientation="vertical">
+
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never">
+
+            <LinearLayout
+                android:layout_above="@+id/btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/repayment_about_bg"/>
+
+
+                    <include
+                        android:id="@+id/title_layout"
+                        layout="@layout/layout_title"
+                        bind:backIcon="@{@drawable/title_back}"
+                        bind:handlers="@{handlers}"
+                        bind:isTranslate="@{true}"
+                        bind:canSubmit="@{true}"
+                        android:layout_alignParentTop="true"
+                        bind:titleName="@{@string/repay_detials_title}"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent" />
+
+
+                    <RelativeLayout
+                        android:padding="@dimen/chat_more_margin"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="320dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="@dimen/chat_talk_min_height"
+                            android:paddingStart="@dimen/chat_more_margin"
+                            android:paddingEnd="@dimen/chat_more_margin"
+                            android:paddingBottom="@dimen/chat_more_margin"
+                            android:layout_below="@+id/rp_title"
+                            android:layout_marginTop="-20dp"
+                            android:orientation="vertical"
+                            android:background="@drawable/shape_white_radius">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_normal"
+                                android:textColor="@color/dark_gray"
+                                android:textStyle="bold"
+                                android:drawablePadding="@dimen/default_padding"
+                                android:drawableLeft="@drawable/shape_dark_radiu"
+                                android:text="账单日还款日："/>
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_small"
+                                android:textColor="@color/dark_gray"
+                                android:lineSpacingExtra="@dimen/default_padding"
+                                android:layout_marginTop="@dimen/default_padding"
+                                android:text="鉴于部分信用卡的账单日或者还款日在月末,例如31号,平台采用以下标准来调整："/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_small"
+                                android:textStyle="bold"
+                                android:textColor="@color/app_blue"
+                                android:lineSpacingExtra="@dimen/default_padding"
+                                android:layout_marginTop="@dimen/default_padding"
+                                android:text="账单日如在31号,本月没有31号,则自动调整为次月1号;"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_small"
+                                android:textStyle="bold"
+                                android:textColor="@color/app_blue"
+                                android:lineSpacingExtra="@dimen/default_padding"
+                                android:layout_marginTop="@dimen/default_padding"
+                                android:text="还款日如在31号,本月没有31号,则自动默认当月最后一天。"/>
+
+                            <TextView
+                                android:layout_marginTop="@dimen/default_margin"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_normal"
+                                android:textColor="@color/dark_gray"
+                                android:textStyle="bold"
+                                android:drawablePadding="@dimen/default_padding"
+                                android:drawableLeft="@drawable/shape_dark_radiu"
+                                android:text="计划制定说明："/>
+
+
+                            <TextView
+                                android:id="@+id/details"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_small"
+                                android:textColor="@color/dark_gray"
+                                android:lineSpacingExtra="@dimen/default_padding"
+                                android:layout_marginTop="@dimen/default_padding"
+                                android:text="执行计划时间在账单日和还款日之间最长为20天（不含当日)。"/>
+
+                            <TextView
+                                android:id="@+id/details1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_small"
+                                android:textColor="@color/dark_gray"
+                                android:lineSpacingExtra="@dimen/default_padding"
+                                android:layout_marginTop="@dimen/default_padding"
+                                android:text="根据输入消费金额，系统自动分配消费和延期笔数，任务在执行前可手动终止，每天不得大于3次。"/>
+
+
+
+                            <TextView
+                                android:layout_marginTop="@dimen/default_margin"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_normal"
+                                android:textColor="@color/dark_gray"
+                                android:textStyle="bold"
+                                android:drawablePadding="@dimen/default_padding"
+                                android:drawableLeft="@drawable/shape_dark_radiu"
+                                android:text="计划失败说明："/>
+
+
+                            <TextView
+                                android:id="@+id/details_fail"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_small"
+                                android:textColor="@color/dark_gray"
+                                android:lineSpacingExtra="@dimen/default_padding"
+                                android:layout_marginTop="@dimen/default_padding"
+                                android:text="系统将智能重启任务，三次不成功后，该计划将作失败处理，并将消费成功的金额返还至原卡(每笔需扣代付费)。"/>
+
+
+
+                        </LinearLayout>
+
+
+                        <ImageView
+                            android:id="@+id/rp_title"
+                            android:layout_centerHorizontal="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/repayment_about_title"/>
+
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.util.Common"/>
+        <import type="cn.mofufin.morf.ui.util.DataUtils"/>
+        <import type="android.text.TextUtils"/>
+        <variable
+            name="bean"
+            type="cn.mofufin.morf.ui.entity.Coupons.DataBean.ListBean"/>
+        <variable
+            name="clicklistener"
+            type="android.view.View.OnClickListener"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:visibility="@{bean.isTitle?View.VISIBLE:View.GONE}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/app_background"
+            android:orientation="horizontal"
+            tools:ignore="RtlSymmetry">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/default_padding"
+                android:paddingStart="5dp"
+                android:layout_marginTop="@dimen/default_padding"
+                android:gravity="center_vertical"
+                android:background="@color/white"
+                android:paddingBottom="@dimen/default_padding"
+                android:orientation="horizontal">
+
+                <View
+                    android:id="@+id/title_color"
+                    android:layout_width="5dp"
+                    android:layout_height="20dp"
+                    tools:background="@color/red"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="@string/myrate_3"
+                    android:layout_marginStart="5dp"
+                    android:text="@{bean.titleName}"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/text_size_normal"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:visibility="@{bean.isTitle?View.GONE:View.VISIBLE}"
+            android:tag="@{bean}"
+            tools:visibility="visible"
+            android:onClick="@{clicklistener}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_mall_item_bg"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/shape_mall_item"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    tools:visibility="visible"
+                    android:visibility='@{TextUtils.equals(bean.titleName,"没有更多了")?View.VISIBLE:View.GONE}'
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/no_data"/>
+
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:textColor="@color/light_gray"-->
+                        <!--android:textSize="@dimen/text_size_small"-->
+                        <!--android:text="@string/nodata"/>-->
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:visibility='@{TextUtils.equals(bean.titleName,"没有更多了")?View.GONE:View.VISIBLE}'
+                    tools:visibility="visible"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        tools:visibility="visible"
+                        android:visibility="@{bean.gdGoodsBranchType==0||bean.gdGoodsBranchType==1||bean.gdGoodsBranchType==2||bean.gdGoodsBranchType==3||bean.gdGoodsBranchType==4||bean.gdGoodsBranchType==5||bean.gdGoodsBranchType==6||bean.gdGoodsBranchType==7||bean.gdGoodsBranchType==8||bean.gdGoodsBranchType==9||bean.gdGoodsBranchType==10||bean.gdGoodsBranchType==11||bean.gdGoodsBranchType==12||bean.gdGoodsBranchType==13?View.VISIBLE:View.GONE}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:background="@drawable/currency_paper"
+                        android:background="@{(bean.gdGoodsBranchType==1||bean.gdGoodsBranchType==2||bean.gdGoodsBranchType==3||bean.gdGoodsBranchType==5||bean.gdGoodsBranchType==6)?@drawable/coupon_paper:(bean.gdGoodsBranchType==0||bean.gdGoodsBranchType==8||bean.gdGoodsBranchType==9||bean.gdGoodsBranchType==10||bean.gdGoodsBranchType==11||bean.gdGoodsBranchType==12||bean.gdGoodsBranchType==13)?@drawable/interest_paper:bean.gdGoodsBranchType==4?@drawable/telephone_paper:@drawable/currency_paper}"
+                        android:paddingLeft="@dimen/default_padding"
+                        android:paddingRight="@dimen/default_padding"
+                        android:paddingBottom="@dimen/default_padding"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_weight="2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_weight="1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:baselineAligned="true"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textSize="10sp"
+                                        android:gravity="right"
+                                        android:textColor="@color/white"
+                                        android:text="￥"/>
+
+                                    <TextView
+                                        android:layout_weight="1"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textSize="@dimen/mark_font"
+                                        android:text="@{bean.gdGoodsBranchType == 0 || bean.gdGoodsBranchType == 1 || bean.gdGoodsBranchType == 2 ||bean.gdGoodsBranchType == 3?DataUtils.converOverPercent(DataUtils.scientificNotation2String(bean.gdGoodsDenomination,5)) :String.valueOf(bean.gdGoodsDenomination)}"
+                                        android:textColor="@color/white"
+                                        tools:text="1000"/>
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_weight="1.2"
+                                android:paddingLeft="5dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="@dimen/text_size_normal"
+                                    android:textColor="@color/white"
+                                    android:singleLine="true"
+                                    android:ellipsize="end"
+                                    android:text="@{bean.gdGoodsBranchType==0?@string/mall_bran_type_0:bean.gdGoodsBranchType==1?@string/mall_bran_type_1:bean.gdGoodsBranchType==2?@string/mall_bran_type_2:bean.gdGoodsBranchType==3?@string/mall_bran_type_3:bean.gdGoodsBranchType==4?@string/mall_bran_type_4:bean.gdGoodsBranchType==5?@string/mall_bran_type_5:bean.gdGoodsBranchType==6?@string/mall_bran_type_6:bean.gdGoodsBranchType==7?@string/mall_bran_type_7:bean.gdGoodsBranchType==8?@string/mall_bran_type_8:bean.gdGoodsBranchType==9?@string/mall_bran_type_9:bean.gdGoodsBranchType==10?@string/mall_bran_type_10:bean.gdGoodsBranchType==11?@string/mall_bran_type_11:bean.gdGoodsBranchType==12?@string/mall_bran_type_12:bean.gdGoodsBranchType==13?@string/mall_bran_type_13:bean.gdGoodsBranchType==14?@string/mall_bran_type_14:@string/mall_bran_type_15}"
+                                    tools:text="抵用卷"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="8sp"
+                                    android:ellipsize="end"
+                                    android:singleLine="true"
+                                    android:textColor="@color/white"
+                                    android:text='@{bean.gdGoodsBranchType==0||bean.gdGoodsBranchType==11?@string/mall_explain_0:bean.gdGoodsBranchType==1||bean.gdGoodsBranchType==10?@string/mall_explain_1:bean.gdGoodsBranchType==2||bean.gdGoodsBranchType==12?@string/mall_explain_2:bean.gdGoodsBranchType==3?@string/mall_explain_3:bean.gdGoodsBranchType==6?@string/mall_explain_6:bean.gdGoodsBranchType==9?@string/mall_explain_9:""}'
+                                    tools:text="仅限XX使用"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="bottom"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_small"
+                                android:textColor="@{bean.gdGoodsBranchType==1||bean.gdGoodsBranchType==2||bean.gdGoodsBranchType==3||bean.gdGoodsBranchType==5||bean.gdGoodsBranchType==6?@color/button_bg_purple:(bean.gdGoodsBranchType==0||bean.gdGoodsBranchType==8||bean.gdGoodsBranchType==9||bean.gdGoodsBranchType==10||bean.gdGoodsBranchType==11||bean.gdGoodsBranchType==12||bean.gdGoodsBranchType==13?@color/stroke_short:(bean.gdGoodsBranchType==4?@color/phone:@color/phone))}"
+                                tools:text="单笔满5000可用"
+                                android:gravity="center"
+                                android:paddingLeft="@dimen/default_padding"
+                                android:paddingRight="@dimen/default_padding"
+                                android:layout_marginBottom="3dp"
+                                android:background="@drawable/shape_mall_white"
+                                android:text='@{"单笔满"+(String.valueOf(bean.gdGoodsUseCondition))+"可用"}'/>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!--显示会员卷-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        tools:visibility="gone"
+                        android:visibility="@{bean.gdGoodsBranchType==14||bean.gdGoodsBranchType==15?View.VISIBLE:View.GONE}"
+                        tools:background="@drawable/gold_paper"
+                        android:background="@{bean.gdGoodsBranchType==14?@drawable/gold_paper:@drawable/diamond_paper}"
+                        android:paddingLeft="@dimen/default_padding"
+                        android:paddingRight="@dimen/default_padding"
+                        android:paddingBottom="@dimen/default_padding"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_weight="2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/mall_text_size"
+                                android:text="@{bean.gdGoodsName}"
+                                android:textColor="@{bean.gdGoodsBranchType==14?@color/white:@color/golden}"
+                                tools:text="1000"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_horizontal|bottom"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_small"
+                                android:textColor="@{bean.gdGoodsBranchType==14?@color/golden:@color/diamond}"
+                                tools:text="单笔满5000可用"
+                                android:gravity="center"
+                                android:paddingLeft="@dimen/default_padding"
+                                android:paddingRight="@dimen/default_padding"
+                                android:background="@drawable/shape_mall_white"
+                                android:text="@{bean.gdGoodsBranchType==14?@string/mall_gold_item:@string/mall_diamond_item}"/>
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="5dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:visibility='@{TextUtils.equals(bean.titleName,"没有更多了")?View.INVISIBLE:View.VISIBLE}'
+                    android:layout_gravity="center"
+                    tools:text="88888"
+                    android:text="@{String.valueOf(bean.gdGoodsMoney)}"
+                    android:drawablePadding="5dp"
+                    android:textColor="@color/app_blue"
+                    android:textSize="@dimen/text_size_title"
+                    android:drawableLeft="@drawable/mall_coin"/>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    tools:text="MPOS抵用卷"
+                    android:text='@{TextUtils.equals(bean.titleName,"没有更多了")?"没有更多了":bean.gdGoodsName}'
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/light_gray"
+                    android:textSize="@dimen/text_size_small"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="HorizontalSplit">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.26dp</item>
+        <item name="android:background">@color/gray1</item>
+    </style>
+
+    <string-array name="tab_main_title">
+        <item>数据</item>
+        <item>我的</item>
+    </string-array>
+
+    <style name="fans_tab_bottom_style">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:button">@null</item>
+        <item name="android:background">#9b0000</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingTop">2dp</item>
+        <item name="android:textColor">@drawable/tab_text_selector</item>
+        <item name="android:drawableBottom">@drawable/chart_view_selector_line</item>
+    </style>
+
+    <!-- 通用按钮 -->
+    <style name="btn_common">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/btn_selector</item>
+        <item name="android:textColor">@color/withe</item>
+        <item name="android:padding">@dimen/btn_cm_padding</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/btn_cm_textSize</item>
+        <item name="android:layout_marginTop">@dimen/btn_cm_padding</item>
+        <item name="android:layout_marginBottom">@dimen/btn_cm_padding</item>
+    </style>
+
+</resources>

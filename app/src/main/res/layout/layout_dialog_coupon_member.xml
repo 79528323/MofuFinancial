@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.widget.CouponMemberDialog"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.widget.CouponMemberDialog"/>
+        <variable
+            name="clicklistener"
+            type="android.view.View.OnClickListener"/>
+    </data>
+    <LinearLayout
+        android:id="@+id/main_linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:padding="@dimen/default_padding"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/default_padding"
+                android:layout_alignParentRight="true"
+                android:onClick="@{handlers.cancel}"
+                android:src="@drawable/close"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="会员升级"
+                android:textColor="@color/dark_gray"
+                android:textSize="@dimen/text_size_title"
+                android:layout_centerInParent="true"/>
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/gold_coupon"
+            android:visibility="gone"
+            android:duplicateParentState="true"
+            android:onClick="@{clicklistener}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/default_item_margin"
+            android:paddingLeft="@dimen/default_padding"
+            android:paddingBottom="@dimen/default_item_margin"
+            android:background="@color/white">
+
+            <ImageView
+                android:id="@+id/img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/gold"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/default_item_margin"
+                android:layout_toRightOf="@+id/img"
+                android:layout_alignTop="@+id/img"
+                android:layout_alignBottom="@+id/img"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_small"
+                        android:text="@string/member_info_20"
+                        android:textColor="@color/dark_gray"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_small"
+                        android:text="@string/member_info_21"
+                        android:textColor="@color/light_gray"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <CheckBox
+                android:id="@+id/gold_check"
+                android:duplicateParentState="true"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:paddingRight="@dimen/default_padding"
+                style="@style/industry_selector"/>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="@dimen/default_padding"
+            android:background="@color/hint"/>
+
+        <RelativeLayout
+            android:id="@+id/diamond_coupon"
+            android:visibility="gone"
+            android:duplicateParentState="true"
+            android:onClick="@{clicklistener}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/default_item_margin"
+            android:paddingLeft="@dimen/default_padding"
+            android:paddingBottom="@dimen/default_item_margin"
+            android:background="@color/white">
+
+            <ImageView
+                android:id="@+id/img_wechat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/daimond"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/default_item_margin"
+                android:layout_toRightOf="@+id/img_wechat"
+                android:layout_alignTop="@+id/img_wechat"
+                android:layout_alignBottom="@+id/img_wechat"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_small"
+                        android:text="@string/member_info_18"
+                        android:textColor="@color/dark_gray"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_small"
+                        android:text="@string/member_info_19"
+                        android:textColor="@color/light_gray"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <CheckBox
+                android:id="@+id/daimond_check"
+                android:duplicateParentState="true"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:paddingRight="@dimen/default_padding"
+                style="@style/industry_selector"/>
+        </RelativeLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/title_height"
+            android:textSize="@dimen/text_size_normal"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:onClick="@{handlers.upgrade}"
+            android:background="@color/app_blue"
+            android:text="确认升级"/>
+    </LinearLayout>
+
+
+</layout>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <variable name="handlers" type="cn.mofufin.morf.ui.WebActivity"/>
+        <variable name="titleName" type="String"/>
+        <variable name="progress" type="int"/>
+    </data>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:background="@color/title_bg">
+        <include
+            layout="@layout/layout_title"
+            bind:handlers="@{handlers}"
+            bind:titleName="@{titleName}"
+            bind:backIcon="@{@drawable/title_back}"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <WebView
+                android:id="@+id/web_detail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+            <ProgressBar
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:progress="@{progress}"
+                android:visibility="@{progress == 100 ? View.GONE : View.VISIBLE}"
+                android:max="100"
+                tools:progress="50"
+                android:progressDrawable="@drawable/web_loading_progress"
+                style="?android:attr/progressBarStyleHorizontal"/>
+        </FrameLayout>
+    </LinearLayout>
+</layout>

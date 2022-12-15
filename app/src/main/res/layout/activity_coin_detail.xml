@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.mine.CoinDetailActivity"/>
+        <import type="cn.mofufin.morf.ui.util.DataUtils"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.mine.CoinDetailActivity"/>
+
+        <variable
+            name="commssionMoney"
+            type="String"/>
+        <variable
+            name="totalCommssion"
+            type="String"/>
+        <variable
+            name="position"
+            type="int"/>
+        <variable
+            name="date"
+            type="String"/>
+        <variable
+            name="totalIncome"
+            type="String"/>
+        <variable
+            name="totalExpend"
+            type="String"/>
+        <variable
+            name="onPress"
+            type="boolean"/>
+        <variable
+            name="hasData"
+            type="boolean"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/layout_title"
+            bind:backIcon="@{@drawable/title_back}"
+            bind:handlers="@{handlers}"
+            bind:isTranslate="@{false}"
+            bind:titleName="@{@string/coin_3}" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/default_padding"
+            android:background="#F6F6F6"
+            android:orientation="vertical">
+
+            <CheckBox
+                android:paddingBottom="@dimen/default_margin"
+                android:duplicateParentState="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{date}"
+                tools:text="2019-08"
+                android:checked="@{onPress}"
+                android:onClick="@{handlers.selectTime}"
+                android:textColor="@color/dark_gray"
+                android:textSize="18sp"
+                android:button="@null"
+                android:drawableRight="@drawable/filter_selector"
+                android:drawablePadding="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/light_gray"
+                tools:text="收入/元：100"
+                android:text='@{"获得："+ totalIncome+"   支出："+totalExpend}'/>
+
+        </LinearLayout>
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <cc.ruis.lib.widget.WrapRecyclerView
+                android:id="@+id/commission_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:overScrollMode="never"
+                android:visibility="@{hasData?View.VISIBLE:View.GONE}"
+                tools:listitem="@layout/layout_commission_item"/>
+
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                tools:visibility="gone"
+                android:visibility="@{!hasData?View.VISIBLE:View.GONE}"
+                android:orientation="vertical">
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/no_data"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/light_gray"
+                    android:textSize="@dimen/text_size_small"
+                    android:text="@string/nodata"/>
+            </LinearLayout>
+        </FrameLayout>
+
+    </LinearLayout>
+</layout>

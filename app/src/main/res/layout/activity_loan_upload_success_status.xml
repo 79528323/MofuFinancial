@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.util.DataUtils"/>
+        <import type="cn.mofufin.morf.ui.loan.LoanUploadSuccessStatusActivity"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.loan.LoanUploadSuccessStatusActivity"/>
+
+        <variable
+            name="type"
+            type="int"/>
+        <variable
+            name="status"
+            type="int"/>
+        <variable
+            name="tips"
+            type="String"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:fitsSystemWindows="true"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+
+            <include
+                android:id="@+id/title_layout"
+                layout="@layout/layout_title"
+                bind:backIcon="@{@drawable/financial_back}"
+                bind:handlers="@{handlers}"
+                bind:isTranslate="@{true}"
+                bind:isTitleBlack="@{true}"
+                bind:canSubmit="@{true}"
+                bind:isRightTextBlack="@{true}"
+                bind:titleName='@{type==1?@string/selftext_tips:type==2?@string/spousetext_tips:type==3?@string/friendtext_tips:type==4?@string/selfphoto_tips:type==5?@string/privatephoto_tips:type==6?@string/businnessphoto_tips:@string/spousephoto_tips}'
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+        </LinearLayout>
+
+
+        <!--转账后反馈页面-->
+        <LinearLayout
+            style="@style/BalanceTranPwdStyle"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/menu_item_height"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@{status == 1?@drawable/rec_d_fail:@drawable/loan_status_ok}"/>
+
+            <TextView
+                android:id="@+id/toast"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_item_margin"
+                android:textSize="@dimen/text_size_title"
+                android:text='@{status == 1?tips : (type==1?@string/selftext_upload_tips:type==2?@string/spousetext_upload_tips:type==3?@string/friendtext_upload_tips:type==4?@string/selfphoto_upload_tips:type==5?@string/privatephoto_upload_tips:type==6?@string/businnessphoto_upload_tips:@string/spousephoto_upload_tips)}'
+                android:textColor="@color/dark_gray"
+                android:layout_marginBottom="@dimen/default_padding"/>
+
+            <TextView
+                android:id="@+id/toast_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_small"
+                android:visibility="@{status == 1? View.GONE : View.VISIBLE}"
+                android:textColor="#FE8107"
+                android:text="我们会尽快为您审核，请耐心等待！"/>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_marginTop="80dp"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/loan_idval_button"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:paddingBottom="@dimen/default_padding"
+            android:paddingTop="@dimen/default_padding"
+            android:text='@{status == 1?"返回":"返回身份认证"}'
+            android:onClick="@{handlers.onPress}"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_normal" />
+
+
+    </LinearLayout>
+</layout>

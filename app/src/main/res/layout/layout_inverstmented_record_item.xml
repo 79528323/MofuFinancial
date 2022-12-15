@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:apps="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.util.DataUtils"/>
+        <import type="android.text.TextUtils"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.fragment.InverstMentFragment"/>
+        <variable
+            name="clicklistener"
+            type="android.view.View.OnClickListener"/>
+        <variable
+            name="type"
+            type="Integer"/>
+        <variable
+            name="isShow"
+            type="boolean"/>
+        <variable
+            name="position"
+            type="int"/>
+        <variable
+            name="bean"
+            type="cn.mofufin.morf.ui.entity.InverstMemtRecord.RecordListBean"/>
+        <variable
+            name="onclicklistener"
+            type="android.view.View.OnClickListener"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/app_bg"
+        android:orientation="vertical">
+
+
+        <androidx.cardview.widget.CardView
+            tools:targetApi="lollipop"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/default_padding"
+            android:layout_marginRight="@dimen/default_padding"
+            android:layout_marginBottom="@dimen/default_padding"
+            android:clickable="true"
+            android:tag="@{bean}"
+            android:onClick="@{onclicklistener}"
+            android:stateListAnimator="@drawable/lift_on_touch"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:cardCornerRadius="4dp"
+            app:cardUseCompatPadding="true"
+            app:cardPreventCornerOverlap="false">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:padding="@dimen/default_padding"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/light_gray"
+                        tools:text="摩富801801"
+                        android:text="@{bean.fdName}"
+                        android:layout_marginLeft="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_small"/>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#F9AB4B"
+                        tools:text="购买金额/元：300000"
+                        android:text='@{"购买金额/元："+DataUtils.numFormat(bean.foBuyMoney)}'
+                        android:layout_marginLeft="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_small"/>
+
+
+                </LinearLayout>
+
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layerType="software"
+                    android:layout_marginLeft="@dimen/default_padding"
+                    android:background="@drawable/inverstment_dottedline" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/default_margin"
+                    android:background="@color/white">
+
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:baselineAligned="true"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@{DataUtils.converOverNOPercent(bean.fdAnnualized)}"
+                                android:textStyle="bold"
+                                android:textColor="@color/fin_home_text"
+                                android:textSize="@dimen/location_detail_title" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="%"
+                                android:layout_marginLeft="5dp"
+                                android:textStyle="bold"
+                                android:textColor="@color/light_gray"
+                                android:textSize="@dimen/text_size_small" />
+
+
+
+                        </LinearLayout>
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:text="@string/financial_home_7"
+                            android:textColor="@color/light_gray"
+                            android:layout_marginTop="@dimen/default_padding"
+                            android:textSize="@dimen/text_size_small" />
+
+                    </LinearLayout>
+
+
+                    <!--<LinearLayout-->
+                        <!--android:layout_weight="1.5"-->
+                        <!--android:layout_width="0dp"-->
+                        <!--android:visibility="gone"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:orientation="vertical">-->
+
+
+                        <!--<TextView-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_gravity="center_horizontal"-->
+                            <!--android:text="@{DataUtils.numFormat(bean.foBuyMoney)}"-->
+                            <!--tools:text="1000000000"-->
+                            <!--android:textColor="#F9AB4B"-->
+                            <!--android:textSize="@dimen/location_detail_title" />-->
+
+                        <!--<TextView-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_gravity="center_horizontal"-->
+                            <!--android:text="购买金额/元"-->
+                            <!--android:textColor="@color/light_gray"-->
+                            <!--android:layout_marginTop="@dimen/default_padding"-->
+                            <!--android:textSize="@dimen/text_size_small" />-->
+
+                    <!--</LinearLayout>-->
+
+
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:text="@{String.valueOf(bean.fdProductDate)}"
+                            android:textColor="@color/dark_gray"
+                            android:textSize="@dimen/location_detail_title" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:text="@string/financial_home_6"
+                            android:textColor="@color/light_gray"
+                            android:layout_marginTop="@dimen/default_padding"
+                            android:textSize="@dimen/text_size_small" />
+
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:paddingTop="@dimen/default_padding"
+                            android:paddingBottom="@dimen/default_padding"
+                            android:paddingLeft="@dimen/default_margin"
+                            android:paddingRight="@dimen/default_margin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            tools:text="已赎回"
+                            android:text='@{bean.foOrderState==1?"已赎回":"投资撤销"}'
+                            android:background="@drawable/order_state_button"
+                            android:textColor="@color/light_gray"
+                            android:layout_marginTop="@dimen/default_padding"
+                            android:textSize="@dimen/text_size_small" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+</layout>

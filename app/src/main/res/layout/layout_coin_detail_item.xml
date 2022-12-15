@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:apps="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.entity.Coin.MoBiListBean"/>
+        <import type="android.text.TextUtils"/>
+        <import type="cn.mofufin.morf.ui.util.DataUtils"/>
+        <variable
+            name="detail"
+            type="cn.mofufin.morf.ui.entity.CoinDetail.DetailListBean"/>
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/icon_large"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:padding="@dimen/default_padding"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/text_size_normal"
+                    android:text='@{detail.mrGetType==0?@string/Coin_detail_type_0:detail.mrGetType==1?@string/Coin_detail_type_1:detail.mrGetType==2?@string/Coin_detail_type_2:detail.mrGetType==3?@string/Coin_detail_type_3:detail.mrGetType==4?@string/Coin_detail_type_4:detail.mrGetType==5?@string/Coin_detail_type_5:detail.mrGetType==6?@string/Coin_detail_type_6:detail.mrGetType==7?@string/Coin_detail_type_7:detail.mrGetType==8?@string/Coin_detail_type_8:detail.mrGetType==9?@string/Coin_detail_type_9:@string/Coin_detail_type_10}'
+                    tools:text="@string/order_mpos"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/text_size_normal"
+                    android:text='@{String.valueOf(detail.mrNumber)}'
+                    tools:text="2000"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_gravity="bottom"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="bottom"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/light_gray"
+                    android:text="@{detail.mrDate}"
+                    android:textSize="@dimen/text_size_small"/>
+
+                <TextView
+                    android:id="@+id/status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/light_gray"
+                    android:text="@{detail.mrNature==0?@string/Coin_detail_type_11:@string/Coin_detail_type_12}"
+                    android:textSize="@dimen/text_size_small"
+                    tools:text="1000"/>
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="@dimen/default_padding"
+            android:layout_alignParentBottom="true"
+            android:background="@color/line"/>
+    </RelativeLayout>
+</layout>

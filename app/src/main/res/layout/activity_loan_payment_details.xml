@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.loan.LoanPayMentDetailsActivity"/>
+        <import type="android.text.TextUtils"/>
+        <import type="cn.mofufin.morf.ui.util.DataUtils"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.loan.LoanPayMentDetailsActivity"/>
+        <variable
+            name="details"
+            type="cn.mofufin.morf.ui.entity.LoanProduct.ProductListBean"/>
+        <variable
+            name="amount"
+            type="String"/>
+        <!--<variable-->
+            <!--name="clicklistener"-->
+            <!--type="android.view.View.OnClickListener"/>-->
+        <variable
+            name="isAgree"
+            type="boolean"/>
+        <!--<variable-->
+            <!--name="expIncome"-->
+            <!--type="String"/>-->
+        <!--<variable-->
+            <!--name="balance"-->
+            <!--type="String"/>-->
+        <!--<variable-->
+            <!--name="recome"-->
+            <!--type="String"/>-->
+    </data>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+            
+            <include
+                android:id="@+id/title_layout"
+                layout="@layout/layout_title"
+                bind:backIcon="@{@drawable/financial_back}"
+                bind:handlers="@{handlers}"
+                bind:isTranslate="@{true}"
+                bind:isTitleBlack="@{true}"
+                bind:titleName="@{@string/product_detail_12}"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@color/loan_red"
+            android:padding="@dimen/default_padding">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/attention"/>
+
+            <TextView
+                android:layout_marginLeft="@dimen/default_padding"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/white"
+                android:text="到账银行卡为身份认证时提交的银行卡！"/>
+
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/app_background"
+            android:overScrollMode="never">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_above="@+id/btn"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="@color/white"
+                        android:padding="@dimen/default_padding">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_weight="1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_normal"
+                                android:textColor="@color/dark_gray"
+                                android:text="请输入贷款金额"/>
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_normal"
+                                android:textColor="@color/light_gray"
+                                android:text='@{"本产品最高可贷款"+(String.valueOf(details.loansMaxMoney/10000))+"万元"}'/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_marginTop="@dimen/default_padding"
+                            android:layout_marginBottom="@dimen/default_margin"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:background="@drawable/shape_loan_pay_editor_bg">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_normal"
+                                android:layout_marginLeft="@dimen/default_margin"
+                                android:textColor="@color/dark_gray"
+                                android:text="￥"/>
+
+
+                            <EditText
+                                android:id="@+id/loan_amount"
+                                android:paddingLeft="@dimen/default_padding"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="@{amount}"
+                                android:hint="请输入贷款金额"
+                                android:textColor="@color/dark_gray"
+                                android:textColorHint="@color/light_gray"
+                                android:textSize="@dimen/text_size_normal"
+                                android:paddingRight="@dimen/default_margin"
+                                android:onTextChanged="@{handlers.onTextChanged}"
+                                android:inputType="number"
+                                android:background="@null"/>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_margin="@dimen/default_padding"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="@color/dark_gray"
+                        android:text="请选择计息方式"/>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/default_padding"
+                        android:paddingStart="@dimen/default_item_margin"
+                        android:paddingBottom="@dimen/default_padding"
+                        android:background="@color/white">
+
+                        <cn.mofufin.morf.ui.widget.FlowRadioGroup
+                            android:id="@+id/interestCalculation"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                        </cn.mofufin.morf.ui.widget.FlowRadioGroup>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_margin="@dimen/default_padding"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="@color/dark_gray"
+                        android:text="请选择贷款周期"/>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/default_padding"
+                        android:paddingStart="@dimen/default_item_margin"
+                        android:paddingBottom="@dimen/default_padding"
+                        android:orientation="vertical"
+                        android:background="@color/white">
+
+                        <cn.mofufin.morf.ui.widget.FlowRadioGroup
+                            android:id="@+id/product_group"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                        </cn.mofufin.morf.ui.widget.FlowRadioGroup>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/default_item_margin"
+                        android:paddingTop="@dimen/default_padding"
+                        android:paddingBottom="@dimen/default_item_margin"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <CheckBox
+                            android:text="@string/register4"
+                            android:textSize="@dimen/text_size_normal"
+                            android:drawablePadding="@dimen/default_padding"
+                            android:onClick="@{handlers.agree}"
+                            android:gravity="center_vertical"
+                            android:textColor="@color/gray"
+                            style="@style/pwd_check"
+                            android:checked="@{isAgree}"/>
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/default_padding"
+                            android:textSize="@dimen/text_size_small"
+                            android:onClick="@{handlers.financialAgreement}"
+                            android:layout_gravity="right|center_vertical"
+                            android:text="《摩富贷相关协议》"
+                            android:textColor="@color/app_blue" />
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/default_padding"
+                            android:textSize="@dimen/text_size_normal"
+                            android:onClick="@{handlers.showPlan}"
+                            android:layout_gravity="right|center_vertical"
+                            android:gravity="right"
+                            android:paddingEnd="@dimen/default_item_margin"
+                            android:text="@string/loan_payment_details"
+                            android:textColor="#F34141" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="220dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:onClick="@{handlers.submitLoans}"
+                        android:layout_marginTop="@dimen/default_item_margin"
+                        android:paddingTop="@dimen/default_padding"
+                        android:paddingBottom="@dimen/default_padding"
+                        android:paddingLeft="@dimen/chat_talk_min_width"
+                        android:paddingRight="@dimen/chat_talk_min_width"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/loan_idval_button"
+                        android:text="@string/confirm"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_normal" />
+
+
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </ScrollView>
+
+    </LinearLayout>
+</layout>

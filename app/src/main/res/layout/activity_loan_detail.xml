@@ -1,0 +1,569 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.loan.LoanDetailActivity"/>
+        <import type="android.text.TextUtils"/>
+        <import type="cn.mofufin.morf.ui.util.DataUtils"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.loan.LoanDetailActivity"/>
+        <variable
+            name="details"
+            type="cn.mofufin.morf.ui.entity.LoanProduct.ProductListBean"/>
+        <variable
+            name="title"
+            type="String"/>
+    </data>
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/btn"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/title_layout"
+                layout="@layout/layout_title"
+                bind:backIcon="@{@drawable/financial_back}"
+                bind:handlers="@{handlers}"
+                bind:isTranslate="@{true}"
+                bind:isTitleBlack="@{true}"
+                bind:titleName="@{title}"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"
+            android:background="@color/app_background">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/default_padding"
+                    android:gravity="center_vertical"
+                    android:background="@color/loan_red">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_normal"
+                            android:gravity="center"
+                            android:layout_gravity="center_vertical"
+                            android:textColor="#FFD7D7"
+                            android:text="快速贷"/>
+
+
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+
+                        <!--<TextView-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:background="@drawable/producet_commission"-->
+                            <!--android:textColor="@color/fin_home_text"-->
+                            <!--android:text="返佣比例 0.2%"-->
+                            <!--android:paddingTop="3dp"-->
+                            <!--android:paddingBottom="3dp"-->
+                            <!--android:paddingLeft="5dp"-->
+                            <!--android:visibility="visible"-->
+                            <!--android:gravity="center"-->
+                            <!--android:textSize="13sp"-->
+                            <!--android:layout_centerVertical="true"-->
+                            <!--android:layout_toRightOf="@+id/ratio_layout"/>-->
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center">
+
+
+                        <LinearLayout
+                            android:id="@+id/layout"
+                            android:gravity="center|bottom"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="@dimen/default_margin"
+                            android:background="@drawable/loan_home_half_round">
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/layout"
+                            android:gravity="center"
+                            android:layout_marginTop="@dimen/default_item_margin"
+                            android:layout_centerHorizontal="true"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:textSize="@dimen/location_detail_title"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"
+                                android:text='@{String.valueOf(details.loansMaxMoney/10000)+"万"}'/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:layout_marginTop="5dp"
+                                android:textSize="@dimen/text_size_small"
+                                android:textColor="@color/white"
+                                android:text="最高贷款额度(元)"/>
+
+                        </LinearLayout>
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:layout_marginTop="@dimen/default_margin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/default_padding">
+
+                        <ProgressBar
+                            android:id="@+id/progress"
+                            android:layout_width="match_parent"
+                            android:layout_height="5dp"
+                            android:visibility="gone"
+                            android:layout_marginLeft="@dimen/default_item_margin"
+                            android:layout_marginRight="@dimen/default_item_margin"
+                            style="@style/ProductDetail_ProgressBar_Horizontal"/>
+
+                        <LinearLayout
+                            android:layout_below="@+id/progress"
+                            android:layout_alignLeft="@+id/progress"
+                            android:layout_alignRight="@+id/progress"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/default_padding"
+                            android:paddingBottom="@dimen/default_padding">
+
+                            <TextView
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_normal"
+                                android:gravity="center"
+                                android:textColor="@color/white"
+                                android:text='@{"种类："+(details.loansKind == 0?"信用贷":"抵押贷")}'/>
+
+
+                            <TextView
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_normal"
+                                android:gravity="center"
+                                android:textColor="@color/white"
+                                android:text='@{"日利率："+DataUtils.scientificMatchPercent(details.loansRate,5)}'/>
+
+                            <TextView
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_normal"
+                                android:textColor="@color/white"
+                                android:text='@{"周期："+DataUtils.converLoansPeriod(details.loansPeriod)+"个月"}'/>
+                        </LinearLayout>
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/default_item_margin"
+                    android:background="#E9E9E9"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:paddingStart="@dimen/default_padding"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="申请条件"
+                        android:textColor="@color/loan_red"
+                        android:padding="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_game_record"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/default_padding"
+                        android:background="@color/white"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="1.申请贷款前请先在本平台进行身份认证。"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/text_size_normal"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:textSize="@dimen/text_size_normal"
+                        android:paddingLeft="@dimen/default_padding"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="@dimen/default_padding"
+                        android:background="@color/white"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="2.线上审核，最快1天即可。"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/text_size_normal"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E9E9E9"/>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/default_item_margin"
+                    android:background="#E9E9E9"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:paddingStart="@dimen/default_padding"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="产品说明"
+                        android:textColor="@color/loan_red"
+                        android:padding="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_game_record"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/default_padding"
+                        android:background="@color/white"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="1.计息种类："
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/text_size_normal"/>
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text='@{(details.loansInterestKind==0?"贷后计息":"贷后计息")}'
+                            android:textColor="#151515"
+                            android:textSize="@dimen/text_size_normal"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="5dp"
+                        android:paddingLeft="@dimen/default_padding"
+                        android:background="@color/white"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="2.计息方式："
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/text_size_normal"/>
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text='@{(details.loansInterestWay==0?"等额本息":details.loansInterestWay==1?"先息后本":"等额本息、先息后本")}'
+                            android:textColor="#151515"
+                            android:textSize="@dimen/text_size_normal"/>
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:textSize="@dimen/text_size_normal"
+                        android:paddingLeft="@dimen/default_padding"
+                        android:layout_marginTop="5dp"
+                        android:background="@color/white"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="3.服务费/元："
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/text_size_normal"/>
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{String.valueOf(details.serviceCharge)}"
+                            android:textColor="#151515"
+                            android:textSize="@dimen/text_size_normal"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:textSize="@dimen/text_size_normal"
+                        android:paddingLeft="@dimen/default_padding"
+                        android:layout_marginTop="5dp"
+                        android:background="@color/white"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="4.逾期日利率："
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/text_size_normal"/>
+
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{DataUtils.scientificMatchPercent(details.loansOverdue,5)}"
+                            android:textColor="#151515"
+                            android:lineSpacingExtra="2dp"
+                            android:textSize="@dimen/text_size_normal"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:textSize="@dimen/text_size_normal"
+                        android:paddingLeft="@dimen/default_padding"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="@dimen/default_margin"
+                        android:background="@color/white"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/default_item_margin"
+                            android:text="5.申请贷款最后下达额度将根据风控等级规定，申请成功后我们将会在3个工作日内以电话的形式通知您，节假日除外。"
+                            android:textColor="@color/gray"
+                            android:lineSpacingExtra="2dp"
+                            android:textSize="@dimen/text_size_normal"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#E9E9E9"/>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/default_item_margin"
+                    android:background="#E9E9E9"/>
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:paddingStart="@dimen/default_padding"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="费用说明"
+                        android:textColor="@color/loan_red"
+                        android:padding="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_game_record"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingEnd="@dimen/default_padding"
+                        android:paddingStart="@dimen/default_padding"
+                        android:paddingBottom="@dimen/default_margin"
+                        android:background="@color/white"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{details.productExplain}"
+                            android:lineSpacingExtra="5dp"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/text_size_normal"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="@dimen/default_item_margin"
+                    android:background="#E9E9E9"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:layout_marginTop="@dimen/default_item_margin"
+                    android:visibility="gone"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="费用说明"
+                        android:textColor="@color/loan_red"
+                        android:padding="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_game_record"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/default_padding"
+                        android:background="@color/white"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="提前还款：无任何减免，全部结清。"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/text_size_normal"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/tab_height"
+                        android:orientation="horizontal"
+                        android:textSize="@dimen/text_size_normal"
+                        android:paddingLeft="@dimen/default_padding"
+                        android:background="@color/white"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="线上审核，最快1天即可。"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/text_size_normal"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/btn"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="@dimen/text_size_normal"
+            android:onClick="@{handlers.apply}"
+            android:textColor="@color/white"
+            android:background="@color/loan_red"
+            android:padding="@dimen/default_margin"
+            android:text="立即申请"/>
+    </RelativeLayout>
+</layout>

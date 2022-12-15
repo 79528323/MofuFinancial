@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:apps="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="cn.mofufin.morf.ui.util.DataUtils"/>
+        <variable
+            name="bean"
+            type="cn.mofufin.morf.ui.entity.IntergalRank.ActivityBean.FdDayListBean"/>
+        <variable
+            name="position"
+            type="int"/>
+        <variable
+            name="islist"
+            type="boolean"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/card_type_item_height"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/tab_height"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/default_padding"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                tools:text="1"
+                android:text="@{String.valueOf(position)}"
+                android:gravity="left"
+                android:textColor="@{islist?@color/dark_gray:@color/ranking_day_red}"
+                android:paddingLeft="@dimen/default_margin"
+                android:textSize="@dimen/text_size_normal"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="张**"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@{DataUtils.coverPhoneNum(bean.phone)}"
+                android:textColor="@{islist?@color/dark_gray:@color/ranking_day_red}"
+                android:paddingLeft="11dp"
+                android:textSize="@dimen/text_size_normal"/>
+
+            <LinearLayout
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/default_item_margin"
+                android:gravity="right"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@{islist?@color/dark_gray:@color/ranking_day_red}"
+                    android:text="@{String.valueOf(bean.integral)}"
+                    tools:text="100000.99"
+                    android:textSize="@dimen/text_size_normal"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="@dimen/default_padding"
+            android:background="#F9BEBF"/>
+    </LinearLayout>
+</layout>

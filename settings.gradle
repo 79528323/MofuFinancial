@@ -1,0 +1,1 @@
+include ':app', ':ruisLib-3.0.41', ':ocr_ui', ':takephoto_library'

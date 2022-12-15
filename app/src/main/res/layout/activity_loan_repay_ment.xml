@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:apps="http://schemas.android.com/apk/res-auto"
+xmlns:bind="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools">
+<data>
+    <import type="android.view.View"/>
+    <import type="cn.mofufin.morf.ui.loan.LoanRePayMentActivity"/>
+    <import type="android.text.TextUtils"/>
+    <import type="cn.mofufin.morf.ui.util.DataUtils"/>
+    <variable
+        name="handlers"
+        type="cn.mofufin.morf.ui.loan.LoanRePayMentActivity"/>
+    <variable
+        name="bean"
+        type="cn.mofufin.morf.ui.entity.RecordDetails.PlanDetailsListBean"/>
+</data>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <include
+            android:id="@+id/title_layout"
+            layout="@layout/layout_title"
+            bind:backIcon="@{@drawable/financial_back}"
+            bind:handlers="@{handlers}"
+            bind:isTranslate="@{true}"
+            bind:isTitleBlack="@{true}"
+            bind:titleName="@{@string/Coin_detail_type_7}"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent" />
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/repay_bg">
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_marginTop="50dp"
+            android:layout_marginStart="@dimen/default_item_margin"
+            android:layout_marginEnd="@dimen/default_item_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dynamic_image_max"
+                android:gravity="center"
+                android:elevation="3dp"
+                android:orientation="vertical"
+                android:background="@drawable/shape_white">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/balance_text_size"
+                    android:textColor="@color/dark_gray"
+                    android:typeface="monospace"
+                    android:text="@{String.valueOf(bean.refundTotalMoney)}"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/light_gray"
+                    android:layout_marginTop="@dimen/default_margin"
+                    android:textSize="@dimen/text_size_normal"
+                    android:text="本月应还(元)"/>
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="@{bean.overdueDay>0?View.GONE:View.VISIBLE}"
+                    android:paddingTop="@dimen/default_padding"
+                    android:paddingStart="@dimen/default_padding"
+                    android:paddingRight="@dimen/default_padding"
+                    tools:visibility="visible"
+                    android:background="@color/white"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="日利率"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_title"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_title"
+                        android:text="@{DataUtils.scientificMatchPercent(bean.loansDayRate,5)}"
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/default_padding"
+                    android:paddingStart="@dimen/default_padding"
+                    android:paddingRight="@dimen/default_padding"
+                    tools:visibility="visible"
+                    android:visibility="@{bean.overdueDay>0?View.VISIBLE:View.GONE}"
+                    android:background="@color/white"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="逾期日利率"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_title"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235"
+                        android:text="@{DataUtils.scientificMatchPercent(bean.overdueDayRate,5)}"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_title"
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/default_padding"
+                    android:paddingStart="@dimen/default_padding"
+                    android:paddingRight="@dimen/default_padding"
+                    tools:visibility="visible"
+                    android:visibility="@{bean.overdueDay>0?View.VISIBLE:View.GONE}"
+                    android:background="@color/white"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="逾期利息"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_title"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235"
+                        android:text="@{String.valueOf(bean.overdueInterest)}"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_title"
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/default_padding"
+                    android:paddingStart="@dimen/default_padding"
+                    android:paddingRight="@dimen/default_padding"
+                    tools:visibility="visible"
+                    android:visibility="@{bean.overdueDay>0?View.VISIBLE:View.GONE}"
+                    android:background="@color/white"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="逾期天数"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_title"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235"
+                        android:text="@{String.valueOf(bean.overdueDay)}"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_title"
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/default_padding"
+                    android:paddingStart="@dimen/default_padding"
+                    android:paddingRight="@dimen/default_padding"
+                    tools:visibility="visible"
+                    android:background="@color/white"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="本月应还本金"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_title"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_title"
+                        android:text="@{DataUtils.numFormat(bean.refundThisMoney)}"
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/default_padding"
+                    android:paddingStart="@dimen/default_padding"
+                    android:paddingRight="@dimen/default_padding"
+                    tools:visibility="visible"
+                    android:background="@color/white"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="本月应还利息"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_title"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_title"
+                        android:text="@{DataUtils.numFormat(bean.refundInterest)}"
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_marginStart="@dimen/default_padding"
+                    android:layout_marginEnd="@dimen/default_padding"
+                    android:layout_marginTop="@dimen/default_padding"
+                    android:background="@color/line"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/default_padding"
+                    android:paddingStart="@dimen/default_padding"
+                    android:paddingRight="@dimen/default_padding"
+                    tools:visibility="visible"
+                    android:background="@color/white"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="还款日期"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_title"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235"
+                        android:layout_marginEnd="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_title"
+                        android:text="@{bean.refundDate.substring(0,10)}"
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/default_padding"
+                    android:paddingStart="@dimen/default_padding"
+                    android:paddingRight="@dimen/default_padding"
+                    tools:visibility="visible"
+                    android:visibility="@{bean.overdueDay>0?View.VISIBLE:View.GONE}"
+                    android:background="@color/white"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="逾期"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_title"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_title"
+                        android:text="已逾期"
+                        android:textColor="@{bean.overdueDay>0?@color/loan_red:@color/dark_gray}"/>
+                </LinearLayout>
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="@dimen/icon_large"-->
+                    <!--android:paddingTop="@dimen/default_padding"-->
+                    <!--tools:visibility="visible"-->
+                    <!--android:background="@color/white"-->
+                    <!--android:gravity="center_vertical">-->
+
+                <!--</LinearLayout>-->
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/next"
+        android:enabled="@{bean.planState==1||bean.planState==3?false:true}"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@{bean.planState==1||bean.planState==3?@color/light_gray:@color/loan_red}"
+        android:gravity="center"
+        android:paddingBottom="@dimen/default_margin"
+        android:paddingTop="@dimen/default_margin"
+        android:text='@{bean.planState==1||bean.planState==3?"已还款":"确定还款"}'
+        android:onClick="@{handlers.repay}"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_game_record" />
+</LinearLayout>
+</layout>

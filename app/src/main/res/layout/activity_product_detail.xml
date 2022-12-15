@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.ProductDetailActivity"/>
+        <import type="android.text.TextUtils"/>
+        <import type="cn.mofufin.morf.ui.util.DataUtils"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.ProductDetailActivity"/>
+        <variable
+            name="details"
+            type="cn.mofufin.morf.ui.entity.ProductDetails.ProductDetailsBean"/>
+
+    </data>
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/btn"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/title_layout"
+                layout="@layout/layout_title"
+                bind:backIcon="@{@drawable/financial_back}"
+                bind:handlers="@{handlers}"
+                bind:isTranslate="@{true}"
+                bind:isTitleBlack="@{true}"
+                bind:titleName="@{@string/product_detail_title}"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/app_background">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/default_padding"
+                    android:gravity="center_vertical"
+                    android:background="@color/fin_home_text">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                        <LinearLayout
+                            android:layout_weight="1.8"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content">
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="@dimen/default_padding"
+                                android:paddingRight="@dimen/default_padding"
+                                android:paddingTop="2dp"
+                                android:paddingBottom="2dp"
+                                android:textSize="@dimen/text_size_small"
+                                android:background="@drawable/mine_validate"
+                                android:textColor="@color/white"
+                                android:text='@{"限购次数："+(details.fdUserBuyNumber>100?"不限":details.fdUserBuyNumber)}'
+                                tools:text="@string/product_detail_1"/>
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_small"
+                            android:layout_gravity="center_vertical"
+                            android:textColor="#FFD7D7"
+                            android:text="@string/product_detail_2"/>
+
+                        <TextView
+                            android:layout_weight="1.8"
+                            android:layout_width="0dp"
+                            android:gravity="center_vertical|right"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_small"
+                            android:textColor="#FFD7D7"
+                            tools:text="摩富801801"
+                            android:text="@{details.fdName}"/>
+
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:id="@+id/ratio_layout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:baselineAligned="true"
+                            android:paddingTop="5dp"
+                            android:paddingBottom="5dp"
+                            android:layout_centerInParent="true"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@{DataUtils.converOverNOPercent(details.fdAnnualized)}"
+                                tools:text="14.6"
+                                android:textStyle="bold"
+                                android:textColor="@color/white"
+                                android:textSize="26sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="%"
+                                android:layout_marginLeft="5dp"
+                                android:textStyle="bold"
+                                android:textColor="#FFD7D7"
+                                android:textSize="@dimen/text_size_normal" />
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/producet_commission"
+                            android:textColor="@color/fin_home_text"
+                            tools:text="返佣比例 0.2%"
+                            android:text='@{"返佣比例 "+(Float.valueOf(DataUtils.scientificNotation2String((details.fdRebateRatio*100),2)))+"%"}'
+                            android:paddingTop="3dp"
+                            android:paddingBottom="3dp"
+                            android:paddingLeft="5dp"
+                            android:visibility="gone"
+                            android:gravity="center"
+                            android:textSize="13sp"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@+id/ratio_layout"/>
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:padding="@dimen/default_padding"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_small"
+                            android:textColor="@color/white"
+                            android:text='@{details.fdProductDate+"天"}'
+                            tools:text="@string/product_detail_4"/>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="15dp"
+                            android:background="@color/white"
+                            android:layout_marginLeft="@dimen/default_padding"
+                            android:layout_marginRight="@dimen/default_padding"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_small"
+                            android:textColor="@color/white"
+                            android:text='@{"起投"+details.fdMinMoney+"元"}'
+                            tools:text="@string/product_detail_5"/>
+
+
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="#FFF400"
+                        android:text="@{details.fdRiserestDateMsg}"
+                        tools:text="@string/product_detail_5"/>
+
+
+                    <RelativeLayout
+                        android:layout_marginTop="@dimen/default_margin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/default_padding">
+
+                        <ProgressBar
+                            android:id="@+id/progress"
+                            android:layout_width="match_parent"
+                            android:layout_height="5dp"
+                            android:layout_marginLeft="@dimen/default_item_margin"
+                            android:layout_marginRight="@dimen/default_item_margin"
+                            style="@style/ProductDetail_ProgressBar_Horizontal"/>
+
+                        <LinearLayout
+                            android:layout_below="@+id/progress"
+                            android:layout_alignLeft="@+id/progress"
+                            android:layout_alignRight="@+id/progress"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/default_padding"
+                            android:paddingBottom="@dimen/default_padding">
+
+                            <TextView
+                                android:layout_weight="1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_small"
+                                android:textColor="@color/white"
+                                android:text='@{"剩余可投："+DataUtils.numFormat((details.fdTotalCirculation - details.fdResidueCirculation)/10000)+"万元"}'
+                                tools:text="@string/product_detail_6"/>
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_small"
+                                android:textColor="@color/white"
+                                android:text='@{"总额："+ (details.fdTotalCirculation/10000)+"万元"}'
+                                tools:text="@string/product_detail_7"/>
+
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/content_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/tab_height"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/default_padding"
+                        android:onClick="@{handlers.description}"
+                        android:background="@color/white"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/product_detail_8"
+                            android:textColor="@color/dark_gray"
+                            android:textSize="@dimen/text_size_normal"/>
+
+                        <View
+                            android:layout_width="10dp"
+                            android:layout_height="20dp"
+                            android:layout_marginRight="@dimen/default_padding"
+                            android:background="@drawable/icon_right"/>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="@dimen/default_padding"
+                        android:background="@color/app_background"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/tab_height"
+                        android:orientation="horizontal"
+                        android:textSize="@dimen/text_size_normal"
+                        android:onClick="@{handlers.risk}"
+                        android:paddingLeft="@dimen/default_padding"
+                        android:background="@color/white"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/product_detail_9"
+                            android:textColor="@color/dark_gray"
+                            android:textSize="@dimen/text_size_normal"/>
+
+                        <View
+                            android:layout_width="10dp"
+                            android:layout_height="20dp"
+                            android:layout_marginRight="@dimen/default_padding"
+                            android:background="@drawable/icon_right"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_marginTop="@dimen/default_margin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/default_padding"
+                    android:background="@color/white"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/product_detail_10"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="@dimen/text_size_normal"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/product_detail_11"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="@dimen/text_size_normal"/>
+                </LinearLayout>
+
+                <cc.ruis.lib.widget.WrapRecyclerView
+                    android:id="@+id/product_record_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:overScrollMode="never"
+                    tools:listitem="@layout/layout_rate_item"/>
+
+                <TextView
+                    android:layout_alignParentBottom="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textSize="@dimen/text_size_normal"
+                    android:onClick="@{handlers.payment}"
+                    android:textColor="@color/light_gray"
+                    android:padding="@dimen/default_margin"
+                    android:text="亲，我们只加载最近投资10条…"/>
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/btn"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="@dimen/text_size_normal"
+            android:onClick="@{handlers.payment}"
+            android:textColor="@color/white"
+            android:background="@color/fin_home_text"
+            android:padding="@dimen/default_margin"
+            android:text="@string/financial_home_9"/>
+    </RelativeLayout>
+</layout>

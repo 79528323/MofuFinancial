@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.RealNameIdentityActivity"/>
+        <import type="android.view.View.OnClickListener"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.RealNameIdentityActivity"/>
+        <variable
+            name="position"
+            type="int"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        android:background="@color/white">
+
+        <include
+            layout="@layout/layout_title"
+            bind:backIcon="@{@drawable/title_back}"
+            bind:handlers="@{handlers}"
+            bind:canSubmit="@{true}"
+            bind:rightText="@{@string/realname_course_title}"
+            bind:titleName="@{@string/scanning1}" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/default_padding"
+            android:paddingLeft="@dimen/default_item_margin"
+            android:paddingRight="@dimen/default_item_margin"
+            android:paddingBottom="@dimen/default_padding"
+            android:background="@color/app_blue">
+
+            <LinearLayout
+                android:id="@+id/check_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginLeft="@dimen/default_item_margin"
+                android:layout_marginRight="@dimen/default_item_margin"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    style="@style/scanning_style"
+                    android:checked="true"/>
+
+                <View
+                    android:layout_weight="3"
+                    android:layout_width="0dp"
+                    android:layout_height="10dp"
+                    android:layerType="software"
+                    android:background="@drawable/level_dottedline_b"/>
+
+                <CheckBox
+                    style="@style/scanning_style"
+                    android:checked="@{position>=2?true:false}"/>
+
+                <View
+                    android:layout_weight="3"
+                    android:layout_width="0dp"
+                    android:layout_height="10dp"
+                    android:layerType="software"
+                    android:background="@{position>=2?@drawable/level_dottedline_b:@drawable/level_dottedline_a}"/>
+
+                <CheckBox
+                    style="@style/scanning_style"
+                    android:checked="@{position>=3?true:false}"/>
+
+                <View
+                    android:layout_weight="3"
+                    android:layout_width="0dp"
+                    android:layout_height="10dp"
+                    android:layerType="software"
+                    android:background="@{position>=3?@drawable/level_dottedline_b:@drawable/level_dottedline_a}"/>
+
+                <CheckBox
+                    style="@style/scanning_style"
+                    android:checked="@{position>=4?true:false}"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_below="@+id/check_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:paddingRight="25dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/scanning2"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_small"/>
+
+                <TextView
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:paddingRight="10dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/scanning3"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_small"/>
+
+                <TextView
+                    android:paddingLeft="@dimen/default_margin"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/scanning4"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_small"/>
+
+                <TextView
+                    android:gravity="right"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/scanning5"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_small"/>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+        <FrameLayout
+            android:id="@+id/scanning_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </FrameLayout>
+
+
+
+    </LinearLayout>
+</layout>

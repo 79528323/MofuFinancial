@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:apps="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.loan.LoanAboutActivity"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.loan.LoanAboutActivity"/>
+        <variable
+            name="textput"
+            type="String"/>
+        <variable
+            name="type"
+            type="int"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <include
+                android:id="@+id/title_layout"
+                layout="@layout/layout_title"
+                bind:backIcon="@{@drawable/financial_back}"
+                bind:handlers="@{handlers}"
+                bind:isTranslate="@{true}"
+                bind:isTitleBlack="@{true}"
+                bind:titleName="@{@string/product_about_us_title}"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+        </LinearLayout>
+
+
+
+        <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="@dimen/icon_large"-->
+            <!--android:background="@color/white"-->
+            <!--android:orientation="horizontal">-->
+
+
+            <!--<cn.mofufin.morf.ui.widget.OrderIconWidget-->
+                <!--android:id="@+id/icon"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--android:layout_marginLeft="@dimen/default_margin"-->
+                <!--android:layout_width="@dimen/icon_small"-->
+                <!--android:layout_height="@dimen/icon_small"-->
+                <!--android:textColor="@{type==1?@color/stroke_M:type==3?@color/stroke_short:type==4?@color/stroke_over:@color/stroke_we}"-->
+                <!--android:text="@{type==1?@string/order_icon_m:type==3?@string/order_icon_short:@string/order_icon_over}"-->
+                <!--android:background="@drawable/order_mpos_icon"-->
+                <!--android:textSize="@dimen/text_size_title"-->
+                <!--android:gravity="center"-->
+                <!--apps:textTouchColor="#000"-->
+                <!--apps:radius="10dp"-->
+                <!--apps:strokeWith="3"-->
+                <!--apps:solidColor="@color/white"-->
+                <!--apps:solidTouchColor="#ffffff"-->
+                <!--apps:strokeColor="@color/app_blue"-->
+                <!--apps:strokeTouchColor="#000000"-->
+                <!--apps:shapeTpe="oval"/>-->
+
+            <!--<LinearLayout-->
+                <!--android:id="@+id/layout_linear"-->
+                <!--android:layout_toRightOf="@+id/icon"-->
+                <!--android:layout_alignTop="@+id/icon"-->
+                <!--android:layout_alignBottom="@+id/icon"-->
+                <!--android:orientation="vertical"-->
+                <!--android:layout_marginLeft="@dimen/default_margin"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent">-->
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:orientation="horizontal">-->
+
+
+                    <!--<TextView-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:textColor="@color/dark_gray"-->
+                        <!--android:textSize="@dimen/text_size_normal"-->
+                        <!--android:text="@string/order_alipay_rec"-->
+                        <!--tools:text="@string/order_mpos"/>-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:textColor="@color/dark_gray"-->
+                        <!--android:layout_marginRight="@dimen/default_margin"-->
+                        <!--android:textSize="@dimen/text_size_normal"-->
+                        <!--android:text="@string/default_http_error"-->
+                        <!--tools:text="2000"/>-->
+
+                    <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_marginRight="@dimen/default_margin"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:textColor="@color/dark_gray"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:textSize="@dimen/text_size_normal"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:text="元"/>&ndash;&gt;-->
+                <!--</LinearLayout>-->
+
+                <!--<LinearLayout-->
+                    <!--android:layout_gravity="bottom"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:gravity="bottom"-->
+                    <!--android:orientation="horizontal">-->
+
+                    <!--<TextView-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:textColor="@color/light_gray"-->
+                        <!--android:textSize="@dimen/text_size_small"-->
+                        <!--android:text="@string/date_formater"/>-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/status"-->
+                        <!--android:layout_marginRight="@dimen/default_margin"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:textColor="@color/light_gray"-->
+                        <!--android:textSize="@dimen/text_size_small"-->
+                        <!--tools:text="1000"/>-->
+                    <!--&lt;!&ndash;android:text='@{type==2?(TextUtils.equals("S",detail.transStat)?@string/success:@string/fail):(TextUtils.equals("00",detail.resultCodeMsg)?@string/success:@string/fail)}'&ndash;&gt;-->
+                <!--</LinearLayout>-->
+            <!--</LinearLayout>-->
+
+
+            <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="1px"-->
+                <!--android:layout_toRightOf="@+id/icon"-->
+                <!--android:layout_alignParentBottom="true"-->
+                <!--android:background="@color/line"/>-->
+        <!--</RelativeLayout>-->
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/app_background">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="100dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginStart="60dp"
+                android:layout_marginEnd="60dp"
+                android:orientation="vertical"
+                android:background="@color/transparent">
+
+
+
+                <LinearLayout
+                    android:id="@+id/linear"
+                    android:layout_marginTop="50dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:gravity="center|bottom"
+                    android:background="#FF8330">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:text="摩富贷"
+                        android:padding="@dimen/default_padding"
+                        android:textSize="@dimen/mall_text_size"
+                        android:typeface="monospace"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_below="@+id/linear"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="300dp"
+                    android:background="@color/white">
+
+
+                    <androidx.core.widget.NestedScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="@dimen/default_margin">
+
+                            <TextView
+                                android:id="@+id/aboutmine"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/dark_gray"
+                                android:padding="@dimen/default_padding"
+                                android:textSize="@dimen/text_size_normal"
+                                android:lineSpacingExtra="11dp"
+                                android:text="省钱、快速、好用、安全随借随还，提供两种还款方式，先用再还，全方面风控保障，费用透明化，致力打造出让生活更美好的贷款，摩富贷，让你生活压力没那么大。"
+                                android:typeface="monospace"/>
+                        </LinearLayout>
+                    </androidx.core.widget.NestedScrollView>
+
+                </LinearLayout>
+
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/iden_about"
+                    android:layout_gravity="center_horizontal"/>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+
+
+
+
+    </LinearLayout>
+
+</layout>

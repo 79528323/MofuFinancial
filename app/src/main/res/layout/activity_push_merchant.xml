@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.mine.PushMerchantActivity"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.mine.PushMerchantActivity"/>
+        <variable
+            name="indirect"
+            type="String"/>
+        <variable
+            name="officeName"
+            type="String"/>
+        <variable
+            name="direct"
+            type="String"/>
+        <variable
+            name="datePress"
+            type="boolean"/>
+
+        <variable
+            name="hasData"
+            type="boolean"/>
+        <variable
+            name="countPress"
+            type="boolean"/>
+        <variable
+            name="date"
+            type="String"/>
+        <variable
+            name="type"
+            type="int"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/layout_title"
+            bind:backIcon="@{@drawable/title_back}"
+            bind:handlers="@{handlers}"
+            bind:titleName="@{@string/my_info_1}" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@color/app_blue">
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/tab_height"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <CheckBox
+                        android:padding="@dimen/default_padding"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@null"
+                        android:checked="@{datePress}"
+                        android:onClick="@{handlers.selectTime}"
+                        android:drawableRight="@drawable/push_arrow_selector"
+                        android:drawablePadding="10dp"
+                        android:duplicateParentState="true"
+                        android:text="@{date}"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_normal"
+                        tools:text="2019-08" />
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="18dp"
+                    android:background="@color/white"/>
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/tab_height"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <CheckBox
+                        android:padding="@dimen/default_padding"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@null"
+                        android:onClick="@{handlers.selectDirct}"
+                        android:checked="@{countPress}"
+                        android:drawableRight="@drawable/push_arrow_selector"
+                        android:drawablePadding="10dp"
+                        android:duplicateParentState="true"
+                        android:text='@{type==0?"直推人数":"间推人数"}'
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_normal"/>
+
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="@{type==0?View.VISIBLE:View.GONE}"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/tab_height"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/default_padding"
+                    android:background="#F6F6F6"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/phone"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_normal"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/realName"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_normal" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical|right"
+                        android:text="@string/level"
+                        android:textColor="@color/light_gray"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_normal" />
+                </LinearLayout>
+
+                <FrameLayout
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <cc.ruis.lib.widget.WrapRecyclerView
+                        android:layout_weight="1"
+                        android:id="@+id/push_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/white"
+                        tools:listitem="@layout/layout_push_item"/>
+
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        tools:visibility="gone"
+                        android:visibility="@{!hasData?View.VISIBLE:View.GONE}"
+                        android:orientation="vertical">
+
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/no_data"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/light_gray"
+                            android:textSize="@dimen/text_size_small"
+                            android:text="@string/nodata"/>
+                    </LinearLayout>
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/btn"
+                    android:layout_alignParentBottom="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textSize="@dimen/text_size_normal"
+                    android:textColor="@color/white"
+                    android:background="#FD954E"
+                    android:padding="5dp"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="@{type==0?View.GONE:View.VISIBLE}"
+                android:gravity="center_horizontal">
+
+                <LinearLayout
+                    android:layout_marginTop="@dimen/folder_menu_item_height"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:background="@drawable/push_bg">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{indirect}"
+                        android:textSize="@dimen/balance_text_size"
+                        tools:text="1200"
+                        android:textColor="#FF6100"
+                        android:textStyle="bold"
+                        android:layout_marginTop="@dimen/goods_size"/>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/indirect_push_count"
+                        android:layout_marginTop="5dp"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{officeName}"/>
+            </LinearLayout>
+        </FrameLayout>
+
+    </LinearLayout>
+</layout>

@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.mine.ModifyLogPassWordActivity"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.mine.ModifyLogPassWordActivity"/>
+        <variable
+            name="phone"
+            type="String"/>
+        <variable
+            name="smsCode"
+            type="String"/>
+        <variable
+            name="isNext"
+            type="boolean"/>
+        <variable
+            name="newPassword"
+            type="String"/>
+        <variable
+            name="repeatPassword"
+            type="String"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        android:background="@color/app_background">
+
+
+        <include
+            layout="@layout/layout_title"
+            bind:backIcon="@{@drawable/title_back}"
+            bind:handlers="@{handlers}"
+            bind:titleName="@{@string/modfyCode1}" />
+
+        <LinearLayout
+            android:visibility="@{isNext?View.GONE:View.VISIBLE}"
+            android:layout_marginTop="@dimen/default_item_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tab_height"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/default_padding"
+                android:background="@color/white"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/modfyCode2"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/text_size_normal"/>
+
+                <EditText
+                    android:id="@+id/modfy_log_phone"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@{phone}"
+                    android:paddingLeft="@dimen/default_padding"
+                    android:hint="@string/modfyCode3"
+                    android:inputType="number"
+                    android:maxLength="11"
+                    android:textSize="@dimen/text_size_normal"
+                    android:textColorHint="@color/light_gray"
+                    android:gravity="center_vertical"
+                    android:background="@null"/>
+
+                <TextView
+                    android:id="@+id/btn_smscode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:onClick="@{handlers.getSmsCode}"
+                    android:layout_marginRight="@dimen/default_padding"
+                    android:textSize="@dimen/text_size_normal"
+                    android:textColor="@color/app_blue"
+                    android:text="@string/modfyCode4"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="@dimen/default_padding"
+                android:background="@color/app_background"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tab_height"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/default_padding"
+                android:background="@color/white"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/modfyCode4"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/text_size_normal"/>
+
+                <EditText
+                    android:id="@+id/modfy_log_sms"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@{smsCode}"
+                    android:inputType="number"
+                    android:paddingLeft="@dimen/default_padding"
+                    android:hint="@string/modfyCode5"
+                    android:textSize="@dimen/text_size_normal"
+                    android:textColorHint="@color/light_gray"
+                    android:gravity="center_vertical"
+                    android:background="@null"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:visibility="@{!isNext?View.GONE:View.VISIBLE}"
+            android:layout_marginTop="@dimen/default_item_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tab_height"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/default_padding"
+                android:background="@color/white"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/modfyCode6"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/text_size_normal"/>
+
+                <EditText
+                    android:id="@+id/modfy_log_new_code"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@{newPassword}"
+                    android:paddingLeft="@dimen/default_padding"
+                    android:hint="@string/modfyCode7"
+                    android:inputType="textPassword"
+                    android:maxLength="11"
+                    android:textSize="@dimen/text_size_normal"
+                    android:gravity="center_vertical"
+                    android:background="@null"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="@dimen/default_padding"
+                android:background="@color/app_background"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tab_height"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/default_padding"
+                android:background="@color/white"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/modfyCode8"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/text_size_normal"/>
+
+                <EditText
+                    android:id="@+id/modfy_log_repeat"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@{repeatPassword}"
+                    android:inputType="textPassword"
+                    android:paddingLeft="@dimen/default_padding"
+                    android:hint="@string/modfyCode9"
+                    android:textSize="@dimen/text_size_normal"
+                    android:gravity="center_vertical"
+                    android:background="@null"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:layout_marginTop="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
+            android:background="@drawable/login_button"
+            android:gravity="center"
+            android:paddingBottom="@dimen/default_padding"
+            android:paddingTop="@dimen/default_padding"
+            android:onClick="@{handlers.next}"
+            android:text="@{isNext?@string/ok:@string/scanning8}"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_game_record" />
+    </LinearLayout>
+</layout>

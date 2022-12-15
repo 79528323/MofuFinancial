@@ -1,0 +1,963 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.mine.BalanceDetailActivity"/>
+        <import type="android.text.TextUtils"/>
+        <import type="cn.mofufin.morf.ui.util.DataUtils"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.mine.BalanceDetailActivity"/>
+        <variable
+            name="details"
+            type="cn.mofufin.morf.ui.entity.BalanceDetail.DetailLists"/>
+        <variable
+            name="type"
+            type="int"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/layout_title"
+            bind:backIcon="@{@drawable/title_back}"
+            bind:handlers="@{handlers}"
+            bind:titleName="@{@string/order_detail_title}"
+            bind:canSubmit="@{true}"
+            bind:rightText="@{@string/service_number}"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/app_blue"
+            android:textColor="@color/white"
+            tools:text="+0.01"
+            android:text='@{(details.cdType==0?"+":"-")+DataUtils.numFormat(details.cdMoney)}'
+            android:typeface="sans"
+            android:gravity="center"
+            android:padding="@dimen/default_item_margin"
+            android:textSize="@dimen/text_size_big"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/default_padding">
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_normal"
+                    android:textColor="@color/light_gray"
+                    android:text="@string/balance_details_1"/>
+
+                <!--<string name="balance_filter_1">全部</string>-->
+                <!--<string name="balance_filter_2">激励金</string>-->
+                <!--<string name="balance_filter_3">理财</string>-->
+                <!--<string name="balance_filter_4">违章</string>-->
+                <!--<string name="balance_filter_5">提现</string>-->
+                <!--<string name="balance_filter_6">支付宝</string>-->
+                <!--<string name="balance_filter_7">微信</string>-->
+                <!--<string name="balance_filter_8">快捷支付</string>-->
+                <!--<string name="balance_filter_9">境外转入</string>-->
+                <!--<string name="balance_filter_10">转账</string>-->
+                <!--<string name="balance_filter_11">官方经账</string>-->
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_normal"
+                    android:textColor="@color/dark_gray"
+                    android:text="@{details.cdWay==0?@string/balance_filter_2:details.cdWay==1?@string/balance_filter_3:details.cdWay==2?@string/balance_filter_4:details.cdWay==3?@string/balance_filter_5:details.cdWay==4?@string/balance_filter_6:details.cdWay==5?@string/balance_filter_7:details.cdWay==6?@string/balance_filter_8:details.cdWay==7?@string/balance_filter_9:details.cdWay==8?@string/balance_filter_10:details.cdWay==9?@string/balance_filter_10:@string/balance_filter_11}"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="@dimen/default_padding"
+                android:background="@color/hint"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/default_padding">
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_normal"
+                    android:textColor="@color/light_gray"
+                    android:text="@string/balance_details_2"/>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_normal"
+                    android:textColor="@color/dark_gray"
+                    android:text="@{details.cdState==0?@string/order_text4:details.cdState==1?@string/order_text5:details.cdState==2?@string/mine_text14:details.cdState==3?@string/balance_details_unpaid:@string/balance_details_handling}"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/default_padding">
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_normal"
+                    android:textColor="@color/light_gray"
+                    android:text="@string/balance_details_3"/>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_normal"
+                    android:textColor="@color/dark_gray"
+                    android:text="@{details.cdCode}"/>
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="@dimen/default_padding"
+                android:background="@color/hint"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/default_padding">
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_normal"
+                    android:textColor="@color/light_gray"
+                    android:text="@string/balance_details_4"/>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_normal"
+                    android:textColor="@color/dark_gray"
+                    android:text="@{details.cdCreateDate}"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/default_padding">
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_normal"
+                    android:textColor="@color/light_gray"
+                    android:text="@string/balance_details_5"/>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_normal"
+                    android:textColor="@color/dark_gray"
+                    android:text="@{details.cdAccount==0?@string/balance_details_12:details.cdAccount==1?@string/balance_details_13:details.cdAccount==2?@string/balance_details_14:@string/balance_details_15}"/>
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="@dimen/default_padding"
+                android:background="@color/hint"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/default_padding">
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_normal"
+                    android:textColor="@color/light_gray"
+                    android:text="@string/balance_details_6"/>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_normal"
+                    android:textColor="@color/dark_gray"
+                    android:text="@{details.cdCurrency==0?@string/balance_details_9:details.cdCurrency==1?@string/balance_details_10:@string/balance_details_11}"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/default_padding">
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_normal"
+                    android:textColor="@color/light_gray"
+                    android:text="@string/balance_details_7"/>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_normal"
+                    android:textColor="@color/dark_gray"
+                    android:text="@{String.valueOf(details.cdFee)}"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/light_gray"
+            android:background="@color/app_bg"
+            android:padding="@dimen/default_margin"
+            android:gravity="center"
+            android:textSize="@dimen/text_size_title"
+            android:text="@string/balance_details_8"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:textColor="@color/dark_gray"
+            android:background="#FFF5F5F9"
+            android:padding="@dimen/default_padding"
+            android:textSize="@dimen/text_size_normal"
+            android:text="@{details.cdExplain}"/>
+
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@color/white"-->
+            <!--android:gravity="center"-->
+            <!--android:padding="@dimen/default_item_margin"-->
+            <!--android:orientation="horizontal">-->
+
+            <!--<ImageView-->
+                <!--android:id="@+id/status_img"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--tools:background="@drawable/rec_d_ok"-->
+                <!--android:background='@{type==1?(TextUtils.equals(details.resultCode,"00")?@drawable/rec_d_ok:@drawable/rec_d_fail):    type==3?(TextUtils.equals("4",details.status)?@drawable/rec_d_ok:TextUtils.equals("3",details.status)?@drawable/rec_d_handling:(TextUtils.equals("5",details.status)?@drawable/rec_d_fail:@drawable/rec_d_ever)):   type==4?(details.ovPayState==0?(@drawable/rec_d_ever):details.ovPayState==1?(@drawable/rec_d_fail):@drawable/rec_d_ok)  :  (TextUtils.equals("S",details.transStat)?@drawable/rec_d_ok:TextUtils.equals("I",details.transStat)?@drawable/rec_d_ever:@drawable/rec_d_fail)}'/>-->
+            <!--&lt;!&ndash;/>&ndash;&gt;-->
+
+
+            <!--<TextView-->
+                <!--android:id="@+id/status_title"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:textColor="@color/dark_gray"-->
+                <!--tools:text="交易成功"-->
+                <!--android:layout_marginLeft="@dimen/default_padding"-->
+                <!--android:textSize="@dimen/mark_font"-->
+                <!--android:text='@{type==1?(TextUtils.equals(details.resultCode,"00")?@string/success:@string/fail):type==3?(TextUtils.equals("1",details.status)?"未支付":TextUtils.equals("2",details.status)?"待支付":TextUtils.equals("3",details.status)?"支付中":TextUtils.equals("4",details.status)?"支付成功":"支付失败"):type==4?(details.ovPayState==0?@string/over_status_0:details.ovPayState==1?@string/over_status_1:@string/success):(TextUtils.equals("S",details.transStat)?"交易成功":TextUtils.equals("I",details.transStat)?"未支付":"交易失败")}'/>-->
+
+            <!--&lt;!&ndash;&ndash;&gt;-->
+
+        <!--</LinearLayout>-->
+
+        <!--<ScrollView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:overScrollMode="never">-->
+
+
+            <!--<LinearLayout-->
+                <!--android:layout_marginTop="@dimen/default_item_margin"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:background="@color/white"-->
+                <!--android:orientation="vertical">-->
+
+                <!--&lt;!&ndash;交易币种&ndash;&gt;-->
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:padding="@dimen/default_padding"-->
+                    <!--android:background="@color/white"-->
+                    <!--android:visibility="@{type==4?View.VISIBLE:View.GONE}"-->
+                    <!--android:gravity="center_vertical">-->
+
+                    <!--<TextView-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="交易币种"-->
+                        <!--android:textColor="@color/light_gray"-->
+                        <!--android:textSize="@dimen/text_size_title"/>-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--tools:text="R47824328483265235"-->
+                        <!--android:text="@{details.ovPayCurrency==1?@string/dollar_title1:@string/dollar_title2}"-->
+                        <!--android:layout_marginRight="@dimen/default_padding"-->
+                        <!--android:textSize="@dimen/text_size_title"-->
+                        <!--android:textColor="@color/dark_gray"/>-->
+                <!--</LinearLayout>-->
+
+                <!--&lt;!&ndash;订单生成时间 境外&ndash;&gt;-->
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:padding="@dimen/default_padding"-->
+                    <!--android:background="@color/white"-->
+                    <!--android:visibility="@{type==4?View.VISIBLE:View.GONE}"-->
+                    <!--android:gravity="center_vertical">-->
+
+                    <!--<TextView-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="订单生成时间"-->
+                        <!--android:textColor="@color/light_gray"-->
+                        <!--android:textSize="@dimen/text_size_title"/>-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--tools:text="R47824328483265235"-->
+                        <!--android:text="@{details.ovDate}"-->
+                        <!--android:layout_marginRight="@dimen/default_padding"-->
+                        <!--android:textSize="@dimen/text_size_title"-->
+                        <!--android:textColor="@color/dark_gray"/>-->
+                <!--</LinearLayout>-->
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:padding="@dimen/default_padding"-->
+                    <!--android:background="@color/white"-->
+                    <!--android:visibility="@{type==4?View.VISIBLE:View.GONE}"-->
+                    <!--android:gravity="center_vertical">-->
+
+                    <!--<TextView-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="结算类型"-->
+                        <!--android:textColor="@color/light_gray"-->
+                        <!--android:textSize="@dimen/text_size_title"/>-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--tools:text="R47824328483265235"-->
+                        <!--android:text='@{details.ovPayWay==0?"D0":"T1"}'-->
+                        <!--android:layout_marginRight="@dimen/default_padding"-->
+                        <!--android:textSize="@dimen/text_size_title"-->
+                        <!--android:textColor="@color/dark_gray"/>-->
+                <!--</LinearLayout>-->
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:padding="@dimen/default_padding"-->
+                    <!--android:background="@color/white"-->
+                    <!--android:visibility="@{type==4?View.VISIBLE:View.GONE}"-->
+                    <!--android:gravity="center_vertical">-->
+
+                    <!--<TextView-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="订单号"-->
+                        <!--android:textColor="@color/light_gray"-->
+                        <!--android:textSize="@dimen/text_size_title"/>-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--tools:text="R47824328483265235"-->
+                        <!--android:text='@{details.ovOrderCode}'-->
+                        <!--android:layout_marginRight="@dimen/default_padding"-->
+                        <!--android:textSize="@dimen/text_size_title"-->
+                        <!--android:textColor="@color/dark_gray"/>-->
+                <!--</LinearLayout>-->
+
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:padding="@dimen/default_padding"-->
+                    <!--android:visibility="@{type==4?View.GONE:View.VISIBLE}"-->
+                    <!--android:background="@color/white"-->
+                    <!--android:gravity="center_vertical">-->
+
+                    <!--<TextView-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="@{type==3?@string/flownumber:@string/order_detail_1}"-->
+                        <!--android:textColor="@color/light_gray"-->
+                        <!--android:textSize="@dimen/text_size_title"/>-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--tools:text="R47824328483265235"-->
+                        <!--android:text="@{type==1?details.downOrderNo:(type==3?details.requestNo:details.merOrdId)}"-->
+                        <!--android:layout_marginRight="@dimen/default_padding"-->
+                        <!--android:textSize="@dimen/text_size_title"-->
+                        <!--android:textColor="@color/dark_gray"/>-->
+                <!--</LinearLayout>-->
+
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:padding="@dimen/default_padding"-->
+                    <!--android:visibility="@{type==4?View.GONE:View.VISIBLE}"-->
+                    <!--android:background="@color/white"-->
+                    <!--android:gravity="center_vertical">-->
+
+                    <!--<TextView-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="@{type==3?@string/transaction_amount:@string/order_detail_2}"-->
+                        <!--android:textColor="@color/light_gray"-->
+                        <!--android:textSize="@dimen/text_size_title"/>-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--tools:text="R47824328483265235"-->
+                        <!--android:text="@{type==1?details.consumeAmt:(type==3?details.amount:details.ordAmt)}"-->
+                        <!--android:layout_marginRight="@dimen/default_padding"-->
+                        <!--android:textSize="@dimen/text_size_title"-->
+                        <!--android:textColor="@color/dark_gray"/>-->
+                <!--</LinearLayout>-->
+
+
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:padding="@dimen/default_padding"-->
+                    <!--android:visibility="@{type==4?View.GONE:View.VISIBLE}"-->
+                    <!--android:background="@color/white"-->
+                    <!--android:gravity="center_vertical">-->
+
+                    <!--<TextView-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="@string/order_detail_3"-->
+                        <!--android:textColor="@color/light_gray"-->
+                        <!--android:textSize="@dimen/text_size_title"/>-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--tools:text="R47824328483265235"-->
+                        <!--android:layout_marginRight="@dimen/default_padding"-->
+                        <!--android:textSize="@dimen/text_size_title"-->
+                        <!--android:text="@{type==1||type==3?details.fee:details.merFee}"-->
+                        <!--android:textColor="@color/dark_gray"/>-->
+                <!--</LinearLayout>-->
+
+                <!--<LinearLayout-->
+                    <!--android:visibility="@{type==3?View.VISIBLE:View.GONE}"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:padding="@dimen/default_padding"-->
+                    <!--android:background="@color/white"-->
+                    <!--android:gravity="center_vertical">-->
+
+                    <!--<TextView-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="@string/order_detail_14"-->
+                        <!--android:textColor="@color/light_gray"-->
+                        <!--android:textSize="@dimen/text_size_title"/>-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--tools:text="R47824328483265235"-->
+                        <!--android:layout_marginRight="@dimen/default_padding"-->
+                        <!--android:textSize="@dimen/text_size_title"-->
+                        <!--android:text="@{details.genPayMoney}"-->
+                        <!--android:textColor="@color/dark_gray"/>-->
+                <!--</LinearLayout>-->
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:padding="@dimen/default_padding"-->
+                    <!--android:visibility="@{type==4?View.GONE:View.VISIBLE}"-->
+                    <!--android:background="@color/white"-->
+                    <!--android:gravity="center_vertical">-->
+
+                    <!--<TextView-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="@string/order_detail_4"-->
+                        <!--android:textColor="@color/light_gray"-->
+                        <!--android:textSize="@dimen/text_size_title"/>-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--tools:text="R47824328483265235"-->
+                        <!--android:layout_marginRight="@dimen/default_padding"-->
+                        <!--android:textSize="@dimen/text_size_title"-->
+                        <!--android:text="@{type==1?(DataUtils.numCut(details.consumeAmt,details.fee)):type==3?(DataUtils.numCut(DataUtils.numCut(details.amount,details.genPayMoney),details.fee)):(DataUtils.numCut(details.ordAmt,details.merFee))}"-->
+                        <!--android:textColor="@color/dark_gray"/>-->
+                <!--</LinearLayout>-->
+
+
+                <!--<View-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="1dp"-->
+                    <!--android:layout_marginLeft="@dimen/default_padding"-->
+                    <!--android:background="@color/line"/>-->
+
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:padding="@dimen/default_padding"-->
+                    <!--android:visibility="@{type==4?View.VISIBLE:View.GONE}"-->
+                    <!--android:background="@color/white"-->
+                    <!--android:gravity="center_vertical">-->
+
+                    <!--<TextView-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="订单金额"-->
+                        <!--android:textColor="@color/light_gray"-->
+                        <!--android:textSize="@dimen/text_size_title"/>-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--tools:text="R47824328483265235"-->
+                        <!--android:text="@{details.ovOrderAmt}"-->
+                        <!--android:layout_marginRight="@dimen/default_padding"-->
+                        <!--android:textSize="@dimen/text_size_title"-->
+                        <!--android:textColor="@color/dark_gray"/>-->
+                <!--</LinearLayout>-->
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:padding="@dimen/default_padding"-->
+                    <!--android:visibility="@{type==4?View.VISIBLE:View.GONE}"-->
+                    <!--android:background="@color/white"-->
+                    <!--android:gravity="center_vertical">-->
+
+                    <!--<TextView-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="订单手续费"-->
+                        <!--android:textColor="@color/light_gray"-->
+                        <!--android:textSize="@dimen/text_size_title"/>-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--tools:text="R47824328483265235"-->
+                        <!--android:text="@{details.ovOrderFee}"-->
+                        <!--android:layout_marginRight="@dimen/default_padding"-->
+                        <!--android:textSize="@dimen/text_size_title"-->
+                        <!--android:textColor="@color/dark_gray"/>-->
+                <!--</LinearLayout>-->
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:padding="@dimen/default_padding"-->
+                    <!--android:visibility="@{type==4?View.VISIBLE:View.GONE}"-->
+                    <!--android:background="@color/white"-->
+                    <!--android:gravity="center_vertical">-->
+
+                    <!--<TextView-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="订单通信费"-->
+                        <!--android:textColor="@color/light_gray"-->
+                        <!--android:textSize="@dimen/text_size_title"/>-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--tools:text="R47824328483265235"-->
+                        <!--android:text="@{details.ovOrderMessageMoney}"-->
+                        <!--android:layout_marginRight="@dimen/default_padding"-->
+                        <!--android:textSize="@dimen/text_size_title"-->
+                        <!--android:textColor="@color/dark_gray"/>-->
+                <!--</LinearLayout>-->
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:padding="@dimen/default_padding"-->
+                    <!--android:visibility="@{type==4?View.VISIBLE:View.GONE}"-->
+                    <!--android:background="@color/white"-->
+                    <!--android:gravity="center_vertical">-->
+
+                    <!--<TextView-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="到账金额"-->
+                        <!--android:textColor="@color/light_gray"-->
+                        <!--android:textSize="@dimen/text_size_title"/>-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--tools:text="R47824328483265235"-->
+                        <!--android:text="@{details.ovOrderToMoney}"-->
+                        <!--android:layout_marginRight="@dimen/default_padding"-->
+                        <!--android:textSize="@dimen/text_size_title"-->
+                        <!--android:textColor="@color/dark_gray"/>-->
+                <!--</LinearLayout>-->
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:padding="@dimen/default_padding"-->
+                    <!--android:visibility="@{type==4?View.VISIBLE:View.GONE}"-->
+                    <!--android:background="@color/white"-->
+                    <!--android:gravity="center_vertical">-->
+
+                    <!--<TextView-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="是否已经到账"-->
+                        <!--android:textColor="@color/light_gray"-->
+                        <!--android:textSize="@dimen/text_size_title"/>-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--tools:text="R47824328483265235"-->
+                        <!--android:text='@{details.ovIsRemit==0?"否":"是"}'-->
+                        <!--android:layout_marginRight="@dimen/default_padding"-->
+                        <!--android:textSize="@dimen/text_size_title"-->
+                        <!--android:textColor="@color/dark_gray"/>-->
+                <!--</LinearLayout>-->
+
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:padding="@dimen/default_padding"-->
+                    <!--android:visibility="@{type==4?View.VISIBLE:View.GONE}"-->
+                    <!--android:background="@color/white"-->
+                    <!--android:gravity="center_vertical">-->
+
+                    <!--<TextView-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="优惠卷"-->
+                        <!--android:textColor="@color/light_gray"-->
+                        <!--android:textSize="@dimen/text_size_title"/>-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--tools:text="R47824328483265235"-->
+                        <!--android:text='@{details.ovIsTicket==0?"未使用":details.ovTicketNumber}'-->
+                        <!--android:layout_marginRight="@dimen/default_padding"-->
+                        <!--android:textSize="@dimen/text_size_title"-->
+                        <!--android:textColor="@color/dark_gray"/>-->
+                <!--</LinearLayout>-->
+
+
+
+
+
+
+
+                <!--&lt;!&ndash;     &ndash;&gt;-->
+                <!--&lt;!&ndash;<LinearLayout&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:orientation="horizontal"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:padding="@dimen/default_padding"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:visibility="@{type==4?View.GONE:View.VISIBLE}"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:background="@color/white"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:gravity="center_vertical">&ndash;&gt;-->
+
+                    <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_weight="1"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:text="@string/order_detail_5"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:textColor="@color/light_gray"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:textSize="@dimen/text_size_title"/>&ndash;&gt;-->
+
+                    <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                        <!--&lt;!&ndash;tools:text="R47824328483265235"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:text="@{details.oCreateDate}"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_marginRight="@dimen/default_padding"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:textSize="@dimen/text_size_title"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:textColor="@color/dark_gray"/>&ndash;&gt;-->
+                <!--&lt;!&ndash;</LinearLayout>&ndash;&gt;-->
+
+
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:padding="@dimen/default_padding"-->
+                    <!--android:visibility="@{type==4?View.GONE:View.VISIBLE}"-->
+                    <!--android:background="@color/white"-->
+                    <!--android:gravity="center_vertical">-->
+
+                    <!--<TextView-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="@string/order_detail_5"-->
+                        <!--android:textColor="@color/light_gray"-->
+                        <!--android:textSize="@dimen/text_size_title"/>-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--tools:text="R47824328483265235"-->
+                        <!--android:text="@{details.oCreateDate}"-->
+                        <!--android:layout_marginRight="@dimen/default_padding"-->
+                        <!--android:textSize="@dimen/text_size_title"-->
+                        <!--android:textColor="@color/dark_gray"/>-->
+                <!--</LinearLayout>-->
+
+
+                <!--<LinearLayout-->
+                    <!--android:visibility="@{type==3?View.VISIBLE:View.GONE}"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:padding="@dimen/default_padding"-->
+                    <!--android:background="@color/white"-->
+                    <!--android:gravity="center_vertical">-->
+
+                    <!--<TextView-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="银行名称"-->
+                        <!--android:textColor="@color/light_gray"-->
+                        <!--android:textSize="@dimen/text_size_title"/>-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--tools:text="R47824328483265235"-->
+                        <!--android:text="@{details.payBank}"-->
+                        <!--android:layout_marginRight="@dimen/default_padding"-->
+                        <!--android:textSize="@dimen/text_size_title"-->
+                        <!--android:textColor="@color/dark_gray"/>-->
+                <!--</LinearLayout>-->
+
+
+
+                <!--<LinearLayout-->
+                    <!--android:visibility="@{type==2?View.VISIBLE:View.GONE}"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:padding="@dimen/default_padding"-->
+                    <!--android:background="@color/white"-->
+                    <!--android:gravity="center_vertical">-->
+
+                    <!--<TextView-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="手机号"-->
+                        <!--android:textColor="@color/light_gray"-->
+                        <!--android:textSize="@dimen/text_size_title"/>-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--tools:text="R47824328483265235"-->
+                        <!--android:text="@{details.phone}"-->
+                        <!--android:layout_marginRight="@dimen/default_padding"-->
+                        <!--android:textSize="@dimen/text_size_title"-->
+                        <!--android:textColor="@color/dark_gray"/>-->
+                <!--</LinearLayout>-->
+
+                <!--<LinearLayout-->
+                    <!--android:visibility="@{type==2?View.VISIBLE:View.GONE}"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:padding="@dimen/default_padding"-->
+                    <!--android:background="@color/white"-->
+                    <!--android:gravity="center_vertical">-->
+
+                    <!--<TextView-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="交易方式"-->
+                        <!--android:textColor="@color/light_gray"-->
+                        <!--android:textSize="@dimen/text_size_title"/>-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--tools:text="R47824328483265235"-->
+                        <!--android:text='@{paytype==10?"微信扫码收款":"支付宝扫码收款"}'-->
+                        <!--android:layout_marginRight="@dimen/default_padding"-->
+                        <!--android:textSize="@dimen/text_size_title"-->
+                        <!--android:textColor="@color/dark_gray"/>-->
+                <!--</LinearLayout>-->
+
+
+                <!--<LinearLayout-->
+                    <!--android:visibility="@{type==1||type==3?View.VISIBLE:View.GONE}"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:padding="@dimen/default_padding"-->
+                    <!--android:background="@color/white"-->
+                    <!--android:gravity="center_vertical">-->
+
+                    <!--<TextView-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="@string/order_detail_12"-->
+                        <!--android:textColor="@color/light_gray"-->
+                        <!--android:textSize="@dimen/text_size_title"/>-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--tools:text="R47824328483265235"-->
+                        <!--android:text="@{type==1?details.consumePan:details.payBankCard}"-->
+                        <!--android:layout_marginRight="@dimen/default_padding"-->
+                        <!--android:textSize="@dimen/text_size_title"-->
+                        <!--android:textColor="@color/dark_gray"/>-->
+                <!--</LinearLayout>-->
+
+                <!--<LinearLayout-->
+                    <!--android:visibility="@{type==1?View.VISIBLE:View.GONE}"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:padding="@dimen/default_padding"-->
+                    <!--android:background="@color/white"-->
+                    <!--android:gravity="center_vertical">-->
+
+                    <!--<TextView-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="@string/order_detail_13"-->
+                        <!--android:textColor="@color/light_gray"-->
+                        <!--android:textSize="@dimen/text_size_title"/>-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--tools:text="R47824328483265235"-->
+                        <!--android:text="@{details.debitCardNo}"-->
+                        <!--android:layout_marginRight="@dimen/default_padding"-->
+                        <!--android:textSize="@dimen/text_size_title"-->
+                        <!--android:textColor="@color/dark_gray"/>-->
+                <!--</LinearLayout>-->
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:padding="@dimen/default_padding"-->
+                    <!--android:background="@color/white"-->
+                    <!--android:gravity="center_vertical">-->
+
+                    <!--<TextView-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="@string/order_detail_10"-->
+                        <!--android:textColor="@color/light_gray"-->
+                        <!--android:textSize="@dimen/text_size_title"/>-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--tools:text="R47824328483265235"-->
+                        <!--android:text="@{type==1?@string/order_mpos:type==3?(details.tcName):type==4?@string/order_over_rec:@string/order_default_scan}"-->
+                        <!--android:layout_marginRight="@dimen/default_padding"-->
+                        <!--android:textSize="@dimen/text_size_title"-->
+                        <!--android:textColor="@color/dark_gray"/>-->
+                <!--</LinearLayout>-->
+
+            <!--</LinearLayout>-->
+        <!--</ScrollView>-->
+
+    </LinearLayout>
+</layout>

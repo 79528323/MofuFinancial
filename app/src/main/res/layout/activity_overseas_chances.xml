@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.OverseasChancesActivity"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.OverseasChancesActivity"/>
+        <variable
+            name="hasData"
+            type="boolean"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/white">
+
+        <include
+            layout="@layout/layout_title"
+            bind:backIcon="@{@drawable/title_back}"
+            bind:handlers="@{handlers}"
+            bind:titleName="@{@string/home_head4}" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="#E75A30"
+            android:padding="@dimen/default_padding">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/attention"/>
+
+            <TextView
+                android:layout_marginLeft="@dimen/default_padding"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/white"
+                android:text="收款前请选择对应的结算通道：港币或美元"/>
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/app_bg">
+
+
+            <cc.ruis.lib.widget.WrapRecyclerView
+                android:id="@+id/over_list"
+                android:padding="@dimen/default_padding"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/app_bg"
+                android:visibility="@{hasData?View.VISIBLE:View.GONE}"
+                android:overScrollMode="never"
+                tools:listitem="@layout/layout_coupon_item"/>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                tools:visibility="gone"
+                android:visibility="@{!hasData?View.VISIBLE:View.GONE}"
+                android:orientation="vertical">
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/no_data"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/light_gray"
+                    android:textSize="@dimen/text_size_small"
+                    android:text="@string/nodata"/>
+            </LinearLayout>
+        </FrameLayout>
+
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:orientation="vertical">-->
+
+            <!--<cc.ruis.lib.widget.WrapRecyclerView-->
+                <!--android:id="@+id/over_list"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:background="@color/app_background"-->
+                <!--tools:listitem="@layout/layout_channel_item" />-->
+
+
+        <!--</LinearLayout>-->
+
+    </LinearLayout>
+</layout>

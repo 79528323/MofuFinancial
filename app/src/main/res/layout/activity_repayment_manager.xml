@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:ruis="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.repayment.RepayMentManagerActivity"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.repayment.RepayMentManagerActivity"/>
+        <variable
+            name="title"
+            type="String"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        android:background="@color/app_background">
+
+
+        <include
+            layout="@layout/layout_title"
+            bind:backIcon="@{@drawable/title_back}"
+            bind:handlers="@{handlers}"
+            bind:titleName="@{title}" />
+
+
+        <cc.ruis.lib.widget.BottomTab
+            android:id="@+id/repay_tab"
+            android:elevation="1dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            ruis:ruis_tabIconSize="@dimen/tab_pager_icon_size"
+            ruis:ruis_tabTextSize="@dimen/tab_pager_text_size"
+            android:background="@color/white"
+            ruis:ruis_textCheckColor="@color/app_blue"
+            ruis:ruis_textNormalColor="#999999" />
+    </LinearLayout>
+</layout>

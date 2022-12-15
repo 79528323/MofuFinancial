@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:ruis="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="cn.mofufin.morf.ui.CreditApplyActivity"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.CreditApplyActivity"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:fitsSystemWindows="true"
+        android:background="@color/white">
+
+
+        <include
+            layout="@layout/layout_title"
+            bind:backIcon="@{@drawable/title_back}"
+            bind:handlers="@{handlers}"
+            bind:titleName="@{@string/credit_apply_title}" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/banner_credit_apply"/>
+
+
+        <cc.ruis.lib.widget.WrapRecyclerView
+            android:id="@+id/credit_apply_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:visibility="visible"
+            android:layout_above="@+id/next"
+            tools:listitem="@layout/layout_mall_item"/>
+    </LinearLayout>
+</layout>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:apps="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="name"
+            type="String"/>
+        <variable
+            name="incomeMoney"
+            type="String"/>
+        <variable
+            name="position"
+            type="String"/>
+        <variable
+            name="isMine"
+            type="boolean"/>
+        <variable
+            name="history"
+            type="String"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/tab_height"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/default_padding"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                tools:text="1"
+                android:text="@{position}"
+                android:gravity="left"
+                android:textColor="@{Integer.valueOf(position)==1?@color/coin_pos_1:Integer.valueOf(position)==2?@color/coin_pos_2:Integer.valueOf(position)==3?@color/coin_pos_3:@color/dark_gray}"
+                android:paddingLeft="@dimen/default_margin"
+                android:textSize="@dimen/text_size_normal"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="张**"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@{name}"
+                android:textColor="@{Integer.valueOf(position)==1?@color/coin_pos_1:Integer.valueOf(position)==2?@color/coin_pos_2:Integer.valueOf(position)==3?@color/coin_pos_3:@color/dark_gray}"
+                android:paddingLeft="11dp"
+                android:textSize="@dimen/text_size_normal"/>
+
+            <LinearLayout
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/default_item_margin"
+                android:gravity="right"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@{Integer.valueOf(position)==1?@color/coin_pos_1:Integer.valueOf(position)==2?@color/coin_pos_2:Integer.valueOf(position)==3?@color/coin_pos_3:@color/dark_gray}"
+                    android:text="@{incomeMoney}"
+                    tools:text="100000.99"
+                    android:textSize="@dimen/text_size_normal"/>
+
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:textSize="@dimen/text_size_normal"-->
+                    <!--android:text=" / "-->
+                    <!--android:textColor="@{isMine?@color/app_blue:@color/commission_history}"/>-->
+
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:textColor="@{isMine?@color/app_blue:@color/commission_history}"-->
+                    <!--android:text="@{history}"-->
+                    <!--tools:text="999999.99"-->
+                    <!--android:textSize="@dimen/text_size_normal"/>-->
+
+            </LinearLayout>
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:gravity="right"-->
+                <!--android:textColor="@{isMine?@color/app_blue:@color/dark_gray}"-->
+                <!--android:text="@{incomeMoney}"-->
+                <!--tools:text="100000.99/99999999"-->
+                <!--android:layout_marginRight="@dimen/default_item_margin"-->
+                <!--android:textSize="@dimen/text_size_normal"/>-->
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="@dimen/default_padding"
+            android:background="#EBEBEB"/>
+    </LinearLayout>
+</layout>

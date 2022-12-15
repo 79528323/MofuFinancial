@@ -1,0 +1,924 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.ReceiVablesDetailActivity"/>
+        <import type="android.text.TextUtils"/>
+        <import type="cn.mofufin.morf.ui.util.DataUtils"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.ReceiVablesDetailActivity"/>
+        <variable
+            name="details"
+            type="cn.mofufin.morf.ui.entity.Order.OrderDetails"/>
+        <variable
+            name="type"
+            type="int"/>
+        <variable
+            name="paytype"
+            type="int"/>
+
+        <variable
+            name="longclick"
+            type="android.view.View.OnLongClickListener"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/layout_title"
+            bind:backIcon="@{@drawable/title_back}"
+            bind:handlers="@{handlers}"
+            bind:titleName="@{@string/order_detail_title}"
+            bind:canSubmit="@{true}"
+            bind:rightText="@{@string/service_number}"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="center"
+            android:padding="@dimen/default_item_margin"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/status_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:background="@drawable/rec_d_ok"
+                android:background='@{type==1?(TextUtils.equals(details.resultCode,"00")?@drawable/rec_d_ok:@drawable/rec_d_fail):    type==3?(TextUtils.equals("4",details.status)?@drawable/rec_d_ok:TextUtils.equals("3",details.status)?@drawable/rec_d_handling:(TextUtils.equals("5",details.status)?@drawable/rec_d_fail:@drawable/rec_d_ever)):   type==4?(details.ovPayState==0?(@drawable/rec_d_ever):details.ovPayState==1?(@drawable/rec_d_fail):@drawable/rec_d_ok)  :  (TextUtils.equals("S",details.transStat)?@drawable/rec_d_ok:TextUtils.equals("I",details.transStat)?@drawable/rec_d_ever:@drawable/rec_d_fail)}'/>
+            <!--/>-->
+
+
+            <TextView
+                android:id="@+id/status_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/dark_gray"
+                tools:text="交易成功"
+                android:layout_marginLeft="@dimen/default_padding"
+                android:textSize="@dimen/mark_font"
+                android:text='@{type==1?(TextUtils.equals(details.resultCode,"00")?@string/success:@string/fail):type==3?(TextUtils.equals("1",details.status)?"未支付":TextUtils.equals("2",details.status)?"待支付":TextUtils.equals("3",details.status)?"支付中":TextUtils.equals("4",details.status)?@string/success:@string/fail):type==4?(details.ovPayState==0?@string/over_status_0:details.ovPayState==1?@string/over_status_1:@string/success):(TextUtils.equals("S",details.transStat)?@string/success:TextUtils.equals("I",details.transStat)?"未支付":@string/fail)}'/>
+
+            <!---->
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/default_item_margin"
+            android:background="@color/app_background"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:paddingBottom="@dimen/default_item_margin"
+                android:orientation="vertical">
+
+                <!--交易币种-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/default_padding"
+                    tools:visibility="visible"
+                    android:background="@color/white"
+                    android:visibility="@{type==4?View.VISIBLE:View.GONE}"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="交易币种"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_normal"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235"
+                        android:text="@{details.ovPayCurrency==1?@string/dollar_title1:@string/dollar_title2}"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
+
+                <!--订单生成时间 境外-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/default_padding"
+                    tools:visibility="visible"
+                    android:background="@color/white"
+                    android:visibility="@{type==4?View.VISIBLE:View.GONE}"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="订单生成时间"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_normal"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235"
+                        android:text="@{details.ovDate}"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
+
+                <!--到账时间 境外-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/default_padding"
+                    android:visibility="@{type==4?View.VISIBLE:View.GONE}"
+                    tools:visibility="visible">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="订单到账时间"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_normal" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:text="@{TextUtils.isEmpty(details.ovToDate)?details.ovDate:details.ovToDate}"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="@dimen/text_size_normal"
+                        tools:text="R47824328483265235" />
+                </LinearLayout>
+
+                <!--结算类型-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/default_padding"
+                    tools:visibility="visible"
+                    android:background="@color/white"
+                    android:visibility="@{type==4?View.VISIBLE:View.GONE}"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="结算类型"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_normal"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235"
+                        android:text='@{"D"+details.ovPayWay}'
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
+
+                <!--境外订单号-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/default_padding"
+                    tools:visibility="visible"
+                    android:onLongClickListener="@{longclick}"
+                    android:background="@drawable/order_clip_selector"
+                    android:visibility="@{type==4?View.VISIBLE:View.GONE}"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="订单号"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_normal"/>
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235"
+                        android:gravity="right"
+                        android:text='@{details.ovOrderCode}'
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
+
+                <!--MPOS订单号，扫码订单号，快捷系统订单号-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/default_padding"
+                    tools:visibility="visible"
+                    android:onLongClickListener="@{longclick}"
+                    android:background="@drawable/order_clip_selector"
+                    android:visibility="@{type==4?View.GONE:View.VISIBLE}"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{type==3?@string/flownumber:@string/order_detail_1}"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_normal"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235"
+                        android:text="@{type==1?details.downOrderNo:(type==3?details.requestNo:details.merOrdId)}"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
+
+                <!--MPOS交易金额，快捷交易金额，扫码交易金额-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/default_padding"
+                    tools:visibility="visible"
+                    android:visibility="@{type==4?View.GONE:View.VISIBLE}"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{type==3?@string/transaction_amount:@string/order_detail_2}"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_normal"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235"
+                        android:text="@{type==1?details.consumeAmt:(type==3?details.amount:details.ordAmt)}"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
+
+
+                <!--MPOS/扫码/快捷 手续费-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/default_padding"
+                    tools:visibility="visible"
+                    android:visibility="@{type==4?View.GONE:View.VISIBLE}"
+                    android:background="@color/white"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/order_detail_3"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_normal"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_normal"
+                        android:text="@{type==1||type==3?details.fee:details.merFee}"
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
+
+                <!--快捷清算费-->
+                <LinearLayout
+                    android:visibility="@{type==3?View.VISIBLE:View.GONE}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/default_padding"
+                    tools:visibility="visible"
+                    android:background="@color/white"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/order_detail_14"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_normal"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_normal"
+                        android:text="@{details.genPayMoney}"
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
+
+
+                <!--MPOS/扫码/快捷 应到账金额-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/default_padding"
+                    tools:visibility="visible"
+                    android:visibility="@{type==4?View.GONE:View.VISIBLE}"
+                    android:background="@color/white"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/order_detail_4"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_normal"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_normal"
+                        android:text="@{type==1?(DataUtils.numCut(details.consumeAmt,details.fee)):type==3?(DataUtils.numCut(DataUtils.numCut(details.amount,details.genPayMoney),details.fee)):(DataUtils.numCut(details.ordAmt,details.merFee))}"
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="@dimen/default_padding"
+                    android:background="@color/line"/>
+
+                <!--跨境金额-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/default_padding"
+                    tools:visibility="visible"
+                    android:visibility="@{type==4?View.VISIBLE:View.GONE}"
+                    android:background="@color/white"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="订单金额"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_normal"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235"
+                        android:text="@{details.ovOrderAmt}"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
+
+                <!--跨境手续费-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/default_padding"
+                    tools:visibility="visible"
+                    android:visibility="@{type==4?View.VISIBLE:View.GONE}"
+                    android:background="@color/white"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="订单手续费"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_normal"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235"
+                        android:text="@{details.ovOrderFee}"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
+
+                <!--跨境通信费-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/default_padding"
+                    tools:visibility="visible"
+                    android:visibility="@{type==4?View.VISIBLE:View.GONE}"
+                    android:background="@color/white"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="订单通信费"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_normal"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235"
+                        android:text="@{details.ovOrderMessageMoney}"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
+
+                <!--跨境到账金额-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/default_padding"
+                    tools:visibility="visible"
+                    android:visibility="@{type==4?View.VISIBLE:View.GONE}"
+                    android:background="@color/white"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="到账金额"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_normal"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235"
+                        android:text="@{details.ovOrderToMoney}"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
+
+                <!--跨境是否到账-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/default_padding"
+                    tools:visibility="visible"
+                    android:visibility="@{type==4?View.VISIBLE:View.GONE}"
+                    android:background="@color/white"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="是否已经到账"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_normal"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235"
+                        android:text='@{details.ovIsRemit==0?"否":"是"}'
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
+
+                <!--跨境优惠卷-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/default_padding"
+                    tools:visibility="visible"
+                    android:visibility="@{type==4?View.VISIBLE:View.GONE}"
+                    android:background="@color/white"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="优惠卷"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_normal"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235"
+                        android:text='@{details.ovIsTicket==0?"未使用":details.ovTicketNumber}'
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
+
+
+                <!--快捷优惠卷-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/default_padding"
+                    tools:visibility="visible"
+                    android:visibility="@{type==3?View.VISIBLE:View.GONE}"
+                    android:background="@color/white"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="优惠卷"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_normal"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235"
+                        android:text='@{details.isTicket==0?"未使用":details.isTicketNumber}'
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
+
+
+                <!--扫码优惠卷-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/default_padding"
+                    tools:visibility="visible"
+                    android:visibility="@{type==2?View.VISIBLE:View.GONE}"
+                    android:background="@color/white"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="优惠卷"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_normal"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235"
+                        android:text='@{details.isTicket==0?"未使用":details.ticketNumber}'
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
+
+
+                <!--MPOS/扫码/快捷 交易时间-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/default_padding"
+                    tools:visibility="visible"
+                    android:visibility="@{type==4?View.GONE:View.VISIBLE}"
+                    android:background="@color/white"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/order_detail_5"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_normal"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235"
+                        android:text="@{details.oCreateDate}"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
+
+
+                <!--快捷到账银行-->
+                <LinearLayout
+                    android:visibility="@{type==3?View.VISIBLE:View.GONE}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/default_padding"
+                    tools:visibility="visible"
+                    android:background="@color/white"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="银行名称"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_normal"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235"
+                        android:text="@{details.payBank}"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
+
+
+                <!--扫码 手机号-->
+                <LinearLayout
+                    android:visibility="@{type==2?View.VISIBLE:View.GONE}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/default_padding"
+                    tools:visibility="visible"
+                    android:background="@color/white"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="手机号"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_normal"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235"
+                        android:text="@{details.phone}"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
+
+                <!--扫码 支付方式-->
+                <LinearLayout
+                    android:visibility="@{type==2?View.VISIBLE:View.GONE}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/default_padding"
+                    tools:visibility="visible"
+                    android:background="@color/white"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="交易方式"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_normal"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235"
+                        android:text='@{paytype==10?"微信扫码收款":"支付宝扫码收款"}'
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
+
+                <!--MPOS/快捷卡號-->
+                <LinearLayout
+                    android:visibility="@{type==1||type==3?View.VISIBLE:View.GONE}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/default_padding"
+                    tools:visibility="visible"
+                    android:background="@color/white"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/order_detail_12"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_normal"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235"
+                        android:text="@{type==1?details.consumePan:details.payBankCard}"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
+
+                <!--MPOS结算卡-->
+                <LinearLayout
+                    android:visibility="@{type==1?View.VISIBLE:View.GONE}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/default_padding"
+                    tools:visibility="visible"
+                    android:background="@color/white"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/order_detail_13"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_normal"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235"
+                        android:text="@{details.debitCardNo}"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
+
+                <!--交易类型-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/default_padding"
+                    tools:visibility="visible"
+                    android:background="@color/white"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/order_detail_10"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_normal"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235"
+                        android:text="@{type==1?@string/order_mpos:type==3?details.tcName:type==4?@string/order_over_rec:@string/order_default_scan}"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
+
+                <!--快捷到账银行-->
+                <LinearLayout
+                    android:visibility="@{type==3?View.VISIBLE:View.GONE}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    tools:visibility="visible"
+                    android:padding="@dimen/default_padding"
+                    android:background="@color/white"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/order_detail_15"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_normal"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235"
+                        android:text="@{details.toBank}"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
+
+                <!--快捷到账卡号-->
+                <LinearLayout
+                    android:visibility="@{type==3?View.VISIBLE:View.GONE}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/default_padding"
+                    android:background="@color/white"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/order_detail_16"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_normal"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235"
+                        android:text="@{details.toBankCard}"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
+
+                <!--扫码  备注-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="@{TextUtils.isEmpty(details.payRemark)?View.GONE:View.VISIBLE}">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/app_bg"
+                        android:gravity="center"
+                        android:padding="@dimen/default_margin"
+                        android:text="支付备注"
+                        android:textColor="@color/light_gray" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:background="#FFF5F5F9"
+                        android:padding="@dimen/default_padding"
+                        android:text="@{details.payRemark}"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="@dimen/text_size_normal" />
+                </LinearLayout>
+
+
+
+
+
+
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+</layout>

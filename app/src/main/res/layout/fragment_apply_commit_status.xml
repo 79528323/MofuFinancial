@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.loan.fragment.ApplyCommitStatusFragment"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.loan.fragment.ApplyCommitStatusFragment"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        android:background="@color/app_background">
+
+        <include
+            layout="@layout/layout_title"
+            bind:backIcon="@{@drawable/title_back}"
+            bind:titleName="@{@string/modfyCode1}" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/tab_height"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/loan_status_ok"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_game_record"
+                android:layout_marginTop="@dimen/default_item_margin"
+                android:textColor="@color/dark_gray"
+                android:text="贷款申请已提交"/>
+
+            <TextView
+                android:layout_marginTop="@dimen/default_padding"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_small"
+                android:textColor="#FE8107"
+                android:text="我们会尽快为您审核，请耐心等待！"/>
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="返回身份认证"
+            android:textColor="@color/white"
+            android:paddingBottom="@dimen/default_padding"
+            android:paddingTop="@dimen/default_padding"
+            android:paddingStart="60dp"
+            android:paddingEnd="60dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/default_item_margin"
+            android:layout_marginTop="@dimen/folder_menu_item_height"
+            android:background="@drawable/loan_idval_button"/>
+
+
+    </LinearLayout>
+</layout>

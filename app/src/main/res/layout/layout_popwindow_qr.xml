@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.widget.QRPopWindow"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.widget.QRPopWindow"/>
+        <variable
+            name="clicklistener"
+            type="android.view.View.OnClickListener"/>
+        <variable
+            name="isCheck"
+            type="boolean"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/transparent"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingTop="@dimen/default_padding"
+                android:paddingLeft="@dimen/default_padding"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:onClick="@{handlers.cancel}"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/default_padding"
+                        android:src="@drawable/back"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="选择通道"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="@dimen/text_size_title"
+                        android:layout_centerInParent="true"/>
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:tag="2"
+                    android:duplicateParentState="true"
+                    android:onClick="@{clicklistener}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/default_item_margin"
+                    android:paddingLeft="@dimen/default_padding"
+                    android:paddingBottom="@dimen/default_item_margin"
+                    android:background="@color/white">
+
+                    <ImageView
+                        android:id="@+id/img"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/icon_alipay_rec"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/default_item_margin"
+                        android:layout_toRightOf="@+id/img"
+                        android:layout_alignTop="@+id/img"
+                        android:layout_alignBottom="@+id/img"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_weight="1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_small"
+                                android:text="@string/merchan_scan_4"
+                                android:textColor="@color/dark_gray"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_small"
+                                android:text="@string/merchan_scan_7"
+                                android:textColor="@color/light_gray"/>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+                    <CheckBox
+                        android:id="@+id/alipay_check"
+                        android:duplicateParentState="true"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:paddingRight="@dimen/default_padding"
+                        style="@style/industry_selector"/>
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_marginLeft="@dimen/default_padding"
+                    android:background="@color/hint"/>
+
+                <RelativeLayout
+                    android:duplicateParentState="true"
+                    android:tag="1"
+                    android:onClick="@{clicklistener}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/default_item_margin"
+                    android:paddingLeft="@dimen/default_padding"
+                    android:paddingBottom="@dimen/default_item_margin"
+                    android:background="@color/white">
+
+                    <ImageView
+                        android:id="@+id/img_wechat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/icon_wechat_rec"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/default_item_margin"
+                        android:layout_toRightOf="@+id/img_wechat"
+                        android:layout_alignTop="@+id/img_wechat"
+                        android:layout_alignBottom="@+id/img_wechat"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_weight="1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_small"
+                                android:text="@string/merchan_scan_6"
+                                android:textColor="@color/dark_gray"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_small"
+                                android:text="@string/merchan_scan_7"
+                                android:textColor="@color/light_gray"/>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <CheckBox
+                        android:id="@+id/wechat_check"
+                        android:duplicateParentState="true"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:paddingRight="@dimen/default_padding"
+                        style="@style/industry_selector"/>
+                </RelativeLayout>
+
+            </LinearLayout>
+
+
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="@color/white"-->
+                <!--android:layout_alignParentBottom="true"-->
+                <!--android:orientation="vertical">-->
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:background="@color/app_background"-->
+                    <!--android:padding="@dimen/default_padding"-->
+                    <!--android:orientation="horizontal">-->
+
+
+                    <!--<TextView-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:textSize="@dimen/text_size_normal"-->
+                        <!--android:textColor="@color/dark_gray"-->
+                        <!--android:gravity="center"-->
+                        <!--android:onClick="@{handlers.weixin}"-->
+                        <!--android:drawablePadding="3dp"-->
+                        <!--android:drawableTop="@drawable/share_weixin"-->
+                        <!--android:text="微信"/>-->
+                    <!--&lt;!&ndash;<ImageView&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_weight="1"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                        <!--&lt;!&ndash;android:src="@drawable/share_weixin"/>&ndash;&gt;-->
+
+                    <!--<TextView-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:textSize="@dimen/text_size_normal"-->
+                        <!--android:textColor="@color/dark_gray"-->
+                        <!--android:gravity="center"-->
+                        <!--android:onClick="@{handlers.dynamic}"-->
+                        <!--android:drawablePadding="3dp"-->
+                        <!--android:drawableTop="@drawable/share_dynamic"-->
+                        <!--android:text="朋友圈"/>-->
+
+
+                    <!--<TextView-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:textSize="@dimen/text_size_normal"-->
+                        <!--android:textColor="@color/dark_gray"-->
+                        <!--android:gravity="center"-->
+                        <!--android:visibility="invisible"-->
+                        <!--android:drawablePadding="3dp"-->
+                        <!--android:drawableTop="@drawable/share_weixin"-->
+                        <!--android:text="微信"/>-->
+
+
+                    <!--<TextView-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:textSize="@dimen/text_size_normal"-->
+                        <!--android:textColor="@color/dark_gray"-->
+                        <!--android:gravity="center"-->
+                        <!--android:visibility="invisible"-->
+                        <!--android:drawablePadding="3dp"-->
+                        <!--android:drawableTop="@drawable/share_weixin"-->
+                        <!--android:text="微信"/>-->
+
+                <!--</LinearLayout>-->
+
+                <!--<LinearLayout-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:background="@color/app_background"-->
+                    <!--android:orientation="vertical">-->
+
+                    <!--<TextView-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:textSize="@dimen/text_size_normal"-->
+                        <!--android:textColor="@color/dark_gray"-->
+                        <!--android:gravity="center"-->
+                        <!--android:visibility="invisible"-->
+                        <!--android:drawablePadding="3dp"-->
+                        <!--android:drawableTop="@drawable/share_weixin"-->
+                        <!--android:text="微信"/>-->
+
+
+                <!--</LinearLayout>-->
+
+                <!--<TextView-->
+                    <!--android:onClick="@{handlers.cancel}"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="@dimen/title_height"-->
+                    <!--android:background="@color/white"-->
+                    <!--android:gravity="center"-->
+                    <!--android:textColor="@color/light_gray"-->
+                    <!--android:text="取消"/>-->
+
+            <!--</LinearLayout>-->
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+</layout>

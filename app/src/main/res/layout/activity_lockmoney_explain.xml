@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.util.DataUtils"/>
+        <import type="cn.mofufin.morf.ui.LockMoneyExplainActivity"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.LockMoneyExplainActivity"/>
+
+        <variable
+            name="currentBalance"
+            type="double"/>
+        <variable
+            name="lockmoney"
+            type="double"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/app_background"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+
+
+        <include
+            layout="@layout/layout_title"
+            bind:backIcon="@{@drawable/title_back}"
+            bind:handlers="@{handlers}"
+            bind:titleName="@{@string/lock_title}" />
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingTop="@dimen/friend_icon"
+                        android:paddingBottom="@dimen/friend_icon"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/dark_gray"
+                            android:text="@{DataUtils.numFormat(currentBalance)}"
+                            tools:text="1000000.00"
+                            android:textSize="@dimen/text_size_game_record"
+                            android:typeface="monospace"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/light_gray"
+                            android:text="@string/lock_1"
+                            android:layout_marginTop="@dimen/default_padding"
+                            android:textSize="@dimen/text_size_normal"
+                            android:typeface="monospace"/>
+
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/app_bg"/>
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingTop="@dimen/friend_icon"
+                        android:paddingBottom="@dimen/friend_icon"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/dark_gray"
+                            android:text="@{DataUtils.numFormat(lockmoney)}"
+                            tools:text="1000000.00"
+                            android:textSize="@dimen/text_size_game_record"
+                            android:typeface="monospace"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/light_gray"
+                            android:text="@string/lock_2"
+                            android:layout_marginTop="@dimen/default_padding"
+                            android:textSize="@dimen/text_size_normal"
+                            android:typeface="monospace"/>
+
+
+                    </LinearLayout>
+                </LinearLayout>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/default_padding"
+                    android:background="@color/app_bg"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/default_margin"
+                    android:paddingLeft="@dimen/default_padding"
+                    android:paddingRight="@dimen/default_padding"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/light_gray"
+                        android:text="@string/lock_3"
+                        android:textSize="@dimen/text_size_game_record"
+                        android:typeface="monospace"/>
+
+                    <TextView
+                        android:id="@+id/explain"
+                        android:layout_marginTop="@dimen/default_margin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/dark_gray"
+                        android:text="@string/lock_4"
+                        android:textSize="@dimen/text_size_normal"
+                        android:typeface="monospace"/>
+
+                    <TextView
+                        android:layout_marginTop="@dimen/default_margin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/app_blue"
+                        android:text="@string/lock_5"
+                        android:textSize="@dimen/text_size_normal"
+                        android:typeface="monospace"/>
+                </LinearLayout>
+
+
+                <View
+                    android:layout_marginTop="@dimen/default_margin"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="@dimen/default_padding"
+                    android:background="@color/app_bg"/>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/default_margin"
+                    android:paddingLeft="@dimen/default_padding"
+                    android:paddingRight="@dimen/default_padding"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/light_gray"
+                        android:text="@string/lock_6"
+                        android:textSize="@dimen/text_size_game_record"
+                        android:typeface="monospace"/>
+
+                    <TextView
+                        android:layout_marginTop="@dimen/default_margin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/dark_gray"
+                        android:text="@string/lock_7"
+                        android:textSize="@dimen/text_size_normal"
+                        android:typeface="monospace"/>
+
+                    <TextView
+                        android:layout_marginTop="@dimen/default_margin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/dark_gray"
+                        android:text="@string/lock_8"
+                        android:textSize="@dimen/text_size_normal"
+                        android:typeface="monospace"/>
+
+                    <TextView
+                        android:layout_marginTop="@dimen/default_margin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/app_blue"
+                        android:text="@string/lock_9"
+                        android:textSize="@dimen/text_size_normal"
+                        android:typeface="monospace"/>
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+</layout>

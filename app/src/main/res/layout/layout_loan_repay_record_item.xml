@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:apps="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.util.DataUtils"/>
+        <import type="android.text.TextUtils"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.fragment.InverstMentFragment"/>
+        <variable
+            name="clicklistener"
+            type="android.view.View.OnClickListener"/>
+        <variable
+            name="type"
+            type="Integer"/>
+        <variable
+            name="isShow"
+            type="boolean"/>
+        <variable
+            name="position"
+            type="int"/>
+        <variable
+            name="bean"
+            type="cn.mofufin.morf.ui.entity.LoanRepayCord.PlanListBean"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/app_background"
+        android:orientation="vertical">
+
+
+        <!--<androidx.cardview.widget.CardView-->
+            <!--tools:targetApi="lollipop"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_marginBottom="@dimen/default_padding"-->
+            <!--android:clickable="true"-->
+            <!--android:stateListAnimator="@drawable/lift_on_touch"-->
+            <!--android:foreground="?android:attr/selectableItemBackground"-->
+            <!--app:cardCornerRadius="4dp"-->
+            <!--app:cardUseCompatPadding="true"-->
+            <!--app:cardPreventCornerOverlap="false">-->
+
+            <!---->
+
+        <!--</androidx.cardview.widget.CardView>-->
+
+        <LinearLayout
+            android:layout_marginTop="1.5dp"
+            android:layout_marginBottom="@dimen/default_margin"
+            android:tag="@{bean}"
+            android:onClick="@{clicklistener}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:elevation="11dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:text="@{bean.productName}"
+                    android:gravity="center"
+                    android:background="@drawable/shape_loan_red"
+                    android:layout_marginLeft="@dimen/default_item_margin"
+                    android:textSize="@dimen/text_size_normal"/>
+
+
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:gravity="center_vertical|right"
+                    android:orientation="horizontal">
+
+
+                    <cn.mofufin.morf.ui.widget.OrderIconWidget
+                        android:id="@+id/repay_status"
+                        android:layout_width="100dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="@dimen/default_margin"
+                        android:textSize="@dimen/text_size_small"
+                        android:textColor="@{bean.refundPlanState==0||bean.refundPlanState==2?@color/loan_red:@color/app_blue}"
+                        android:text="@{bean.refundPlanState==0?@string/loan_repay_status0:bean.refundPlanState==1?@string/loan_repay_status1:bean.refundPlanState==2?@string/loan_repay_status2:@string/loan_repay_status3}"
+                        android:gravity="center"
+                        apps:textTouchColor="#000"
+                        apps:radius="20dp"
+                        apps:strokeWith="3"
+                        apps:solidColor="@color/white"
+                        apps:solidTouchColor="#ffffff"
+                        apps:strokeColor="@color/loan_red"
+                        apps:strokeTouchColor="#000000"
+                        apps:shapeTpe="rectangle"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/default_margin"
+                android:paddingBottom="@dimen/default_padding"
+                android:background="@color/white">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{String.valueOf(bean.surplusMoney)}"
+                    android:layout_marginTop="@dimen/default_padding"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:typeface="monospace"
+                    android:textColor="@color/loan_red"
+                    android:textSize="@dimen/balance_text_size" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="剩余未还金额(元)"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/light_gray"
+                    android:textSize="@dimen/text_size_normal" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/default_item_margin"
+                    android:layout_marginStart="@dimen/default_margin"
+                    android:layout_marginEnd="@dimen/default_margin"
+                    android:background="@color/chat_bg"/>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_item_margin"
+                    android:baselineAligned="true"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="还款周期"
+                        android:layout_weight="1"
+                        android:textColor="@color/gray"
+                        android:paddingStart="@dimen/default_item_margin"
+                        android:textSize="@dimen/text_size_normal" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text='@{bean.refundDateBegin.substring(0,10)+"至"+bean.refundDateEnd.substring(0,10)}'
+                        android:layout_marginEnd="@dimen/default_item_margin"
+                        android:layout_marginLeft="5dp"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="@dimen/text_size_normal" />
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_padding"
+                    android:baselineAligned="true"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="贷款总额(元)"
+                        android:layout_weight="1"
+                        android:textColor="@color/gray"
+                        android:paddingStart="@dimen/default_item_margin"
+                        android:textSize="@dimen/text_size_normal" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text='@{String.valueOf(bean.loansMoney)}'
+                        android:layout_marginEnd="@dimen/default_item_margin"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="@dimen/text_size_normal" />
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:text="去还款"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginBottom="@dimen/default_margin"
+                    android:layout_gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_normal"
+                    android:paddingTop="@dimen/default_padding"
+                    android:paddingBottom="@dimen/default_padding"
+                    android:gravity="center"
+                    android:background="@drawable/loan_idval_button"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

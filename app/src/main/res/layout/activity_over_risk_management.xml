@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.OverRiskManagementActivity"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.OverRiskManagementActivity"/>
+        <variable
+            name="isAgree"
+            type="boolean"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/app_background"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+
+
+        <include
+            layout="@layout/layout_title"
+            bind:backIcon="@{@drawable/title_back}"
+            bind:handlers="@{handlers}"
+            bind:titleName="@{@string/over_risk_title}" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#E75A30"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="@dimen/default_padding">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/attention" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_padding"
+                android:text="@string/over_risk_tips"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_small" />
+
+        </LinearLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <LinearLayout
+                    android:layout_margin="@dimen/default_margin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/default_margin"
+                    android:orientation="vertical"
+                    android:elevation="5dp"
+                    android:background="@drawable/shape_white_shadow">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:padding="@dimen/default_margin"
+                        android:textColor="@color/dark_gray"
+                        android:textStyle="bold"
+                        android:text="@string/over_risk_explain"
+                        android:textSize="@dimen/text_size_title"/>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/dark_gray"
+                        android:text="跨境收款用户："
+                        android:textStyle="bold"
+                        android:textSize="@dimen/text_size_medium"/>
+
+                    <LinearLayout
+                        android:layout_marginTop="@dimen/default_padding"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingRight="@dimen/default_item_margin"
+                        android:layout_marginStart="@dimen/input_height">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/app_blue"
+                            android:text="跨境收款交易前，请仔细阅读以下文字。"
+                            android:textSize="@dimen/text_size_medium"/>
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/gray"
+                            android:layout_marginTop="@dimen/text_line_spacing"
+                            android:layout_marginBottom="@dimen/text_line_spacing"
+                            android:lineSpacingExtra="3dp"
+                            android:text="@string/over_risk_content"
+                            android:textSize="@dimen/text_size_medium"/>
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#E75A30"
+                            android:text="一.持卡人身份证正反面照;"
+                            android:layout_marginBottom="@dimen/text_line_spacing"
+                            android:textStyle="bold"
+                            android:textSize="@dimen/text_size_medium"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/text_line_spacing"
+                            android:textColor="#E75A30"
+                            android:textStyle="bold"
+                            android:text="二.交易银行卡正面照（含卡号）;"
+                            android:textSize="@dimen/text_size_medium"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="#E75A30"
+                            android:textStyle="bold"
+                            android:text="三.短信验证码截图（全图，不能遮掩）。"
+                            android:textSize="@dimen/text_size_medium"/>
+
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1px"
+                            android:layout_marginTop="@dimen/default_padding"
+                            android:layout_marginBottom="@dimen/default_padding"
+                            android:background="@color/hint"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/gray"
+                            android:layout_marginTop="@dimen/text_line_spacing"
+                            android:layout_marginBottom="@dimen/text_line_spacing"
+                            android:lineSpacingExtra="@dimen/text_line_spacing"
+                            android:text="@string/over_risk_content2"
+                            android:textSize="@dimen/text_size_medium"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+
+                <CheckBox
+                    android:padding="@dimen/default_item_margin"
+                    android:text="我已阅读并同意以上说明"
+                    android:textSize="@dimen/text_size_normal"
+                    android:drawablePadding="@dimen/default_padding"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/app_blue"
+                    android:onClick="@{handlers.agree}"
+                    style="@style/pwd_check"
+                    android:checked="@{isAgree}"/>
+
+
+                <TextView
+                    android:id="@+id/next"
+                    android:layout_width="@dimen/add_contact_item_width"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginTop="@dimen/tab_height"
+                    android:paddingTop="@dimen/default_padding"
+                    android:paddingBottom="@dimen/default_padding"
+                    android:paddingLeft="@dimen/chat_talk_min_width"
+                    android:paddingRight="@dimen/chat_talk_min_width"
+                    android:onClick="@{handlers.next}"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_normal" />
+
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
+
+</layout>

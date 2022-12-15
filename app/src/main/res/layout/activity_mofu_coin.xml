@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.mine.MofuCoinActivity"/>
+        <import type="cn.mofufin.morf.ui.util.DataUtils"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.mine.MofuCoinActivity"/>
+        <variable
+            name="record"
+            type="cn.mofufin.morf.ui.entity.Coin.Record"/>
+        <variable
+            name="currentMoBi"
+            type="String"/>
+        <variable
+            name="position"
+            type="int"/>
+        <variable
+            name="onPress"
+            type="boolean"/>
+        <variable
+            name="date"
+            type="String"/>
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000A29"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_above="@+id/btn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/coin_bg"
+                android:orientation="vertical">
+
+                <include
+                    android:id="@+id/title_layout"
+                    layout="@layout/layout_title"
+                    bind:backIcon="@{@drawable/title_back}"
+                    bind:handlers="@{handlers}"
+                    bind:isTranslate="@{true}"
+                    bind:canSubmit="@{true}"
+                    android:layout_alignParentTop="true"
+                    bind:rightText="@{@string/coin_2}"
+                    bind:titleName="@{@string/coin_title}"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent" />
+
+                <LinearLayout
+                    android:id="@+id/cur_layout"
+                    android:layout_marginTop="@dimen/default_item_margin"
+                    android:layout_below="@+id/title_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/coins"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:background="@drawable/coin_cur_rank">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_normal"
+                        tools:text="本月排名第1"
+                        android:text='@{Integer.valueOf(position)>0?"本月排名第"+position:"本月未上榜"}'
+                        android:textColor="@color/white"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="@dimen/default_item_margin"
+                    android:layout_below="@+id/title_layout"
+                    android:layout_gravity="right"
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignRight="@+id/coins"
+                    android:background="@drawable/coin_cur">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_normal"
+                        android:text="@string/coin_1"
+                        android:textColor="@color/white"/>
+
+                </LinearLayout>
+                <!---->
+                <!---->
+                <LinearLayout
+                    android:id="@+id/coins"
+                    android:layout_below="@+id/cur_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="@dimen/default_margin"
+                    android:background="@drawable/coin_count"
+                    android:padding="@dimen/default_padding">
+
+                    <TextView
+                        android:id="@+id/money_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="43sp"
+                        android:typeface="sans"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:text="@{currentMoBi}"
+                        tools:text="10000000"/>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#000A29"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/default_padding"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/cion_notity"/>
+
+                    <TextView
+                        android:id="@+id/marquee"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#2F61FF"
+                        android:ellipsize="marquee"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:singleLine="true"
+                        android:textSize="@dimen/text_size_small"
+                        android:layout_marginLeft="@dimen/default_padding"/>
+                </LinearLayout>
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginLeft="@dimen/default_margin"-->
+                    <!--android:layout_marginRight="@dimen/default_margin"-->
+                    <!--android:padding="@dimen/lineSpacingExtra"-->
+                    <!--android:background="@drawable/shape_coin">-->
+
+                    <!--<LinearLayout-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:orientation="horizontal"-->
+                        <!--android:padding="@dimen/lineSpacingExtra"-->
+                        <!--android:background="@drawable/shape_null">-->
+
+                        <!--<TextView-->
+                            <!--android:layout_weight="1"-->
+                            <!--android:layout_width="0dp"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:paddingLeft="@dimen/default_margin"-->
+                            <!--android:textSize="@dimen/text_size_normal"-->
+                            <!--android:textColor="@color/coin_color"-->
+                            <!--android:text="@string/commission_4"/>-->
+
+                        <!--<TextView-->
+                            <!--android:layout_weight="1"-->
+                            <!--android:layout_width="0dp"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:textSize="@dimen/text_size_normal"-->
+                            <!--android:gravity="center"-->
+                            <!--android:textColor="@color/coin_color"-->
+                            <!--android:text="@string/commission_5"/>-->
+
+                        <!--<TextView-->
+                            <!--android:layout_weight="2.2"-->
+                            <!--android:gravity="right"-->
+                            <!--android:layout_width="0dp"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:paddingRight="@dimen/default_margin"-->
+                            <!--android:textSize="@dimen/text_size_normal"-->
+                            <!--android:textColor="@color/coin_color"-->
+                            <!--android:text="@string/coin_title"/>-->
+
+                    <!--</LinearLayout>-->
+                <!--</LinearLayout>-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:layout_marginStart="@dimen/default_margin"
+                    android:layout_marginEnd="@dimen/default_margin"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/shape_coin">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@drawable/shape_null">
+
+                        <LinearLayout
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/tab_height"
+                            android:orientation="vertical"
+                            android:gravity="center">
+
+                            <CheckBox
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:button="@null"
+                                android:checked="@{onPress}"
+                                android:drawableRight="@drawable/coin_arrow_selector"
+                                android:drawablePadding="10dp"
+                                android:duplicateParentState="true"
+                                android:onClick="@{handlers.selectTime}"
+                                android:text="@{date}"
+                                android:textColor="@color/coin_color"
+                                android:textSize="18sp"
+                                tools:text="2019-08" />
+
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center"
+                            android:background="@color/line"/>
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:textSize="@dimen/text_size_normal"
+                            android:textColor="@color/coin_color"
+                            android:onClick="@{handlers.coindetail}"
+                            android:text="摩富币明细"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-3dp"
+                    android:background="@drawable/shape_coin"
+                    android:padding="@dimen/lineSpacingExtra"
+                    android:orientation="vertical"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginLeft="30dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/default_margin"
+                        android:background="#F6F6F6">
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_normal"
+                            android:textColor="@color/light_gray"
+                            android:text="@string/commission_4"/>
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_normal"
+                            android:gravity="center"
+                            android:textColor="@color/light_gray"
+                            android:text="@string/commission_5"/>
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_normal"
+                            android:textColor="@color/light_gray"
+                            android:text="@string/coin_title"/>
+
+                    </LinearLayout>
+
+                    <cc.ruis.lib.widget.WrapRecyclerView
+                        android:id="@+id/ranking_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/white"
+                        android:overScrollMode="never"
+                        tools:listitem="@layout/layout_coin_ranking_item"/>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <!--<TextView-->
+            <!--android:id="@+id/btn"-->
+            <!--android:layout_alignParentBottom="true"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:gravity="center"-->
+            <!--android:textSize="@dimen/text_size_normal"-->
+            <!--android:onClick="@{handlers.coindetail}"-->
+            <!--android:textColor="#5B7ADC"-->
+            <!--android:background="#000A29"-->
+            <!--android:padding="@dimen/default_margin"-->
+            <!--android:text="@string/coin_3"/>-->
+    </RelativeLayout>
+</layout>

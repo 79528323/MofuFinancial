@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.util.DataUtils"/>
+        <import type="cn.mofufin.morf.ui.mine.DollarActivity"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.mine.DollarActivity"/>
+        <variable
+            name="type"
+            type="int"/>
+        <variable
+            name="balance"
+            type="String"/>
+        <variable
+            name="exchange"
+            type="String"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_above="@+id/btn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/app_bg"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <include
+                layout="@layout/layout_title"
+                bind:backIcon="@{@drawable/title_back}"
+                bind:handlers="@{handlers}"
+                bind:titleName="@{type==1?@string/dollar_title1:@string/dollar_title2}" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="210dp"
+                    app:layout_scrollFlags="scroll|enterAlways"
+                    android:background="@color/app_blue"
+                    android:orientation="vertical">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_weight="3"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:orientation="vertical">
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_weight="1.5"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:background="@color/app_bg"
+                            android:orientation="vertical">
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_centerVertical="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:elevation="5dp"
+                        android:layout_marginLeft="@dimen/icon_small"
+                        android:layout_marginRight="@dimen/icon_small"
+                        android:background="@drawable/shape_white"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:text="10000000.00"
+                            android:textColor="@color/dark_gray"
+                            android:typeface="sans"
+                            android:text="@{balance}"
+                            android:paddingTop="@dimen/default_margin"
+                            android:paddingBottom="@dimen/default_margin"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="@dimen/default_margin"
+                            android:textSize="@dimen/balance_text_size"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{type==0?@string/dollar2:@string/dollar1}"
+                            android:textColor="#999999"
+                            android:layout_marginBottom="@dimen/default_item_margin"
+                            android:paddingBottom="@dimen/default_margin"
+                            android:layout_gravity="center_horizontal|bottom"
+                            android:textSize="@dimen/text_size_normal"/>
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/icon_small"
+                    android:layout_marginRight="@dimen/icon_small"
+                    android:background="@drawable/shape_white"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/default_padding"
+                        android:background="@drawable/shape_gray"
+                        android:textSize="@dimen/text_size_title"
+                        android:textColor="@color/white"
+                        android:gravity="center"
+                        android:text="@string/dollar3"/>
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:text="888.00"
+                            android:textColor="@color/app_blue"
+                            android:typeface="sans"
+                            android:text="@{exchange}"
+                            android:layout_gravity="center"
+                            android:padding="@dimen/default_padding"
+                            android:textSize="@dimen/balance_text_size"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{type==0?@string/dollar9:@string/dollar4}"
+                            android:textColor="#999999"
+                            tools:text="换算  100美元 ："
+                            android:layout_marginTop="@dimen/default_item_margin"
+                            android:layout_gravity="center_horizontal|bottom"
+                            android:textSize="@dimen/text_size_normal"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{exchange}"
+                            android:textColor="#999999"
+                            android:layout_marginTop="@dimen/default_item_margin"
+                            android:layout_gravity="center_horizontal|bottom"
+                            android:textSize="@dimen/text_size_normal"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#999999"
+                    android:gravity="center"
+                    android:layout_marginTop="@dimen/default_item_margin"
+                    android:textSize="@dimen/text_size_small"
+                    android:text="@string/dollar8"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/default_item_margin"
+                    android:gravity="center">
+
+                    <TextView
+                        android:padding="@dimen/default_padding"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#E75A30"
+                        android:textSize="@dimen/text_size_title"
+                        android:onClick="@{handlers.refresh}"
+                        android:text="刷新"
+                        android:drawableRight="@drawable/ex_refresh"
+                        android:drawablePadding="@dimen/default_padding"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/btn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/title_height"
+            android:background="@color/app_blue"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:onClick="@{handlers.translate}"
+            android:layout_alignParentBottom="true"
+            android:textSize="@dimen/text_size_normal"
+            android:text="@string/balance_tranf_title"/>
+
+
+    </RelativeLayout>
+
+</layout>

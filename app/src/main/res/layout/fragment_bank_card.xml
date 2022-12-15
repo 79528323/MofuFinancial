@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.fragment.BankCardFragment"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.fragment.BankCardFragment"/>
+        <variable
+            name="cardNo"
+            type="String"/>
+        <variable
+            name="isShow"
+            type="boolean"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/white">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            android:overScrollMode="never">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+
+
+                <RelativeLayout
+                    android:layout_width="@dimen/photo_bg_width"
+                    android:layout_height="@dimen/dynamic_image_max_height"
+                    android:layout_marginTop="@dimen/default_item_margin"
+                    android:background="@drawable/scanning_bg">
+
+                    <TextView
+                        android:layout_centerHorizontal="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="@color/light_gray"
+                        android:text="银行卡照片"/>
+
+
+                    <ImageView
+                        android:id="@+id/bank_img"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:onClick="@{handlers.takeCardPhoto}"
+                        android:scaleType="fitXY"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="@dimen/photo_bg_width"
+                    android:layout_height="@dimen/dynamic_image_max_height"
+                    android:layout_marginTop="@dimen/default_item_margin"
+                    android:background="@drawable/scanning_bg">
+
+                    <TextView
+                        android:layout_centerHorizontal="true"
+                        android:layout_below="@+id/scan_back_img"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="@color/light_gray"
+                        android:text="银行卡背面"/>
+
+
+                    <ImageView
+                        android:id="@+id/bank_back_img"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:onClick="@{handlers.takeCardBackPhoto}"
+                        android:scaleType="fitXY"/>
+
+                </RelativeLayout>
+
+            <LinearLayout
+                android:paddingLeft="@dimen/default_padding"
+                android:paddingRight="@dimen/default_padding"
+                android:paddingTop="@dimen/default_margin"
+                android:paddingBottom="@dimen/default_margin"
+                tools:visibility="visible"
+                android:visibility="@{isShow?View.VISIBLE:View.GONE}"
+                android:layout_width="@dimen/photo_bg_width"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/default_item_margin"
+                android:layout_marginRight="@dimen/default_item_margin"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/default_padding"
+                android:background="@drawable/scanning_bg">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="结算卡开户行"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="@color/dark_gray"/>
+
+
+                    <!--android:focusableInTouchMode="false"-->
+                    <!--android:editable="false"-->
+                    <!--android:onClick="@{handlers.selectValidDate}"-->
+                    <EditText
+                        android:id="@+id/openline"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/dark_gray"
+                        android:padding="@dimen/default_padding"
+                        android:singleLine="true"
+                        android:textSize="@dimen/text_size_normal"
+                        android:gravity="center_vertical"
+                        android:hint=""
+                        android:text=""
+                        android:imeOptions="actionDone"
+                        android:background="@drawable/scanning_editter_bg"
+                        android:layout_marginLeft="10dp"
+                        android:textColorHint="@color/light_gray"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="@dimen/default_padding"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="银行卡号"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="@color/dark_gray"/>
+
+
+                    <EditText
+                        android:id="@+id/cardNo"
+                        android:padding="@dimen/default_padding"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/dark_gray"
+                        android:layout_marginLeft="10dp"
+                        android:textSize="@dimen/text_size_normal"
+                        android:gravity="center_vertical"
+                        android:hint=""
+                        android:inputType="number"
+                        android:imeOptions="actionDone"
+                        android:background="@drawable/scanning_editter_bg"
+                        android:textColorHint="@color/light_gray"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="@dimen/default_padding"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="预留手机号"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="@color/dark_gray"/>
+
+                    <EditText
+                        android:id="@+id/phone"
+                        android:layout_marginLeft="10dp"
+                        android:padding="@dimen/default_padding"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="@dimen/text_size_normal"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:maxLength="11"
+                        android:imeOptions="actionDone"
+                        android:gravity="center_vertical"
+                        android:hint="请填写办卡时银行预留手机号"
+                        android:background="@drawable/scanning_editter_bg"
+                        android:textColorHint="@color/light_gray"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+                <TextView
+                    android:id="@+id/next"
+                    android:layout_marginTop="@dimen/default_item_margin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    android:background="@drawable/login_button"
+                    android:gravity="center"
+                    android:onClick="@{handlers.bankNext}"
+                    android:paddingBottom="@dimen/default_padding"
+                    android:paddingTop="@dimen/default_padding"
+                    android:text="@string/register6"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_game_record" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="bottom"
+                    android:gravity="center_horizontal|bottom"
+                    android:paddingBottom="@dimen/default_item_margin"
+                    android:layout_marginTop="@dimen/default_item_margin"
+                    android:textColor="@color/light_gray"
+                    android:textSize="@dimen/text_size_small"
+                    android:text="暂不支持地方银行，此结算卡为平台刷卡通道默认结算卡，\n绑定之后将不能进行更改!"/>
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</layout>

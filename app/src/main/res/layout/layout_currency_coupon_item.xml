@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:apps="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.util.DataUtils"/>
+        <variable
+            name="listbean"
+            type="cn.mofufin.morf.ui.entity.MerchantBag.DataBean.ListBean"/>
+        <variable
+            name="onClickListener"
+            type="android.view.View.OnClickListener"/>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:layout_marginBottom="@dimen/default_padding"
+        android:tag="@{listbean}"
+        android:onClick="@{onClickListener}"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/main_bg"
+            tools:background="@drawable/currency_coupon"
+            android:background="@{listbean.mcbGoodsState==1||listbean.mcbGoodsState==2?@drawable/coupon_coupon_ed:@drawable/currency_coupon}"
+            android:layout_width="match_parent"
+            android:layout_height="140dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_marginLeft="4dp"
+                android:visibility="@{listbean.mcbGoodsState == 3?View.VISIBLE:View.GONE}"
+                android:background="@drawable/frozen"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="￥"
+                            android:textColor="@{listbean.mcbGoodsState==1||listbean.mcbGoodsState==2?@color/white:@color/golden}"
+                            android:textSize="@dimen/text_size_game_record"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:text="1000"
+                            android:text="@{String.valueOf(listbean.gdGoodsDenomination)}"
+                            android:textColor="@{listbean.mcbGoodsState==1||listbean.mcbGoodsState==2?@color/white:@color/golden}"
+                            android:textStyle="bold"
+                            android:textSize="@dimen/balance_text_size"/>
+
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:id="@+id/rate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@{listbean.mcbGoodsState==1||listbean.mcbGoodsState==2?@color/white:@color/golden}"
+                        android:text="@string/backpack_9"
+                        android:textStyle="bold"
+                        android:layout_marginTop="@dimen/default_padding"
+                        android:layout_marginLeft="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_game_record"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_weight="2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="单笔满5000可用"
+                        android:text='@{"单笔满"+(String.valueOf(listbean.gdGoodsUseCondition))+"可用"}'
+                        android:textColor="@{listbean.mcbGoodsState==1||listbean.mcbGoodsState==2?@color/freez:@color/red}"
+                        android:gravity="center"
+                        android:paddingLeft="@dimen/default_margin"
+                        android:paddingRight="@dimen/default_margin"
+                        android:paddingTop="2dp"
+                        android:paddingBottom="2dp"
+                        android:background="@{listbean.mcbGoodsState==1||listbean.mcbGoodsState==2?@drawable/shape_coupon_white:@drawable/shape_coupon_golden}"
+                        android:textSize="@dimen/text_size_normal"/>
+
+                    <TextView
+                        android:layout_marginTop="@dimen/default_padding"
+                        android:layout_marginBottom="@dimen/default_padding"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="可用于全平台"
+                        android:textColor="@{listbean.mcbGoodsState==1||listbean.mcbGoodsState==2?@color/white:@color/golden}"
+                        android:textSize="@dimen/text_size_normal"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="有效期至:2018.06.07 23:22"
+                        android:text='@{"有效期至:"+listbean.mcbValidDateEnd}'
+                        android:textColor="@{listbean.mcbGoodsState==1||listbean.mcbGoodsState==2?@color/white:@color/golden}"
+                        android:textSize="@dimen/text_size_small"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="@{listbean.mcbGoodsState==1||listbean.mcbGoodsState==2?View.VISIBLE:View.GONE}"
+                android:background="@{listbean.mcbGoodsState==1?@drawable/used:@drawable/expired}"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+</layout>

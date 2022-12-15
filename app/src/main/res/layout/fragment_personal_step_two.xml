@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.loan.fragment.PersonalStepTwoFragment"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.loan.fragment.PersonalStepTwoFragment"/>
+        <variable
+            name="sexyClick"
+            type="android.view.View.OnClickListener"/>
+        <variable
+            name="marriedClick"
+            type="android.view.View.OnClickListener"/>
+        <variable
+            name="phoneUsedClick"
+            type="android.view.View.OnClickListener"/>
+        <variable
+            name="educationClick"
+            type="android.view.View.OnClickListener"/>
+        <variable
+            name="addressClick"
+            type="android.view.View.OnClickListener"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        android:background="@color/app_background">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@color/loan_red"
+            android:padding="@dimen/default_padding">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/attention"/>
+
+            <TextView
+                android:layout_marginLeft="@dimen/default_padding"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/white"
+                android:text="请认真填写个人信息，避免修改带来的影响！"/>
+
+        </LinearLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="性别"
+                    android:textSize="@dimen/text_size_normal"
+                    android:padding="@dimen/default_margin"
+                    android:textColor="@color/dark_gray"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/default_margin">
+
+                    <RadioGroup
+                        android:id="@+id/sexy_group"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/default_margin"
+                        android:paddingBottom="@dimen/default_margin"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/sexy_radio1"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/dark_gray"
+                            android:text="男"
+                            android:tag="M"
+                            android:onClick="@{sexyClick}"
+                            android:drawablePadding="@dimen/default_padding"
+                            style="@style/loan_selector"/>
+
+                        <RadioButton
+                            android:id="@+id/sexy_radio2"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/dark_gray"
+                            android:text="女"
+                            android:onClick="@{sexyClick}"
+                            android:tag="F"
+                            android:drawablePadding="@dimen/default_padding"
+                            style="@style/loan_selector"/>
+                    </RadioGroup>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="婚姻情况"
+                        android:textSize="@dimen/text_size_normal"
+                        android:padding="@dimen/default_margin"
+                        android:textColor="@color/dark_gray"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/default_margin">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/tab_height"
+                            android:gravity="center_vertical"
+                            android:background="@color/white">
+
+                            <RadioGroup
+                                android:id="@+id/married_group"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                    <RadioButton
+                                        android:id="@+id/married_radio1"
+                                        android:layout_weight="1"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:textColor="@color/dark_gray"
+                                        android:text="已婚有子女"
+                                        android:tag="01"
+                                        android:onClick="@{marriedClick}"
+                                        android:drawablePadding="@dimen/default_padding"
+                                        style="@style/loan_selector"/>
+
+
+                                    <RadioButton
+                                        android:id="@+id/married_radio2"
+                                        android:layout_weight="1"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:textColor="@color/dark_gray"
+                                        android:text="已婚无子女"
+                                        android:tag="02"
+                                        android:onClick="@{marriedClick}"
+                                        android:drawablePadding="@dimen/default_padding"
+                                        style="@style/loan_selector"/>
+
+
+                                    <RadioButton
+                                        android:id="@+id/married_radio3"
+                                        android:layout_weight="1"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:textColor="@color/dark_gray"
+                                        android:text="未婚"
+                                        android:onClick="@{marriedClick}"
+                                        android:tag="03"
+                                        android:drawablePadding="@dimen/default_padding"
+                                        style="@style/loan_selector"/>
+
+                            </RadioGroup>
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="手机号码使用年限（摩富金服注册账号）"
+                    android:textSize="@dimen/text_size_normal"
+                    android:padding="@dimen/default_margin"
+                    android:textColor="@color/dark_gray"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/default_margin"
+                    android:paddingLeft="@dimen/default_margin">
+
+                    <RadioGroup
+                        android:id="@+id/usePhoneNum_group"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <RadioButton
+                            android:id="@+id/usePhoneNum_radio1"
+                            android:layout_marginTop="@dimen/default_margin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/dark_gray"
+                            android:text="5年以上"
+                            android:tag="01"
+                            android:onClick="@{phoneUsedClick}"
+                            android:drawablePadding="@dimen/default_padding"
+                            style="@style/loan_selector"/>
+
+
+                        <RadioButton
+                            android:id="@+id/usePhoneNum_radio2"
+                            android:layout_marginTop="@dimen/default_margin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/dark_gray"
+                            android:text="4~5年"
+                            android:onClick="@{phoneUsedClick}"
+                            android:tag="02"
+                            android:drawablePadding="@dimen/default_padding"
+                            style="@style/loan_selector"/>
+
+
+                        <RadioButton
+                            android:id="@+id/usePhoneNum_radio3"
+                            android:layout_marginTop="@dimen/default_margin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/dark_gray"
+                            android:text="3~4年"
+                            android:onClick="@{phoneUsedClick}"
+                            android:tag="03"
+                            android:drawablePadding="@dimen/default_padding"
+                            style="@style/loan_selector"/>
+
+                        <RadioButton
+                            android:id="@+id/usePhoneNum_radio4"
+                            android:layout_marginTop="@dimen/default_margin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/dark_gray"
+                            android:text="2~3年"
+                            android:onClick="@{phoneUsedClick}"
+                            android:tag="04"
+                            android:drawablePadding="@dimen/default_padding"
+                            style="@style/loan_selector"/>
+
+
+                        <RadioButton
+                            android:id="@+id/usePhoneNum_radio5"
+                            android:layout_marginTop="@dimen/default_margin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/dark_gray"
+                            android:text="1~2年"
+                            android:onClick="@{phoneUsedClick}"
+                            android:tag="05"
+                            android:drawablePadding="@dimen/default_padding"
+                            style="@style/loan_selector"/>
+
+
+                        <RadioButton
+                            android:id="@+id/usePhoneNum_radio6"
+                            android:layout_marginTop="@dimen/default_margin"
+                            android:layout_width="wrap_content"
+                            android:tag="06"
+                            android:onClick="@{phoneUsedClick}"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/dark_gray"
+                            android:text="1年以内"
+                            android:drawablePadding="@dimen/default_padding"
+                            style="@style/loan_selector"/>
+
+
+                    </RadioGroup>
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="最高学历"
+                    android:textSize="@dimen/text_size_normal"
+                    android:padding="@dimen/default_margin"
+                    android:textColor="@color/dark_gray"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/default_margin">
+
+                    <RadioGroup
+                        android:id="@+id/education_group"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <RadioButton
+                            android:id="@+id/education_radio1"
+                            android:layout_marginTop="@dimen/default_margin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/dark_gray"
+                            android:tag="01"
+                            android:onClick="@{educationClick}"
+                            android:text="硕士研究生或以上"
+                            android:drawablePadding="@dimen/default_padding"
+                            style="@style/loan_selector"/>
+
+
+                        <RadioButton
+                            android:id="@+id/education_radio2"
+                            android:layout_marginTop="@dimen/default_margin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/dark_gray"
+                            android:tag="02"
+                            android:onClick="@{educationClick}"
+                            android:text="大学本科"
+                            android:drawablePadding="@dimen/default_padding"
+                            style="@style/loan_selector"/>
+
+
+                        <RadioButton
+                            android:id="@+id/education_radio3"
+                            android:layout_marginTop="@dimen/default_margin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/dark_gray"
+                            android:text="大专"
+                            android:tag="03"
+                            android:onClick="@{educationClick}"
+                            android:drawablePadding="@dimen/default_padding"
+                            style="@style/loan_selector"/>
+
+
+                        <RadioButton
+                            android:id="@+id/education_radio4"
+                            android:layout_marginTop="@dimen/default_margin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/dark_gray"
+                            android:text="高中(中专)"
+                            android:tag="04"
+                            android:onClick="@{educationClick}"
+                            android:drawablePadding="@dimen/default_padding"
+                            style="@style/loan_selector"/>
+
+
+                        <RadioButton
+                            android:id="@+id/education_radio5"
+                            android:layout_marginTop="@dimen/default_margin"
+                            android:layout_marginBottom="@dimen/default_margin"
+                            android:layout_width="wrap_content"
+                            android:tag="05"
+                            android:onClick="@{educationClick}"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/dark_gray"
+                            android:text="初中以下"
+                            android:checked="false"
+                            android:drawablePadding="@dimen/default_padding"
+                            style="@style/loan_selector"/>
+
+                    </RadioGroup>
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="本地居住地址"
+                    android:textSize="@dimen/text_size_normal"
+                    android:padding="@dimen/default_margin"
+                    android:textColor="@color/dark_gray"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/default_margin">
+
+                    <RadioGroup
+                        android:id="@+id/address_group"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical"
+                        android:background="@color/white">
+
+                        <RadioButton
+                            android:id="@+id/address_radio1"
+                            android:layout_marginTop="@dimen/default_margin"
+                            android:layout_width="wrap_content"
+                            android:tag="01"
+                            android:onClick="@{addressClick}"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/dark_gray"
+                            android:text="有本市常住户口5年以上"
+                            android:checked="false"
+                            android:drawablePadding="@dimen/default_padding"
+                            style="@style/loan_selector"/>
+
+                        <RadioButton
+                            android:id="@+id/address_radio2"
+                            android:layout_marginTop="@dimen/default_margin"
+                            android:layout_width="wrap_content"
+                            android:tag="02"
+                            android:onClick="@{addressClick}"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/dark_gray"
+                            android:text="有本市常住户口3～5年(含)"
+                            android:checked="false"
+                            android:drawablePadding="@dimen/default_padding"
+                            style="@style/loan_selector"/>
+
+
+                        <RadioButton
+                            android:id="@+id/address_radio3"
+                            android:layout_marginTop="@dimen/default_margin"
+                            android:layout_width="wrap_content"
+                            android:tag="03"
+                            android:onClick="@{addressClick}"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/dark_gray"
+                            android:text="有本市常住户口1～3年(含)"
+                            android:checked="false"
+                            android:drawablePadding="@dimen/default_padding"
+                            style="@style/loan_selector"/>
+
+                        <RadioButton
+                            android:id="@+id/address_radio4"
+                            android:layout_marginTop="@dimen/default_margin"
+                            android:layout_width="wrap_content"
+                            android:tag="04"
+                            android:onClick="@{addressClick}"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/dark_gray"
+                            android:text="有本市常住户口1年(含)以下"
+                            android:checked="false"
+                            android:drawablePadding="@dimen/default_padding"
+                            style="@style/loan_selector"/>
+
+                        <RadioButton
+                            android:id="@+id/address_radio5"
+                            android:layout_marginTop="@dimen/default_margin"
+                            android:layout_marginBottom="@dimen/default_margin"
+                            android:layout_width="wrap_content"
+                            android:tag="05"
+                            android:onClick="@{addressClick}"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/dark_gray"
+                            android:text="非本市常住户口"
+                            android:checked="false"
+                            android:drawablePadding="@dimen/default_padding"
+                            style="@style/loan_selector"/>
+                    </RadioGroup>
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="220dp"
+                    android:layout_height="wrap_content"
+                    android:text="下一步"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:paddingBottom="@dimen/default_padding"
+                    android:paddingTop="@dimen/default_padding"
+                    android:paddingStart="60dp"
+                    android:paddingEnd="60dp"
+                    android:onClick="@{handlers.next}"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="@dimen/default_item_margin"
+                    android:layout_marginTop="@dimen/default_item_margin"
+                    android:background="@drawable/loan_idval_button"/>
+
+
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+
+    </LinearLayout>
+</layout>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="cn.mofufin.morf.ui.fragment.CardSettleMentFragment"/>
+        <import type="android.view.View"/>
+        <variable
+            name="hasData"
+            type="boolean"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.fragment.CardSettleMentFragment"/>
+        <!--<variable-->
+            <!--name="onPress"-->
+            <!--type="boolean"/>-->
+        <!--<variable-->
+            <!--name="todayTotalMoney"-->
+            <!--type="String"/>-->
+        <!--<variable-->
+            <!--name="totalMoney"-->
+            <!--type="String"/>-->
+        <!--<variable-->
+            <!--name="totalPenNumber"-->
+            <!--type="String"/>-->
+        <!--<variable-->
+            <!--name="todayTotalPenNumber"-->
+            <!--type="String"/>-->
+        <!--<variable-->
+            <!--name="type"-->
+            <!--type="int"/>-->
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <com.scwang.smartrefresh.layout.SmartRefreshLayout
+                    android:id="@+id/refreshLayout"
+                    android:layout_above="@+id/next"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:srlAccentColor="#00000000"
+                    app:srlPrimaryColor="#00000000"
+                    app:srlEnablePreviewInEditMode="true">
+
+                    <com.scwang.smartrefresh.layout.header.BezierRadarHeader
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_srlBackgroundColor="@color/white"
+                        app:srlAccentColor="@color/app_blue"
+                        app:srlPrimaryColor="@color/white"
+                        app:srlEnableHorizontalDrag="true"/>
+
+                    <cc.ruis.lib.widget.WrapRecyclerView
+                        android:id="@+id/settle_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/white"
+                        android:visibility="visible"
+                        android:layout_above="@+id/next"
+                        tools:listitem="@layout/layout_card_item"/>
+                </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+                <TextView
+                    android:id="@+id/next"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/app_blue"
+                    android:gravity="center"
+                    android:onClick="@{handlers.add}"
+                    android:paddingBottom="@dimen/default_margin"
+                    android:paddingTop="@dimen/default_margin"
+                    android:text="@string/settlement_title"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_game_record" />
+
+            </RelativeLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                tools:visibility="gone"
+                android:visibility="@{!hasData?View.VISIBLE:View.GONE}"
+                android:orientation="vertical">
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/no_data"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/light_gray"
+                    android:textSize="@dimen/text_size_small"
+                    android:text="@string/nodata"/>
+            </LinearLayout>
+
+        </FrameLayout>
+    </LinearLayout>
+
+</layout>

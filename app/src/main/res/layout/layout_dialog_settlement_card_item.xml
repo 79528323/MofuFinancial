@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:apps="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.entity.User.DataBean.CardInfoBean"/>
+        <import type="cn.mofufin.morf.ui.util.DataUtils"/>
+        <import type="android.text.TextUtils"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.fragment.CardCreditFragment"/>
+        <variable
+            name="clicklistener"
+            type="android.view.View.OnClickListener"/>
+        <variable
+            name="bean"
+            type="cn.mofufin.morf.ui.entity.User.DataBean.CardInfoBean"/>
+        <variable
+            name="type"
+            type="Integer"/>
+        <variable
+            name="isShow"
+            type="boolean"/>
+        <variable
+            name="position"
+            type="int"/>
+        <variable
+            name="isCheck"
+            type="boolean"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:tag="@{position}"
+        android:onClick="@{clicklistener}"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:tag="@{bean}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <LinearLayout
+                android:id="@+id/img_linear"
+                android:layout_marginTop="@dimen/default_padding"
+                android:layout_marginBottom="@dimen/default_padding"
+                android:layout_marginStart="@dimen/default_padding"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:background="@drawable/round_gray">
+
+                <ImageView
+                    android:id="@+id/card_icon"
+                    android:layout_margin="1dp"
+                    android:layout_width="@dimen/icon_small"
+                    android:layout_height="@dimen/icon_small"
+                    tools:background="@drawable/logo_other_bank"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_alignTop="@+id/img_linear"
+                android:layout_alignBottom="@+id/img_linear"
+                android:layout_marginStart="@dimen/default_margin"
+                android:layout_toEndOf="@+id/img_linear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/text_size_normal"
+                    tools:text="平安银行"
+                    android:text="@{bean.cardBankName}"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="bottom"
+                    android:textColor="@color/light_gray"
+                    android:textSize="@dimen/text_size_small"
+                    tools:text="尾号为8888的储蓄卡"
+                    android:text="@{DataUtils.bankNumStr(bean.cardCode,type)}"/>
+
+            </LinearLayout>
+
+            <CheckBox
+                android:duplicateParentState="true"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/default_padding"
+                style="@style/industry_selector"
+                android:checked="@{isCheck}"/>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginStart="@dimen/default_padding"
+            android:background="@color/line"/>
+
+    </LinearLayout>
+</layout>

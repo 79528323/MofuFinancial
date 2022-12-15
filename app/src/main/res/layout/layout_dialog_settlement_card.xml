@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.widget.SettlementCardDialog"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.widget.SettlementCardDialog"/>
+        <variable
+            name="type"
+            type="int"/>
+    </data>
+    <LinearLayout
+        android:id="@+id/main_linear"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:padding="@dimen/default_padding"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/default_padding"
+                android:onClick="@{handlers.cancel}"
+                android:src="@drawable/back"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text='@{type == 0?"选择结算卡":"选择信用卡"}'
+                android:textColor="@color/dark_gray"
+                android:textSize="@dimen/text_size_title"
+                android:layout_centerInParent="true"/>
+        </RelativeLayout>
+
+        <cc.ruis.lib.widget.WrapRecyclerView
+            android:layout_weight="1"
+            android:id="@+id/settelCardList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/layout_dialog_settlement_card_item"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/title_height"
+            android:textSize="@dimen/text_size_normal"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:onClick="@{handlers.settleAdd}"
+            android:background="@color/app_blue"
+            android:text="@{type==0?@string/settlement_title:@string/credit_card_title}"/>
+    </LinearLayout>
+
+
+</layout>

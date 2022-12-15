@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:bind="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools">
+<data>
+    <import type="android.view.View"/>
+    <import type="cn.mofufin.morf.ui.widget.LoanRepayDialog"/>
+    <variable
+        name="handlers"
+        type="cn.mofufin.morf.ui.widget.LoanRepayDialog"/>
+</data>
+<LinearLayout
+    android:id="@+id/main_linear"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/transparent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="400dp"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical"
+        android:background="@drawable/shape_loan_dialog">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:padding="@dimen/default_margin">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/icon_repay_mofu"/>
+
+            <TextView
+                android:layout_marginStart="@dimen/default_margin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="摩富金服（广州）有限公司"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_title"/>
+
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#FFD500"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/default_item_margin"
+            android:text="请把本月应还金额转账至如下账号"
+            android:gravity="center"
+            android:textColor="#FFD500"
+            android:textSize="@dimen/text_size_normal"/>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/repay_dailog_bg">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/default_padding"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="开户名称："
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_normal"/>
+
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="摩富金服（广州）有限公司"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="@dimen/text_size_normal"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/default_padding"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="开户名称："
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_normal"/>
+
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1101 4826 8660 09"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="@dimen/text_size_normal"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="开户名称："
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_normal"/>
+
+
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="摩富金服（广州）有限公司"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="@dimen/text_size_normal"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/clip_bord"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:text="复制账号"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="40dp"
+            android:gravity="center"
+            android:background="@drawable/loan_repay_dialog_button"
+            android:layout_centerHorizontal="true"
+            android:padding="@dimen/default_padding"
+            android:layout_below="@+id/content_layout"
+            android:textColor="@color/loan_red"
+            android:textSize="@dimen/text_size_title"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="温馨提示：转账后请电话联系客服"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#FFD6D6"
+            android:textSize="@dimen/text_size_small"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/default_padding"
+            android:text="400-891-5100"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_normal"/>
+
+    </LinearLayout>
+
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/default_padding"
+        android:layout_marginTop="@dimen/default_item_margin"
+        android:onClick="@{handlers.cancel}"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/financial_upgrade_del"/>
+
+</LinearLayout>
+
+
+</layout>

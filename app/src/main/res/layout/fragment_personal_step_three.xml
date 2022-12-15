@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.loan.fragment.PersonalStepThreeFragment"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.loan.fragment.PersonalStepThreeFragment"/>
+        <variable
+            name="familyClickListener"
+            type="android.view.View.OnClickListener"/>
+        <variable
+            name="carClickListener"
+            type="android.view.View.OnClickListener"/>
+        <variable
+            name="creditClickListener"
+            type="android.view.View.OnClickListener"/>
+        <variable
+            name="privateClickListener"
+            type="android.view.View.OnClickListener"/>
+        <variable
+            name="hasCar"
+            type="boolean"/>
+        <variable
+            name="hasCredit"
+            type="boolean"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        android:background="@color/app_background">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@color/loan_red"
+            android:padding="@dimen/default_padding">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/attention"/>
+
+            <TextView
+                android:layout_marginLeft="@dimen/default_padding"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/white"
+                android:text="请认真填写个人信息，避免修改带来的影响！"/>
+
+        </LinearLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="近一年内税后收入(单位/元)"
+                    android:textSize="@dimen/text_size_normal"
+                    android:padding="@dimen/default_margin"
+                    android:textColor="@color/dark_gray"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/default_margin">
+
+                    <EditText
+                        android:id="@+id/amt"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/tab_height"
+                        android:hint="请输入近一年内税后收入"
+                        android:gravity="center_vertical"
+                        android:inputType="number"
+                        android:textColorHint="@color/light_gray"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="@dimen/text_size_small"
+                        android:background="@null"/>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="是否自有房产"
+                    android:textSize="@dimen/text_size_normal"
+                    android:padding="@dimen/default_margin"
+                    android:textColor="@color/dark_gray"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/default_margin">
+
+                    <RadioGroup
+                        android:id="@+id/family_group"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/default_margin"
+                        android:paddingBottom="@dimen/default_margin"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/family_radio1"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/dark_gray"
+                            android:text="是"
+                            android:tag="Y"
+                            android:onClick="@{familyClickListener}"
+                            android:drawablePadding="@dimen/default_padding"
+                            style="@style/loan_selector"/>
+
+                        <RadioButton
+                            android:id="@+id/family_radio2"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/dark_gray"
+                            android:text="否"
+                            android:tag="N"
+                            android:onClick="@{familyClickListener}"
+                            android:drawablePadding="@dimen/default_padding"
+                            style="@style/loan_selector"/>
+                    </RadioGroup>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="是否有车"
+                        android:textSize="@dimen/text_size_normal"
+                        android:padding="@dimen/default_margin"
+                        android:textColor="@color/dark_gray"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/default_margin">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/tab_height"
+                            android:gravity="center_vertical"
+                            android:background="@color/white">
+
+                            <RadioGroup
+                                android:id="@+id/car_group"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:id="@+id/car_radio1"
+                                    android:layout_weight="1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/dark_gray"
+                                    android:text="是"
+                                    android:tag="Y"
+                                    android:onClick="@{carClickListener}"
+                                    android:drawablePadding="@dimen/default_padding"
+                                    style="@style/loan_selector"/>
+
+                                <RadioButton
+                                    android:id="@+id/car_radio2"
+                                    android:layout_weight="1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/dark_gray"
+                                    android:text="否"
+                                    android:tag="N"
+                                    android:onClick="@{carClickListener}"
+                                    android:drawablePadding="@dimen/default_padding"
+                                    style="@style/loan_selector"/>
+                            </RadioGroup>
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:visibility="@{hasCar?View.VISIBLE:View.GONE}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="车牌号"
+                        android:textSize="@dimen/text_size_normal"
+                        android:padding="@dimen/default_margin"
+                        android:textColor="@color/dark_gray"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/default_margin">
+
+                        <EditText
+                            android:id="@+id/plateNo"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/tab_height"
+                            android:hint="请输入车牌号"
+                            android:gravity="center_vertical"
+                            android:textColorHint="@color/light_gray"
+                            android:textColor="@color/dark_gray"
+                            android:textSize="@dimen/text_size_small"
+                            android:background="@null"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="是否有信用卡"
+                    android:textSize="@dimen/text_size_normal"
+                    android:padding="@dimen/default_margin"
+                    android:textColor="@color/dark_gray"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/tab_height"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/default_margin">
+
+                    <RadioGroup
+                        android:id="@+id/credit_group"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/credit_radio1"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/dark_gray"
+                            android:text="是"
+                            android:tag="Y"
+                            android:onClick="@{creditClickListener}"
+                            android:drawablePadding="@dimen/default_padding"
+                            style="@style/loan_selector"/>
+
+                        <RadioButton
+                            android:id="@+id/credit_radio2"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/dark_gray"
+                            android:text="否"
+                            android:tag="N"
+                            android:onClick="@{creditClickListener}"
+                            android:drawablePadding="@dimen/default_padding"
+                            style="@style/loan_selector"/>
+                    </RadioGroup>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:visibility="@{hasCredit?View.VISIBLE:View.GONE}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="信用卡额度"
+                        android:textSize="@dimen/text_size_normal"
+                        android:padding="@dimen/default_margin"
+                        android:textColor="@color/dark_gray"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/default_margin">
+
+                        <EditText
+                            android:id="@+id/credit"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/tab_height"
+                            android:hint="请输入额度"
+                            android:inputType="number"
+                            android:gravity="center_vertical"
+                            android:textColorHint="@color/light_gray"
+                            android:textColor="@color/dark_gray"
+                            android:textSize="@dimen/text_size_small"
+                            android:background="@null"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="是否为私营业主"
+                    android:textSize="@dimen/text_size_normal"
+                    android:padding="@dimen/default_margin"
+                    android:textColor="@color/dark_gray"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/tab_height"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/default_margin">
+
+                    <RadioGroup
+                        android:id="@+id/privater_group"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/privater_radio1"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/dark_gray"
+                            android:text="是"
+                            android:tag="Y"
+                            android:onClick="@{privateClickListener}"
+                            android:drawablePadding="@dimen/default_padding"
+                            style="@style/loan_selector"/>
+
+                        <RadioButton
+                            android:id="@+id/privater_radio2"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/dark_gray"
+                            android:text="否"
+                            android:tag="N"
+                            android:onClick="@{privateClickListener}"
+                            android:drawablePadding="@dimen/default_padding"
+                            style="@style/loan_selector"/>
+                    </RadioGroup>
+                </LinearLayout>
+
+
+
+
+                <TextView
+                    android:layout_width="220dp"
+                    android:layout_height="wrap_content"
+                    android:text="下一步"
+                    android:textColor="@color/white"
+                    android:paddingBottom="@dimen/default_padding"
+                    android:paddingTop="@dimen/default_padding"
+                    android:gravity="center"
+                    android:onClick="@{handlers.next}"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="@dimen/default_item_margin"
+                    android:layout_marginTop="50dp"
+                    android:background="@drawable/loan_idval_button"/>
+
+
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+
+    </LinearLayout>
+</layout>

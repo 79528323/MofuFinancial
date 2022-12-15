@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.mine.MyRateActivity"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.mine.MyRateActivity"/>
+        <variable
+            name="life"
+            type="String"/>
+
+        <variable
+            name="other"
+            type="String"/>
+
+        <variable
+            name="alipay"
+            type="String"/>
+
+        <variable
+            name="wechat"
+            type="String"/>
+
+        <variable
+            name="charge"
+            type="String"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:background="@color/app_background"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/layout_title"
+            bind:backIcon="@{@drawable/title_back}"
+            bind:handlers="@{handlers}"
+            bind:titleName="@{@string/myrate_title}" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_marginTop="@dimen/default_item_margin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/tab_height"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/default_padding"
+                        android:background="@color/white"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/myrate_1"
+                            android:textColor="@color/dark_gray"
+                            android:textSize="@dimen/text_size_normal"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/app_blue"
+                            android:text="@{life}"
+                            android:layout_marginRight="@dimen/default_padding"
+                            android:textSize="@dimen/text_size_normal"/>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="@dimen/default_padding"
+                        android:background="@color/app_background"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/tab_height"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/default_padding"
+                        android:background="@color/white"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/myrate_2"
+                            android:textColor="@color/dark_gray"
+                            android:textSize="@dimen/text_size_normal"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/app_blue"
+                            android:text="@{other}"
+                            android:layout_marginRight="@dimen/default_padding"
+                            android:textSize="@dimen/text_size_normal"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+
+                <cc.ruis.lib.widget.WrapRecyclerView
+                    android:layout_marginTop="@dimen/default_item_margin"
+                    android:id="@+id/rate_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:overScrollMode="never"
+                    tools:listitem="@layout/layout_rate_item"/>
+
+
+                <LinearLayout
+                    android:layout_marginTop="@dimen/default_item_margin"
+                    android:layout_marginBottom="@dimen/default_item_margin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/tab_height"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/default_padding"
+                        android:background="@color/white"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/myrate_3"
+                            android:textColor="@color/dark_gray"
+                            android:textSize="@dimen/text_size_normal"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/app_blue"
+                            android:text="@{alipay}"
+                            android:layout_marginRight="@dimen/default_padding"
+                            android:textSize="@dimen/text_size_normal"/>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="@dimen/default_padding"
+                        android:background="@color/app_background"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/tab_height"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/default_padding"
+                        android:background="@color/white"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/myrate_4"
+                            android:textColor="@color/dark_gray"
+                            android:textSize="@dimen/text_size_normal"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/app_blue"
+                            android:text="@{wechat}"
+                            android:layout_marginRight="@dimen/default_padding"
+                            android:textSize="@dimen/text_size_normal"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <cc.ruis.lib.widget.WrapRecyclerView
+                    android:id="@+id/over_rate_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:overScrollMode="never"
+                    android:layout_marginBottom="@dimen/default_item_margin"
+                    tools:listitem="@layout/layout_rate_item"/>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+</layout>

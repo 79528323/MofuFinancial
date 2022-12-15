@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.mine.SettlementCardAddActivity"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.mine.SettlementCardAddActivity"/>
+        <variable
+            name="cardnum"
+            type="String"/>
+
+        <variable
+            name="name"
+            type="String"/>
+
+        <variable
+            name="isAgree"
+            type="boolean"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        android:background="@color/app_background">
+
+
+        <include
+            layout="@layout/layout_title"
+            bind:backIcon="@{@drawable/title_back}"
+            bind:handlers="@{handlers}"
+            bind:titleName="@{@string/settlement_title}" />
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/settlement_1"
+            android:padding="@dimen/default_padding"
+            android:textColor="@color/light_gray"
+            android:textSize="@dimen/text_size_small"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tab_height"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/default_padding"
+                android:background="@color/white"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/settlement_2"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/text_size_normal"/>
+
+                <EditText
+                    android:id="@+id/name"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text=""
+                    android:paddingLeft="@dimen/default_padding"
+                    android:hint="请输入持卡人姓名"
+                    android:textSize="@dimen/text_size_normal"
+                    android:textColor="@color/dark_gray"
+                    android:textColorHint="@color/light_gray"
+                    android:gravity="center_vertical"
+                    android:background="@null"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="@dimen/default_padding"
+                    android:onClick="@{handlers.tips}"
+                    android:src="@drawable/warning"
+                    android:textSize="@dimen/text_size_normal"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="@dimen/default_padding"
+                android:background="@color/app_background"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tab_height"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/default_padding"
+                android:background="@color/white"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/settlement_3"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/text_size_normal"/>
+
+                <EditText
+                    android:id="@+id/num"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text=""
+                    android:inputType="number"
+                    android:paddingLeft="@dimen/default_padding"
+                    android:hint="请输入银行卡号"
+                    android:textSize="@dimen/text_size_normal"
+                    android:textColorHint="@color/light_gray"
+                    android:gravity="center_vertical"
+                    android:background="@null"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="请填写办卡时银行预留手机号"
+            android:padding="@dimen/default_padding"
+            android:textColor="@color/light_gray"
+            android:textSize="@dimen/text_size_small"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tab_height"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/default_padding"
+                android:background="@color/white"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/register2"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/text_size_normal"/>
+
+                <EditText
+                    android:id="@+id/phone"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="@dimen/default_padding"
+                    android:hint="请填写银行预留手机号"
+                    android:inputType="number"
+                    android:maxLength="11"
+                    android:textSize="@dimen/text_size_normal"
+                    android:textColorHint="@color/light_gray"
+                    android:gravity="center_vertical"
+                    android:background="@null"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_padding"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/default_padding"
+            android:paddingRight="@dimen/default_padding">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical">
+
+                <!--<ImageView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="@drawable/register_noselect" />-->
+
+                <LinearLayout
+                    android:paddingTop="@dimen/default_padding"
+                    android:paddingBottom="@dimen/default_padding"
+                    android:id="@+id/register_agree"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:duplicateParentState="true"
+                        android:onClick="@{handlers.Agreement}"
+                        style="@style/pwd_check"
+                        android:checked="@{isAgree}"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_marginLeft="5dp"
+                        android:text="@string/register4"
+                        android:textSize="@dimen/text_size_title"
+                        android:textColor="@color/dark_gray" />
+                </LinearLayout>
+
+                <TextView
+                    android:paddingTop="@dimen/default_padding"
+                    android:paddingBottom="@dimen/default_padding"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/default_padding"
+                    android:onClick="@{handlers.agreement}"
+                    android:layout_gravity="right|center_vertical"
+                    android:text="@string/register5"
+                    android:textColor="@color/app_blue" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <!--<LinearLayout-->
+            <!--android:visibility="@{!isNext?View.GONE:View.VISIBLE}"-->
+            <!--android:layout_marginTop="@dimen/default_item_margin"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@color/white"-->
+            <!--android:orientation="vertical">-->
+
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="@dimen/tab_height"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:paddingLeft="@dimen/default_padding"-->
+                <!--android:background="@color/white"-->
+                <!--android:gravity="center_vertical">-->
+
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="@string/modfyCode6"-->
+                    <!--android:textColor="@color/dark_gray"-->
+                    <!--android:textSize="@dimen/text_size_normal"/>-->
+
+                <!--<EditText-->
+                    <!--android:id="@+id/modfy_log_new_code"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:text="@{newPassword}"-->
+                    <!--android:paddingLeft="@dimen/default_padding"-->
+                    <!--android:hint="@string/modfyCode7"-->
+                    <!--android:inputType="textPassword"-->
+                    <!--android:maxLength="11"-->
+                    <!--android:textSize="@dimen/text_size_normal"-->
+                    <!--android:gravity="center_vertical"-->
+                    <!--android:background="@null"/>-->
+
+            <!--</LinearLayout>-->
+
+            <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="1dp"-->
+                <!--android:layout_marginLeft="@dimen/default_padding"-->
+                <!--android:background="@color/app_background"/>-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="@dimen/tab_height"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:paddingLeft="@dimen/default_padding"-->
+                <!--android:background="@color/white"-->
+                <!--android:gravity="center_vertical">-->
+
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="@string/modfyCode8"-->
+                    <!--android:textColor="@color/dark_gray"-->
+                    <!--android:textSize="@dimen/text_size_normal"/>-->
+
+                <!--<EditText-->
+                    <!--android:id="@+id/modfy_log_repeat"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:text="@{repeatPassword}"-->
+                    <!--android:inputType="textPassword"-->
+                    <!--android:paddingLeft="@dimen/default_padding"-->
+                    <!--android:hint="@string/modfyCode9"-->
+                    <!--android:textSize="@dimen/text_size_normal"-->
+                    <!--android:gravity="center_vertical"-->
+                    <!--android:background="@null"/>-->
+
+            <!--</LinearLayout>-->
+        <!--</LinearLayout>-->
+
+        <TextView
+            android:layout_marginTop="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
+            android:background="@drawable/login_button"
+            android:gravity="center"
+            android:paddingBottom="@dimen/default_padding"
+            android:paddingTop="@dimen/default_padding"
+            android:onClick="@{handlers.next}"
+            android:text="@string/ok"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_game_record" />
+    </LinearLayout>
+</layout>

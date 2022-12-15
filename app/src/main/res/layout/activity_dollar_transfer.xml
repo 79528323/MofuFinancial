@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="cn.mofufin.morf.ui.mine.DollarTransferActivity"/>
+        <import type="android.view.View"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.mine.DollarTransferActivity"/>
+        <variable
+            name="amount"
+            type="String"/>
+        <variable
+            name="exchange"
+            type="String"/>
+        <variable
+            name="type"
+            type="int"/>
+        <variable
+            name="tips"
+            type="String"/>
+        <variable
+            name="hint"
+            type="String"/>
+        <variable
+            name="translate"
+            type="String"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:fitsSystemWindows="true"
+        android:background="#FFF5F5F5">
+
+
+        <include
+            layout="@layout/layout_title"
+            bind:backIcon="@{@drawable/title_back}"
+            bind:handlers="@{handlers}"
+            bind:titleName="@{@string/balance_tranf_title}" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="#E75A30"
+            android:padding="@dimen/default_padding">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/attention"/>
+
+            <TextView
+                android:layout_marginLeft="@dimen/default_padding"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/white"
+                android:text="@{(@string/dollar_tlse_1)+exchange}"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:paddingTop="@dimen/default_padding"
+            android:paddingLeft="@dimen/default_padding"
+            android:paddingBottom="@dimen/default_padding"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/dark_gray"
+                android:textSize="@dimen/text_size_title"
+                android:text="@string/dollar_tlse_2"/>
+
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/default_margin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_game_record"
+                    android:textColor="@color/dark_gray"
+                    tools:text="HK$"
+                    android:text="@{type==0?@string/dollar_tlse_4:@string/dollar_tlse_5}"/>
+
+
+                <EditText
+                    android:id="@+id/doll_sum"
+                    android:background="@null"
+                    android:layout_weight="1"
+                    android:maxLength="11"
+                    android:layout_marginLeft="@dimen/default_margin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_big"
+                    android:textColorHint="@color/hint"
+                    android:text="@{translate}"
+                    android:onTextChanged="@{handlers.onTextChanged}"
+                    android:textColor="@color/dark_gray"
+                    android:inputType="numberDecimal"/>
+
+
+                <ImageView
+                    android:id="@+id/clear"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{handlers.clean}"
+                    android:layout_marginRight="@dimen/default_margin"
+                    android:visibility="invisible"
+                    android:background="@drawable/backspace"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#EBEBEB"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/default_padding"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_small"
+                    tools:text="@string/MPOS5"
+                    android:text="@{tips}"
+                    android:textColor="#E75A30"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_title"
+                    android:text="全部转出"
+                    android:onClick="@{handlers.trunAll}"
+                    android:paddingRight="@dimen/default_padding"
+                    android:gravity="right"
+                    android:textColor="@color/app_blue"/>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_marginTop="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/menu_delete_width"
+            android:paddingRight="@dimen/menu_delete_width"
+            android:background="@drawable/login_button"
+            android:layout_gravity="center_horizontal"
+            android:paddingBottom="@dimen/default_padding"
+            android:paddingTop="@dimen/default_padding"
+            android:text="确定转出"
+            android:onClick="@{handlers.onNext}"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_normal" />
+
+    </LinearLayout>
+</layout>

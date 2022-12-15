@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.util.DataUtils"/>
+        <import type="cn.mofufin.morf.ui.mine.DepositActivity"/>
+        <import type="android.text.TextUtils"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.mine.DepositActivity"/>
+        <variable
+            name="ensureMoneyPlanPhase"
+            type="int"/>
+        <variable
+            name="ensureMoeny"
+            type="int"/>
+        <variable
+            name="plan"
+            type="cn.mofufin.morf.ui.entity.Deposit.DataBean.PlanBean"/>
+        <variable
+            name="refund"
+            type="String"/>
+        <variable
+            name="linetips"
+            type="String"/>
+        <variable
+            name="secondtips"
+            type="String"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/white">
+
+        <include
+            layout="@layout/layout_title"
+            bind:backIcon="@{@drawable/title_back}"
+            bind:handlers="@{handlers}"
+            bind:titleName="@{@string/deposit_title}" />
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <RelativeLayout
+                    android:layout_marginTop="@dimen/default_item_margin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/deposit_amount_bg">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        tools:text="128元"
+                        android:text='@{ensureMoeny+"元"}'
+                        android:typeface="sans"
+                        android:textStyle="bold"
+                        android:paddingBottom="@dimen/default_padding"
+                        android:textColor="@color/app_blue"
+                        android:textSize="@dimen/balance_text_size"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:text="@string/deposit_1"
+                        android:paddingBottom="@dimen/default_margin"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_small"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/folder_menu_item_height">
+
+
+                    <ImageView
+                        android:id="@+id/line"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_alignParentBottom="true"
+                        android:background="@drawable/deposit_line"/>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignStart="@+id/line"
+                        android:layout_alignEnd="@id/line"
+                        android:layout_above="@id/line"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/deposit_2"
+                                android:gravity="center"
+                                android:textSize="@dimen/text_size_normal"
+                                android:textColor="@{ensureMoneyPlanPhase>0 &amp;&amp; ensureMoneyPlanPhase==1?@color/app_blue:@color/light_gray}"/>
+
+                            <TextView
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/deposit_3"
+                                android:gravity="center"
+                                android:textSize="@dimen/text_size_normal"
+                                android:textColor="@{ensureMoneyPlanPhase>0 &amp;&amp; ensureMoneyPlanPhase==2?@color/app_blue:@color/light_gray}"/>
+
+                            <TextView
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="@string/deposit_4"
+                                android:gravity="center"
+                                android:textSize="@dimen/text_size_normal"
+                                android:textColor="@{ensureMoneyPlanPhase>0 &amp;&amp; ensureMoneyPlanPhase==3?@color/app_blue:@color/light_gray}"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="@dimen/default_padding">
+
+                            <ImageView
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:paddingRight="@dimen/default_padding"
+                                android:visibility="@{ensureMoneyPlanPhase==1?View.VISIBLE:View.INVISIBLE}"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/deposit_select"/>
+
+                            <ImageView
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:visibility="@{ensureMoneyPlanPhase==2?View.VISIBLE:View.INVISIBLE}"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/deposit_select"/>
+
+                            <ImageView
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:paddingLeft="@dimen/default_padding"
+                                android:visibility="@{ensureMoneyPlanPhase==3?View.VISIBLE:View.INVISIBLE}"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/deposit_select"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </RelativeLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_weight="0.7"
+                        android:layout_width="0dp"
+                        android:gravity="right"
+                        android:paddingEnd="@dimen/default_padding"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/topic_contat_text"
+                        android:textColor="@color/app_blue"
+                        android:text="•"
+                        tools:ignore="RtlHardcoded" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:text="@{linetips}"
+                        tools:text="1232112312321321321321213123123213123213321321231"
+                        android:gravity="center"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_small" />
+
+
+                    <TextView
+                        android:layout_weight="0.7"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/topic_contat_text"
+                        android:paddingStart="@dimen/default_padding"
+                        android:textColor="@color/app_blue"
+                        android:text="•"/>
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    tools:text="马上充值(128元)押金"
+                    tools:textColor="@color/white"
+                    android:onClick="@{handlers.charge}"
+                    android:layout_marginTop="@dimen/default_item_margin"
+                    android:textSize="@dimen/text_size_normal"
+                    android:paddingTop="@dimen/default_padding"
+                    android:paddingBottom="@dimen/default_padding"
+                    android:paddingLeft="@dimen/default_item_margin"
+                    android:paddingRight="@dimen/default_item_margin"
+                    tools:background="@drawable/login_button"
+                    android:text="@{ensureMoeny>0?@string/deposit_13:@string/deposit_12}"
+                    android:background="@{ensureMoeny>0?@drawable/deposit_ever_button:@drawable/login_button}"
+                    android:textColor="@{ensureMoeny>0?@color/light_gray:@color/white}"/>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_item_margin"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/deposit_head"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="bottom"
+                        android:background="#EFDDC1">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/default_padding"
+                            android:gravity="center_vertical"
+                            android:layout_gravity="center"
+                            android:orientation="horizontal">
+
+                            <View
+                                android:layout_weight="1"
+                                android:layout_width="@dimen/chat_image_min_width"
+                                android:layout_marginRight="@dimen/default_margin"
+                                android:layout_height="1dp"
+                                android:background="#D79939"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/deposit_6"
+                                android:textSize="@dimen/text_size_normal"
+                                android:textColor="#D79939"/>
+
+                            <View
+                                android:layout_weight="1"
+                                android:layout_width="@dimen/chat_image_min_width"
+                                android:layout_marginLeft="@dimen/default_margin"
+                                android:layout_height="1dp"
+                                android:background="#D79939"/>
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/deposit_7"
+                            android:layout_gravity="center"
+                            android:textSize="@dimen/text_size_normal"
+                            android:textColor="#AF7A7A"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="@dimen/default_margin"
+                            android:paddingTop="@dimen/default_margin"
+                            android:paddingRight="@dimen/default_padding"
+                            android:paddingBottom="@dimen/default_margin"
+                            android:layout_margin="@dimen/default_margin"
+                            android:background="@drawable/shape_member"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/deposit_8"
+                                android:textSize="@dimen/text_size_normal"
+                                android:textColor="#7F6048"/>
+
+                            <TextView
+                                android:id="@+id/deposit_exp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="@dimen/default_padding"
+                                android:textSize="@dimen/text_size_normal"
+                                android:lineSpacingExtra="1.5dp"
+                                android:textColor="#7F6048"/>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="@dimen/default_padding"
+                                android:layout_marginBottom="@dimen/default_padding"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="@dimen/text_size_small"
+                                    android:text="@{refund}"
+                                    android:textStyle="bold"
+                                    android:lineSpacingExtra="1.5dp"
+                                    tools:text="@string/deposit_10"
+                                    android:textColor="#7F6048"/>
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/deposit_11"
+                                android:textSize="@dimen/text_size_normal"
+                                android:layout_gravity="bottom"
+                                android:textColor="#7F6048"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/deposit_15"
+                                android:lineSpacingExtra="2dp"
+                                android:textSize="@dimen/text_size_normal"
+                                android:layout_gravity="bottom"
+                                android:layout_marginTop="@dimen/default_padding"
+                                android:textColor="#7F6048"/>
+                        </LinearLayout>
+
+
+
+
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+
+    </LinearLayout>
+
+</layout>

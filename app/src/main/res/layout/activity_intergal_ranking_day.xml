@@ -1,0 +1,652 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.mine.IntegralRankingDayActivity"/>
+        <import type="cn.mofufin.morf.ui.util.DataUtils"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.mine.IntegralRankingDayActivity"/>
+
+        <variable
+            name="faDayState"
+            type="int"/>
+        <variable
+            name="hasData"
+            type="boolean"/>
+        <variable
+            name="when"
+            type="int"/>
+        <variable
+            name="bean1st"
+            type="cn.mofufin.morf.ui.entity.IntergalRank.ActivityBean.FdDayListBean"/>
+        <variable
+            name="bean2nd"
+            type="cn.mofufin.morf.ui.entity.IntergalRank.ActivityBean.FdDayListBean"/>
+        <variable
+            name="bean3rd"
+            type="cn.mofufin.morf.ui.entity.IntergalRank.ActivityBean.FdDayListBean"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#f02e32"
+        android:orientation="vertical">
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <include
+                    android:id="@+id/title_layout"
+                    layout="@layout/layout_title"
+                    bind:backIcon="@{@drawable/title_back}"
+                    bind:handlers="@{handlers}"
+                    bind:isTranslate="@{true}"
+                    bind:canSubmit="@{true}"
+                    android:layout_alignParentTop="true"
+                    bind:titleName="@{@string/intergal_rank_titles}"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent" />
+
+                <ImageView
+                    tools:visibility="gone"
+                    android:visibility="visible"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/day_title"
+                    android:layout_gravity="center_horizontal"/>
+
+
+                <ImageView
+                    tools:visibility="gone"
+                    android:visibility="visible"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/day_human"
+                    android:layout_gravity="center_horizontal"/>
+
+
+                <RelativeLayout
+                    android:visibility="visible"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-60dp">
+
+
+                    <LinearLayout
+                        android:id="@+id/linear"
+                        android:layout_alignTop="@id/right_shaow"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/default_item_margin"
+                        android:layout_marginEnd="@dimen/default_item_margin"
+                        android:background="@drawable/shape_white_radius">
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/champion_linear"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:gravity="center_horizontal|bottom"
+                        android:background="@drawable/shape_day_middle_bg">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/day_the_1st"/>
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/left_shaow"
+                        android:layout_toLeftOf="@id/champion_linear"
+                        android:layout_alignBottom="@id/champion_linear"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/day_left"/>
+
+
+                    <ImageView
+                        android:id="@+id/right_shaow"
+                        android:layout_toRightOf="@id/champion_linear"
+                        android:layout_alignBottom="@id/champion_linear"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/day_right"/>
+
+
+                    <LinearLayout
+                        android:id="@+id/left_bg"
+                        android:layout_alignStart="@id/linear"
+                        android:layout_alignEnd="@id/left_shaow"
+                        android:layout_alignTop="@id/linear"
+                        android:layout_alignBottom="@id/linear"
+                        android:orientation="vertical"
+                        android:gravity="center_horizontal"
+                        android:paddingTop="@dimen/default_padding"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/day_the_3rd"/>
+
+
+                        <TextView
+                            android:visibility="@{bean3rd==null?View.VISIBLE:View.GONE}"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:textColor="@color/dark_gray"
+                            android:layout_marginTop="@dimen/lineSpacingExtra"
+                            android:gravity="center"
+                            android:text="暂无排名"
+                            android:textSize="@dimen/text_size_small"/>
+
+
+                        <LinearLayout
+                            android:visibility="@{bean3rd==null?View.GONE:View.VISIBLE}"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/dark_gray"
+                                android:layout_marginTop="@dimen/lineSpacingExtra"
+                                tools:text="张**"
+                                android:text="@{DataUtils.coverStr(bean3rd.name)}"
+                                android:textSize="@dimen/text_size_small"/>
+
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/gray"
+                                android:layout_marginTop="@dimen/lineSpacingExtra"
+                                android:text="第三名"
+                                android:textSize="@dimen/red_dingding"/>
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/gray"
+                                android:layout_marginTop="@dimen/lineSpacingExtra"
+                                tools:text="188****8888"
+                                android:text="@{DataUtils.coverPhoneNum(bean3rd.phone)}"
+                                android:textSize="@dimen/red_dingding"/>
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/gray"
+                                android:layout_marginTop="@dimen/lineSpacingExtra"
+                                tools:text="积分：1000"
+                                android:text='@{"积分："+bean3rd.integral}'
+                                android:textSize="@dimen/red_dingding"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/right_bg"
+                        android:layout_alignStart="@id/right_shaow"
+                        android:layout_alignEnd="@id/linear"
+                        android:layout_alignTop="@id/linear"
+                        android:layout_alignBottom="@id/linear"
+                        android:gravity="center_horizontal"
+                        android:paddingTop="@dimen/default_padding"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/day_the_2nd"/>
+
+
+
+                        <TextView
+                            android:visibility="@{bean2nd==null?View.VISIBLE:View.GONE}"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:textColor="@color/dark_gray"
+                            android:layout_marginTop="@dimen/lineSpacingExtra"
+                            android:gravity="center"
+                            android:text="暂无排名"
+                            android:textSize="@dimen/text_size_small"/>
+
+
+                        <LinearLayout
+                            android:visibility="@{bean2nd==null?View.GONE:View.VISIBLE}"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:gravity="center_horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/dark_gray"
+                                android:layout_marginTop="@dimen/lineSpacingExtra"
+                                tools:text="张**"
+                                android:text="@{DataUtils.coverStr(bean2nd.name)}"
+                                android:textSize="@dimen/text_size_small"/>
+
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/gray"
+                                android:layout_marginTop="@dimen/lineSpacingExtra"
+                                android:text="第二名"
+                                android:textSize="@dimen/red_dingding"/>
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/gray"
+                                android:layout_marginTop="@dimen/lineSpacingExtra"
+                                tools:text="188****8888"
+                                android:text="@{DataUtils.coverPhoneNum(bean2nd.phone)}"
+                                android:textSize="@dimen/red_dingding"/>
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/gray"
+                                android:layout_marginTop="@dimen/lineSpacingExtra"
+                                tools:text="积分：1000"
+                                android:text='@{"积分："+bean2nd.integral}'
+                                android:textSize="@dimen/red_dingding"/>
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_toEndOf="@id/left_bg"
+                        android:layout_toStartOf="@id/right_bg"
+                        android:layout_below="@+id/champion_linear"
+                        android:layout_alignBottom="@id/linear"
+                        android:orientation="vertical"
+                        android:layout_marginTop="@dimen/lineSpacingExtra"
+                        android:gravity="center_horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+
+                        <TextView
+                            android:visibility="@{bean1st==null?View.VISIBLE:View.GONE}"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:textColor="@color/dark_gray"
+                            android:layout_marginTop="@dimen/lineSpacingExtra"
+                            android:gravity="center"
+                            android:text="暂无排名"
+                            android:textSize="@dimen/text_size_small"/>
+
+
+                        <LinearLayout
+                            android:visibility="@{bean1st==null?View.GONE:View.VISIBLE}"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical">
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/dark_gray"
+                                android:layout_marginTop="@dimen/lineSpacingExtra"
+                                tools:text="张**"
+                                android:text="@{DataUtils.coverStr(bean1st.name)}"
+                                android:textSize="@dimen/text_size_normal"/>
+
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/gray"
+                                android:layout_marginTop="@dimen/lineSpacingExtra"
+                                android:text="第一名"
+                                android:textSize="@dimen/red_dingding"/>
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/gray"
+                                android:layout_marginTop="@dimen/lineSpacingExtra"
+                                tools:text="188****8888"
+                                android:text="@{DataUtils.coverPhoneNum(bean1st.phone)}"
+                                android:textSize="@dimen/red_dingding"/>
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/gray"
+                                android:layout_marginTop="@dimen/lineSpacingExtra"
+                                tools:text="积分：1000"
+                                android:text='@{"积分："+bean1st.integral}'
+                                android:textSize="@dimen/red_dingding"/>
+                        </LinearLayout>
+
+
+
+                    </LinearLayout>
+                </RelativeLayout>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FFF692"
+                    android:layout_marginTop="@dimen/tab_height"
+                    android:text="“规则与奖励”"
+                    android:textStyle="bold"
+                    android:typeface="serif"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="@dimen/mall_text_size"/>
+
+
+                <LinearLayout
+                    tools:visibility="gone"
+                    android:visibility="visible"
+                    android:layout_marginTop="@dimen/default_item_margin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/default_item_margin"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_horizontal|bottom"
+                    android:orientation="vertical"
+                    android:background="@drawable/day_rules">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#FFF692"
+                        android:text="发放时间：三个工作日内！ "
+                        android:layout_gravity="center_horizontal"
+                        android:textSize="@dimen/text_size_small"/>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#FFF692"
+                        android:gravity="bottom"
+                        android:text="发放方式：入账至摩富余额 "
+                        android:layout_gravity="center_horizontal"
+                        android:textSize="@dimen/text_size_small"/>
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="进行中"
+                    android:layout_marginTop="@dimen/input_height"
+                    android:text="@{faDayState==0?@string/day_on:@string/day_off}"
+                    android:gravity="center"
+                    android:layout_gravity="center_horizontal"
+                    android:textColor="@color/white"
+                    android:background="@drawable/day_status_button"
+                    android:textSize="@dimen/text_size_normal"/>
+
+                <ImageView
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/day_status"/>
+
+
+                <RelativeLayout
+                    android:layout_marginTop="-5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+
+                    <LinearLayout
+                        android:layout_marginStart="@dimen/default_item_margin"
+                        android:layout_marginEnd="@dimen/default_item_margin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/lineSpacingExtra"
+                        android:orientation="vertical"
+                        android:layout_marginTop="@dimen/chat_more_margin"
+                        android:background="@drawable/shape_dayrank_red">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/default_margin"
+                            android:paddingStart="@dimen/default_padding"
+                            android:paddingEnd="@dimen/default_margin"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/day_fire_left"/>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"/>
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/day_fire_right"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/lineSpacingExtra"
+                            android:layout_marginTop="-8dp"
+                            android:background="@drawable/shape_day_rank_bg">
+
+
+
+                            <TextView
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/white"
+                                android:text="名次"
+                                android:gravity="left"
+                                android:paddingStart="@dimen/default_item_margin"
+                                android:layout_gravity="center_horizontal"
+                                android:textSize="@dimen/text_size_normal"/>
+
+
+
+                            <TextView
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/white"
+                                android:text="手机号"
+                                android:gravity="center"
+                                android:layout_gravity="center_horizontal"
+                                android:textSize="@dimen/text_size_normal"/>
+
+
+
+                            <TextView
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/white"
+                                android:text="积分"
+                                android:gravity="end"
+                                android:paddingEnd="@dimen/default_item_margin"
+                                android:layout_gravity="center_horizontal"
+                                android:textSize="@dimen/text_size_normal"/>
+
+                        </LinearLayout>
+
+
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="250dp"
+                            android:layout_weight="1"
+                            android:layout_marginStart="9.5dp"
+                            android:layout_marginEnd="9.5dp">
+
+
+                            <cc.ruis.lib.widget.WrapRecyclerView
+                                android:id="@+id/ranking_list"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@color/transparent"
+                                android:overScrollMode="never"
+                                android:visibility="@{hasData?View.VISIBLE:View.GONE}"
+                                tools:listitem="@layout/layout_ranking_item" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:visibility="@{!hasData?View.VISIBLE:View.GONE}"
+                                tools:visibility="visible">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@{when==0?@string/day_current_nodata:@string/day_last_nodata}"
+                                    android:textColor="@color/rank_text_color"
+                                    android:textSize="@dimen/mark_font" />
+                            </LinearLayout>
+                        </FrameLayout>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:paddingTop="18dp"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/day_rank_bg">
+
+
+                        <TextView
+                            android:id="@+id/tips"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:text="恭喜您当前排名第5名！"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_size_normal"/>
+
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/time_tip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="当日榜每小时更新一次哦"
+                    android:textSize="@dimen/text_size_normal"
+                    android:textColor="#ff8b8e"
+                    android:layout_marginTop="@dimen/default_item_margin"
+                    android:layout_gravity="center_horizontal"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="@dimen/default_item_margin"
+                    android:layout_marginTop="@dimen/default_item_margin"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:gravity="center_vertical|right"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/btn1"
+                            android:layout_margin="@dimen/default_padding"
+                            android:layout_width="110dp"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_title"
+                            android:textColor="#F02E32"
+                            android:onClick="@{handlers.currentDay}"
+                            android:textStyle="bold"
+                            android:gravity="center"
+                            android:text="今日榜"
+                            android:background="@drawable/intergral_btn"/>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:gravity="center_vertical|left"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/btn2"
+                            android:textStyle="bold"
+                            android:layout_margin="@dimen/default_padding"
+                            android:layout_width="110dp"
+                            android:onClick="@{handlers.lastDay}"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_title"
+                            android:textColor="@color/white"
+                            android:gravity="center"
+                            android:text="昨日榜"
+                            android:background="@drawable/shape_intergal_day_storke_btn"/>
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+</layout>

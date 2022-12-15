@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.util.DataUtils"/>
+        <import type="cn.mofufin.morf.ui.repayment.RepayMentSupportBankListActivity"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.repayment.RepayMentSupportBankListActivity"/>
+        <!--<variable-->
+            <!--name="totalBean"-->
+            <!--type="cn.mofufin.morf.ui.entity.ProjectResult.PlanDataListBean.TotalBean"/>-->
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <include
+                layout="@layout/layout_title"
+                bind:backIcon="@{@drawable/title_back}"
+                bind:handlers="@{handlers}"
+                bind:titleName="@{@string/channel_title}" />
+
+            <cc.ruis.lib.widget.WrapRecyclerView
+                android:id="@+id/bank_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/transparent"
+                android:overScrollMode="never"
+                tools:listitem="@layout/layout_ranking_item"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</layout>

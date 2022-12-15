@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="cn.mofufin.morf.ui.MerchantPosIndustryActivity"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.MerchantPosIndustryActivity"/>
+        
+        <variable
+            name="actualCount"
+            type="String"/>
+        <variable
+            name="amount"
+            type="String"/>
+        <variable
+            name="charge"
+            type="String"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:fitsSystemWindows="true"
+        android:background="@color/white">
+
+
+        <include
+            layout="@layout/layout_title"
+            bind:backIcon="@{@drawable/title_back}"
+            bind:handlers="@{handlers}"
+            bind:titleName="@{@string/select_merchant_title}" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/default_padding"
+            android:paddingBottom="5dp"
+            android:paddingTop="@dimen/default_padding"
+            android:background="@color/app_blue"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_game_record"
+                    android:text="@string/industry_text2"
+                    android:textColor="@color/white"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_game_record"
+                    android:text="@{actualCount}"
+                    tools:text="100.00"
+                    android:textColor="@color/white"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_padding"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_normal"
+                        android:text="@string/industry_text3"/>
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        tools:text="1000"
+                        android:textSize="@dimen/text_size_normal"
+                        android:text="@{amount}"/>
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#C8DFF4"
+                    android:textSize="@dimen/text_size_normal"
+                    android:text="@string/industry_text4"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#C8DFF4"
+                    android:textSize="@dimen/text_size_normal"
+                    android:text="@{charge}"
+                    tools:text="0.89"
+                    android:layout_marginRight="@dimen/default_item_margin"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <cc.ruis.lib.widget.WrapRecyclerView
+                android:layout_weight="1"
+                android:id="@+id/industry_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                tools:listitem="@layout/layout_industry_item"/>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_height"
+                android:background="@color/app_blue"
+                android:textSize="@dimen/text_size_title"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:onClick="@{handlers.next}"
+                android:text="@string/scanning8"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

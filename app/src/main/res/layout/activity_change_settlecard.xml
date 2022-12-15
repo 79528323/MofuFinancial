@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.mine.ChangeSettleCardActivity"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.mine.ChangeSettleCardActivity"/>
+        <variable
+            name="totalMoney"
+            type="String"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:fitsSystemWindows="true"
+        android:background="@color/app_background">
+
+
+        <include
+            layout="@layout/layout_title"
+            bind:backIcon="@{@drawable/title_back}"
+            bind:handlers="@{handlers}"
+            bind:canSubmit="@{true}"
+            bind:rightText="@{@string/service_number}"
+            bind:titleName="@{@string/MPOS1}" />
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="#E75A30"
+                    android:padding="@dimen/default_padding">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/attention"/>
+
+                    <TextView
+                        android:layout_marginLeft="@dimen/default_padding"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_small"
+                        android:textColor="@color/white"
+                        android:text="@string/change_card_1"/>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_white"
+                    android:layout_margin="@dimen/default_padding"
+                    android:padding="@dimen/default_margin"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/dark_gray"
+                        android:gravity="center"
+                        android:textSize="@dimen/text_size_game_record"
+                        android:text="@string/change_card_2"/>
+
+
+                    <TextView
+                        android:layout_marginTop="@dimen/default_padding"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/social_contat_text"
+                        android:text="@string/change_card_3"/>
+
+                    <!--<LinearLayout-->
+                    <!--android:layout_marginTop="@dimen/default_margin"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_gravity="bottom|center_vertical"-->
+                    <!--android:orientation="horizontal">-->
+
+                    <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:textSize="@dimen/topic_contat_text"-->
+                    <!--android:textColor="@color/dark_gray"-->
+                    <!--android:text="@string/MPOS7"/>-->
+
+
+                    <!--<EditText-->
+                    <!--android:id="@+id/mpos_sum"-->
+                    <!--android:background="@null"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:layout_marginLeft="@dimen/default_margin"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:textSize="@dimen/text_size_big"-->
+                    <!--android:onTextChanged="@{handlers.onTextChanged}"-->
+                    <!--android:textColor="@color/dark_gray"-->
+                    <!--android:text="@{totalMoney}"-->
+                    <!--android:inputType="number"/>-->
+
+                    <!--<ImageView-->
+                    <!--android:layout_gravity="center_vertical"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:onClick="@{handlers.clean}"-->
+                    <!--android:layout_marginRight="@dimen/default_margin"-->
+                    <!--android:visibility="@{totalMoney.length() > 0 ? View.VISIBLE : View.GONE}"-->
+                    <!--android:background="@drawable/backspace"/>-->
+                    <!--</LinearLayout>-->
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:layout_marginTop="@dimen/default_padding"
+                        android:background="#EBEBEB"/>
+
+                    <TextView
+                        android:layout_marginTop="@dimen/default_padding"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/default_padding"
+                        android:textSize="@dimen/social_contat_text"
+                        android:text="@string/change_card_btn"
+                        android:onClick="@{handlers.modifySettleCard}"
+                        android:layout_gravity="center_horizontal"
+                        android:textColor="@color/app_blue"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_white"
+                    android:layout_margin="@dimen/default_padding"
+                    android:padding="@dimen/default_margin"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/default_padding"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/dark_gray"
+                            android:textSize="@dimen/social_contat_text"
+                            android:text="@string/change_card_4"/>
+
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/social_contat_text"
+                            android:text="@string/change_card_5"/>
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_marginTop="@dimen/default_item_margin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/dark_gray"
+                            android:textSize="@dimen/social_contat_text"
+                            android:text="@string/change_card_6"/>
+
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/social_contat_text"
+                            android:text="@string/change_card_7"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/default_item_margin"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/dark_gray"
+                            android:textSize="@dimen/social_contat_text"
+                            android:text="@string/change_card_8"/>
+
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/social_contat_text"
+                            android:text="@string/change_card_9"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/default_item_margin"
+                        android:layout_marginBottom="@dimen/default_padding"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/dark_gray"
+                            android:textSize="@dimen/social_contat_text"
+                            android:text="@string/change_card_10"/>
+
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/social_contat_text"
+                            android:text="@string/change_card_11"/>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/default_item_margin"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/social_contat_text"
+                        android:text="@string/change_card_12"/>
+
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
+</layout>

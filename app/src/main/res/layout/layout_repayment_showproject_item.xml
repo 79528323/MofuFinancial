@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:apps="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <import type="android.text.TextUtils"/>
+        <import type="cn.mofufin.morf.ui.util.DataUtils"/>
+        <variable
+            name="date"
+            type="String"/>
+        <variable
+            name="totalMoney"
+            type="String"/>
+        <variable
+            name="totalFee"
+            type="String"/>
+        <variable
+            name="detail"
+            type="cn.mofufin.morf.ui.entity.ProjectResult.PlanDataListBean.DetailsBean"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginStart="@dimen/default_item_margin"
+            android:layout_marginEnd="@dimen/default_item_margin"
+            android:background="@drawable/shape_white"
+            android:elevation="3dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/dark_gray"
+                android:paddingTop="@dimen/default_padding"
+                android:paddingLeft="@dimen/default_item_margin"
+                android:paddingBottom="@dimen/default_padding"
+                android:textSize="@dimen/text_size_normal"
+                android:text="@{date}"
+                tools:text="2019-01-07"/>
+
+            <LinearLayout
+                android:id="@+id/linear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/default_padding"
+                android:paddingStart="@dimen/default_item_margin"
+                android:paddingEnd="@dimen/default_item_margin"
+                android:paddingBottom="@dimen/default_padding"
+                android:background="#F6F6F6"
+                android:orientation="vertical">
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/default_margin"
+                android:gravity="center_vertical"
+                android:paddingStart="@dimen/default_item_margin"
+                android:paddingBottom="@dimen/default_margin"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/dark_gray"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/niuniu_number"
+                    android:text='@{"￥"+totalMoney}'
+                    tools:text="￥3000"/>
+
+                <TextView
+                    android:textStyle="bold"
+                    android:layout_marginStart="@dimen/default_padding"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/text_size_small"
+                    android:text='@{detail.deType==0?"消费":"延期"}'
+                    tools:text="￥3000"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/gray"
+                    android:gravity="end"
+                    android:layout_marginEnd="@dimen/default_item_margin"
+                    android:textSize="@dimen/text_size_small"
+                    android:text='@{"延期手续费/元：" + totalFee}'
+                    tools:text="延期手续费/元："/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/null_linear"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/chat_game_item_height"/>
+    </LinearLayout>
+</layout>

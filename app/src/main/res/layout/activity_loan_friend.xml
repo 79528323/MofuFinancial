@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.loan.LoanFriendActivity"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.loan.LoanFriendActivity"/>
+        <variable
+            name="onClicklistener"
+            type="android.view.View.OnClickListener"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        android:background="@color/app_background">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <include
+                android:id="@+id/title_layout"
+                layout="@layout/layout_title"
+                bind:backIcon="@{@drawable/financial_back}"
+                bind:handlers="@{handlers}"
+                bind:isTranslate="@{true}"
+                bind:isTitleBlack="@{true}"
+                bind:titleName="@{@string/loan_friend_title}"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@color/loan_red"
+            android:padding="@dimen/default_padding">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/attention"/>
+
+            <TextView
+                android:layout_marginLeft="@dimen/default_padding"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/white"
+                android:text="请认真填写个人信息，避免修改带来的影响！"/>
+
+        </LinearLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="关联人关系"
+                    android:textSize="@dimen/text_size_normal"
+                    android:padding="@dimen/default_margin"
+                    android:textColor="@color/dark_gray"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/default_margin">
+
+                    <EditText
+                        android:id="@+id/relationship"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/tab_height"
+                        android:hint="请输入你跟关联人关系"
+                        android:gravity="center_vertical"
+                        android:textColorHint="@color/light_gray"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="@dimen/text_size_small"
+                        android:background="@null"
+                        android:focusableInTouchMode="false"
+                        android:editable="false"
+                        android:imeOptions="actionNone"
+                        android:onClick="@{handlers.relateSelect}"/>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="关联人姓名"
+                    android:textSize="@dimen/text_size_normal"
+                    android:padding="@dimen/default_margin"
+                    android:textColor="@color/dark_gray"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/default_margin">
+
+                    <EditText
+                        android:id="@+id/relate_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/tab_height"
+                        android:hint="请输入关联人姓名"
+                        android:inputType="text"
+                        android:gravity="center_vertical"
+                        android:textColorHint="@color/light_gray"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="@dimen/text_size_small"
+                        android:background="@null"/>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="身份证号码"
+                    android:textSize="@dimen/text_size_normal"
+                    android:padding="@dimen/default_margin"
+                    android:textColor="@color/dark_gray"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/default_margin">
+
+                    <EditText
+                        android:id="@+id/idCard"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/tab_height"
+                        android:hint="请输入身份证号码"
+                        android:gravity="center_vertical"
+                        android:textColorHint="@color/light_gray"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="@dimen/text_size_small"
+                        android:background="@null"/>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="性别"
+                    android:textSize="@dimen/text_size_normal"
+                    android:padding="@dimen/default_margin"
+                    android:textColor="@color/dark_gray"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/default_margin">
+
+                    <RadioGroup
+                        android:id="@+id/sexy_group"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/tab_height"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/radio1"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/dark_gray"
+                            android:text="男"
+                            android:onClick="@{onClicklistener}"
+                            android:tag="M"
+                            android:drawablePadding="@dimen/default_padding"
+                            style="@style/loan_selector"/>
+
+
+                        <RadioButton
+                            android:id="@+id/radio2"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/dark_gray"
+                            android:text="女"
+                            android:onClick="@{onClicklistener}"
+                            android:tag="F"
+                            android:drawablePadding="@dimen/default_padding"
+                            style="@style/loan_selector"/>
+
+
+                    </RadioGroup>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="关联人手机号码"
+                        android:textSize="@dimen/text_size_normal"
+                        android:padding="@dimen/default_margin"
+                        android:textColor="@color/dark_gray"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/default_margin">
+
+                        <EditText
+                            android:id="@+id/phone"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/tab_height"
+                            android:hint="请输入关联人手机号码"
+                            android:inputType="phone"
+                            android:gravity="center_vertical"
+                            android:textColorHint="@color/light_gray"
+                            android:textColor="@color/dark_gray"
+                            android:textSize="@dimen/text_size_small"
+                            android:background="@null"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="收入来源"
+                    android:textSize="@dimen/text_size_normal"
+                    android:padding="@dimen/default_margin"
+                    android:textColor="@color/dark_gray"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/default_margin">
+
+                    <EditText
+                        android:id="@+id/income"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/tab_height"
+                        android:hint="请选择收入来源"
+                        android:gravity="center_vertical"
+                        android:textColorHint="@color/light_gray"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="@dimen/text_size_small"
+                        android:background="@null"
+                        android:focusableInTouchMode="false"
+                        android:editable="false"
+                        android:imeOptions="actionNone"
+                        android:onClick="@{handlers.incomeSelect}"/>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="近一年内税后收入(单位/元)"
+                    android:textSize="@dimen/text_size_normal"
+                    android:padding="@dimen/default_margin"
+                    android:textColor="@color/dark_gray"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/default_margin">
+
+                    <EditText
+                        android:id="@+id/amt"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/tab_height"
+                        android:hint="请输入近一年内税后收入"
+                        android:gravity="center_vertical"
+                        android:inputType="number"
+                        android:textColorHint="@color/light_gray"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="@dimen/text_size_small"
+                        android:background="@null"/>
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="220dp"
+                    android:layout_height="wrap_content"
+                    android:text="提交"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:paddingBottom="@dimen/default_padding"
+                    android:paddingTop="@dimen/default_padding"
+                    android:onClick="@{handlers.submit}"
+                    android:paddingStart="60dp"
+                    android:paddingEnd="60dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="@dimen/default_item_margin"
+                    android:layout_marginTop="@dimen/default_item_margin"
+                    android:background="@drawable/loan_idval_button"/>
+
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
+</layout>

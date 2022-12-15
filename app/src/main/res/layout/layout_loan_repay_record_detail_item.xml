@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:apps="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.util.DataUtils"/>
+        <import type="android.text.TextUtils"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.fragment.InverstMentFragment"/>
+        <variable
+            name="clicklistener"
+            type="android.view.View.OnClickListener"/>
+        <variable
+            name="type"
+            type="Integer"/>
+        <variable
+            name="isShow"
+            type="boolean"/>
+        <variable
+            name="position"
+            type="int"/>
+        <variable
+            name="bean"
+            type="cn.mofufin.morf.ui.entity.RecordDetails.PlanDetailsListBean"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/app_background"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/default_margin"
+            android:layout_marginStart="@dimen/default_item_margin"
+            android:layout_marginEnd="@dimen/default_item_margin"
+            android:layout_marginBottom="5dp"
+            android:padding="2dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_white_shadow"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/default_padding"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/light_gray"
+                        android:gravity="center"
+                        android:text="还款日期："
+                        android:textSize="@dimen/text_size_small"/>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/dark_gray"
+                        android:gravity="center"
+                        android:text="@{bean.refundDate.substring(0,10)}"
+                        android:layout_marginLeft="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_small"/>
+                </LinearLayout>
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@{bean.planState==2?@color/loan_red:@color/gray}"
+                    android:gravity="center"
+                    android:text="@{bean.planState==0?@string/loan_repay_status0:bean.planState==1?@string/loan_repay_status1:bean.planState==2?@string/loan_repay_status2:@string/loan_repay_status3}"
+                    android:textSize="@dimen/text_size_small"/>
+
+
+
+
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/app_background"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/default_padding"
+                android:background="@color/white">
+
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/default_margin"
+                    android:gravity="center_vertical"
+                    android:layout_gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="10000000.00"
+                        android:layout_gravity=""
+                        android:layout_marginBottom="5dp"
+                        android:text="@{DataUtils.numFormat(bean.refundTotalMoney)}"
+                        android:layout_marginTop="@dimen/default_padding"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:typeface="monospace"
+                        android:textColor="@color/loan_red"
+                        android:textSize="22sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="本月应还(本金+利息)元"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_normal" />
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_weight="1.9"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:background="@{bean.planState==0?@drawable/loan_idval_button: bean.planState==2 ?@drawable/loan_noryet_button:@drawable/shape_null}"
+                        tools:background="@drawable/loan_idval_button"
+                        android:textSize="@dimen/text_size_normal"
+                        tools:text="已还款"
+                        android:tag="@{bean}"
+                        android:onClick="@{clicklistener}"
+                        android:layout_gravity="center_vertical"
+                        android:padding="5dp"
+                        tools:textColor="@color/white"
+                        android:textColor="@{bean.planState==0 || bean.planState==2 ?@color/white:@color/gray}"
+                        android:text="@{bean.planState==0 || bean.planState==2 ?@string/repay_yet_status:@string/repay_success_status}"
+                        android:gravity="center"/>
+
+                </LinearLayout>
+
+
+                <!--<TextView-->
+                    <!--android:layout_width="200dp"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="去还款"-->
+                    <!--android:layout_marginTop="40dp"-->
+                    <!--android:layout_marginBottom="@dimen/default_item_margin"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:textColor="@color/white"-->
+                    <!--android:textSize="@dimen/text_size_normal"-->
+                    <!--android:paddingTop="@dimen/default_padding"-->
+                    <!--android:paddingBottom="@dimen/default_padding"-->
+                    <!--android:gravity="center"-->
+                    <!--android:background="@drawable/loan_idval_button"/>-->
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

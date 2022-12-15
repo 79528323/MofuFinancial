@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:apps="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.util.DataUtils"/>
+        <import type="android.text.TextUtils"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.mine.ReceivingAddressActivity"/>
+        <variable
+            name="clicklistener"
+            type="android.view.View.OnClickListener"/>
+
+        <variable
+            name="bean"
+            type="cn.mofufin.morf.ui.entity.Address.DataBean.AddressInfoBean"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/app_background"
+        android:paddingBottom="@dimen/default_padding"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:onClick="@{clicklistener}"
+            android:tag="@{bean}"
+            android:paddingTop="@dimen/default_margin"
+            android:paddingLeft="@dimen/default_padding"
+            android:paddingRight="@dimen/default_padding"
+            android:paddingBottom="@dimen/default_padding"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/dark_gray"
+                    tools:text="张小小"
+                    android:layout_weight="1"
+                    android:text="@{bean.takePersonName}"
+                    android:textSize="@dimen/text_size_title"/>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/dark_gray"
+                    tools:text="186****8888"
+                    android:text="@{DataUtils.coverPhoneNum(bean.takePersonPhone)}"
+                    android:textSize="@dimen/text_size_title"/>
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:textColor="@color/gray"
+                tools:text="广州市白云区白云创意园黄石路联合路666号黄石路路联合路666号黄石路路"
+                android:layout_weight="1"
+                android:lineSpacingExtra="2dp"
+                android:layout_marginTop="@dimen/default_item_margin"
+                android:text="@{bean.takeAddress}"
+                android:textSize="@dimen/text_size_normal"/>
+
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginTop="@dimen/default_padding"
+                android:background="@color/chat_bg" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/gray"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/address_edt"
+                    android:tag="@{bean}"
+                    android:paddingStart="@dimen/default_padding"
+                    android:paddingTop="@dimen/default_padding"
+                    android:paddingBottom="@dimen/default_padding"
+                    android:onClick="@{handlers.editor}"
+                    android:textSize="@dimen/text_size_normal"
+                    tools:ignore="RtlSymmetry" />
+            </RelativeLayout>
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+</layout>

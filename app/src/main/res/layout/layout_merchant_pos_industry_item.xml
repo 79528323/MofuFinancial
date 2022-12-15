@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.util.Common"/>
+        <variable
+            name="rate"
+            type="String"/>
+        <variable
+            name="mName"
+            type="String"/>
+        <variable
+            name="clicklistener"
+            type="android.view.View.OnClickListener"/>
+        <variable
+            name="isCheck"
+            type="boolean"/>
+        <variable
+            name="position"
+            type="int"/>
+        <variable
+            name="fee"
+            type="String"/>
+        <variable
+            name="bean"
+            type="cn.mofufin.morf.ui.entity.IndustryInfos.MercInfoListBean"/>
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="76dp"
+        android:background="@color/white"
+        android:onClick="@{clicklistener}"
+        android:tag="@{position}"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/layout_linear"
+            android:layout_centerVertical="true"
+            android:orientation="vertical"
+            android:layout_marginLeft="@dimen/default_item_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/light_gray"
+                    android:textSize="13sp"
+                    android:text="商户名称："/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/text_size_normal"
+                    android:text="@{mName}"
+                    tools:text="0.11%+9"/>
+
+                <!--<TextView-->
+                    <!--android:layout_marginLeft="@dimen/default_margin"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:textColor="@color/light_gray"-->
+                    <!--android:textSize="13sp"-->
+                    <!--android:text="@string/MPOS_date"/>-->
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="bottom"
+                android:layout_marginTop="@dimen/default_margin"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/light_gray"
+                    android:textSize="13sp"
+                    android:text="费         率："/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#e74a30"
+                    android:textSize="@dimen/text_size_normal"
+                    android:text='@{rate +"%+"+fee}'
+                    tools:text="0.11%+9"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_centerVertical="true"
+            android:layout_alignRight="@+id/layout_linear"
+            android:layout_marginRight="@dimen/default_item_margin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                style="@style/industry_selector"
+                android:checked="@{isCheck}"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_toRightOf="@+id/iv_industry"
+            android:background="@color/line"/>
+    </RelativeLayout>
+</layout>

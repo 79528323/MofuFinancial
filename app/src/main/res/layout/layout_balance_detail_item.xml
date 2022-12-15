@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:apps="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.entity.BalanceDetail.DetailLists"/>
+        <import type="android.text.TextUtils"/>
+        <import type="cn.mofufin.morf.ui.util.DataUtils"/>
+        <variable
+            name="detail"
+            type="cn.mofufin.morf.ui.entity.BalanceDetail.DetailLists"/>
+        <variable
+            name="clicklistener"
+            type="android.view.View.OnClickListener"/>
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/icon_large"
+        android:tag="@{detail}"
+        android:onClick="@{clicklistener}"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:padding="@dimen/default_padding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <!--<string name="balance_filter_1">全部</string>-->
+                <!--<string name="balance_filter_2">激励金</string>-->
+                <!--<string name="balance_filter_3">理财</string>-->
+                <!--<string name="balance_filter_4">违章</string>-->
+                <!--<string name="balance_filter_5">提现</string>-->
+                <!--<string name="balance_filter_6">支付宝</string>-->
+                <!--<string name="balance_filter_7">微信</string>-->
+                <!--<string name="balance_filter_8">快捷支付</string>-->
+                <!--<string name="balance_filter_9">境外转入</string>-->
+                <!--<string name="balance_filter_10">转账</string>-->
+                <!--<string name="balance_filter_11">官方经账</string>-->
+                <!--cdWay : 交易方式 0:返佣 1:理财 2:违章 3:提现 4:支付宝 5:微信 6:快捷支付 7:境外转入 8:转账 9:官方经账-->
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/text_size_normal"
+                    android:text="@{detail.cdWay==0?@string/balance_filter_2:detail.cdWay==1?@string/balance_filter_3:detail.cdWay==2?@string/balance_filter_4:detail.cdWay==3?@string/balance_filter_5:detail.cdWay==4?@string/balance_filter_6:detail.cdWay==5?@string/balance_filter_7:detail.cdWay==6?@string/balance_filter_8:detail.cdWay==7?@string/balance_filter_9:detail.cdWay==8?@string/balance_filter_10:detail.cdWay==9?@string/balance_filter_10:@string/balance_filter_11}"
+                    tools:text="@string/order_mpos"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@{detail.cdType==0?@color/dark_gray:@color/red}"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/text_size_normal"
+                    android:text='@{(detail.cdType==0?"+":"-")+(DataUtils.numFormat(detail.cdMoney)+(detail.cdCurrency==0?"元":detail.cdCurrency==1?"美元":"港元"))}'
+                    tools:text="2000"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="bottom"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/light_gray"
+                    android:text="@{detail.cdCreateDate}"
+                    android:textSize="@dimen/text_size_small"/>
+
+                <TextView
+                    android:id="@+id/status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@{detail.cdState==2?@color/app_blue:detail.cdState==1?@color/red:@color/dark_gray}"
+                    android:textSize="@dimen/text_size_small"
+                    tools:text="1000"/>
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="@dimen/default_padding"
+            android:layout_alignParentBottom="true"
+            android:background="@color/line"/>
+    </RelativeLayout>
+</layout>

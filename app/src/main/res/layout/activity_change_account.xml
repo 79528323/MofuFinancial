@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.mine.ChangeAccountActivity"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.mine.ChangeAccountActivity"/>
+        <variable
+            name="tips"
+            type="String"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        android:background="@color/app_background">
+
+
+        <include
+            layout="@layout/layout_title"
+            bind:backIcon="@{@drawable/title_back}"
+            bind:handlers="@{handlers}"
+            bind:titleName="@{@string/change_account_title}" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="#E75A30"
+            android:padding="@dimen/default_padding">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/attention"/>
+
+            <TextView
+                android:layout_marginLeft="@dimen/default_padding"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/white"
+                android:text="@{tips}"/>
+
+        </LinearLayout>
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/change_account_2"
+            android:padding="@dimen/default_padding"
+            android:textColor="@color/light_gray"
+            android:textSize="@dimen/text_size_normal"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/tab_height"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/default_padding"
+            android:background="@color/white"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/modfyCode2"
+                android:textColor="@color/dark_gray"
+                android:textSize="@dimen/text_size_normal"/>
+
+            <EditText
+                android:id="@+id/orgPhone"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingLeft="@dimen/default_padding"
+                android:hint="@string/change_account_2"
+                android:inputType="number"
+                android:maxLength="11"
+                android:textSize="@dimen/text_size_normal"
+                android:gravity="center_vertical"
+                android:background="@null"/>
+
+        </LinearLayout>
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/change_account_3"
+            android:padding="@dimen/default_padding"
+            android:textColor="@color/light_gray"
+            android:textSize="@dimen/text_size_normal"/>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/tab_height"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/default_padding"
+            android:background="@color/white"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="身份证号"
+                android:textColor="@color/dark_gray"
+                android:textSize="@dimen/text_size_normal"/>
+
+            <EditText
+                android:id="@+id/idCard"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingLeft="@dimen/default_padding"
+                android:hint="请输入身份证号"
+                android:inputType="text"
+                android:textSize="@dimen/text_size_normal"
+                android:gravity="center_vertical"
+                android:background="@null"/>
+
+        </LinearLayout>
+
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="请填写新手机号"
+            android:padding="@dimen/default_padding"
+            android:textColor="@color/light_gray"
+            android:textSize="@dimen/text_size_normal"/>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tab_height"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/default_padding"
+                android:background="@color/white"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/modfyCode2"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/text_size_normal"/>
+
+                <EditText
+                    android:id="@+id/newPhone"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="@dimen/default_padding"
+                    android:hint="请输入新手机号"
+                    android:inputType="number"
+                    android:maxLength="11"
+                    android:textSize="@dimen/text_size_normal"
+                    android:textColorHint="@color/light_gray"
+                    android:gravity="center_vertical"
+                    android:background="@null"/>
+
+                <TextView
+                    android:id="@+id/btn_smscode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:onClick="@{handlers.getSmsCode}"
+                    android:layout_marginRight="@dimen/default_padding"
+                    android:textSize="@dimen/text_size_normal"
+                    android:textColor="@color/app_blue"
+                    android:text="@string/modfyCode4"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="@dimen/default_padding"
+                android:background="@color/app_background"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tab_height"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/default_padding"
+                android:background="@color/white"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/modfyCode4"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/text_size_normal"/>
+
+                <EditText
+                    android:id="@+id/smsCode"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:inputType="number"
+                    android:paddingLeft="@dimen/default_padding"
+                    android:hint="@string/modfyCode5"
+                    android:textSize="@dimen/text_size_normal"
+                    android:textColorHint="@color/light_gray"
+                    android:gravity="center_vertical"
+                    android:background="@null"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+
+        <TextView
+            android:layout_marginTop="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
+            android:background="@drawable/login_button"
+            android:gravity="center"
+            android:paddingBottom="@dimen/default_padding"
+            android:paddingTop="@dimen/default_padding"
+            android:onClick="@{handlers.next}"
+            android:text="@string/confirm"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_game_record" />
+    </LinearLayout>
+</layout>

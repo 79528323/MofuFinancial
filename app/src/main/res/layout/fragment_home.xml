@@ -1,0 +1,677 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ruis="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="cn.mofufin.morf.ui.fragment.HomeFragment"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.fragment.HomeFragment"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/app_blue">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="#442fb6e7"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/default_padding">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/attention"/>
+
+                    <TextView
+                        android:layout_marginLeft="@dimen/default_padding"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_small"
+                        android:textColor="@color/white"
+                        android:text="欢迎加入摩富金服！"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/home_tab_linear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/app_blue"
+                android:padding="@dimen/default_padding"
+                android:orientation="vertical">
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_padding"
+                    android:layout_marginBottom="@dimen/default_padding"
+                    android:paddingTop="@dimen/default_padding"
+                    android:paddingBottom="@dimen/default_padding"
+                    android:orientation="horizontal">
+
+                    <TableRow>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:onClick="@{handlers.MPOS}"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/home_mpos"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_normal"
+                                android:layout_marginTop="@dimen/default_padding"
+                                android:textColor="@color/white"
+                                android:text="@string/home_head2"/>
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:layout_weight="1"
+                            android:onClick="@{handlers.shortReceiVables}"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/home_shortcut_rec"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_normal"
+                                android:layout_marginTop="@dimen/default_padding"
+                                android:textColor="@color/white"
+                                android:text="@string/home_head1"/>
+                        </LinearLayout>
+
+
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:onClick="@{handlers.businessReceiVables}"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/home_business_rec"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_normal"
+                                android:layout_marginTop="@dimen/default_padding"
+                                android:textColor="@color/white"
+                                android:text="@string/home_head3"/>
+                        </LinearLayout>
+
+
+
+                        <LinearLayout
+                            android:id="@+id/over_btn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:onClick="@{handlers.OverSeansReiceiVables}"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/home_outside_rec"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_normal"
+                                android:layout_marginTop="@dimen/default_padding"
+                                android:textColor="@color/white"
+                                android:text="@string/home_head4"/>
+                        </LinearLayout>
+                    </TableRow>
+
+                </TableLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_padding"
+                    android:layout_marginLeft="@dimen/default_padding"
+                    android:layout_marginRight="@dimen/default_padding"
+                    android:background="@drawable/home_line"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_padding"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/home_notify"/>
+
+                    <TextView
+                        android:id="@+id/marquee"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:ellipsize="marquee"
+                        android:focusable="true"
+                        android:onClick="@{handlers.marquees}"
+                        android:focusableInTouchMode="true"
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:singleLine="true"
+                        android:text="@string/updateContent"
+                        android:textSize="@dimen/text_size_small"
+                        android:layout_marginLeft="@dimen/default_padding"/>
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <ScrollView
+                android:id="@+id/scroll"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fadingEdge="none"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:drawableLeft="@drawable/home_tip"
+                        android:drawablePadding="@dimen/default_padding"
+                        android:drawableRight="@drawable/home_tip"
+                        android:padding="@dimen/default_margin"
+                        android:text="快捷服务"
+                        android:textColor="@color/app_blue"
+                        android:textSize="@dimen/text_size_title" />
+
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/default_padding"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/default_margin"
+                        android:paddingRight="@dimen/default_margin"
+                        android:paddingBottom="@dimen/default_margin">
+
+                        <TableRow>
+
+                            <!--<LinearLayout-->
+                                <!--android:layout_width="0dp"-->
+                                <!--android:layout_height="65dp"-->
+                                <!--android:layout_weight="1"-->
+                                <!--android:gravity="center"-->
+                                <!--android:onClick="@{handlers.creditRepay}"-->
+                                <!--android:orientation="vertical">-->
+
+                                <!--<LinearLayout-->
+                                    <!--android:layout_width="match_parent"-->
+                                    <!--android:layout_height="match_parent"-->
+                                    <!--android:layout_weight="1"-->
+                                    <!--android:gravity="center">-->
+
+                                    <!--<ImageView-->
+                                        <!--android:layout_width="wrap_content"-->
+                                        <!--android:layout_height="wrap_content"-->
+                                        <!--android:background="@drawable/home_credit_repay" />-->
+
+                                <!--</LinearLayout>-->
+
+
+                                <!--<TextView-->
+                                    <!--android:layout_width="wrap_content"-->
+                                    <!--android:layout_height="wrap_content"-->
+                                    <!--android:text="@string/home_shortservice1"-->
+                                    <!--android:textColor="@color/dark_gray"-->
+                                    <!--android:textSize="@dimen/text_size_normal" />-->
+                            <!--</LinearLayout>-->
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="65dp"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:onClick="@{handlers.mall}"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center">
+
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:background="@drawable/mall" />
+
+                                </LinearLayout>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/home_backpack"
+                                    android:textColor="@color/dark_gray"
+                                    android:textSize="@dimen/text_size_normal" />
+                            </LinearLayout>
+
+
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="65dp"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:onClick="@{handlers.ownBorrow}"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center">
+
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:background="@drawable/home_loan" />
+
+                                </LinearLayout>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/home_coco_loan"
+                                    android:textColor="@color/dark_gray"
+                                    android:textSize="@dimen/text_size_normal" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="65dp"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:onClick="@{handlers.tree}"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center">
+
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:background="@drawable/home_tree" />
+
+                                </LinearLayout>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/home_tree"
+                                    android:textColor="@color/dark_gray"
+                                    android:textSize="@dimen/text_size_normal" />
+                            </LinearLayout>
+
+
+                        </TableRow>
+
+                        <!--<TableRow -->
+                            <!--android:layout_marginTop="@dimen/default_margin">-->
+
+                            <!--<LinearLayout-->
+                                <!--android:layout_width="0dp"-->
+                                <!--android:layout_height="65dp"-->
+                                <!--android:layout_weight="1"-->
+                                <!--android:gravity="center"-->
+                                <!--android:onClick="@{handlers.ownBorrow}"-->
+                                <!--android:orientation="vertical">-->
+
+                                <!--<LinearLayout-->
+                                    <!--android:layout_width="match_parent"-->
+                                    <!--android:layout_height="match_parent"-->
+                                    <!--android:layout_weight="1"-->
+                                    <!--android:gravity="center">-->
+
+                                    <!--<ImageView-->
+                                        <!--android:layout_width="wrap_content"-->
+                                        <!--android:layout_height="wrap_content"-->
+                                        <!--android:background="@drawable/home_tree" />-->
+
+                                <!--</LinearLayout>-->
+
+                                <!--<TextView-->
+                                    <!--android:layout_width="wrap_content"-->
+                                    <!--android:layout_height="wrap_content"-->
+                                    <!--android:text="@string/home_tree"-->
+                                    <!--android:textColor="@color/dark_gray"-->
+                                    <!--android:textSize="@dimen/text_size_normal" />-->
+                            <!--</LinearLayout>-->
+
+
+
+                            <!--<LinearLayout-->
+                                <!--android:layout_width="0dp"-->
+                                <!--android:layout_height="65dp"-->
+                                <!--android:layout_weight="1"-->
+                                <!--android:gravity="center"-->
+                                <!--android:onClick="@{handlers.transfer}"-->
+                                <!--android:orientation="vertical">-->
+
+                                <!--<LinearLayout-->
+                                    <!--android:layout_width="match_parent"-->
+                                    <!--android:layout_height="match_parent"-->
+                                    <!--android:layout_weight="1"-->
+                                    <!--android:gravity="center">-->
+
+                                    <!--<ImageView-->
+                                        <!--android:layout_width="wrap_content"-->
+                                        <!--android:layout_height="wrap_content"-->
+                                        <!--android:background="@drawable/home_transfer" />-->
+
+                                <!--</LinearLayout>-->
+
+                                <!--<TextView-->
+                                    <!--android:layout_width="wrap_content"-->
+                                    <!--android:layout_height="wrap_content"-->
+                                    <!--android:text="@string/home_shortservice5"-->
+                                    <!--android:textColor="@color/dark_gray"-->
+                                    <!--android:textSize="@dimen/text_size_normal" />-->
+                            <!--</LinearLayout>-->
+
+                        <!--</TableRow>-->
+                    </TableLayout>
+
+                    <!--<cc.ruis.lib.widget.BannerView-->
+                    <!--android:id="@+id/advert_banner"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="50dp"-->
+                    <!--android:layout_gravity="center_horizontal"-->
+                    <!--android:layout_marginBottom="@dimen/default_margin"-->
+                    <!--ruis:ruis_interval="5000"-->
+                    <!--ruis:ruis_percentSize="false"-->
+                    <!--ruis:ruis_tipMargin="5dp"-->
+                    <!--ruis:ruis_tip_gravity="center" />-->
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:background="@drawable/banner1"/>
+
+                        <!--第三方广告轮播-->
+                        <cc.ruis.lib.widget.BannerView
+                            android:id="@+id/homeViewpager"
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:layout_marginBottom="@dimen/default_margin"
+                            ruis:ruis_interval="3000"
+                            ruis:ruis_percentSize="false"
+                            ruis:ruis_tipDrawable="@drawable/pager_tip"
+                            ruis:ruis_tipMargin="0dp"
+                            ruis:ruis_tip_gravity="center"
+                            ruis:ruis_mode="modeLinear"/>
+
+                    </FrameLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:drawableLeft="@drawable/home_tip"
+                        android:drawablePadding="@dimen/default_padding"
+                        android:drawableRight="@drawable/home_tip"
+                        android:padding="@dimen/default_padding"
+                        android:text="生活服务"
+                        android:textColor="@color/app_blue"
+                        android:textSize="@dimen/text_size_title" />
+
+
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/default_padding"
+                        android:paddingRight="@dimen/default_padding">
+
+                        <TableRow>
+
+                            <!--<LinearLayout-->
+                                <!--android:layout_width="0dp"-->
+                                <!--android:layout_height="65dp"-->
+                                <!--android:layout_weight="1"-->
+                                <!--android:gravity="center"-->
+                                <!--android:onClick="@{handlers.integral}"-->
+                                <!--android:orientation="vertical">-->
+
+                                <!--<LinearLayout-->
+                                    <!--android:layout_width="match_parent"-->
+                                    <!--android:layout_height="match_parent"-->
+                                    <!--android:layout_weight="1"-->
+                                    <!--android:gravity="center">-->
+
+                                    <!--<ImageView-->
+                                        <!--android:layout_width="wrap_content"-->
+                                        <!--android:layout_height="wrap_content"-->
+                                        <!--android:background="@drawable/mine_intergration" />-->
+
+                                <!--</LinearLayout>-->
+
+                                <!--<TextView-->
+                                    <!--android:layout_width="wrap_content"-->
+                                    <!--android:layout_height="wrap_content"-->
+                                    <!--android:text="积分兑换"-->
+                                    <!--android:textColor="@color/dark_gray"-->
+                                    <!--android:textSize="@dimen/text_size_normal" />-->
+                            <!--</LinearLayout>-->
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="65dp"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:onClick="@{handlers.integral}"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center">
+
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:background="@drawable/home_repay" />
+
+                                </LinearLayout>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="信用卡延期"
+                                    android:textColor="@color/dark_gray"
+                                    android:textSize="@dimen/text_size_normal" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="65dp"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:onClick="@{handlers.invitationFriend}"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center">
+
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:background="@drawable/home_invitation" />
+
+                                </LinearLayout>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/home_lifeservice2"
+                                    android:textColor="@color/dark_gray"
+                                    android:textSize="@dimen/text_size_normal" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="65dp"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:onClick="@{handlers.applyCreditCard}"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center">
+
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:background="@drawable/home_apply" />
+
+                                </LinearLayout>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="申请信用卡"
+                                    android:textColor="@color/dark_gray"
+                                    android:textSize="@dimen/text_size_normal" />
+                            </LinearLayout>
+                        </TableRow>
+
+                    </TableLayout>
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="@dimen/default_padding"
+                        android:layout_marginTop="@dimen/default_item_margin"
+                        android:text="@string/home_edit"
+                        android:textColor="#d5d5d5"
+                        android:layout_marginBottom="@dimen/default_margin"
+                        android:textSize="@dimen/text_size_normal" />
+                </LinearLayout>
+            </ScrollView>
+
+        </LinearLayout>
+
+
+        <!-- 领取Pos机浮窗-->
+        <LinearLayout
+            android:id="@+id/float_linear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:orientation="vertical"
+            android:gravity="right">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{handlers.closeMpos}"
+                android:padding="3dp"
+                android:src="@drawable/float_close"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{handlers.deposit}"
+                android:background="@drawable/float_mpos"/>
+
+        </LinearLayout>
+
+
+
+        <!-- 领取口罩 -->
+        <LinearLayout
+            android:id="@+id/mask_linear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            android:orientation="vertical"
+            android:gravity="right">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{handlers.closeMask}"
+                android:padding="3dp"
+                android:src="@drawable/float_close"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{handlers.getMask}"
+                android:background="@drawable/icon_mask"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</layout>

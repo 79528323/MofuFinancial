@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="cn.mofufin.morf.ui.fragment.MerchantEntryFragment"/>
+        <import type="android.view.View"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.fragment.MerchantEntryFragment"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/default_item_margin"
+            android:paddingTop="@dimen/default_padding"
+            android:paddingBottom="@dimen/default_padding"
+            android:orientation="horizontal"
+            android:background="#F6F6F6">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textColor="@color/dark_gray"
+                android:textSize="@dimen/text_size_normal"
+                android:text="上传图片"/>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textColor="@color/light_gray"
+                android:layout_marginLeft="@dimen/default_padding"
+                android:textSize="@dimen/text_size_small"
+                android:text="每张图片大小控制在300KB以内"/>
+
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/chat_game_item_height"
+                        android:layout_marginTop="@dimen/default_item_margin"
+                        android:layout_marginLeft="@dimen/default_item_margin"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:background="@drawable/scanning_bg">
+
+                        <ImageView
+                            android:id="@+id/img1"
+                            android:layout_marginTop="@dimen/default_item_margin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:background="@drawable/scanning"/>
+
+                        <TextView
+                            android:layout_marginTop="@dimen/default_padding"
+                            android:layout_centerHorizontal="true"
+                            android:layout_below="@+id/img1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_normal"
+                            android:textColor="@color/light_gray"
+                            android:text="上传法人身份证正面"
+                            android:gravity="bottom"/>
+
+
+                        <ImageView
+                            android:id="@+id/photo_idcard_postive"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:onClick="@{handlers.takeIDCardA}"
+                            android:scaleType="centerCrop"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/chat_game_item_height"
+                        android:layout_marginTop="@dimen/default_item_margin"
+                        android:layout_marginLeft="@dimen/default_padding"
+                        android:layout_marginRight="@dimen/default_item_margin"
+                        android:background="@drawable/scanning_bg">
+
+                        <ImageView
+                            android:id="@+id/img2"
+                            android:layout_marginTop="@dimen/default_item_margin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:background="@drawable/scanning"/>
+
+                        <TextView
+                            android:layout_marginTop="@dimen/default_padding"
+                            android:layout_centerHorizontal="true"
+                            android:layout_below="@+id/img2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_normal"
+                            android:textColor="@color/light_gray"
+                            android:text="上传法人身份证反面"
+                            android:gravity="bottom"/>
+
+
+                        <ImageView
+                            android:id="@+id/photo_idcard_back"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:onClick="@{handlers.takeIDCardB}"
+                            android:scaleType="centerCrop"/>
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/chat_game_item_height"
+                        android:layout_marginTop="@dimen/default_item_margin"
+                        android:layout_marginLeft="@dimen/default_item_margin"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:background="@drawable/scanning_bg">
+
+                        <ImageView
+                            android:id="@+id/img3"
+                            android:layout_marginTop="@dimen/default_item_margin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:background="@drawable/scanning"/>
+
+                        <TextView
+                            android:layout_marginTop="@dimen/default_padding"
+                            android:layout_centerHorizontal="true"
+                            android:layout_below="@+id/img3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_normal"
+                            android:textColor="@color/light_gray"
+                            android:text="上传法人银行卡正面"
+                            android:gravity="bottom"/>
+
+
+                        <ImageView
+                            android:id="@+id/photo_bankcard_postive"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:onClick="@{handlers.takeBankCardA}"
+                            android:scaleType="centerCrop"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/chat_game_item_height"
+                        android:layout_marginTop="@dimen/default_item_margin"
+                        android:layout_marginLeft="@dimen/default_padding"
+                        android:layout_marginRight="@dimen/default_item_margin"
+                        android:background="@drawable/scanning_bg">
+
+                        <ImageView
+                            android:id="@+id/img4"
+                            android:layout_marginTop="@dimen/default_item_margin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:background="@drawable/scanning"/>
+
+                        <TextView
+                            android:layout_marginTop="@dimen/default_padding"
+                            android:layout_centerHorizontal="true"
+                            android:layout_below="@+id/img4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_normal"
+                            android:textColor="@color/light_gray"
+                            android:text="上传法人银行卡反面"
+                            android:gravity="bottom"/>
+
+
+                        <ImageView
+                            android:id="@+id/photo_bankcard_back"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:onClick="@{handlers.takeBankCardB}"
+                            android:scaleType="centerCrop"/>
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <RelativeLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/chat_game_item_height"
+                        android:layout_marginTop="@dimen/default_item_margin"
+                        android:layout_marginLeft="@dimen/default_item_margin"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:background="@drawable/scanning_bg">
+
+                        <ImageView
+                            android:id="@+id/img6"
+                            android:layout_marginTop="@dimen/default_item_margin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:background="@drawable/scanning"/>
+
+                        <TextView
+                            android:layout_marginTop="@dimen/default_padding"
+                            android:layout_centerHorizontal="true"
+                            android:layout_below="@+id/img6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_normal"
+                            android:textColor="@color/light_gray"
+                            android:text="上传营业执照"
+                            android:gravity="bottom"/>
+
+
+                        <ImageView
+                            android:id="@+id/photo_business_license"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:onClick="@{handlers.takeLicense}"
+                            android:scaleType="centerCrop"/>
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/chat_game_item_height"
+                        android:layout_marginTop="@dimen/default_item_margin"
+                        android:layout_marginLeft="@dimen/default_padding"
+                        android:layout_marginRight="@dimen/default_item_margin"
+                        android:background="@drawable/scanning_bg">
+
+                        <ImageView
+                            android:id="@+id/img7"
+                            android:layout_marginTop="@dimen/default_item_margin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:background="@drawable/scanning"/>
+
+                        <TextView
+                            android:layout_marginTop="@dimen/default_padding"
+                            android:layout_centerHorizontal="true"
+                            android:layout_below="@+id/img7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_normal"
+                            android:textColor="@color/light_gray"
+                            android:text="上传店铺收银台照片"
+                            android:gravity="bottom"/>
+
+
+                        <ImageView
+                            android:id="@+id/photo_Cashier"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:onClick="@{handlers.takeCashier}"
+                            android:scaleType="centerCrop"/>
+
+                    </RelativeLayout>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/default_item_margin"
+                    android:orientation="horizontal">
+
+
+                    <RelativeLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/chat_game_item_height"
+                        android:layout_marginTop="@dimen/default_item_margin"
+                        android:layout_marginLeft="@dimen/default_item_margin"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:background="@drawable/scanning_bg">
+
+                        <ImageView
+                            android:id="@+id/img8"
+                            android:layout_marginTop="@dimen/default_item_margin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:background="@drawable/scanning"/>
+
+                        <TextView
+                            android:layout_marginTop="@dimen/default_padding"
+                            android:layout_centerHorizontal="true"
+                            android:layout_below="@+id/img8"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_normal"
+                            android:textColor="@color/light_gray"
+                            android:text="上传店铺门头照片"
+                            android:gravity="bottom"/>
+
+
+                        <ImageView
+                            android:id="@+id/photo_Enterprise"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:onClick="@{handlers.takeEnterprise}"
+                            android:scaleType="centerCrop"/>
+
+                    </RelativeLayout>
+
+
+
+                    <RelativeLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/chat_game_item_height"
+                        android:layout_marginTop="@dimen/default_item_margin"
+                        android:layout_marginLeft="@dimen/default_padding"
+                        android:layout_marginRight="@dimen/default_item_margin"
+                        android:background="@drawable/scanning_bg">
+
+                        <ImageView
+                            android:id="@+id/img5"
+                            android:layout_marginTop="@dimen/default_item_margin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:background="@drawable/scanning"/>
+
+                        <TextView
+                            android:layout_marginTop="@dimen/default_padding"
+                            android:layout_centerHorizontal="true"
+                            android:layout_below="@+id/img5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_normal"
+                            android:textColor="@color/light_gray"
+                            android:text="上传店内照片"
+                            android:gravity="bottom"/>
+
+
+                        <ImageView
+                            android:id="@+id/photo_inside"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentTop="true"
+                            android:onClick="@{handlers.takeHandUp}"
+                            android:scaleType="centerCrop" />
+
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+        </ScrollView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/app_blue"
+            android:gravity="center"
+            android:onClick="@{handlers.next}"
+            android:paddingBottom="@dimen/default_padding"
+            android:paddingTop="@dimen/default_padding"
+            android:text="提交认证"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_game_record" />
+
+
+    </LinearLayout>
+</layout>

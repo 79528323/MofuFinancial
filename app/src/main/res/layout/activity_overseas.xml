@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.util.DataUtils"/>
+        <import type="cn.mofufin.morf.ui.OverseasActivity"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.OverseasActivity"/>
+        <variable
+            name="totalMoney"
+            type="String"/>
+        <variable
+            name="over"
+            type="cn.mofufin.morf.ui.entity.Overseans.OverListBean"/>
+        <variable
+            name="bean"
+            type="cn.mofufin.morf.ui.entity.MerchantBag.DataBean.ListBean"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/app_bg"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+
+
+        <include
+            layout="@layout/layout_title"
+            bind:backIcon="@{@drawable/title_back}"
+            bind:handlers="@{handlers}"
+            bind:titleName="@{@string/over_title}" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#E75A30"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="@dimen/default_padding">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/attention" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_padding"
+                android:text="如单日未支付订单超过十笔，次日方可重新交易"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_small" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/default_padding"
+            android:paddingTop="@dimen/default_padding"
+            android:paddingBottom="@dimen/default_padding">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/MPOS4"
+                android:textColor="@color/dark_gray"
+                android:textSize="@dimen/text_size_title" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_vertical"
+                android:layout_marginTop="@dimen/default_margin"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/MPOS7"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/topic_contat_text"
+                    android:visibility="gone" />
+
+
+                <EditText
+                    android:id="@+id/mpos_sum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:imeOptions="actionDone"
+                    android:inputType="number"
+                    android:onTextChanged="@{handlers.onTextChanged}"
+                    android:text="@{totalMoney}"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/text_size_big" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="@dimen/default_margin"
+                    android:background="@drawable/backspace"
+                    android:onClick="@{handlers.clean}"
+                    android:visibility="@{totalMoney.length() > 0 ? View.VISIBLE : View.GONE}" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#EBEBEB" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_padding"
+                android:text='@{"输入金额最低"+over.channelQuotaBegin+"起，不得超过"+over.channelQuotaEnd+(over.channelName.contains("USD")?"美元":"港币")}'
+                android:textColor="@color/light_gray"
+                android:textSize="@dimen/text_size_small"
+                android:visibility="@{over==null?View.INVISIBLE:View.VISIBLE}" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/default_margin"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_padding"
+                android:background="@color/white"
+                android:onClick="@{handlers.selectionCoupon}"
+                android:paddingLeft="@dimen/default_padding"
+                android:paddingTop="@dimen/default_margin"
+                android:paddingBottom="@dimen/default_margin"
+                android:tag="@{bean}">
+
+                <ImageView
+                    android:id="@+id/img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/paper" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignTop="@+id/img"
+                    android:layout_alignBottom="@+id/img"
+                    android:layout_marginLeft="@dimen/default_margin"
+                    android:layout_toRightOf="@+id/img"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text='@{bean==null?@string/select_coupon1:bean.gdGoodsBranchType==8?("金额/元："+bean.gdGoodsDenomination):("金额/元："+DataUtils.converOverPercent(bean.gdGoodsDenomination))}'
+                            android:textColor="@color/dark_gray"
+                            android:textSize="@dimen/text_size_small" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{bean==null?@string/select_coupon2:bean.gdGoodsBranchType==8?@string/select_type5:@string/select_type3}"
+                            android:textColor="@color/light_gray"
+                            android:textSize="@dimen/text_size_small" />
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:background="@drawable/icon_right" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="@dimen/add_contact_item_width"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/default_item_margin"
+                android:layout_marginBottom="@dimen/default_item_margin"
+                android:background="@drawable/login_button"
+                android:onClick="@{handlers.onNext}"
+                android:paddingLeft="@dimen/menu_delete_width"
+                android:paddingTop="@dimen/default_padding"
+                android:paddingRight="@dimen/menu_delete_width"
+                android:paddingBottom="@dimen/default_padding"
+                android:text="@string/scanning8"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_normal" />
+
+            <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:textColor="@color/light_gray"-->
+            <!--android:gravity="center_horizontal|bottom"-->
+            <!--android:lineSpacingExtra="4dp"-->
+            <!--android:layout_gravity="bottom|center_horizontal"-->
+            <!--android:layout_marginBottom="@dimen/default_item_margin"-->
+            <!--android:textSize="@dimen/text_size_small"-->
+            <!--android:text="@string/MPOS6"/>-->
+        </LinearLayout>
+    </LinearLayout>
+</layout>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.home.InvitationActivity"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.home.InvitationActivity"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:background="@drawable/share_bg"
+        android:orientation="vertical">
+
+
+        <include
+            layout="@layout/layout_title"
+            bind:backIcon="@{@drawable/title_back}"
+            bind:handlers="@{handlers}"
+            bind:titleName="@{@string/invitation_text2}"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/share_logo"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/default_item_margin"/>
+
+        
+        <LinearLayout
+            android:layout_marginTop="@dimen/default_margin"
+            android:layout_marginLeft="@dimen/default_item_margin"
+            android:layout_marginRight="@dimen/default_item_margin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/share_letter_bg"
+            android:layout_gravity="center_horizontal"
+            android:padding="@dimen/default_item_margin"
+            android:orientation="vertical">
+
+            <TextView
+                android:paddingLeft="@dimen/default_padding"
+                android:paddingTop="@dimen/default_margin"
+                android:lineSpacingExtra="3dp"
+                android:typeface="monospace"
+                android:layout_margin="@dimen/default_padding"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/invitation_text1"
+                android:textSize="15dp"/>
+
+            <TextView
+                android:paddingLeft="@dimen/default_padding"
+                android:lineSpacingExtra="3dp"
+                android:typeface="monospace"
+                android:layout_margin="@dimen/default_padding"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/invitation_text3"
+                android:textColor="#151515"
+                android:textSize="15dp"/>
+
+            <TextView
+                android:paddingLeft="@dimen/default_padding"
+                android:lineSpacingExtra="3dp"
+                android:typeface="monospace"
+                android:layout_margin="@dimen/default_padding"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/invitation_text4"
+                android:textColor="#8D251C"
+                android:textSize="15dp"/>
+
+            <TextView
+                android:paddingLeft="@dimen/default_padding"
+                android:lineSpacingExtra="3dp"
+                android:typeface="monospace"
+                android:layout_margin="@dimen/default_padding"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/invitation_text5"
+                android:textColor="#8D251C"
+                android:textSize="15dp"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/share_vachor"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:onClick="@{handlers.shares}"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/title_height"
+                android:text="@string/invitation_text7"
+                android:background="@color/app_blue"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:textSize="@dimen/text_size_title"
+                android:layout_gravity="bottom|center_horizontal"/>
+
+        </LinearLayout>
+    </LinearLayout>
+</layout>

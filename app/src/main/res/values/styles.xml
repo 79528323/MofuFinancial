@@ -1,0 +1,247 @@
+<resources>
+
+    <style name="AlertDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">@color/black</item>
+    </style>
+
+    <style name="BaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryDark">@color/yellow</item>
+        <item name="colorAccent">@color/red</item>
+
+        <item name="android:textCursorDrawable">@null</item>
+        <item name="android:textColor">@color/dark_gray</item>
+        <item name="alertDialogTheme">@style/AlertDialogTheme</item>
+        <item name="android:colorBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <!-- cn.mofufin.morf.UI.Base application theme. -->
+    <style name="AppTheme" parent="BaseTheme">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@style/AppTheme.Slide.Animation</item>
+    </style>
+
+    <style name="AppTheme.Slide.Animation" parent="@android:style/Animation.Translucent">
+        <item name="android:activityOpenEnterAnimation">@anim/anim_slide_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/anim_slide_out</item>
+        <item name="android:activityCloseEnterAnimation">@anim/anim_slide_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/anim_slide_out</item>
+    </style>
+
+    <style name="App_LoginActivity_Theme" parent="AppTheme">
+        <item name="android:windowAnimationStyle">@style/LoginActivity.Animation</item>
+    </style>
+
+    <!--<style name="LoadingDialogStyle" parent="Theme.AppCompat.Dialog">-->
+        <!--<item name="android:windowFrame">@null</item>&lt;!&ndash;  边框&ndash;&gt;-->
+        <!--<item name="android:windowIsTranslucent">false</item>&lt;!&ndash;半透明&ndash;&gt;-->
+        <!--<item name="android:windowNoTitle">true</item>&lt;!&ndash;无标题&ndash;&gt;-->
+        <!--<item name="android:windowBackground">@color/transparent</item>-->
+        <!--<item name="android:windowContentOverlay">@null</item>-->
+        <!--<item name="colorAccent">@color/white</item>-->
+    <!--</style>-->
+
+    <style name="LoadingDialogStyle" parent="@android:style/Theme.Dialog">
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowFrame">@null</item><!--  边框-->
+        <item name="android:windowIsTranslucent">false</item><!--半透明-->
+        <item name="android:windowNoTitle">true</item><!--无标题-->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="colorAccent">@color/dark_gray</item>
+    </style>
+
+    <style name="InputStyle">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/input_height</item>
+        <item name="android:drawablePadding">@dimen/default_padding</item>
+        <item name="android:textColorHint">@color/hint</item>
+        <item name="android:textColor">@color/dark_gray</item>
+        <item name="android:textSize">@dimen/text_size_normal</item>
+    </style>
+
+    <style name="InputStyle.Welcome">
+        <item name="android:background">@drawable/input_bg</item>
+        <item name="android:layout_marginTop">0dp</item>
+    </style>
+
+    <style name="mine_level">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:button">@null</item>
+        <item name="android:clickable">false</item>
+        <item name="android:drawableLeft">@drawable/level_check</item>
+    </style>
+
+    <style name="industry_selector">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:button">@null</item>
+        <item name="android:clickable">false</item>
+        <item name="android:drawableLeft">@drawable/industry_check</item>
+    </style>
+
+    <style name="loan_selector" parent="Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:button">@drawable/loan_check</item>
+        <item name="android:clickable">false</item>
+        <item name="android:drawablePadding">@dimen/default_padding</item>
+        <item name="android:drawableLeft">@null</item>
+        <item name="android:paddingLeft">@dimen/default_padding</item>
+    </style>
+
+    <style name="supportbank_selector">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:button">@null</item>
+        <item name="android:clickable">true</item>
+        <item name="android:drawableLeft">@drawable/channel_check</item>
+    </style>
+
+    <style name="pwd_check">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:button">@null</item>
+        <item name="android:drawableLeft">@drawable/pwd_check</item>
+    </style>
+
+    <style name="agree_check">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:button">@null</item>
+        <item name="android:drawableLeft">@drawable/agreement_check</item>
+    </style>
+
+    <style name="scanning_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:button">@null</item>
+        <item name="android:clickable">false</item>
+        <item name="android:drawableLeft">@drawable/scanning_check</item>
+    </style>
+
+
+
+    <style name="HomeHeadNameItem">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:layout_marginLeft">12dp</item>
+        <item name="android:textColor">@color/black33</item>
+        <item name="android:layout_gravity">center_vertical</item>
+    </style>
+
+    <style name="HomeLightText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/black99</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <style name="reportDataTxt">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1.5</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/black33</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <!--View1 作为横线使用-->
+    <style name="view_bg1">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.6dp</item>
+        <item name="android:background">@color/view1_bg</item>
+    </style>
+
+    /*时间选择*/
+
+    <style name="sentimentDateSelect">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:button">@null</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">3dp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@drawable/sentiment_date_text_selector</item>
+    </style>
+
+    <style name="ToggleButtonStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:button">@null</item>
+        <item name="android:drawableLeft">@drawable/toggle_button</item>
+    </style>
+
+    <style name="AlertDialogCustom" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:background">#FFFFFF</item>
+    </style>
+
+    <style name="NumberProgressBar_Default">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+
+        <item name="max">100</item>
+        <item name="progress">0</item>
+
+        <item name="progress_unreached_color">#CCCCCC</item>
+        <item name="progress_reached_color">#3498DB</item>
+
+        <item name="progress_text_size">10sp</item>
+        <item name="progress_text_color">#3498DB</item>
+
+        <item name="progress_reached_bar_height">1.5dp</item>
+        <item name="progress_unreached_bar_height">0.75dp</item>
+    </style>
+
+    <style name="take_photo_anim" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/pop_enter_anims</item>
+        <item name="android:windowExitAnimation">@anim/pop_exit_anims</item>
+    </style>
+
+
+    <style name="LoginActivity.Animation" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/login_exit_anims</item>
+        <item name="android:activityOpenExitAnimation">@anim/login_enter_anims</item>
+        <item name="android:activityCloseEnterAnimation">@anim/login_enter_anims</item>
+        <item name="android:activityCloseExitAnimation">@anim/login_exit_anims</item>
+    </style>
+
+    <style name="ChannelItemStyle" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/pop_enter_anims</item>
+        <item name="android:windowExitAnimation">@anim/pop_exit_anims</item>
+    </style>
+
+    <style name="BalanceTranPwdStyle" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/pop_enter_anims</item>
+        <item name="android:windowExitAnimation">@anim/pop_exit_anims</item>
+    </style>
+
+    <style name="confirm_dailog_style" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item><!--边框-->
+        <item name="android:windowIsFloating">true</item><!--是否浮现在activity之上-->
+        <item name="android:windowIsTranslucent">false</item><!--半透明-->
+        <item name="android:windowNoTitle">true</item><!--无标题-->
+        <item name="android:windowBackground">@color/transparent</item><!--背景透明-->
+    </style>
+
+
+
+    <style name="ProductDetail_ProgressBar_Horizontal" parent="Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:progressDrawable">@drawable/progress_horizontal</item>
+        <item name="android:indeterminateDrawable">@android:drawable/progress_indeterminate_horizontal</item>
+        <item name="android:minHeight">3dip</item>
+        <item name="android:maxHeight">3dip</item>
+        <item name="android:mirrorForRtl">true</item>
+    </style>
+
+
+</resources>

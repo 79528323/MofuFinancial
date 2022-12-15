@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.fragment.ManagementInfoFragment"/>
+        <import type="android.text.Html"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.fragment.ManagementInfoFragment"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/white">
+
+        <ScrollView
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/default_item_margin"
+                    android:paddingTop="@dimen/default_padding"
+                    android:paddingBottom="@dimen/default_padding"
+                    android:orientation="horizontal"
+                    android:background="#F6F6F6">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="@dimen/text_size_normal"
+                        android:text="经营信息"/>
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/light_gray"
+                        android:layout_marginLeft="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_small"
+                        android:text="根据监管要求，请如实填写商户的经营信息"/>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_marginTop="@dimen/default_item_margin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/default_item_margin"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="@color/dark_gray"
+                        android:text="商户名称"/>
+
+                    <EditText
+                        android:id="@+id/edit_name"
+                        style="@style/InputStyle.Welcome"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionDone"
+                        android:hint="请填写营业执照真实名称或商户简称"
+                        android:inputType="text"
+                        android:paddingBottom="@dimen/editext_padding"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="@color/dark_gray"
+                        android:textColorHint="@color/light_gray" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="@dimen/default_item_margin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/default_item_margin"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="@color/dark_gray"
+                        android:text="省份/城市/区县"/>
+
+                    <EditText
+                        android:id="@+id/edit_local"
+                        style="@style/InputStyle.Welcome"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="请填写省份、城市及区县"
+                        android:focusableInTouchMode="false"
+                        android:editable="false"
+                        android:imeOptions="actionNone"
+                        android:onClick="@{handlers.SelectProCity}"
+                        android:paddingBottom="@dimen/editext_padding"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="@color/dark_gray"
+                        android:textColorHint="@color/light_gray" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="@dimen/default_item_margin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/default_item_margin"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="@color/dark_gray"
+                        android:text="注册详细地址"/>
+
+                    <EditText
+                        android:id="@+id/edit_address"
+                        style="@style/InputStyle.Welcome"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="请填写注册详细地址"
+                        android:paddingBottom="@dimen/editext_padding"
+                        android:textSize="@dimen/text_size_normal"
+                        android:inputType="text"
+                        android:singleLine="true"
+                        android:imeOptions="actionNext"
+                        android:textColor="@color/dark_gray"
+                        android:textColorHint="@color/light_gray" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="@dimen/default_item_margin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/default_item_margin"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="@color/dark_gray"
+                        android:text="社会统一信用代码"/>
+
+                    <EditText
+                        android:id="@+id/edit_code"
+                        style="@style/InputStyle.Welcome"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="请填写社会统一信用代码"
+                        android:inputType="text"
+                        android:paddingBottom="@dimen/editext_padding"
+                        android:textSize="@dimen/text_size_normal"
+                        android:imeOptions="actionNext"
+                        android:textColor="@color/dark_gray"
+                        android:textColorHint="@color/light_gray" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="@dimen/default_item_margin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/default_item_margin"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="@color/dark_gray"
+                        android:text="营业执照有效期"/>
+
+                    <EditText
+                        android:id="@+id/edit_validity"
+                        style="@style/InputStyle.Welcome"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/date_formater"
+                        android:inputType="textWebEditText"
+                        android:paddingBottom="@dimen/editext_padding"
+                        android:textSize="@dimen/text_size_normal"
+                        android:imeOptions="actionDone"
+                        android:textColor="@color/dark_gray"
+                        android:textColorHint="@color/light_gray" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="@dimen/default_item_margin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/default_item_margin"
+                    android:layout_marginBottom="@dimen/default_item_margin"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="@color/dark_gray"
+                        android:text="商户种类"/>
+
+                    <EditText
+                        android:id="@+id/edit_type"
+                        style="@style/InputStyle.Welcome"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="请选择商户种类"
+                        android:focusableInTouchMode="false"
+                        android:editable="false"
+                        android:onClick="@{handlers.selectManchant}"
+                        android:paddingBottom="@dimen/editext_padding"
+                        android:textSize="@dimen/text_size_normal"
+                        android:imeOptions="actionNone"
+                        android:textColor="@color/dark_gray"
+                        android:textColorHint="@color/light_gray" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+        <TextView
+            android:id="@+id/next"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/app_blue"
+            android:gravity="center"
+            android:onClick="@{handlers.OnSubmit}"
+            android:paddingBottom="@dimen/default_padding"
+            android:paddingTop="@dimen/default_padding"
+            android:text="@string/scanning8"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_game_record" />
+    </LinearLayout>
+
+</layout>

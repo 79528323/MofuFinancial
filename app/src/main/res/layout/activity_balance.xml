@@ -1,0 +1,606 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.util.DataUtils"/>
+        <import type="cn.mofufin.morf.ui.mine.BalanceActivity"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.mine.BalanceActivity"/>
+        <variable
+            name="hasData"
+            type="boolean"/>
+        <variable
+            name="type"
+            type="int"/>
+        <variable
+            name="onPress"
+            type="boolean"/>
+        <variable
+            name="RMB"
+            type="String"/>
+        <variable
+            name="USDollar"
+            type="String"/>
+        <variable
+            name="HKDollar"
+            type="String"/>
+        <!--总支出-->
+        <variable
+            name="expend"
+            type="String"/>
+        <!--总收入-->
+        <variable
+            name="Income"
+            type="String"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_above="@+id/btn_linear"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#EAEAEA"
+            android:orientation="vertical">
+
+            <include
+                layout="@layout/layout_title"
+                bind:backIcon="@{@drawable/title_back}"
+                bind:handlers="@{handlers}"
+                bind:titleName="@{@string/balance_title}" />
+
+            <!--<android.support.design.widget.CoordinatorLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent">-->
+
+
+                <!--<android.support.design.widget.AppBarLayout-->
+                    <!--android:id="@+id/balance_appbar"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content">-->
+
+                    <!--<android.support.design.widget.CollapsingToolbarLayout-->
+                        <!--app:layout_scrollFlags="scroll|enterAlwaysCollapsed"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content">-->
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="150dp"
+                            android:background="@drawable/balance_bg"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                tools:text="10000000.00"
+                                android:textColor="@color/white"
+                                android:typeface="sans"
+                                android:text="@{RMB}"
+                                android:layout_gravity="center_horizontal"
+                                android:padding="5dp"
+                                android:textSize="@dimen/balance_text_size"/>
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/balance3"
+                                android:textColor="#C8DFF4"
+                                android:layout_gravity="center_horizontal|bottom"
+                                android:textSize="@dimen/text_size_normal"/>
+
+
+                            <LinearLayout
+                                android:visibility="visible"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal"
+                                android:layout_gravity="end">
+
+                                <LinearLayout
+                                    android:layout_weight="1"
+                                    android:layout_width="0dp"
+                                    android:gravity="bottom"
+                                    android:layout_height="match_parent"
+                                    android:paddingBottom="5dp"
+                                    android:onClick="@{handlers.HKDollar}"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        tools:text="10000000.00"
+                                        android:textColor="@color/app_blue"
+                                        android:typeface="sans"
+                                        android:text="@{HKDollar}"
+                                        android:layout_gravity="center_horizontal"
+                                        android:padding="2dp"
+                                        android:textSize="20sp"/>
+
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="@string/balance1"
+                                        android:textColor="#4CA0EB"
+                                        android:layout_gravity="center_horizontal"
+                                        android:textSize="@dimen/text_size_small"/>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_weight="1"
+                                    android:layout_width="0dp"
+                                    android:gravity="bottom"
+                                    android:layout_height="match_parent"
+                                    android:paddingBottom="5dp"
+                                    android:onClick="@{handlers.USDollar}"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        tools:text="10000000.00"
+                                        android:textColor="@color/app_blue"
+                                        android:typeface="sans"
+                                        android:text="@{USDollar}"
+                                        android:layout_gravity="center_horizontal"
+                                        android:padding="2dp"
+                                        android:textSize="20sp"/>
+
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="@string/balance2"
+                                        android:textColor="#4CA0EB"
+                                        android:layout_gravity="center_horizontal"
+                                        android:textSize="@dimen/text_size_small"/>
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/default_padding"
+                android:background="@color/line"/>
+                    <!--</android.support.design.widget.CollapsingToolbarLayout>-->
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/line"
+                        android:paddingTop="1px"
+                        android:paddingBottom="1px">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingRight="@dimen/default_padding"
+                            android:paddingTop="5dp"
+                            android:paddingBottom="5dp"
+                            android:paddingLeft="@dimen/default_margin"
+                            android:background="#F6F6F6">
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="bottom"
+                                android:orientation="horizontal">
+
+
+                                <TextView
+                                    android:id="@+id/timepicker"
+                                    android:layout_weight="1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    tools:text="2018-10-19~2018-12-19"
+                                    android:gravity="center_vertical"
+                                    android:textSize="@dimen/text_size_normal"
+                                    android:textColor="@color/dark_gray"
+                                    android:onClick="@{handlers.showCustomTimePicker}"/>
+
+
+                                <CheckBox
+                                    android:duplicateParentState="true"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/receivables_text3"
+                                    android:textColor="@{onPress?@color/app_blue:@color/dark_gray}"
+                                    android:layout_gravity="right"
+                                    android:textSize="16sp"
+                                    android:typeface="sans"
+                                    android:checked="@{onPress}"
+                                    android:onClick="@{handlers.filterOrderQuery}"
+                                    android:button="@null"
+                                    android:drawableRight="@drawable/filter_selector"
+                                    android:drawablePadding="10dp"/>
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_marginTop="@dimen/default_padding"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="bottom"
+                                android:orientation="horizontal">
+
+
+                                <TextView
+                                    android:layout_weight="1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/light_gray"
+                                    android:textSize="@dimen/text_size_small"
+                                    tools:text="收入/元："
+                                    android:text='@{"收入/元:"+Income+"  支出/元:"+expend}'/>
+
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@{type==100?@string/balance_filter_1:type==0?@string/balance_filter_2:type==1?@string/balance_filter_3:type==2?@string/balance_filter_4:type==3?@string/balance_filter_5:type==4?@string/balance_filter_6:type==5?@string/balance_filter_7:type==6?@string/balance_filter_8:type==7?@string/balance_filter_9:type==8?@string/balance_filter_10:@string/balance_filter_11}"
+                                    android:textSize="@dimen/text_size_small"
+                                    android:layout_gravity="right"
+                                    android:textColor="@color/light_gray"/>
+
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                <!--</android.support.design.widget.AppBarLayout>-->
+
+
+
+
+
+                <FrameLayout
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                    <cc.ruis.lib.widget.WrapRecyclerView
+                        android:visibility="@{hasData?View.VISIBLE:View.GONE}"
+                        android:id="@+id/order_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/white"
+                        tools:visibility="visible"
+                        tools:listitem="@layout/layout_order_item"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        tools:visibility="gone"
+                        android:visibility="@{!hasData?View.VISIBLE:View.GONE}"
+                        android:orientation="vertical">
+
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/no_data"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/light_gray"
+                            android:textSize="@dimen/text_size_small"
+                            android:text="@string/nodata"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/filter_window"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="gone"
+                        tools:visibility="gone"
+                        android:background="@color/white"
+                        android:orientation="vertical">
+
+                        <ScrollView
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:overScrollMode="never">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:padding="@dimen/default_padding">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:id="@+id/btn1"
+                                        android:textColor="@color/dark_gray"
+                                        android:textSize="@dimen/text_size_normal"
+                                        android:text="@string/balance_filter_1"
+                                        android:gravity="center"
+                                        android:layout_weight="1"
+                                        android:tag="100"
+                                        android:background="@drawable/filter_btn_selector"
+                                        android:onClick="@{handlers.getfindType}"
+                                        android:layout_width="0dp"
+                                        android:layout_marginRight="5dp"
+                                        android:layout_height="@dimen/title_height" />
+
+                                    <TextView
+                                        android:id="@+id/btn2"
+                                        android:textColor="@color/dark_gray"
+                                        android:textSize="@dimen/text_size_normal"
+                                        android:text="@string/balance_filter_2"
+                                        android:gravity="center"
+                                        android:layout_weight="1"
+                                        android:onClick="@{handlers.getfindType}"
+                                        android:tag="0"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginRight="5dp"
+                                        android:background="@drawable/filter_btn_selector"
+                                        android:layout_width="0dp"
+                                        android:layout_height="@dimen/title_height" />
+
+                                    <TextView
+                                        android:id="@+id/btn3"
+                                        android:textColor="@color/dark_gray"
+                                        android:textSize="@dimen/text_size_normal"
+                                        android:text="@string/balance_filter_3"
+                                        android:layout_marginLeft="5dp"
+                                        android:background="@drawable/filter_btn_selector"
+                                        android:onClick="@{handlers.getfindType}"
+                                        android:tag="1"
+                                        android:layout_weight="1"
+                                        android:gravity="center"
+                                        android:layout_width="0dp"
+                                        android:layout_height="@dimen/title_height" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_marginTop="@dimen/default_padding"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:id="@+id/btn4"
+                                        android:textColor="@color/dark_gray"
+                                        android:textSize="@dimen/text_size_normal"
+                                        android:text="@string/balance_filter_4"
+                                        android:gravity="center"
+                                        android:layout_weight="1"
+                                        android:tag="2"
+                                        android:background="@drawable/filter_btn_selector"
+                                        android:onClick="@{handlers.getfindType}"
+                                        android:layout_width="0dp"
+                                        android:layout_marginRight="5dp"
+                                        android:layout_height="@dimen/title_height" />
+
+                                    <TextView
+                                        android:id="@+id/btn5"
+                                        android:textColor="@color/dark_gray"
+                                        android:textSize="@dimen/text_size_normal"
+                                        android:text="@string/balance_filter_5"
+                                        android:gravity="center"
+                                        android:layout_weight="1"
+                                        android:tag="3"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginRight="5dp"
+                                        android:background="@drawable/filter_btn_selector"
+                                        android:onClick="@{handlers.getfindType}"
+                                        android:layout_width="0dp"
+                                        android:layout_height="@dimen/title_height" />
+
+                                    <TextView
+                                        android:id="@+id/btn6"
+                                        android:textColor="@color/dark_gray"
+                                        android:textSize="@dimen/text_size_normal"
+                                        android:text="@string/balance_filter_6"
+                                        android:gravity="center"
+                                        android:layout_weight="1"
+                                        android:tag="4"
+                                        android:layout_marginLeft="5dp"
+                                        android:background="@drawable/filter_btn_selector"
+                                        android:onClick="@{handlers.getfindType}"
+                                        android:layout_width="0dp"
+                                        android:layout_height="@dimen/title_height" />
+
+                                </LinearLayout>
+
+
+                                <LinearLayout
+                                    android:layout_marginTop="@dimen/default_padding"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:id="@+id/btn7"
+                                        android:textColor="@color/dark_gray"
+                                        android:textSize="@dimen/text_size_normal"
+                                        android:text="@string/balance_filter_7"
+                                        android:gravity="center"
+                                        android:layout_weight="1"
+                                        android:tag="5"
+                                        android:background="@drawable/filter_btn_selector"
+                                        android:onClick="@{handlers.getfindType}"
+                                        android:layout_width="0dp"
+                                        android:layout_marginRight="5dp"
+                                        android:layout_height="@dimen/title_height" />
+
+                                    <TextView
+                                        android:id="@+id/btn8"
+                                        android:textColor="@color/dark_gray"
+                                        android:textSize="@dimen/text_size_normal"
+                                        android:text="@string/balance_filter_8"
+                                        android:gravity="center"
+                                        android:layout_weight="1"
+                                        android:tag="6"
+                                        android:background="@drawable/filter_btn_selector"
+                                        android:onClick="@{handlers.getfindType}"
+                                        android:layout_width="0dp"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginRight="5dp"
+                                        android:layout_height="@dimen/title_height" />
+
+                                    <TextView
+                                        android:id="@+id/btn9"
+                                        android:textColor="@color/dark_gray"
+                                        android:textSize="@dimen/text_size_normal"
+                                        android:text="@string/balance_filter_9"
+                                        android:gravity="center"
+                                        android:layout_weight="1"
+                                        android:tag="7"
+                                        android:layout_marginLeft="5dp"
+                                        android:background="@drawable/filter_btn_selector"
+                                        android:onClick="@{handlers.getfindType}"
+                                        android:layout_width="0dp"
+                                        android:layout_height="@dimen/title_height" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_marginTop="@dimen/default_padding"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:id="@+id/btn10"
+                                        android:textColor="@color/dark_gray"
+                                        android:textSize="@dimen/text_size_normal"
+                                        android:text="@string/balance_filter_10"
+                                        android:gravity="center"
+                                        android:layout_weight="1"
+                                        android:tag="8"
+                                        android:background="@drawable/filter_btn_selector"
+                                        android:onClick="@{handlers.getfindType}"
+                                        android:layout_width="0dp"
+                                        android:layout_marginRight="5dp"
+                                        android:layout_height="@dimen/title_height" />
+
+                                    <TextView
+                                        android:id="@+id/btn11"
+                                        android:textColor="@color/dark_gray"
+                                        android:textSize="@dimen/text_size_normal"
+                                        android:text="@string/balance_filter_11"
+                                        android:gravity="center"
+                                        android:layout_weight="1"
+                                        android:tag="9"
+                                        android:background="@drawable/filter_btn_selector"
+                                        android:onClick="@{handlers.getfindType}"
+                                        android:layout_width="0dp"
+                                        android:layout_marginLeft="5dp"
+                                        android:layout_marginRight="5dp"
+                                        android:layout_height="@dimen/title_height" />
+
+                                    <TextView
+                                        android:visibility="invisible"
+                                        android:textColor="@color/dark_gray"
+                                        android:textSize="@dimen/text_size_normal"
+                                        android:text="@string/balance_filter_4"
+                                        android:gravity="center"
+                                        android:layout_weight="1"
+                                        android:tag="4"
+                                        android:background="@drawable/filter_btn_selector"
+                                        android:onClick="@{handlers.getfindType}"
+                                        android:layout_width="0dp"
+                                        android:layout_height="@dimen/title_height" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+                        </ScrollView>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/setdefault"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:layout_width="0dp"
+                                android:layout_height="@dimen/icon_normal"
+                                android:text="@string/order_defualt"
+                                android:onClick="@{handlers.setDefaultfindtype}"
+                                android:textSize="@dimen/text_size_normal"
+                                android:textColor="@color/white"
+                                android:background="@color/line"/>
+
+                            <TextView
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:layout_width="0dp"
+                                android:layout_height="@dimen/icon_normal"
+                                android:text="@string/order_check"
+                                android:onClick="@{handlers.checkOrder}"
+                                android:textSize="@dimen/text_size_normal"
+                                android:textColor="@color/white"
+                                android:background="@color/app_blue"/>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </FrameLayout>
+            <!--</android.support.design.widget.CoordinatorLayout>-->
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btn_linear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/icon_normal"
+                android:text="@string/withdraw_title"
+                android:onClick="@{handlers.cashWithDrawal}"
+                android:textSize="@dimen/text_size_normal"
+                android:textColor="@color/white"
+                android:background="@color/app_blue"/>
+
+            <TextView
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_width="0dp"
+                android:onClick="@{handlers.recharge}"
+                android:layout_height="@dimen/icon_normal"
+                android:text="@string/balance4"
+                android:textSize="@dimen/text_size_normal"
+                android:textColor="@color/white"
+                android:background="#F1B962"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</layout>

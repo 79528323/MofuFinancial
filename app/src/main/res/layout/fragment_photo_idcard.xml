@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="cn.mofufin.morf.ui.fragment.PhotoIDCardFragment"/>
+        <import type="android.view.View"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.fragment.PhotoIDCardFragment"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/default_margin"
+        android:background="@color/white">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            android:layout_marginTop="@dimen/default_item_margin"
+            android:layout_marginLeft="@dimen/default_item_margin"
+            android:layout_marginRight="@dimen/default_item_margin"
+            android:background="@drawable/scanning_bg">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@drawable/scanning"/>
+
+            <TextView
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/scan_positive_img"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textSize="@dimen/text_size_normal"
+                android:textColor="@color/light_gray"
+                android:text="请手持身份证拍摄"
+                android:gravity="bottom"
+                android:paddingBottom="@dimen/default_margin"/>
+
+
+            <ImageView
+                android:id="@+id/photo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:onClick="@{handlers.takePhoto}"
+                android:scaleType="fitCenter"/>
+
+        </RelativeLayout>
+
+
+
+        <TextView
+            android:layout_marginTop="@dimen/default_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:gravity="bottom"
+            android:paddingBottom="@dimen/default_padding"
+            android:layout_marginLeft="@dimen/default_item_margin"
+            android:layout_marginRight="@dimen/default_item_margin"
+            android:textColor="#C1c1c1"
+            android:textSize="@dimen/text_size_small"
+            android:text="注意：请本人手持身份证正面进行拍摄，照片必须可见本人五官及双手持身份证正面！"/>
+
+
+        <TextView
+            android:layout_marginTop="@dimen/default_item_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:background="@drawable/login_button"
+            android:gravity="center"
+            android:onClick="@{handlers.next}"
+            android:paddingBottom="@dimen/default_padding"
+            android:paddingTop="@dimen/default_padding"
+            android:text="@string/register6"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_game_record" />
+
+
+    </LinearLayout>
+</layout>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.mine.UnbindCardActivity"/>
+        <import type="cn.mofufin.morf.ui.util.DataUtils"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.mine.UnbindCardActivity"/>
+        <variable
+            name="bean"
+            type="cn.mofufin.morf.ui.entity.User.DataBean.CardInfoBean"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/layout_title"
+            bind:backIcon="@{@drawable/title_back}"
+            bind:handlers="@{handlers}"
+            bind:canSubmit="@{true}"
+            bind:rightText="@{@string/unbind_card}"
+            bind:titleName="@{@string/mine_text3}" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="@dimen/default_padding"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/bank_bg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/bank_pingan"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_weight="1.5"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/card_icon"
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="30dp"
+                        android:background="@drawable/logo_pingan"/>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/bname"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:text="@{DataUtils.subString(bean.cardBankName,4)}"
+                            tools:text="@string/card_pingan"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/default_item_margin"
+                            android:textSize="@dimen/mark_font"/>
+
+                        <TextView
+                            android:layout_toRightOf="@+id/bname"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:layout_alignBaseline="@+id/bname"
+                            android:text="@{bean.cardType==1?@string/card_manager_1:@string/card_manager_2}"
+                            tools:text="@string/card_manager_1"
+                            android:layout_marginLeft="@dimen/default_padding"
+                            android:layout_gravity="center_vertical"
+                            android:textSize="@dimen/text_size_small"/>
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:text="@{DataUtils.construcBankcode(bean.cardCode)}"
+                        tools:text="**** **** **** **** 819"
+                        android:layout_marginLeft="80dp"
+                        android:textSize="@dimen/mark_font"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/line"/>
+
+        </LinearLayout>
+    </LinearLayout>
+</layout>

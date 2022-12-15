@@ -1,0 +1,588 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:apps="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.loan.LoanIdentityAuthActivity"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.loan.LoanIdentityAuthActivity"/>
+        <variable
+            name="selfTextState"
+            type="int"/>
+        <variable
+            name="selfImgState"
+            type="int"/>
+        <variable
+            name="selfPrivateImgState"
+            type="int"/>
+        <variable
+            name="spouseTextState"
+            type="int"/>
+        <variable
+            name="spouseImgState"
+            type="int"/>
+        <variable
+            name="friendTextState"
+            type="int"/>
+        <variable
+            name="businessImgState"
+            type="int"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+
+            <include
+                android:id="@+id/title_layout"
+                layout="@layout/layout_title"
+                bind:backIcon="@{@drawable/financial_back}"
+                bind:handlers="@{handlers}"
+                bind:isTranslate="@{true}"
+                bind:isTitleBlack="@{true}"
+                bind:titleName="@{@string/mofuloan_mine_3}"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@color/loan_red"
+            android:padding="@dimen/default_padding">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/attention"/>
+
+            <TextView
+                android:layout_marginLeft="@dimen/default_padding"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/white"
+                android:text="请认真填写每一份资料，所有信息绝对保密！"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="资料填写"
+            android:padding="@dimen/default_padding"
+            android:background="@color/app_background"
+            android:textColor="@color/dark_gray"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="@dimen/default_padding"
+                android:background="@color/app_background"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tab_height"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:onClick="@{handlers.selfText}"
+                android:tag="@{selfTextState}"
+                android:paddingLeft="@dimen/default_padding">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/default_margin"
+                    android:background="@drawable/iden_personal"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="个人信息"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/text_size_normal" />
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical|right"
+                    android:orientation="horizontal">
+
+
+                    <cn.mofufin.morf.ui.widget.OrderIconWidget
+                        android:id="@+id/selftext_status"
+                        android:layout_width="60dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="@dimen/default_margin"
+                        android:background="@drawable/order_mpos_icon"
+                        android:textSize="@dimen/text_size_small"
+                        android:textColor="@{selfTextState==0?@color/app_blue:selfTextState==1?@color/ok:@color/loan_red}"
+                        android:text="@{selfTextState==0?@string/loan_iden_submited:selfTextState==1?@string/loan_iden_no_submited:@string/loan_iden_no_pass}"
+                        android:gravity="center"
+                        apps:textTouchColor="#000"
+                        apps:radius="20dp"
+                        apps:strokeWith="2"
+                        apps:solidColor="@color/white"
+                        apps:solidTouchColor="#ffffff"
+                        apps:strokeColor="#000000"
+                        apps:strokeTouchColor="#000000"
+                        apps:shapeTpe="rectangle"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="10dp"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="@dimen/default_padding"
+                    android:background="@drawable/icon_right"/>
+
+            </LinearLayout>
+
+
+            <View
+                android:visibility="@{spouseTextState==3?View.GONE:View.VISIBLE}"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="@dimen/default_padding"
+                android:background="@color/app_background"/>
+
+            <LinearLayout
+                android:visibility="@{spouseTextState==3?View.GONE:View.VISIBLE}"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tab_height"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/default_padding"
+                android:onClick="@{handlers.spouseText}"
+                android:tag="@{spouseTextState}"
+                android:background="@color/white"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/default_margin"
+                    android:background="@drawable/iden_spouse"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="配偶信息"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/text_size_normal"/>
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical|right"
+                    android:orientation="horizontal">
+
+
+                    <cn.mofufin.morf.ui.widget.OrderIconWidget
+                        android:id="@+id/spousetext_status"
+                        android:layout_width="60dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="@dimen/default_margin"
+                        android:background="@drawable/order_mpos_icon"
+                        android:textSize="@dimen/text_size_small"
+                        android:textColor="@{spouseTextState==0?@color/app_blue:spouseTextState==1?@color/ok:@color/loan_red}"
+                        android:text="@{spouseTextState==0?@string/loan_iden_submited:spouseTextState==1?@string/loan_iden_no_submited:@string/loan_iden_no_pass}"
+                        android:gravity="center"
+                        apps:textTouchColor="#000"
+                        apps:radius="20dp"
+                        apps:strokeWith="2"
+                        apps:solidColor="@color/white"
+                        apps:solidTouchColor="#ffffff"
+                        apps:strokeColor="@color/loan_red"
+                        apps:strokeTouchColor="#000000"
+                        apps:shapeTpe="rectangle"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="10dp"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="@dimen/default_padding"
+                    android:background="@drawable/icon_right"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="@dimen/default_padding"
+                android:background="@color/app_background"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tab_height"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/default_padding"
+                android:onClick="@{handlers.friendText}"
+                android:tag="@{friendTextState}"
+                android:background="@color/white"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/default_margin"
+                    android:background="@drawable/iden_friend"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="朋友信息"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/text_size_normal"/>
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical|right"
+                    android:orientation="horizontal">
+
+
+                    <cn.mofufin.morf.ui.widget.OrderIconWidget
+                        android:id="@+id/friendtext_status"
+                        android:layout_width="60dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="@dimen/default_margin"
+                        android:background="@drawable/order_mpos_icon"
+                        android:textSize="@dimen/text_size_small"
+                        android:textColor="@{friendTextState==0?@color/app_blue:friendTextState==1?@color/ok:@color/loan_red}"
+                        android:text="@{friendTextState==0?@string/loan_iden_submited:friendTextState==1?@string/loan_iden_no_submited:@string/loan_iden_no_pass}"
+                        android:gravity="center"
+                        apps:textTouchColor="#000"
+                        apps:radius="20dp"
+                        apps:strokeWith="2"
+                        apps:solidColor="@color/white"
+                        apps:solidTouchColor="#ffffff"
+                        apps:strokeColor="@color/loan_red"
+                        apps:strokeTouchColor="#000000"
+                        apps:shapeTpe="rectangle"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="10dp"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="@dimen/default_padding"
+                    android:background="@drawable/icon_right"/>
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="图片提交"
+            android:padding="@dimen/default_padding"
+            android:background="@color/app_background"
+            android:textColor="@color/dark_gray"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="@dimen/default_padding"
+                android:background="@color/app_background"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tab_height"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:onClick="@{handlers.selfImg}"
+                android:tag="@{selfImgState}"
+                android:paddingLeft="@dimen/default_padding">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/default_margin"
+                    android:background="@drawable/iden_personal_img"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="个人图片"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/text_size_normal" />
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical|right"
+                    android:orientation="horizontal">
+
+
+                    <cn.mofufin.morf.ui.widget.OrderIconWidget
+                        android:id="@+id/selfimg_status"
+                        android:layout_width="60dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="@dimen/default_margin"
+                        android:background="@drawable/order_mpos_icon"
+                        android:textSize="@dimen/text_size_small"
+                        android:textColor="@{selfImgState==0?@color/app_blue:selfImgState==1?@color/ok:@color/loan_red}"
+                        android:text="@{selfImgState==0?@string/loan_iden_submited:selfImgState==1?@string/loan_iden_no_submited:@string/loan_iden_no_pass}"
+                        android:gravity="center"
+                        apps:textTouchColor="#000"
+                        apps:radius="20dp"
+                        apps:strokeWith="2"
+                        apps:solidColor="@color/white"
+                        apps:solidTouchColor="#ffffff"
+                        apps:strokeColor="@color/loan_red"
+                        apps:strokeTouchColor="#000000"
+                        apps:shapeTpe="rectangle"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="10dp"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="@dimen/default_padding"
+                    android:background="@drawable/icon_right"/>
+
+            </LinearLayout>
+
+
+            <View
+                android:visibility="@{spouseImgState==3?View.GONE:View.VISIBLE}"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="@dimen/default_padding"
+                android:background="@color/app_background"/>
+
+            <LinearLayout
+                android:visibility="@{spouseImgState==3?View.GONE:View.VISIBLE}"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tab_height"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/default_padding"
+                android:onClick="@{handlers.spouseImg}"
+                android:tag="@{spouseImgState}"
+                android:background="@color/white"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/default_margin"
+                    android:background="@drawable/iden_spouse_img"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="配偶图片"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/text_size_normal"/>
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical|right"
+                    android:orientation="horizontal">
+
+
+                    <cn.mofufin.morf.ui.widget.OrderIconWidget
+                        android:id="@+id/spouseimg_status"
+                        android:layout_width="60dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="@dimen/default_margin"
+                        android:background="@drawable/order_mpos_icon"
+                        android:textSize="@dimen/text_size_small"
+                        android:textColor="@{spouseImgState==0?@color/app_blue:spouseImgState==1?@color/ok:@color/loan_red}"
+                        android:text="@{spouseImgState==0?@string/loan_iden_submited:spouseImgState==1?@string/loan_iden_no_submited:@string/loan_iden_no_pass}"
+                        android:gravity="center"
+                        apps:textTouchColor="#000"
+                        apps:radius="20dp"
+                        apps:strokeWith="2"
+                        apps:solidColor="@color/white"
+                        apps:solidTouchColor="#ffffff"
+                        apps:strokeColor="@color/loan_red"
+                        apps:strokeTouchColor="#000000"
+                        apps:shapeTpe="rectangle"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="10dp"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="@dimen/default_padding"
+                    android:background="@drawable/icon_right"/>
+            </LinearLayout>
+
+            <View
+                android:visibility="@{selfPrivateImgState==3?View.GONE:View.VISIBLE}"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="@dimen/default_padding"
+                android:background="@color/app_background"/>
+
+            <LinearLayout
+                android:onClick="@{handlers.privaterImg}"
+                android:visibility="@{selfPrivateImgState==3?View.GONE:View.VISIBLE}"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tab_height"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/default_padding"
+                android:tag="@{selfPrivateImgState}"
+                android:background="@color/white"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/default_margin"
+                    android:background="@drawable/iden_private"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="经营图片"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/text_size_normal"/>
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical|right"
+                    android:orientation="horizontal">
+
+
+                    <cn.mofufin.morf.ui.widget.OrderIconWidget
+                        android:id="@+id/privateimg_status"
+                        android:layout_width="60dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="@dimen/default_margin"
+                        android:background="@drawable/order_mpos_icon"
+                        android:textSize="@dimen/text_size_small"
+                        android:textColor="@{selfPrivateImgState==0?@color/app_blue:selfPrivateImgState==1?@color/ok:@color/loan_red}"
+                        android:text="@{selfPrivateImgState==0?@string/loan_iden_submited:selfPrivateImgState==1?@string/loan_iden_no_submited:@string/loan_iden_no_pass}"
+                        android:gravity="center"
+                        apps:textTouchColor="#000"
+                        apps:radius="20dp"
+                        apps:strokeWith="2"
+                        apps:solidColor="@color/white"
+                        apps:solidTouchColor="#ffffff"
+                        apps:strokeColor="@color/loan_red"
+                        apps:strokeTouchColor="#000000"
+                        apps:shapeTpe="rectangle"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="10dp"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="@dimen/default_padding"
+                    android:background="@drawable/icon_right"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="@dimen/default_padding"
+                android:background="@color/app_background"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tab_height"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/default_padding"
+                android:onClick="@{handlers.businessImg}"
+                android:tag="@{businessImgState}"
+                android:background="@color/white"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/default_margin"
+                    android:background="@drawable/iden_bussiness"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="业务图片"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/text_size_normal"/>
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical|right"
+                    android:orientation="horizontal">
+
+
+                    <cn.mofufin.morf.ui.widget.OrderIconWidget
+                        android:id="@+id/businessimg_status"
+                        android:layout_width="60dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="@dimen/default_margin"
+                        android:background="@drawable/order_mpos_icon"
+                        android:textSize="@dimen/text_size_small"
+                        android:textColor="@{businessImgState==0?@color/app_blue:businessImgState==1?@color/ok:@color/loan_red}"
+                        android:text="@{businessImgState==0?@string/loan_iden_submited:businessImgState==1?@string/loan_iden_no_submited:@string/loan_iden_no_pass}"
+                        android:gravity="center"
+                        apps:textTouchColor="#000"
+                        apps:radius="20dp"
+                        apps:strokeWith="2"
+                        apps:solidColor="@color/white"
+                        apps:solidTouchColor="#ffffff"
+                        apps:strokeColor="@color/loan_red"
+                        apps:strokeTouchColor="#000000"
+                        apps:shapeTpe="rectangle"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="10dp"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="@dimen/default_padding"
+                    android:background="@drawable/icon_right"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/app_background"/>
+    </LinearLayout>
+</layout>

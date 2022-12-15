@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:apps="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.repayment.ChannelOpeningValidateActivity"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.repayment.ChannelOpeningValidateActivity"/>
+        <variable
+            name="phone"
+            type="String"/>
+        <variable
+            name="second"
+            type="String"/>
+        <variable
+            name="isNext"
+            type="boolean"/>
+        <variable
+            name="isEnable"
+            type="boolean"/>
+        <variable
+            name="title"
+            type="String"/>
+        <variable
+            name="tips"
+            type="String"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:background="@color/app_background"
+        android:orientation="vertical">
+
+
+        <include
+            layout="@layout/layout_title"
+            bind:backIcon="@{@drawable/title_back}"
+            bind:handlers="@{handlers}"
+            bind:titleName="@{title}"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="#E75A30"
+            android:padding="@dimen/default_padding">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/attention"/>
+
+            <TextView
+                android:layout_marginLeft="@dimen/default_padding"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/white"
+                android:text="@{tips}"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:visibility="@{isNext?View.GONE:View.VISIBLE}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/default_padding"
+                android:layout_marginTop="@dimen/default_margin"
+                android:layout_marginBottom="@dimen/default_margin"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/text_size_title"
+                    android:gravity="center"
+                    tools:text="@string/channelopen_1"
+                    android:text="@{phone}"/>
+
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:textColor="@color/dark_gray"-->
+                    <!--android:textSize="@dimen/text_size_title"-->
+                    <!--tools:text="@string/modifytrans2"-->
+                    <!--android:text="@{second}"/>-->
+
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#E9E9E9"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tab_height"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/default_padding"
+                android:background="@color/white"
+                android:gravity="center_vertical">
+
+                <EditText
+                    android:id="@+id/modfy_trans_sms"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:inputType="number"
+                    android:onTextChanged="@{handlers.onTextChanged}"
+                    android:paddingLeft="@dimen/default_padding"
+                    android:maxLength="6"
+                    android:text=""
+                    android:hint="@string/modfyCode5"
+                    android:textSize="@dimen/text_size_normal"
+                    android:textColorHint="@color/light_gray"
+                    android:gravity="center_vertical"
+                    android:background="@null"/>
+
+
+                <TextView
+                    android:id="@+id/sms_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@{second}"
+                    android:onClick="@{handlers.getCode}"
+                    android:textColor="@color/dark_gray"
+                    android:padding="@dimen/default_margin"
+                    android:textSize="@dimen/text_size_normal"/>
+
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#E9E9E9"/>
+
+
+        </LinearLayout>
+
+
+
+
+        <!--<LinearLayout-->
+            <!--android:visibility="@{!isNext?View.GONE:View.VISIBLE}"-->
+            <!--android:layout_marginTop="@dimen/default_item_margin"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@color/white"-->
+            <!--android:orientation="vertical">-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="@dimen/tab_height"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:paddingLeft="@dimen/default_padding"-->
+                <!--android:background="@color/white"-->
+                <!--android:gravity="center_vertical">-->
+
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="@string/realName"-->
+                    <!--android:textColor="@color/dark_gray"-->
+                    <!--android:textSize="@dimen/text_size_normal"/>-->
+
+                <!--<EditText-->
+                    <!--android:id="@+id/idname"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:paddingLeft="@dimen/default_padding"-->
+                    <!--android:hint="请输入姓名"-->
+                    <!--android:inputType="text"-->
+                    <!--android:textSize="@dimen/text_size_normal"-->
+                    <!--android:gravity="center_vertical"-->
+                    <!--android:background="@null"/>-->
+
+            <!--</LinearLayout>-->
+
+            <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="1dp"-->
+                <!--android:layout_marginLeft="@dimen/default_padding"-->
+                <!--android:background="@color/app_background"/>-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="@dimen/tab_height"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:paddingLeft="@dimen/default_padding"-->
+                <!--android:background="@color/white"-->
+                <!--android:gravity="center_vertical">-->
+
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="@string/scanning2"-->
+                    <!--android:textColor="@color/dark_gray"-->
+                    <!--android:textSize="@dimen/text_size_normal"/>-->
+
+                <!--<EditText-->
+                    <!--android:id="@+id/idnum"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:inputType="text"-->
+                    <!--android:paddingLeft="@dimen/default_padding"-->
+                    <!--android:hint="请输入身份证号码"-->
+                    <!--android:textSize="@dimen/text_size_normal"-->
+                    <!--android:gravity="center_vertical"-->
+                    <!--android:background="@null"/>-->
+
+            <!--</LinearLayout>-->
+
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="@dimen/tab_height"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:paddingLeft="@dimen/default_padding"-->
+                <!--android:background="@color/white"-->
+                <!--android:gravity="center_vertical">-->
+
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="@string/modfyCode6"-->
+                    <!--android:textColor="@color/dark_gray"-->
+                    <!--android:textSize="@dimen/text_size_normal"/>-->
+
+                <!--<EditText-->
+                    <!--android:id="@+id/modfy_trans_new_code"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:paddingLeft="@dimen/default_padding"-->
+                    <!--android:hint="请设置由6位数字组成的交易密码"-->
+                    <!--android:inputType="textPassword"-->
+                    <!--android:textSize="@dimen/text_size_normal"-->
+                    <!--android:gravity="center_vertical"-->
+                    <!--android:background="@null"/>-->
+
+            <!--</LinearLayout>-->
+
+            <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="1dp"-->
+                <!--android:layout_marginLeft="@dimen/default_padding"-->
+                <!--android:background="@color/app_background"/>-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="@dimen/tab_height"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:paddingLeft="@dimen/default_padding"-->
+                <!--android:background="@color/white"-->
+                <!--android:gravity="center_vertical">-->
+
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="@string/modfyCode8"-->
+                    <!--android:textColor="@color/dark_gray"-->
+                    <!--android:textSize="@dimen/text_size_normal"/>-->
+
+                <!--<EditText-->
+                    <!--android:id="@+id/modfy_trans_repeat"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:inputType="textPassword"-->
+                    <!--android:paddingLeft="@dimen/default_padding"-->
+                    <!--android:hint="@string/modfyCode9"-->
+                    <!--android:textSize="@dimen/text_size_normal"-->
+                    <!--android:gravity="center_vertical"-->
+                    <!--android:background="@null"/>-->
+
+            <!--</LinearLayout>-->
+        <!--</LinearLayout>-->
+
+
+
+        <cn.mofufin.morf.ui.widget.TextButtonWidget
+            android:id="@+id/next"
+            apps:enables="false"
+            android:layout_marginTop="@dimen/folder_menu_item_height"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="@dimen/add_contact_item_width"
+            android:paddingBottom="@dimen/default_padding"
+            android:paddingTop="@dimen/default_padding"
+            android:text="@string/register6"
+            android:onClick="@{handlers.next}"
+            android:gravity="center"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+</layout>

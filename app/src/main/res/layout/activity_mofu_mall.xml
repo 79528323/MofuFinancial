@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:ruis="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="cn.mofufin.morf.ui.MofuMallActivity"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.MofuMallActivity"/>
+        <variable
+            name="coins"
+            type="String"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:fitsSystemWindows="true"
+        android:background="@color/white">
+
+
+        <include
+            layout="@layout/layout_title"
+            bind:backIcon="@{@drawable/title_back}"
+            bind:handlers="@{handlers}"
+            bind:canSubmit="@{true}"
+            bind:rightText="@{@string/mall_1}"
+            bind:titleName="@{@string/mall_title}" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/mall_head"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/default_padding"
+            android:paddingTop="@dimen/default_padding"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:onClick="@{handlers.coins}"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/coin_exchange"
+                    tools:text="80000"
+                    android:textColor="@color/app_blue"
+                    android:textSize="@dimen/text_size_title"
+                    android:drawablePadding="@dimen/default_padding"
+                    android:text="@{coins}"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:background="@color/hint"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:onClick="@{handlers.playMofuCoin}"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_normal"
+                    android:drawableLeft="@drawable/coin_mall_conver"
+                    android:drawablePadding="@dimen/default_padding"
+                    android:textColor="#FF7F17"
+                    android:text="@string/coin_2"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/default_item_margin"
+            android:background="@color/app_bg"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/white">
+
+            <cc.ruis.lib.widget.TabView
+                android:id="@+id/mall_tabs"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/title_height"
+                ruis:ruis_textColor="@color/tab_text_color"
+                ruis:ruis_textSize="@dimen/text_size_normal"
+                ruis:ruis_underlineHeight="@dimen/line"
+                ruis:ruis_underlineColor="@color/line"
+                ruis:ruis_indicatorColor="@color/home_text_check_b"
+                ruis:ruis_indicatorHeight="2dp"
+                ruis:ruis_indicatorWidth="64dp"
+                ruis:ruis_shouldExpand="true"
+                ruis:ruis_tabBackground="@drawable/item_default_selector"/>
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/mall_viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:orientation="vertical">-->
+
+
+            <!--<cc.ruis.lib.widget.WrapRecyclerView-->
+                <!--android:layout_weight="1"-->
+                <!--android:id="@+id/mall_list"-->
+                <!--android:overScrollMode="never"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:background="@color/white"-->
+                <!--tools:listitem="@layout/layout_mall_item"-->
+                <!--android:padding="@dimen/default_padding"/>-->
+
+
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="@dimen/item_height"-->
+                <!--android:background="@color/app_blue"-->
+                <!--android:textSize="@dimen/text_size_title"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:gravity="center"-->
+                <!--android:text="@string/scanning8"/>-->
+        <!--</LinearLayout>-->
+
+    </LinearLayout>
+</layout>

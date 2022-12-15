@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:apps="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="cn.mofufin.morf.ui.util.DataUtils"/>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.repayment.EditorCardDateActivity"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.repayment.EditorCardDateActivity"/>
+        <variable
+            name="textput"
+            type="String"/>
+        <variable
+            name="stateday"
+            type="int"/>
+        <variable
+            name="repayday"
+            type="int"/>
+        <variable
+            name="bean"
+            type="cn.mofufin.morf.ui.entity.User.DataBean.CardInfoBean"/>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+
+
+        <include
+            layout="@layout/layout_title"
+            bind:backIcon="@{@drawable/title_back}"
+            bind:handlers="@{handlers}"
+            bind:titleName="@{@string/repayment_4}" />
+
+        <LinearLayout
+            android:padding="@dimen/default_padding"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+
+            <RelativeLayout
+                android:id="@+id/bank_bg"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/menu_width"
+                android:layout_marginTop="@dimen/default_margin"
+                android:layout_marginLeft="@dimen/default_item_margin"
+                android:layout_marginRight="@dimen/default_item_margin"
+                android:background="@drawable/shape_repayment_card">
+
+                <LinearLayout
+                    android:visibility="@{bean==null?View.VISIBLE:View.GONE}"
+                    android:layout_marginTop="@dimen/default_margin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/repayment_card_bg">
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:visibility="@{bean==null?View.GONE:View.VISIBLE}"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:layout_above="@id/transp_layout">
+
+                    <ImageView
+                        android:id="@+id/card_icon"
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="30dp"
+                        android:background="@drawable/logo_other_bank"/>
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/bname"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:text='@{bean==null?"":DataUtils.subString(bean.cardBankName,4)}'
+                            tools:text="@string/card_pingan"
+                            android:layout_marginStart="@dimen/default_padding"
+                            android:textSize="@dimen/text_size_game_record"/>
+
+                        <View
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:layout_width="1dp"
+                            android:layout_height="10dp"
+                            android:background="@color/white"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:text='@{"尾号"+(bean==null?"":DataUtils.subString(bean.cardCode,bean.cardCode.length()-4,bean.cardCode.length()))}'
+                            tools:text="@string/card_manager_1"
+                            android:textSize="@dimen/text_size_normal"/>
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/transp_layout"
+                    android:visibility="@{bean==null?View.GONE:View.VISIBLE}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:background="#1C000000">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="@color/white"
+                        android:gravity="center"
+                        tools:text="账单日 每月10号"
+                        android:text='@{"账单日 每月"+stateday+"号"}'
+                        android:padding="@dimen/default_margin"/>
+
+                    <TextView
+                        android:id="@+id/repayday"
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="@color/white"
+                        android:gravity="center"
+                        tools:text="账单日 次月10号"
+                        android:text="还款日"
+                        android:padding="@dimen/default_margin"/>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/button_height"
+                android:layout_marginLeft="@dimen/default_item_margin"
+                android:layout_marginRight="@dimen/default_item_margin"
+                android:padding="@dimen/default_item_margin"
+                android:gravity="center_vertical"
+                android:onClick="@{handlers.statementSelet}"
+                android:background="@drawable/shape_gray_editor"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/light_gray"
+                    android:text="@string/credit_card_5"
+                    android:textSize="@dimen/text_size_normal"/>
+
+
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/default_item_margin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/dark_gray"
+                    android:text='@{stateday+"号"}'
+                    android:textSize="@dimen/text_size_normal"/>
+
+
+                <View
+                    android:layout_width="19dp"
+                    android:layout_height="9dp"
+                    android:background="@drawable/arrow_down_lightgray"/>
+
+
+            </LinearLayout>
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="@{handlers.repaySelect}"
+                android:layout_marginTop="@dimen/default_margin"
+                android:layout_marginLeft="@dimen/default_item_margin"
+                android:layout_marginRight="@dimen/default_item_margin"
+                android:padding="@dimen/default_item_margin"
+                android:gravity="center_vertical"
+                android:background="@drawable/shape_gray_editor"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/light_gray"
+                    android:text="@string/credit_card_6"
+                    android:textSize="@dimen/text_size_normal"/>
+
+
+
+                <TextView
+                    android:id="@+id/repayDays"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/default_item_margin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/text_size_normal"/>
+
+                <View
+                    android:layout_width="19dp"
+                    android:layout_height="9dp"
+                    android:background="@drawable/arrow_down_lightgray"/>
+
+            </LinearLayout>
+
+
+
+            <cn.mofufin.morf.ui.widget.TextButtonWidget
+                android:id="@+id/confirm"
+                apps:enables="false"
+                android:layout_marginTop="@dimen/folder_menu_item_height"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="@dimen/add_contact_item_width"
+                android:paddingBottom="@dimen/default_padding"
+                android:paddingTop="@dimen/default_padding"
+                android:text="@string/confirm"
+                android:onClick="@{handlers.confirm}"
+                android:gravity="center"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</layout>

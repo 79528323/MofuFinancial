@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.widget.SharePopWindow"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.widget.SharePopWindow"/>
+
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/app_background"
+                    android:padding="@dimen/default_padding"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="@color/dark_gray"
+                        android:gravity="center"
+                        android:onClick="@{handlers.weixin}"
+                        android:drawablePadding="3dp"
+                        android:drawableTop="@drawable/share_weixin"
+                        android:text="微信"/>
+                    <!--<ImageView-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:src="@drawable/share_weixin"/>-->
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="@color/dark_gray"
+                        android:gravity="center"
+                        android:onClick="@{handlers.dynamic}"
+                        android:drawablePadding="3dp"
+                        android:drawableTop="@drawable/share_dynamic"
+                        android:text="朋友圈"/>
+
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="@color/dark_gray"
+                        android:gravity="center"
+                        android:visibility="invisible"
+                        android:drawablePadding="3dp"
+                        android:drawableTop="@drawable/share_weixin"
+                        android:text="微信"/>
+
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="@color/dark_gray"
+                        android:gravity="center"
+                        android:visibility="invisible"
+                        android:drawablePadding="3dp"
+                        android:drawableTop="@drawable/share_weixin"
+                        android:text="微信"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/app_background"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="@color/dark_gray"
+                        android:gravity="center"
+                        android:visibility="invisible"
+                        android:drawablePadding="3dp"
+                        android:drawableTop="@drawable/share_weixin"
+                        android:text="微信"/>
+
+
+                </LinearLayout>
+
+                <TextView
+                    android:onClick="@{handlers.cancel}"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/title_height"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:textColor="@color/light_gray"
+                    android:text="取消"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+</layout>

@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.entity.Overseans.OverListBean"/>
+        <import type="cn.mofufin.morf.ui.util.DataUtils"/>
+        <import type="android.text.TextUtils"/>
+        <variable
+            name="over"
+            type="cn.mofufin.morf.ui.entity.Overseans.OverListBean"/>
+        <variable
+            name="clicklistener"
+            type="android.view.View.OnClickListener"/>
+        <variable
+            name="position"
+            type="int"/>
+        <variable
+            name="memberType"
+            type="int"/>
+        <variable
+            name="type"
+            type="int"/>
+        <variable
+            name="overUser"
+            type="cn.mofufin.morf.ui.entity.User.DataBean.MerchantInfoBean"/>
+    </data>
+
+    <LinearLayout
+        android:id="@+id/main_linear"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:tag="@{over}"
+            android:onClick="@{clicklistener}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:layout_marginBottom="@dimen/default_margin"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_channel"
+                android:layout_marginLeft="@dimen/default_margin"
+                android:layout_marginRight="@dimen/default_margin"
+                android:layout_marginTop="@dimen/default_padding"
+                android:background="@{type==0?@drawable/d0:type==1?@drawable/d1:type==2?@drawable/d2:type==3?@drawable/d3:type==4?@drawable/d4:type==5?@drawable/d5:type==6?@drawable/d6:@drawable/d7}"
+                android:layout_width="@dimen/icon_small"
+                android:layout_height="@dimen/icon_small"/>
+
+            <LinearLayout
+                android:tag="@{over}"
+                android:id="@+id/layout_linear"
+                android:layout_toRightOf="@+id/iv_channel"
+                android:layout_alignTop="@+id/iv_channel"
+                android:layout_alignBottom="@+id/iv_channel"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="@dimen/text_size_normal"
+                        android:text="@{over.channelName}"
+                        tools:text="0.11%+9"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="@dimen/text_size_small"
+                        tools:text="（限额19999元/笔）"
+                        android:text='@{"  (限额"+over.channelQuotaBegin+"~"+over.channelQuotaEnd+(over.channelName.contains("USD")?@string/balance_details_10:@string/balance_details_11)+"/笔)"}'/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:gravity="bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_gravity="bottom"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/text_ratio"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/light_gray"
+                            android:textSize="@dimen/text_size_small"
+                            tools:text="费率0.54%"
+                            android:text='@{"费率 "+(overUser.memberType==1?DataUtils.converOverPercent(over.merCommonCostringD0):overUser.memberType==2?DataUtils.converOverPercent(over.merGoldCostringD0):DataUtils.converOverPercent(over.merDrillCostringD0))}'/>
+
+                        <TextView
+                            android:layout_marginLeft="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/light_gray"
+                            android:textSize="@dimen/text_size_small"
+                            android:text="|"/>
+
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/light_gray"
+                            android:layout_marginLeft="5dp"
+                            android:textSize="@dimen/text_size_small"
+                            tools:text="额外手续费1美元"
+                            android:text='@{"单笔通信费"+over.channelMegMoney+(over.channelName.contains("USD")?@string/balance_details_10:@string/balance_details_11)}'/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/light_gray"
+                android:textSize="@dimen/text_size_small"
+                tools:text="额外手续费1美元"
+                android:layout_below="@+id/layout_linear"
+                android:layout_alignLeft="@+id/layout_linear"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="@dimen/default_padding"
+                android:text='@{"交易时间 "+over.channelPayBegin+"~"+over.channelPayEnd}'/>
+
+
+        </RelativeLayout>
+
+
+
+
+        <!-- T1 -->
+        <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="80dp"-->
+            <!--android:tag="1"-->
+            <!--android:onClick="@{clicklistener}"-->
+            <!--tools:visibility="visible"-->
+            <!--android:visibility="@{over.isSupportT1==1?View.VISIBLE:View.GONE}"-->
+            <!--android:background="@color/white"-->
+            <!--android:layout_marginBottom="@dimen/default_margin"-->
+            <!--android:orientation="horizontal">-->
+
+            <!--<ImageView-->
+                <!--android:layout_marginLeft="@dimen/default_margin"-->
+                <!--android:layout_marginRight="@dimen/default_margin"-->
+                <!--android:id="@+id/iv_channel_t1"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--android:layout_width="@dimen/icon_normal"-->
+                <!--android:layout_height="@dimen/icon_normal"-->
+                <!--android:background="@drawable/t1"/>-->
+
+            <!--<LinearLayout-->
+                <!--android:id="@+id/layout_linear_t1"-->
+                <!--android:layout_toRightOf="@+id/iv_channel_t1"-->
+                <!--android:layout_alignTop="@+id/iv_channel_t1"-->
+                <!--android:layout_alignBottom="@+id/iv_channel_t1"-->
+                <!--android:orientation="vertical"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent">-->
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:orientation="horizontal">-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:textColor="@color/dark_gray"-->
+                        <!--android:textSize="@dimen/niuniu_number"-->
+                        <!--android:text="@{over.channelName}"-->
+                        <!--tools:text="0.11%+9"/>-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:textColor="@color/dark_gray"-->
+                        <!--android:textSize="@dimen/text_size_normal"-->
+                        <!--tools:text="（限额19999元/笔）"-->
+                        <!--android:text='@{"  ("+over.channelQuotaBegin+"~"+over.channelQuotaEnd+"/笔)"}'/>-->
+
+
+                <!--</LinearLayout>-->
+
+                <!--<LinearLayout-->
+                    <!--android:layout_gravity="bottom"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:gravity="bottom"-->
+                    <!--android:orientation="horizontal">-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/text_ratio_t1"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:textColor="@color/light_gray"-->
+                        <!--android:textSize="@dimen/text_size_small"-->
+                        <!--tools:text="费率0.54%"-->
+                        <!--android:text='@{"费率 "+(memberType==1?String.valueOf(over.merCommonCostringT1):memberType==2?String.valueOf(over.merGoldCostringT1):String.valueOf(over.merDrillCostringT1))+"% + "+String.valueOf(over.channelMegMoney)}'/>-->
+
+                    <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_marginLeft="3dp"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:textColor="@color/light_gray"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:textSize="@dimen/text_size_small"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:text="| "/>&ndash;&gt;-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:textColor="@color/light_gray"-->
+                        <!--android:layout_marginLeft="@dimen/default_padding"-->
+                        <!--android:textSize="@dimen/text_size_small"-->
+                        <!--tools:text="额外手续费1美元"-->
+                        <!--android:text='@{over.channelPayBegin+"~"+ over.channelPayEnd+""}'/>-->
+
+                <!--</LinearLayout>-->
+            <!--</LinearLayout>-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_alignRight="@+id/layout_linear_t1"-->
+                <!--android:gravity="center"-->
+                <!--android:layout_marginRight="@dimen/default_item_margin"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="match_parent">-->
+
+                <!--<CheckBox-->
+                    <!--android:checked="@{listCheck}"-->
+                    <!--style="@style/industry_selector"/>-->
+
+            <!--</LinearLayout>-->
+
+            <!--&lt;!&ndash;<View&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_height="1px"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_toRightOf="@+id/iv_channel"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:background="@color/line"/>&ndash;&gt;-->
+        <!--</RelativeLayout>-->
+
+    </LinearLayout>
+
+</layout>

@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.loan.BusinessUploadPhotoActivity"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.loan.BusinessUploadPhotoActivity"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+
+            <include
+                android:id="@+id/title_layout"
+                layout="@layout/layout_title"
+                bind:backIcon="@{@drawable/financial_back}"
+                bind:handlers="@{handlers}"
+                bind:isTranslate="@{true}"
+                bind:isTitleBlack="@{true}"
+                bind:canSubmit="@{true}"
+                bind:isRightTextBlack="@{true}"
+                bind:titleName="@{@string/loan_business_img_title}"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@color/loan_red"
+            android:padding="@dimen/default_padding">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/attention"/>
+
+            <TextView
+                android:layout_marginLeft="@dimen/default_padding"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/white"
+                android:text="每张图片大小控制在300KB以内！"/>
+
+        </LinearLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <!-- 上传身份证  -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="260dp"
+                        android:layout_height="130dp"
+                        android:layout_marginTop="@dimen/default_item_margin"
+                        android:background="@drawable/scanning_bg">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:background="@drawable/icon_camer"/>
+
+                            <TextView
+                                android:layout_marginTop="@dimen/default_item_margin"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_normal"
+                                android:textColor="@color/light_gray"
+                                android:text="贷款用途证明照片"/>
+                        </LinearLayout>
+
+                        <ImageView
+                            android:id="@+id/takeProve"
+                            android:onClick="@{handlers.takeProve}"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="260dp"
+                        android:layout_height="130dp"
+                        android:layout_marginTop="@dimen/default_item_margin"
+                        android:background="@drawable/scanning_bg">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:background="@drawable/icon_camer"/>
+
+                            <TextView
+                                android:layout_marginTop="@dimen/default_item_margin"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_normal"
+                                android:textColor="@color/light_gray"
+                                android:text="还款来源决议或承诺书照片"/>
+                        </LinearLayout>
+
+                        <ImageView
+                            android:id="@+id/takeRefund"
+                            android:onClick="@{handlers.takeRefund}"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="260dp"
+                        android:layout_height="130dp"
+                        android:layout_marginTop="@dimen/default_item_margin"
+                        android:background="@drawable/scanning_bg">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:background="@drawable/icon_camer"/>
+
+                            <TextView
+                                android:layout_marginTop="@dimen/default_item_margin"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_normal"
+                                android:textColor="@color/light_gray"
+                                android:text="电子合同照片"/>
+                        </LinearLayout>
+
+                        <ImageView
+                            android:id="@+id/takePact"
+                            android:onClick="@{handlers.takePact}"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop"/>
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_marginTop="@dimen/default_margin"
+                        android:textSize="@dimen/text_size_small"
+                        android:text="注意：照片内容必须清晰可见，不得有遮挡或打马\n赛克等情况"
+                        android:textColor="#BBBBBB"/>
+
+
+                    <TextView
+                        android:layout_width="220dp"
+                        android:layout_height="wrap_content"
+                        android:text="提交"
+                        android:gravity="center"
+                        android:onClick="@{handlers.submits}"
+                        android:textColor="@color/white"
+                        android:paddingBottom="@dimen/default_padding"
+                        android:paddingTop="@dimen/default_padding"
+                        android:paddingStart="60dp"
+                        android:paddingEnd="60dp"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="@dimen/default_item_margin"
+                        android:layout_marginTop="@dimen/default_item_margin"
+                        android:background="@drawable/loan_idval_button"/>
+                </LinearLayout>
+
+            </FrameLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+
+    </LinearLayout>
+</layout>

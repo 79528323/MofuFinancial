@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <import type="android.text.TextUtils"/>
+        <import type="cn.mofufin.morf.ui.util.DataUtils"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.ProductRiskManagementActivity"/>
+        <variable
+            name="details"
+            type="cn.mofufin.morf.ui.entity.ProductDetails.ProductDetailsBean"/>
+    </data>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/white">
+
+        <include
+            android:id="@+id/title_layout"
+            layout="@layout/layout_title"
+            bind:backIcon="@{@drawable/financial_back}"
+            bind:handlers="@{handlers}"
+            bind:isTranslate="@{true}"
+            bind:isTitleBlack="@{true}"
+            bind:titleName="@{@string/product_detail_title}"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/app_background"
+            android:overScrollMode="never">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_above="@+id/btn"
+                    android:orientation="vertical">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/default_padding"
+                        android:layout_margin="@dimen/default_padding"
+                        android:background="@drawable/shape_white_shadow"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_game_record"
+                            android:textColor="@color/dark_gray"
+                            android:gravity="center"
+                            android:text="关于【严格风控体系】"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/default_padding"
+                            android:textSize="@dimen/text_size_normal"
+                            android:textColor="@color/gray"
+                            android:lineSpacingExtra="@dimen/default_padding"
+                            tools:text="摩富金服是国内领先的互联网移动支付平台通过模式创新和对传统金融的颠覆，致力于信用卡用户痛点解决及金融效率的提升，特点在于一站式信用卡的服务，提供资金管理、收款交易、资金解决方案、余额增值、理财服务等金融增值技术服务，专注于为不同行业、不同领域等提供全场景金融技术解决方案。"
+                            android:text="@{details.fdProductRisk}"/>
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/default_padding"
+                        android:layout_margin="@dimen/default_padding"
+                        android:background="@drawable/shape_white_shadow"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_game_record"
+                            android:textColor="@color/dark_gray"
+                            android:gravity="center"
+                            android:text="关于【投资人监督管理委员会】"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/default_padding"
+                            android:textSize="@dimen/text_size_normal"
+                            android:textColor="@color/gray"
+                            android:lineSpacingExtra="@dimen/default_padding"
+                            tools:text="摩富金服是国内领先的互联网移动支付平台通过模式创新和对传统金融的颠覆，致力于信用卡用户痛点解决及金融效率的提升，特点在于一站式信用卡的服务，提供资金管理、收款交易、资金解决方案、余额增值、理财服务等金融增值技术服务，专注于为不同行业、不同领域等提供全场景金融技术解决方案。"
+                            android:text="@{details.fdProductSupervise}"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </ScrollView>
+
+    </LinearLayout>
+</layout>

@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.InverstMentRecordDetailActivity"/>
+        <import type="android.text.TextUtils"/>
+        <import type="cn.mofufin.morf.ui.util.DataUtils"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.InverstMentRecordDetailActivity"/>
+        <variable
+            name="details"
+            type="cn.mofufin.morf.ui.entity.InverstMemtRecord.RecordListBean"/>
+        
+        <variable
+            name="OnClickListener"
+            type="android.view.View.OnClickListener"/>
+        <variable
+            name="isRightTextBlack"
+            type="boolean"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/layout_title"
+            bind:backIcon="@{@drawable/financial_back}"
+            bind:handlers="@{handlers}"
+            bind:titleName="@{@string/inverst_record_detail_title}"
+            bind:canSubmit="@{true}"
+            bind:isTranslate="@{true}"
+            bind:isTitleBlack="@{true}"
+            bind:isRightTextBlack="@{isRightTextBlack}"
+            bind:rightText="@{@string/service_number}"/>
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="@dimen/default_item_margin"
+                android:background="@color/app_background"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/default_padding"
+                    tools:visibility="visible"
+                    android:background="@color/white"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/inverst_record_detail_1"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_title"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235"
+                        android:text="@{details.foOrderCode}"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_title"
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
+
+                <!--订单生成时间 境外-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/default_padding"
+                    tools:visibility="visible"
+                    android:background="@color/white"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/inverst_record_detail_3"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_title"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235"
+                        android:text="@{details.foOrderState==0?@string/inverst_record_detail_type_0:details.foOrderState==1?@string/inverst_record_detail_type_1:@string/inverst_record_detail_type_2}"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_title"
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
+
+                <!--结算类型-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/default_padding"
+                    tools:visibility="visible"
+                    android:background="@color/white"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/inverst_record_detail_4"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_title"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235"
+                        android:text="@{DataUtils.numFormat(details.foBuyMoney)}"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_title"
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
+
+                <!--境外订单号-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/default_padding"
+                    android:background="@color/white"
+                    tools:visibility="visible"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/inverst_record_detail_5"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_title"/>
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235"
+                        android:gravity="right"
+                        android:text='@{DataUtils.numFormat(details.foEarnings)}'
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_title"
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="@dimen/default_padding"
+                    android:background="@color/app_bg"/>
+
+                <!--MPOS/扫码/快捷 手续费-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/default_padding"
+                    tools:visibility="visible"
+                    android:background="@color/white"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/inverst_record_detail_6"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_title"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_title"
+                        android:text="@{DataUtils.numFormat(details.foExpireMoney)}"
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
+
+                <!--快捷清算费-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/default_padding"
+                    tools:visibility="visible"
+                    android:background="@color/white"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/inverst_record_detail_7"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_title"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_title"
+                        android:text="@{details.foProductBuyDate}"
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
+
+
+                <!--MPOS/扫码/快捷 应到账金额-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/default_padding"
+                    tools:visibility="visible"
+                    android:background="@color/white"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/inverst_record_detail_8"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_title"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_title"
+                        android:text="@{details.foProductRansomDate}"
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
+
+
+                <!--跨境金额-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/default_padding"
+                    tools:visibility="visible"
+                    android:background="@color/white"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/inverst_record_detail_9"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_title"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235"
+                        android:text="@{details.foIsRebate==0?@string/inverst_record_detail_rebate0:@string/inverst_record_detail_rebate1}"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_title"
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="@dimen/default_padding"
+                    android:background="@color/app_bg"/>
+
+                <!--跨境手续费-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/default_padding"
+                    tools:visibility="visible"
+                    android:background="@color/white"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/inverst_record_detail_10"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_title"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235"
+                        android:text="@{details.foIsRemit==0?@string/inverst_record_detail_remit0:@string/inverst_record_detail_remit1}"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_title"
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
+
+                <!--跨境通信费-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/default_padding"
+                    tools:visibility="visible"
+                    android:background="@color/white"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/inverst_record_detail_11"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_title"/>
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235R47824328483265235R47824328483265235123"
+                        android:text='@{details.foIsUseTicket==0?details.foTicketNumber:"未使用"}'
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_title"
+                        android:gravity="right"
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
+
+                <!--跨境到账金额-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/default_padding"
+                    tools:visibility="visible"
+                    android:background="@color/white"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/inverst_record_detail_12"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_title"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235"
+                        android:text="@{String.valueOf(details.fdNumber)}"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_title"
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
+
+                <!--跨境是否到账-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/default_padding"
+                    tools:visibility="visible"
+                    android:background="@color/white"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/inverst_record_detail_13"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_title"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235"
+                        android:text="@{details.fdName}"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_title"
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="@dimen/default_padding"
+                    android:background="@color/app_bg"/>
+
+                <!--跨境优惠卷-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/default_padding"
+                    tools:visibility="visible"
+                    android:background="@color/white"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/inverst_record_detail_14"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_title"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="R47824328483265235"
+                        android:text="@{String.valueOf(details.fdUserBuyNumber)}"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_title"
+                        android:textColor="@color/dark_gray"/>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/default_padding"
+                    android:text="@string/inverst_record_detail_2"
+                    android:textColor="@color/light_gray"
+                    android:background="@color/app_bg"
+                    android:gravity="center"
+                    android:textSize="@dimen/text_size_title"/>
+
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/default_padding"
+                    android:text="@{details.foOrderMsg}"
+                    android:textColor="@color/dark_gray"
+                    android:layout_marginBottom="@dimen/default_item_margin"
+                    android:textSize="@dimen/text_size_small"/>
+                <!--快捷优惠卷-->
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:padding="@dimen/default_padding"-->
+                    <!--tools:visibility="visible"-->
+                    <!--android:background="@color/white"-->
+                    <!--android:gravity="center_vertical">-->
+
+                    <!--<TextView-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="@string/inverst_record_detail_15"-->
+                        <!--android:textColor="@color/light_gray"-->
+                        <!--android:textSize="@dimen/text_size_title"/>-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--tools:text="R47824328483265235"-->
+                        <!--android:text="@{String.valueOf(details.fdProductDate)}"-->
+                        <!--android:layout_marginRight="@dimen/default_padding"-->
+                        <!--android:textSize="@dimen/text_size_title"-->
+                        <!--android:textColor="@color/dark_gray"/>-->
+                <!--</LinearLayout>-->
+
+
+                <!--扫码优惠卷-->
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:padding="@dimen/default_padding"-->
+                    <!--tools:visibility="visible"-->
+                    <!--android:background="@color/white"-->
+                    <!--android:gravity="center_vertical">-->
+
+                    <!--<TextView-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="@string/inverst_record_detail_16"-->
+                        <!--android:textColor="@color/light_gray"-->
+                        <!--android:textSize="@dimen/text_size_title"/>-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--tools:text="R47824328483265235"-->
+                        <!--android:text="@{}"-->
+                        <!--android:layout_marginRight="@dimen/default_padding"-->
+                        <!--android:textSize="@dimen/text_size_title"-->
+                        <!--android:textColor="@color/dark_gray"/>-->
+                <!--</LinearLayout>-->
+
+
+
+
+
+
+
+
+
+
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+</layout>

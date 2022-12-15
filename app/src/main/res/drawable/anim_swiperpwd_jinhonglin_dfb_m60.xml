@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false">
+
+    <item
+        android:drawable="@drawable/jinhonglin_m60_swipermcr_gif0"
+        android:duration="150"></item>
+    <item
+        android:drawable="@drawable/jinhonglin_m60_swipermcr_gif1"
+        android:duration="150"></item>
+    <item
+        android:drawable="@drawable/jinhonglin_m60_swipermcr_gif2"
+        android:duration="150"></item>
+    <item
+        android:drawable="@drawable/jinhonglin_m60_swipermcr_gif3"
+        android:duration="150"></item>
+    <item
+        android:drawable="@drawable/jinhonglin_m60_swipermcr_gif4"
+        android:duration="150"></item>
+    <item
+        android:drawable="@drawable/jinhonglin_m60_swipermcr_gif5"
+        android:duration="150"></item>
+    <item
+        android:drawable="@drawable/jinhonglin_m60_swipermcr_gif6"
+        android:duration="150"></item>
+    <item
+        android:drawable="@drawable/jinhonglin_m60_swipermcr_gif7"
+        android:duration="150"></item>
+
+    <item
+        android:drawable="@drawable/jinhonglin_m60_swiperic_gif0"
+        android:duration="150"></item>
+    <item
+        android:drawable="@drawable/jinhonglin_m60_swiperic_gif1"
+        android:duration="150"></item>
+    <item
+        android:drawable="@drawable/jinhonglin_m60_swiperic_gif2"
+        android:duration="150"></item>
+    <item
+        android:drawable="@drawable/jinhonglin_m60_swiperic_gif3"
+        android:duration="150"></item>
+    <item
+        android:drawable="@drawable/jinhonglin_m60_swiperic_gif4"
+        android:duration="150"></item>
+    <item
+        android:drawable="@drawable/jinhonglin_m60_swiperic_gif5"
+        android:duration="150"></item>
+    <item
+        android:drawable="@drawable/jinhonglin_m60_swiperic_gif6"
+        android:duration="150"></item>
+
+    <item
+        android:drawable="@drawable/jinhonglin_m60_pwd_gif0"
+        android:duration="400"></item>
+    <item
+        android:drawable="@drawable/jinhonglin_m60_pwd_gif1"
+        android:duration="400"></item>
+    <item
+        android:drawable="@drawable/jinhonglin_m60_pwd_gif2"
+        android:duration="400"></item>
+    <item
+        android:drawable="@drawable/jinhonglin_m60_pwd_gif3"
+        android:duration="400"></item>
+
+</animation-list>

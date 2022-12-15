@@ -1,0 +1,1063 @@
+<resources>
+
+    <string name="default_http_error">网络连接失败,请检查</string>
+    <string name="default_http_time_out">网络连接超时</string>
+    <string name="default_http_login_error">登录失败</string>
+    <string name="loading_more">正在加载数据</string>
+    <string name="login_timeout">登录已失效，请重新登录</string>
+    <string name="re_login">重新登录</string>
+
+    <string name="exit_dailog_tips" translatable="false">退出后填写的信息将无法保存，确定继续？</string>
+    <string name="review_nopass" translatable="false">审核不通过,请重新申请</string>
+    <string name="review_remit" translatable="false">你已申请过，请勿重复</string>
+    <string name="review_submited" translatable="false">你的申请已提交到后台审核</string>
+    <string name="review_apply" translatable="false">申请开通</string>
+
+    <string name="app_name">摩富金服</string>
+    <string name="register0">注册</string>
+    <string name="register1">欢迎你加入摩富金服</string>
+    <string name="register2">手机号</string>
+    <string name="register3">验证码</string>
+    <string name="register4">同意</string>
+    <string name="register5">《摩富金服相关协议》</string>
+    <string name="register6">下一步</string>
+    <string name="register7">推荐人</string>
+    <string name="register8">请输入推荐人手机号(可不填)</string>
+    <string name="register9">密码</string>
+    <string name="register10">请设置由6~15位数组成的密码</string>
+    <string name="register11">如果没有推荐人，可致电我们客服获取推荐手机号！\n400-891-5100</string>
+
+    <string name="login_1">忘记密码</string>
+    <string name="finish">完成</string>
+
+    <string name="home_page">首页</string>
+    <string name="home_found">发现</string>
+    <string name="home_receivable">交易查询</string>
+    <string name="home_mine">我的</string>
+    <string name="home_head1">快捷收款</string>
+    <string name="home_head2">MPOS</string>
+    <string name="home_head3">扫码收款</string>
+    <string name="home_head4">跨境收款</string>
+    <string name="home_shortservice1">信用卡还款</string>
+    <string name="home_shortservice2">摩富理财</string>
+    <string name="home_shortservice3">车好查</string>
+    <string name="home_shortservice4">彩票</string>
+    <string name="home_shortservice5">转账</string>
+    <string name="home_shortservice6">自己借</string>
+    <string name="home_lifeservice1">信用卡测评</string>
+    <string name="home_lifeservice2">邀请好友</string>
+    <string name="home_lifeservice3">申请信用卡</string>
+    <string name="home_edit">摩富金服，懂支付，更懂你</string>
+    <string name="home_tree">摩富树</string>
+    <string name="home_backpack">商城</string>
+    <string name="home_coco_loan">助贷</string>
+
+
+    <string name="title_activity_login1111">Sign in</string>
+
+    <string name="receivables_text1">今日收款总额/元</string>
+    <string name="receivables_text2">共%d笔</string>
+    <string name="receivables_text3">筛选</string>
+    <string name="receivables_text4">默认MPOS</string>
+
+    <string name="nodata">暂无数据</string>
+    <string name="nomerchance">暂无商品</string>
+
+    <string name="mine_text1">推荐人:</string>
+    <string name="mine_text2">会员等级</string>
+    <string name="mine_text3">卡管家</string>
+    <string name="mine_text4">激励金</string>
+    <string name="mine_text5">余额</string>
+    <string name="mine_text6">公众号</string>
+    <string name="mine_text7">积分</string>
+    <string name="mine_text8">个人信息</string>
+    <string name="mine_text9">帮助中心</string>
+    <string name="mine_text10">更多</string>
+    <string name="mine_text11">未认证</string>
+    <string name="mine_text12">已认证</string>
+    <string name="mine_text13">认证失败</string>
+    <string name="mine_text14">审核中</string>
+    <string name="mine_text15">背包</string>
+    <string name="mine_text16">我的会员</string>
+
+    <string name="not_validate">你还未实名，请前往实名</string>
+    <string name="comingsoon">即将上线</string>
+    <string name="cancel">取消</string>
+    <string name="confirm">确定</string>
+    <string name="realname">前往实名</string>
+    <string name="reapplyrealname">重新申请实名</string>
+
+    <string name="scanqr_title">商户入驻</string>
+    <string name="scanning1">实名认证</string>
+    <string name="scanning2">身份证</string>
+    <string name="scanning3">银行卡</string>
+    <string name="scanning4">手持身份证</string>
+    <string name="scanning5">交易密码</string>
+    <string name="scanning6">扫描身份证正面</string>
+    <string name="scanning7">扫描身份证背面</string>
+    <string name="scanning8">下一步</string>
+    <string name="scanning_confirm">确认收款</string>
+
+    <string name="check_pending">审核中</string>
+
+    <string name="check_passed">待审核</string>
+
+    <string name="check_failed">审核不通过</string>
+
+    <string name="check_not_upload">未上传认证信息</string>
+    <string name="check_pass">审核通过</string>
+    <string name="check_never">未认证</string>
+    <string name="mpos_pass">进件成功</string>
+    <string name="mpos_apply">申请进件</string>
+    <string name="mpos_never">未进件</string>
+
+    <string name="type_normal">普通会员</string>
+    <string name="type_golden">黄金会员</string>
+    <string name="type_daimond">钻石会员</string>
+
+    <string name="MPOS1">MPOS</string>
+    <string name="MPOS2">限额说明</string>
+    <string name="MPOS3">收款时间为每日凌晨0:35~21:55</string>
+    <string name="MPOS4">请输入金额</string>
+    <string name="MPOS5">输入的金额区间为10~50000元</string>
+    <string name="MPOS6">MPOS收款由卡友支付提供</string>
+    <string name="MPOS7">¥</string>
+    <string name="MPOS8">$</string>
+    <string name="MPOS9">选择行业</string>
+    <string name="MPOS_date">适合全天</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--日期选择轮子的title-->
+    <string name="query_time_select_title">请选择日期</string>
+
+    <string name="begin_at">开始于\n</string>
+    <string name="end_at">结束于\n</string>
+
+    <string name="time_start_larger_end_not_allowed">开始时间不能大于结束时间</string>
+
+    <string name="time_left">还有%ss</string>
+
+    <string name="ok" translatable="false">确 认</string>
+
+    <string name="more_text1">修改登录密码</string>
+    <string name="more_text2">修改交易密码</string>
+    <string name="more_text3">关于我们</string>
+    <string name="more_text4">用户协议</string>
+    <string name="more_text5">欢迎评分</string>
+    <string name="more_text6">退出登录</string>
+    <string name="more_text7">语音播报</string>
+
+    <string name="modfyCode1">修改登录密码</string>
+    <string name="modfyCode2">手机号</string>
+    <string name="modfyCode3">请输入您的注册手机号</string>
+    <string name="modfyCode4">验证码</string>
+    <string name="modfyCode5">请输入验证码</string>
+    <string name="modfyCode6">新密码</string>
+    <string name="modfyCode7">请输入新密码</string>
+    <string name="modfyCode8">确认密码</string>
+    <string name="modfyCode9">请再次输入密码</string>
+
+    <string name="update_version_name">版本号</string>
+    <string name="update_title">你有新版本需要更新</string>
+    <string name="install_title">免下载安装</string>
+    <string name="install_immediate">立即安装</string>
+    <string name="update_immediate">立即更新</string>
+    <string name="update_cancel">取消</string>
+    <string name="update_ignore">忽略此版本</string>
+    <string name="download_progress">下载进度</string>
+
+    <string name="invitation_text1">摩富金服APP，一个多元化的金融服务平台，MPOS收款、无卡收款、扫码收款、投资理财、贷款融资、信用卡申请与代还等等，一应俱全！</string>
+    <string name="invitation_text2">邀请好友</string>
+    <string name="invitation_text3">邀请好友可获得佣金：</string>
+    <string name="invitation_text4">1.邀请好友注册并实名认证</string>
+    <string name="invitation_text5">2.好友使用摩富金服收款</string>
+    <string name="invitation_text6">邀请记录</string>
+    <string name="invitation_text7">分享</string>
+
+    <string name="invitation_text8" translatable="false">
+        限时免费领取口罩
+        亲，口罩已经打包好了！
+        您距离领取口罩还差一步，点击领取吧</string>
+
+
+    <string name="login_wechat">正在启动微信</string>
+    <string name="wechat_not_installed">您还未安装微信，请前往商店安装</string>
+
+    <string name="wechat_share_title">摩富金服，专属您自己的微金融！</string>
+
+    <string name="industry_text1">选择行业</string>
+    <string name="industry_text2">实际到账/元：</string>
+    <string name="industry_text3">收款金额/元：</string>
+    <string name="industry_text4">手续费/元：</string>
+    <string name="industry_text5">费率：</string>
+    <string name="industry_text6">单笔/元：</string>
+    <string name="industry_text7">标准商户</string>
+    <string name="industry_text8">商旅服务</string>
+    <string name="industry_text9">餐饮服务</string>
+    <string name="industry_text10">日用百货</string>
+    <string name="industry_text11">高端珠宝</string>
+    <string name="industry_text12">超市家电</string>
+    <string name="industry_text13">便民服务</string>
+    <string name="industry_text14">汽车房产</string>
+
+    <string name="order_text1">收入/元</string>
+    <string name="order_text2">共$s笔</string>
+    <string name="order_text3">筛选</string>
+    <string name="order_text4">交易成功</string>
+    <string name="order_text5">交易失败</string>
+    <string name="order_text6">处理中</string>
+    <string name="order_text7">订单未付款</string>
+    <string name="order_text8">默认MPOS</string>
+    <string name="order_mpos">MPOS收款</string>
+    <string name="order_scanpay">扫码收款</string>
+    <string name="order_short_rec">快捷收款</string>
+    <string name="order_over_rec">跨境收款</string>
+    <string name="order_wechat_rex">微信收款</string>
+    <string name="order_alipay_rec">支付宝收款</string>
+    <string name="order_defualt">设为默认</string>
+    <string name="order_check">查看</string>
+    <string name="order_icon_m">M</string>
+    <string name="order_icon_short">快</string>
+    <string name="order_icon_over">境</string>
+    <string name="order_icon_wechat">微</string>
+    <string name="order_icon_alipay">支</string>
+    <string name="order_default_mpos">MPOS收款</string>
+    <string name="order_default_scan">扫码收款</string>
+    <string name="order_default_shortpay">快捷收款</string>
+    <string name="order_default_repay">跨境收款</string>
+    <string name="order_detail_title">交易查询</string>
+    <string name="order_detail_ok">交易成功</string>
+    <string name="order_detail_fail">交易失败</string>
+    <string name="order_detail_handling">处理中</string>
+    <string name="order_detail_1">订单号</string>
+    <string name="order_detail_2">刷卡金额</string>
+    <string name="order_detail_3">手续费</string>
+    <string name="order_detail_4">到账金额</string>
+    <string name="order_detail_5">交易时间</string>
+    <string name="order_detail_6">到账时间</string>
+    <string name="order_detail_7">出账账户</string>
+    <string name="order_detail_8">入账账户</string>
+    <string name="order_detail_9">交易说明</string>
+    <string name="order_detail_10">交易类型</string>
+    <string name="order_detail_11">结算类型</string>
+    <string name="order_detail_12">交易卡号</string>
+    <string name="order_detail_13">结算卡号</string>
+    <string name="order_detail_14">清算费</string>
+    <string name="order_detail_15">到账银行</string>
+    <string name="order_detail_16">到账卡号</string>
+    
+    <string name="over_status_0">未支付</string>
+    <string name="over_status_1">支付失败</string>
+    <string name="over_status_2">支付成功等待回款</string>
+    <string name="over_status_3">支付成功已回款</string>
+
+
+    <string name="scan_qr_head_1">基本信息</string>
+    <string name="scan_qr_head_2">结算账户</string>
+    <string name="scan_qr_head_3">经营信息</string>
+    <string name="scan_qr_head_4">上传图片</string>
+
+
+    <string name="merchan_scan_title">商家扫码</string>
+    <string name="merchan_scan_1">扫码收款目前仅支持支付宝扫码、微信扫码</string>
+    <string name="merchan_scan_2">输入金额为1~10000元</string>
+    <string name="merchan_scan_3">请选择收款方式</string>
+    <string name="merchan_scan_4">支付宝扫码（单笔限额50000元/笔）</string>
+    <string name="merchan_scan_5">结算方式T+0  费率0.54%</string>
+    <string name="merchan_scan_6">微信扫码（单笔限额50000元/笔）</string>
+    <string name="merchan_scan_7">结算方式T+1  费率0.38%</string>
+    <string name="merchan_scan_8">微信收款只能通过扫码，不能直接识别二维码</string>
+    <string name="merchan_scan_9">确认收款</string>
+
+    <string name="type_w">请使用微信扫码支付</string>
+    <string name="type_a">请使用支付宝扫码支付</string>
+
+    <string name="success">交易成功</string>
+    <string name="fail">交易失败</string>
+
+    <string name="settlement_title">添加结算卡</string>
+    <string name="settlement_1">请绑定持卡人本人的银行卡</string>
+    <string name="settlement_2">持卡人姓名</string>
+    <string name="settlement_3">卡号</string>
+
+    <string name="card_manager_title">卡管家</string>
+    <string name="card_manager_1">结算卡</string>
+    <string name="card_manager_2">信用卡</string>
+    <string name="card_manager_3">更换结算卡</string>
+
+    <string name="credit_card_title">添加信用卡</string>
+    <string name="credit_card_1">请核对信用卡信息</string>
+    <string name="credit_card_2">银行</string>
+    <string name="credit_card_3">卡类型</string>
+    <string name="credit_card_4">请填写账单日、还款日</string>
+    <string name="credit_card_5">账单日</string>
+    <string name="credit_card_6">还款日</string>
+    <string name="credit_card_7">请填写信用卡信息</string>
+    <string name="credit_card_8">有效期</string>
+    <string name="credit_card_9">CVN2</string>
+    <string name="credit_card_10">请选择账单日</string>
+    <string name="credit_card_11">请选择还款日</string>
+    <string name="credit_card_12">请填写月份年限</string>
+    <string name="credit_card_13">信用卡背面CVN2后三位数字</string>
+
+    <string name="card_pingan">平安银行</string>
+    <string name="card_beijing">北京银行</string>
+    <string name="card_nongye">农业银行</string>
+    <string name="card_shanghai">上海银行</string>
+    <string name="card_zhaoshang">招商银行</string>
+    <string name="card_gongshang">工商银行</string>
+    <string name="card_minsheng">民生银行</string>
+    <string name="card_guangda">光大银行</string>
+    <string name="card_guangfa">广发银行</string>
+    <string name="card_huaxia">华夏银行</string>
+    <string name="card_jianshe">建设银行</string>
+    <string name="card_jiaotong">交通银行</string>
+    <string name="card_pufa">浦发银行</string>
+    <string name="card_xingye">兴业银行</string>
+    <string name="card_youzheng">邮政银行</string>
+    <string name="card_china">中国银行</string>
+    <string name="card_zhongxin">中信银行</string>
+
+    <string name="card_type1">借记卡</string>
+    <string name="card_type2">信用卡</string>
+
+    <string name="service_number">客服热线</string>
+    <string name="channel_title">选择通道</string>
+    <string name="tips_settlement">为保证账户资金安全，只能绑定实名认证用户本人的银行卡</string>
+    <string name="flownumber">流水号</string>
+    <string name="transaction_amount">交易金额</string>
+
+    <string name="date_formater">格式为：20120808-20300808或长期</string>
+
+    <string name="myrate_title">我的费率</string>
+    <string name="myrate_1">MPOS 刷卡 D+0</string>
+    <string name="myrate_2">MPOS 云闪付 D+0</string>
+    <string name="myrate_3">支付宝扫码 T+1</string>
+    <string name="myrate_4">微信扫码 T+1</string>
+
+    <string name="my_info_title">@string/mine_text8</string>
+    <string name="my_info_1">我的推广</string>
+    <string name="my_info_2">我的费率</string>
+    <string name="my_info_3">实名认证</string>
+    <string name="my_info_4">开通MPOS</string>
+    <string name="my_info_5">开通扫码收款</string>
+    <string name="my_info_6">会员升级</string>
+
+
+    <string name="indirect_push_count" translatable="false">间推人数合计/人</string>
+    <string name="direct_push_count" translatable="false">直推人数合计：%1$d  人</string>
+    <string name="total">共%d人</string>
+    <string name="phone">手机号</string>
+    <string name="realName">真实姓名</string>
+    <string name="level">会员等级</string>
+
+    <string name="channel_warning">交易前请查看通道所支持银行</string>
+
+    <string name="unbind_card">解除绑定</string>
+
+    <string name="modifytrans1">我们已向您当前%s</string>
+    <string name="modifytrans2">%s秒</string>
+
+    <string name="copy_mofu" translatable="false">复制"摩富"</string>
+
+    <string name="commission_title" translatable="false">激励金</string>
+    <string name="commission_right" translatable="false">激励金明细</string>
+    <string name="commission_1" translatable="false">当前激励金/元</string>
+    <string name="commission_2" translatable="false">已赚得总激励金%s元</string>
+    <string name="commission_3" translatable="false">恭喜您本月上榜第%s名！</string>
+    <string name="commission_4" translatable="false">排名</string>
+    <string name="commission_5" translatable="false">用户</string>
+    <string name="commission_6" translatable="false">激励金</string>
+    <string name="commission_history" translatable="false">已赚得总激励金%s元</string>
+    <string name="commission_repay" translatable="false">还款</string>
+
+    <string name="withdraw_cash">提现</string>
+    <string name="balance_title">余额</string>
+    <string name="balance1">港元/HK$</string>
+    <string name="balance2">美元/USA$</string>
+    <string name="balance3">当前余额/元</string>
+    <string name="balance4">充值至余额</string>
+    <string name="balance5">押金</string>
+
+    <string name="balance_filter_1">全部</string>
+    <string name="balance_filter_2">激励金</string>
+    <string name="balance_filter_3">理财</string>
+    <string name="balance_filter_4">违章</string>
+    <string name="balance_filter_5">提现</string>
+    <string name="balance_filter_6">支付宝</string>
+    <string name="balance_filter_7">微信</string>
+    <string name="balance_filter_8">快捷支付</string>
+    <string name="balance_filter_9">跨境转入</string>
+    <string name="balance_filter_10">转账</string>
+    <string name="balance_filter_11">官方经账</string>
+
+
+    <string name="balance_tranf_title">转至余额</string>
+    <string name="balance_tranf_1">可转出金额%s元</string>
+
+    <string name="balance_tranf_pwd_1">请输入交易密码，验证身份</string>
+    <string name="balance_tranf_pwd_ok">转账成功</string>
+    <string name="balance_tranf_pwd_fail">转账失败</string>
+    <string name="balance_tranf_pwd_2">重新转出</string>
+    <string name="balance_tranf_pwd_3">亲，网络小哥出差去了…</string>
+    <string name="balance_tranf_pwd_4">成功转出%s至余额账户</string>
+    <string name="balance_tranf_pwd_5">重新充值</string>
+    <string name="balance_tranf_pwd_6">成功充值128元押金！可致电右上角客服热线领取pos机！</string>
+    <string name="balance_tranf_pwd_7">充值成功</string>
+    <string name="balance_tranf_pwd_8">充值失败</string>
+
+
+    <string name="coin_title">摩富币</string>
+    <string name="coin_1">当前摩富币</string>
+    <string name="coin_2">玩转摩富币</string>
+    <string name="coin_3">摩富币明细</string>
+    <string name="coin_4">恭喜%s使用%s，获得%s个摩富币</string>
+
+    <!--摩币来源(0:快捷 1:扫码 2:mpos 3:理财 4:推广注册 5:推广实名 6:境外快捷 7:还款  8:摇钱树 9:官方调控 10:商城兑换)-->
+    <string name="Coin_detail_type_0">快捷</string>
+    <string name="Coin_detail_type_1">扫码</string>
+    <string name="Coin_detail_type_2">mpos</string>
+    <string name="Coin_detail_type_3">理财</string>
+    <string name="Coin_detail_type_4">推广注册</string>
+    <string name="Coin_detail_type_5">推广实名</string>
+    <string name="Coin_detail_type_6">跨境快捷</string>
+    <string name="Coin_detail_type_7">还款</string>
+    <string name="Coin_detail_type_8">摇钱树</string>
+    <string name="Coin_detail_type_9">官方调控</string>
+    <string name="Coin_detail_type_10">商城兑换</string>
+    <string name="Coin_detail_type_11">收入</string>
+    <string name="Coin_detail_type_12">支出</string>
+
+    <string name="mofu_play_title">玩转摩富币</string>
+    <string name="mofu_play_1">当前倍率</string>
+    <string name="mofu_play_2">获取摩富币方式及算法</string>
+    <string name="mofu_play_3">1.使用本平台功能获取算法：</string>
+    <string name="mofu_play_4">收款/理财/还款 x 倍率 = 实际获得摩富币</string>
+    <string name="mofu_play_5">2.推广用户注册获取算法：</string>
+    <string name="mofu_play_6">人数注册 x 比例 = 实际获得摩富币</string>
+    <string name="mofu_play_7">3.推广用户实名获取算法：</string>
+    <string name="mofu_play_8">人数实名 x 比例 = 实际获得摩富币</string>
+    <string name="mofu_play_9">4.金钱树获取算法：</string>
+    <string name="mofu_play_10">点一下 x 次数 = 随机获得摩富币</string>
+
+    <string name="over_title">跨境收款</string>
+
+    <string name="dollar_title1">美元</string>
+    <string name="dollar_title2">港币</string>
+    <string name="dollar1">当前美元/$</string>
+    <string name="dollar2">当前港币/￥</string>
+    <string name="dollar3">现汇买入价</string>
+    <string name="dollar4">换算  100美元：</string>
+    <string name="dollar5">美元</string>
+    <string name="dollar6">港币</string>
+    <string name="dollar7">%s元</string>
+    <string name="dollar8">注意：现汇买入价实时变动，转出前请刷新！</string>
+    <string name="dollar9">换算  100港币：</string>
+
+
+    <string name="dollar_tlse_1">当前现汇买入价</string>
+    <string name="dollar_tlse_2">转至余额</string>
+    <string name="dollar_tlse_3">换算成人民币：%s</string>
+    <string name="dollar_tlse_4">HK$</string>
+    <string name="dollar_tlse_5">$</string>
+    <string name="dollar_tlse_6">可转出金额%s美元</string>
+    <string name="dollar_tlse_7">可转出金额%s港元</string>
+
+    <string name="withdraw_title">提现</string>
+    <string name="withdraw_1">余额提现时间为09:00~21:00</string>
+    <string name="withdraw_2">请输入金额（非锁定资金2元/笔提现费）</string>
+    <string name="withdraw_3">可提现金额%s元</string>
+    <string name="withdraw_4">可提现金额%s元</string>
+    <string name="withdraw_5">请选择结算卡</string>
+    <string name="withdraw_6">确定提现</string>
+    <string name="withdraw_7">全部提现</string>
+    <string name="withdraw_8">提现申请已提交</string>
+    <string name="withdraw_9">提现金额</string>
+    <string name="withdraw_10">手续费</string>
+    <string name="withdraw_11">应到账金额</string>
+    <string name="withdraw_12">到账账户</string>
+    <string name="withdraw_unit">%s元</string>
+    <string name="withdraw_13">预计%s 23:59:59前到账！</string>
+
+
+    <string name="balance_details_title">余额详情</string>
+    <string name="balance_details_1">类型</string>
+    <string name="balance_details_2">交易状态</string>
+    <string name="balance_details_3">订单号</string>
+    <string name="balance_details_4">创建时间</string>
+    <string name="balance_details_5">交易账户</string>
+    <string name="balance_details_6">交易币种</string>
+    <string name="balance_details_7">交易手续费/汇率</string>
+    <string name="balance_details_8">交易说明！</string>
+    <string name="balance_details_9">人民币</string>
+    <string name="balance_details_10">美元</string>
+    <string name="balance_details_11">港币</string>
+    <string name="balance_details_12">人民币账户</string>
+    <string name="balance_details_13">美金账户</string>
+    <string name="balance_details_14">港币账户</string>
+    <string name="balance_details_15">保证金账户</string>
+    <string name="balance_details_unpaid">未支付</string>
+    <string name="balance_details_handling">处理中</string>
+
+    <string name="member_info_title">会员</string>
+    <string name="member_info_1">普通会员</string>
+    <string name="member_info_2">黄金会员</string>
+    <string name="member_info_3">钻石会员</string>
+    <string name="member_info_4">当前级别</string>
+    <string name="member_info_5">升级条件</string>
+    <string name="member_info_6">普通升金牌   邀请2个实名好友</string>
+    <string name="member_info_7">金牌升钻石   邀请3个实名好友</string>
+    <string name="member_info_8">普通升钻石   邀请5个实名好友</string>
+    <string name="member_info_9">会员福利</string>
+    <string name="member_info_10">级别越高福利越丰富。例如：</string>
+    <string name="member_info_11">1.跨境收款只支持钻石用户使用；</string>
+    <string name="member_info_12">1.各通道费率降低；</string>
+    <string name="member_info_13">2.参与活动时都有对应的福利；</string>
+    <string name="member_info_14">更多福利，敬请期待！</string>
+    <string name="member_info_15">缴费升级即将上线…</string>
+    <string name="member_info_16">级别超高，福利越丰富哦</string>
+    <string name="member_info_17">摩富商城兑换升级券</string>
+    <string name="member_info_18">升级为钻石会员</string>
+    <string name="member_info_19">钻石会员升级券</string>
+    <string name="member_info_20">升级为金牌会员</string>
+    <string name="member_info_21">金牌会员升级券</string>
+    <string name="member_info_22">恭喜你升级为%s！</string>
+
+    <string name="recharge_title">充值至余额</string>
+    <string name="recharge_1">充值前请认真核对充值方式</string>
+    <string name="recharge_2">请选择充值方式</string>
+    <string name="recharge_3">支付宝APP充值</string>
+    <string name="recharge_4">微信充值</string>
+    <string name="recharge_titles">余额充值</string>
+    <string name="recharge_5">支付宝扫码充值</string>
+
+    <string name="deposit_title">押金</string>
+    <string name="deposit_1">当前缴纳</string>
+    <string name="deposit_2">第1个月</string>
+    <string name="deposit_3">第2个月</string>
+    <string name="deposit_4">第3个月</string>
+    <string name="deposit_5">您当前还未充值押金，可立即充值哦！</string>
+    <string name="deposit_6">押金说明</string>
+    <string name="deposit_7">目前平台只支持余额充值！</string>
+    <string name="deposit_8">1.充值押金128元可领取Pos机一台；</string>
+    <string name="deposit_9">2.三个月押金全额返回，以缴纳当月开始为期限，次月每月%1$s号%2$s开始清算统计上个月(Mpos,快捷收款，扫码收款，跨境收款)的交易总额，只需满足下列条件即可返回押金：</string>
+    <string name="deposit_10">第一个月使用平台功能收款满%1$d可返回%2$d元,\n第二个月使用平台功能收款满%3$d可返回%4$d元,\n第三个月使用平台功能收款满%5$d可返回%6$d元;</string>
+    <string name="deposit_11">3.押金将原路返回至余额账户；</string>
+    <string name="deposit_12">马上充值(128元)押金</string>
+    <string name="deposit_13">已缴纳</string>
+    <string name="deposit_14">每月%1$s号%2$s开始清算统计上个月的交易总额！</string>
+    <string name="deposit_15">4.在工作日（周一至周五）内，我们将在下一个工作日内发送快递pos机，节假日顺延。</string>
+
+
+    <string name="recharge_deposit_title">押金充值</string>
+    <string name="recharge_deposit_1">目前只支持余额充值到押金</string>
+    <string name="recharge_deposit_2">充值至押金（不可更改金额）</string>
+    <string name="recharge_deposit_3">充值128元至押金！</string>
+    <string name="recharge_deposit_confirm">立即充值</string>
+
+
+    <string name="backpack_title">背包</string>
+    <string name="backpack_1">历史物品</string>
+    <string name="backpack_2">优惠券</string>
+    <string name="backpack_3">代付券</string>
+    <string name="backpack_4">加息券</string>
+    <string name="backpack_5">返现券</string>
+    <string name="backpack_6">话费券</string>
+    <string name="backpack_7">金牌会员券</string>
+    <string name="backpack_8">钻石会员券</string>
+    <string name="backpack_9">通用券</string>
+    <string name="backpack_10">代付券</string>
+    <string name="backpack_11">代付券</string>
+    <string name="backpack_12">代付券</string>
+
+
+    <string name="mall_title">商城</string>
+    <string name="mall_1">兑换记录</string>
+    <string name="mall_2">虚拟专区</string>
+    <string name="mall_3">实物专区</string>
+    <string name="mall_4">虚拟专区</string>
+    <string name="mall_5">虚拟专区</string>
+
+
+    <string name="mall_bran_type_0">摩富券</string>
+    <string name="mall_bran_type_1">优惠券</string>
+    <string name="mall_bran_type_2">优惠券</string>
+    <string name="mall_bran_type_3">优惠券</string>
+    <string name="mall_bran_type_4">话费券</string>
+    <string name="mall_bran_type_5">代付券</string>
+    <string name="mall_bran_type_6">优惠券</string>
+    <string name="mall_bran_type_7">返现券</string>
+    <string name="mall_bran_type_8">返现券</string>
+    <string name="mall_bran_type_9">返现券</string>
+    <string name="mall_bran_type_10">返现券</string>
+    <string name="mall_bran_type_11">返现券</string>
+    <string name="mall_bran_type_12">返现券</string>
+    <string name="mall_bran_type_13">返现券</string>
+    <string name="mall_bran_type_14">金牌会员券</string>
+    <string name="mall_bran_type_15">钻石会员券</string>
+
+    <string name="mall_tabs_1">虚拟专区</string>
+    <string name="mall_tabs_2">实物专区</string>
+
+    <string name="mall_gold_item">用于升级金牌会员</string>
+    <string name="mall_diamond_item">用于升级钻石会员</string>
+    
+    <string name="mall_explain_0">仅限摩富</string>
+    <string name="mall_explain_1">仅限快捷收款</string>
+    <string name="mall_explain_2">仅限还款</string>
+    <string name="mall_explain_3">仅限跨境收款</string>
+    <string name="mall_explain_5">仅限余额提款</string>
+    <string name="mall_explain_6">仅限Mpos</string>
+    <string name="mall_explain_9">仅限扫码收款</string>
+
+    <string name="merchant_d_title">商品详情</string>
+    <string name="merchant_d_1">商品说明</string>
+    <string name="merchant_d_2">使用条件</string>
+    <string name="merchant_d_3">过期失效</string>
+    <string name="merchant_d_ok">立即兑换</string>
+    <string name="merchant_d_4">摩富币不足，加油哦</string>
+    <string name="merchant_d_5">发行数量</string>
+    <string name="merchant_d_6">限兑次数</string>
+
+    <string name="merchant_ex_title">商品兑换</string>
+    <string name="merchant_ex_1">请选择一个收货地址</string>
+    <string name="merchant_ex_2">摩富币:</string>
+    <string name="merchant_ex_3">兑换数量:</string>
+    <string name="merchant_ex_4">《摩富金服摩富币相关规则》</string>
+    <string name="merchant_ex_tips">兑换数量不能小于1</string>
+    <string name="merchant_ex_success">成功兑换%s,请至我的背包查看</string>
+    <string name="merchant_ex_5">兑换成功</string>
+    <string name="merchant_ex_6">兑换失败</string>
+
+    <string name="back_his_title">历史物品</string>
+    <string name="back_his_used">已使用</string>
+    <string name="back_his_expirl">已过期</string>
+
+
+    <string name="select_coupon1">请选择您的优惠券</string>
+    <string name="select_coupon2">可不选，根据您的需求选择</string>
+
+    <string name="select_type0">理财加息卷</string>
+    <string name="select_type1">快捷收款优惠卷</string>
+    <string name="select_type2">还款优惠券</string>
+    <string name="select_type3">跨境收款优惠券</string>
+    <string name="select_type4">话费卷</string>
+    <string name="select_type5">代付卷</string>
+    <string name="select_type6">Mpos优惠券</string>
+    <string name="select_type7">通用返现卷</string>
+    <string name="select_type8">跨境收款返现卷</string>
+    <string name="select_type9">扫码收款返现卷</string>
+    <string name="select_type10">快捷收款返现卷</string>
+    <string name="select_type11">理财返现卷</string>
+    <string name="select_type12">还款返现券</string>
+    <string name="select_type13">Mpos返现券</string>
+
+    <string name="credit_apply_title">信用卡申请</string>
+
+
+
+    <string name="financial_tab_1">首页</string>
+    <string name="financial_tab_2">投资</string>
+    <string name="financial_tab_3">我的</string>
+
+    <string name="financial_home_1">已投资产/元</string>
+    <string name="financial_home_2">可用余额/元</string>
+    <string name="financial_home_3">已收益/元</string>
+    <string name="financial_home_4">待收益/元</string>
+    <string name="financial_home_5">新手专享</string>
+    <string name="financial_home_6">投资期限/天</string>
+    <string name="financial_home_7">预期年化收益</string>
+    <string name="financial_home_8">起投/元</string>
+    <string name="financial_home_9">立即投资</string>
+    <string name="financial_home_10">规范运营\n合法合规</string>
+    <string name="financial_home_11">严密安全\n风控体系</string>
+    <string name="financial_home_12">多方投资\n有效监督</string>
+    <string name="financial_home_13">本服务由摩富(西安)金融信息服务有限公司提供</string>
+
+    <string name="inverstment_title">投资</string>
+    <string name="inverstment_1">投资</string>
+    <string name="inverstment_2">新手专享</string>
+    <string name="inverstment_3">投资</string>
+    <string name="inverstment_4">投资</string>
+
+    <string name="my_inverstment_1">充值</string>
+    <string name="my_inverstment_2">提现</string>
+    <string name="my_inverstment_3">通知消息</string>
+    <string name="my_inverstment_4">投资记录</string>
+    <string name="my_inverstment_5">关于我们</string>
+    <string name="my_inverstment_6">客服热线</string>
+    <string name="my_inverstment_7">客服热线：400-891-5100</string>
+
+
+
+    <string name="product_detail_title">投资详情</string>
+    <string name="product_detail_1">限购次数：%s</string>
+    <string name="product_detail_2">预期年化收益</string>
+    <string name="product_detail_3">返佣比例%d%</string>
+    <string name="product_detail_4">%s天</string>
+    <string name="product_detail_5">起投%s元</string>
+    <string name="product_detail_6">剩余可投：%d万元</string>
+    <string name="product_detail_7">总额：%s万元</string>
+    <string name="product_detail_8">产品描述</string>
+    <string name="product_detail_9">风险控制</string>
+    <string name="product_detail_10">投资用户</string>
+    <string name="product_detail_11">投资金额</string>
+    <string name="product_detail_12">产品详情</string>
+
+    <string name="product_srcip_1">返佣产品</string>
+    <string name="product_srcip_2">限购次数</string>
+    <string name="product_srcip_3">还款方式</string>
+    <string name="product_srcip_4">到期处理方式</string>
+
+
+
+    <string name="product_pay_title" translatable="false">付款详情</string>
+    <string name="product_pay_1">剩余可投/万元</string>
+    <string name="product_pay_2">投资期限/天</string>
+    <string name="product_pay_3">当前年化收益率</string>
+    <string name="product_pay_4">优惠券</string>
+    <string name="product_pay_5">请选择优惠券</string>
+    <string name="product_pay_6">去充值</string>
+    <string name="product_pay_7">请输入投资金额：</string>
+    <string name="product_pay_expincome">到期预计收益/元：%s</string>
+    <string name="product_pay_8">%s元起投</string>
+    <string name="product_pay_9">当前可用余额：%s元</string>
+    <string name="product_pay_agreement" translatable="false">《摩富理财相关协议》</string>
+
+
+
+
+    <string name="lock_title">锁定资金说明</string>
+    <string name="lock_1">当前余额/元</string>
+    <string name="lock_2">锁定资金/元</string>
+    <string name="lock_3">提现说明</string>
+    <string name="lock_4">锁定资金如需提现，将额外收取1%手续费。</string>
+    <string name="lock_5">例如：总共1200元，其中锁定资金为1000元。\n提现大于200元部分将按1%的手续费收取；\n提现小于或等于200元，将按普通提现手续费收取。</string>
+    <string name="lock_6">解锁说明</string>
+    <string name="lock_7">1.缴纳Mpos保证金可以解锁对应的锁定资金。</string>
+    <string name="lock_8">2.购买理财产品，通过购买金额解锁对应的锁定金额。</string>
+    <string name="lock_9">例如：使用100元解锁对应锁定金额100元。</string>
+
+
+    <string name="inverst_record_title1">在投资</string>
+    <string name="inverst_record_title2">已赎回</string>
+
+
+
+    <string name="inverst_record_detail_title">详情</string>
+    <string name="inverst_record_detail_1">订单编号</string>
+    <string name="inverst_record_detail_2">订单说明</string>
+    <string name="inverst_record_detail_3">订单状态</string>
+    <string name="inverst_record_detail_4">购买金额</string>
+    <string name="inverst_record_detail_5">到期收益</string>
+    <string name="inverst_record_detail_6">到期赎回金额</string>
+    <string name="inverst_record_detail_7">产品购买时间</string>
+    <string name="inverst_record_detail_8">产品赎回时间</string>
+    <string name="inverst_record_detail_9">是否返佣</string>
+    <string name="inverst_record_detail_10">是否划账</string>
+    <string name="inverst_record_detail_11">是否使用优惠券</string>
+    <string name="inverst_record_detail_12">产品编号</string>
+    <string name="inverst_record_detail_13">产品名称</string>
+    <string name="inverst_record_detail_14">用户限购次数</string>
+    <string name="inverst_record_detail_15">产品周期</string>
+    <string name="inverst_record_detail_16">年率化</string>
+    <string name="inverst_record_detail_type_0">正在投资</string>
+    <string name="inverst_record_detail_type_1">已赎回</string>
+    <string name="inverst_record_detail_type_2">投资撤销</string>
+    <string name="inverst_record_detail_rebate0">已返佣</string>
+    <string name="inverst_record_detail_rebate1">未返佣</string>
+    <string name="inverst_record_detail_remit0">已划账</string>
+    <string name="inverst_record_detail_remit1">未划账</string>
+
+
+
+    <string name="change_card_title">更换结算卡</string>
+    <string name="change_card_1">默认结算卡,为平台实名认证卡不可解除绑定</string>
+    <string name="change_card_2">MPOS收款</string>
+    <string name="change_card_3">自行更换MPOS结算卡，请确保您想要更换的结算卡已在本平台绑定。</string>
+    <string name="change_card_btn">修改结算卡</string>
+    <string name="change_card_4">扫码收款：</string>
+    <string name="change_card_5">扫码结算卡一经扫码开通则不可变更,请慎重选择。</string>
+    <string name="change_card_6">快捷收款：</string>
+    <string name="change_card_7">目前快捷通道都支持指定结算卡,所以无需变更,绑定多张自行选择即可。</string>
+    <string name="change_card_8">跨境收款：</string>
+    <string name="change_card_9">目前境外收款的提现可以指定结算卡,所以无需变更,绑定多张自行选择即可。</string>
+    <string name="change_card_10">摩富理财：</string>
+    <string name="change_card_11">目前理财到期自动赎回,在余额中发起提现可指定结算卡,所以无需变更,绑定多张自行选择即可。</string>
+    <string name="change_card_12">以上说明如有疑问可致电右上角客服热线</string>
+    <string name="change_card_13">请选择需要更换的结算卡</string>
+    <string name="change_card_14">更换MPOS结算卡</string>
+    <string name="change_card_15">更换成功</string>
+    <string name="change_card_16">更换失败</string>
+
+
+    <string name="change_account_title">更换账户</string>
+    <string name="change_account_1">温馨提示！当前剩余更换次数：%d次</string>
+    <string name="change_account_2">请填写原手机号码</string>
+    <string name="change_account_3">请填写身份证号码</string>
+    <string name="change_account_exp">更换说明</string>
+
+
+
+    <string name="charge_credit_payment_title">刷卡金额充值</string>
+    <string name="charge_credit_payment_1">充值说明</string>
+    <string name="charge_credit_payment_2">今日累计刷卡金额/元</string>
+    <string name="charge_credit_payment_3">打开支付宝扫一扫</string>
+    <string name="charge_credit_payment_4">保存图片</string>
+    <string name="charge_credit_payment_5">交易订单号</string>
+    <string name="charge_credit_payment_6">请输入支付宝交易订单号</string>
+    <string name="charge_credit_payment_7">交易订单号</string>
+
+
+    <string name="address_title" translatable="false">收货地址</string>
+    <string name="address_1" translatable="false">请选择一个收货地址</string>
+    <string name="address_2" translatable="false">新增收货地址</string>
+    <string name="address_3" translatable="false">保存</string>
+    <string name="address_4" translatable="false">编辑</string>
+    <string name="address_5" translatable="false">收货人</string>
+    <string name="address_6" translatable="false">手机号码</string>
+    <string name="address_7" translatable="false">请填写详细地址</string>
+    <string name="address_del" translatable="false">删除</string>
+    <string name="address_edt" translatable="false">编辑</string>
+
+
+    <string name="mpos_chance_1" translatable="false">【 云闪付收款 】</string>
+    <string name="mpos_chance_2" translatable="false">单笔最高1000元，最低%s</string>
+    <string name="mpos_chance_3" translatable="false">【 刷卡收款 】</string>
+    <string name="mpos_chance_4" translatable="false">单笔最高50000元，最低%s</string>
+    <string name="mpos_chance_5" translatable="false">无需刷卡，手机绑卡支付（如Apple Pay）</string>
+
+    <string name="loan_chance_1" translatable="false">额度高</string>
+    <string name="loan_chance_2" translatable="false">更安全</string>
+    <string name="loan_chance_3" translatable="false">免担保</string>
+    <string name="loan_chance_4" translatable="false">快速安全</string>
+    <string name="loan_chance_5" translatable="false">实时审核</string>
+    <string name="loan_chance_6" translatable="false">极速放款</string>
+    <string name="loan_chance_7" translatable="false">全额到账</string>
+    <string name="loan_chance_8" translatable="false">立即进入</string>
+    <string name="loan_chance_9" translatable="false">到账快</string>
+    <string name="loan_chance_10" translatable="false">零门槛</string>
+    <string name="loan_chance_11" translatable="false">低利息</string>
+    <string name="loan_chance_12" translatable="false">安全靠谱</string>
+    <string name="loan_chance_13" translatable="false">申请便捷</string>
+    <string name="loan_chance_14" translatable="false">用途广泛</string>
+    <string name="loan_chance_15" translatable="false">高额低息</string>
+    <string name="loan_chance_16" translatable="false">摩富可可贷</string>
+    <string name="loan_chance_17" translatable="false">助贷</string>
+    <string name="loan_chance_18" translatable="false">正在努力开发中</string>
+
+
+    <string name="mofuloan_home_title" translatable="false">助贷</string>
+    <string name="mofuloan_home_1" translatable="false">贷款推荐</string>
+    <string name="mofuloan_home_2" translatable="false">贷款</string>
+
+
+
+    <string name="mofuloan_mine_1" translatable="false">还款记录</string>
+    <string name="mofuloan_mine_2" translatable="false">申贷记录</string>
+    <string name="mofuloan_mine_3" translatable="false">身份认证</string>
+    <string name="mofuloan_mine_4" translatable="false">通知消息</string>
+    <string name="mofuloan_mine_5" translatable="false">联系客服</string>
+    <string name="mofuloan_mine_6" translatable="false">关于我们</string>
+
+
+    <string name="loan_payment_details" translatable="false"><u>点击查看还款计划</u></string>
+
+    <string name="loan_showplan_title" translatable="false">还款计划</string>
+
+    <string name="loan_apply_status_title" translatable="false">贷款提交</string>
+
+    <string name="loan_apply_record_title" translatable="false">申贷记录</string>
+
+    <string name="loan_personal_title" translatable="false">个人信息</string>
+    <string name="loan_spouse_title" translatable="false">配偶信息</string>
+    <string name="loan_friend_title" translatable="false">朋友信息</string>
+    <string name="loan_personal_img_title" translatable="false">个人图片</string>
+    <string name="loan_spouse_img_title" translatable="false">配偶图片</string>
+    <string name="loan_privater_img_title" translatable="false">私营图片</string>
+    <string name="loan_business_img_title" translatable="false">业务图片</string>
+
+    <string name="selftext_upload_tips" translatable="false">个人信息已提交</string>
+    <string name="spousetext_upload_tips" translatable="false">配偶信息已提交</string>
+    <string name="friendtext_upload_tips" translatable="false">朋友信息已提交</string>
+    <string name="selfphoto_upload_tips" translatable="false">个人图片已提交</string>
+    <string name="privatephoto_upload_tips" translatable="false">私营图片已提交</string>
+    <string name="businnessphoto_upload_tips" translatable="false">业务图片已提交</string>
+    <string name="spousephoto_upload_tips" translatable="false">配偶图片已提交</string>
+
+
+    <string name="selftext_tips" translatable="false">个人信息</string>
+    <string name="spousetext_tips" translatable="false">配偶信息</string>
+    <string name="friendtext_tips" translatable="false">朋友信息</string>
+    <string name="selfphoto_tips" translatable="false">个人图片</string>
+    <string name="privatephoto_tips" translatable="false">私营图片</string>
+    <string name="businnessphoto_tips" translatable="false">业务图片</string>
+    <string name="spousephoto_tips" translatable="false">配偶图片</string>
+
+
+
+
+    <string name="loan_iden_submited" translatable="false">已提交</string>
+    <string name="loan_iden_no_submited" translatable="false">未提交</string>
+    <string name="loan_iden_no_pass" translatable="false">未通过</string>
+
+
+
+    <string name="loan_apply_ing" translatable="false">申贷中</string>
+    <string name="loan_apply_fail" translatable="false">申贷失败</string>
+    <string name="loan_apply_ok" translatable="false">申贷成功</string>
+
+
+
+    <string name="loan_repay_status0" translatable="false">使用中</string>
+    <string name="loan_repay_status1" translatable="false">已还款</string>
+    <string name="loan_repay_status2" translatable="false">已逾期未还款</string>
+    <string name="loan_repay_status3" translatable="false">逾期已还款</string>
+
+    <string name="repay_yet_status" translatable="false">去还款</string>
+    <string name="repay_success_status" translatable="false">已还款</string>
+
+    <string name="loan_agreement_title" translatable="false">摩富贷协议</string>
+
+    <string name="select_merchant_title" translatable="false">选择商户</string>
+
+    <string name="realname_course_title" translatable="false">实名教程</string>
+    <!--<string name="d0" translatable="false">D0</string>-->
+    <!--<string name="d1" translatable="false">D1</string>-->
+    <!--<string name="d2" translatable="false">D2</string>-->
+    <!--<string name="d3" translatable="false">D3</string>-->
+    <!--<string name="d4" translatable="false">D4</string>-->
+    <!--<string name="d5" translatable="false">D5</string>-->
+    <!--<string name="d6" translatable="false">D6</string>-->
+    <!--<string name="d7" translatable="false">D0</string>-->
+
+
+    <string name="channelopen_3" translatable="false">正在向您手机号为%s\n发送短信验证码</string>
+    <string name="channelopen_1" translatable="false">已向您手机号为%s\n发送短信验证码</string>
+    <string name="channelopen_2" translatable="false">获取验证码</string>
+
+
+
+    <string name="repayment_title" translatable="false">信用卡延期</string>
+    <string name="repayment_1" translatable="false">延期</string>
+    <string name="repayment_2" translatable="false">计划</string>
+    <string name="repayment_3" translatable="false">选择信用卡</string>
+    <string name="repayment_4" translatable="false">编辑</string>
+    <string name="repayment_5" translatable="false">请选择通道</string>
+
+
+    <string name="credit_val_title" translatable="false">开通贷记卡验证</string>
+    <string name="credit_val_1" translatable="false">首次使用通道，需先短信验证开通本通道权限！</string>
+
+    <string name="channel_val_title" translatable="false">开通通道验证</string>
+    <string name="channel_val_1" translatable="false">首次使用通道，需先短信验证开通本卡在该通道权限！</string>
+
+
+
+    <string name="over_risk_title" translatable="false">跨境风控说明</string>
+    <string name="over_risk_tips" translatable="false">执行下一步前请仔细观看下述说明！</string>
+    <string name="over_risk_explain" translatable="false">《摩富金服跨境风险控制说明》</string>
+    <string name="over_risk_details" translatable="false">我已阅读并同意上诉说明</string>
+    <string name="over_risk_content" translatable="false">鉴于银联国际通道方要求风控条例，此通道支持本人银行卡和非本人银行卡进行交易，所以需提供以下资料完善风控信息：</string>
+    <string name="over_risk_content2" translatable="false">用户交易成功后，请保留以上资料，在结算前，我司工作人员会进行回访调取资料，如不能完全提供以上资料，该笔交易将在最长30个工作日内进行退款处理。</string>
+
+
+    <string name="generation_title" translatable="false">生成计划</string>
+    <string name="generation_1" translatable="false">请输入消费金额</string>
+    <string name="generation_2" translatable="false">请选择消费天数</string>
+    <string name="generation_3" translatable="false">请选择消费天数</string>
+    <string name="generation_4" translatable="false">请选择消费的省市</string>
+
+
+    <string name="show_pro_title" translatable="false">开启计划</string>
+    <string name="show_pro_1" translatable="false">总手续费</string>
+    <string name="show_pro_2" translatable="false">重新生成计划</string>
+    <string name="show_pro_3" translatable="false">总延期手续费/元：%s</string>
+    <string name="show_pro_4" translatable="false">总消费手续费/元：%s</string>
+    <string name="show_pro_5" translatable="false">统计手续费/元：%s</string>
+
+
+    <string name="project_1" translatable="false">消费金额/元</string>
+    <string name="project_2" translatable="false">消费手续费/元</string>
+    <string name="project_3" translatable="false">延期金额/元</string>
+    <string name="project_4" translatable="false">延期手续费/元</string>
+    <string name="project_handing" translatable="false">执行中</string>
+    <string name="project_stay" translatable="false">待执行</string>
+    <string name="project_fail" translatable="false">执行失败</string>
+    <string name="project_cancel" translatable="false">计划取消</string>
+    <string name="project_complete" translatable="false">计划完成</string>
+
+    <string name="project_finish" translatable="false">执行完成</string>
+    <string name="project_handle_cancel" translatable="false">执行取消</string>
+
+    <string name="project_re_processing" translatable="false">返还处理中</string>
+    <string name="project_re_ok" translatable="false">返还成功</string>
+    <string name="project_re_fail" translatable="false">返还失败</string>
+
+
+    <string name="project_detials_title" translatable="false">延期计划</string>
+    <string name="project_detials_1" translatable="false">反佣：%s</string>
+
+    <string name="repay_detials_title" translatable="false">延期说明</string>
+
+
+
+    <string name="intergal_rank_titles" translatable="false"></string>
+    <string name="intergal_rank_title1" translatable="false">理财积分排位赛</string>
+    <string name="intergal_rank_title2" translatable="false">爆  款  奖  品  月  月  送</string>
+    <string name="intergal_rank_btn1" translatable="false">规则与奖励</string>
+    <string name="intergal_rank_btn2" translatable="false">当月榜</string>
+    <string name="intergal_rank_btn3" translatable="false">上月榜</string>
+    <string name="intergal_rank_btn4" translatable="false">积分排行榜</string>
+    <string name="intergal_rank_on" translatable="false">恭喜您当前排名第%d名！</string>
+    <string name="intergal_rank_off" translatable="false">很遗憾您当前未上榜</string>
+    <string name="intergal_rank_phone" translatable="false">手机号</string>
+    <string name="intergal_rank_intergal" translatable="false">积分</string>
+    <string name="intergal_current_nodata" translatable="false">当月榜单暂无数据</string>
+    <string name="intergal_last_nodata" translatable="false">上月榜单暂无数据</string>
+
+
+    <string name="day_current_nodata" translatable="false">今日榜单暂无数据</string>
+    <string name="day_last_nodata" translatable="false">昨日榜单暂无数据</string>
+
+    <string name="day_on" translatable="false">进行中</string>
+    <string name="day_off" translatable="false">已结束</string>
+
+
+
+    <string name="tab_mask_1" translatable="false">领取口罩</string>
+    <string name="tab_mask_2" translatable="false">我的</string>
+
+
+
+
+
+
+
+
+
+
+
+    <string name="over_max_warning" translatable="false">请尽量避免收款金额接近通道最高限额，否则交易后需向客服提交支付信息资料</string>
+    <string name="no_morethan_balance">不能大于当前可用余额</string>
+    <string name="product_about_us_title">关于我们</string>
+    <string name="product_about_us_explain">摩富金服是知名聚合支付平台立码付旗下的理财平台，致力于为用户带来优质的移动理财投资体验。依托立码付平台强大的金融底蕴和高效的风控数据，摩富金服为用户提供更安全、更便捷、更省心的移动理财服务。</string>
+
+    <string name="scan_qr_1">
+        <![CDATA[<p>法人信息<small><font color=\'#999999\'>  根据监管要求，请如实填写有效的信息</font></small></p>]]>
+    </string>
+
+
+    <string name="permissions_location">定位,电话获取失败,请尝试在手机应用权限管理中打开权限</string>
+    <string name="permissions_camer">启动相机,相册失败,请尝试在手机应用权限管理中打开权限</string>
+    <string name="permissions_call">启动电话呼叫失败,请尝试在手机应用权限管理中打开权限</string>
+    <string name="permissions_savephoto">保存图片失败,请尝试在手机应用权限管理中打开权限</string>
+    <string name="permissions_location_1">权限获取失败,请尝试在手机应用权限管理中打开权限</string>
+
+    <string name="updateContent"></string>
+    <string name="behavior_sample_title">cn.mofufin.morf.UI.util.SampleTitleBehavior</string>
+
+    <string name="pay_result_callback_msg" translatable="false" formatted="false">微信支付结果：%s</string>
+</resources>

@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:apps="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.util.DataUtils"/>
+        <import type="android.text.TextUtils"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.fragment.InverstMentFragment"/>
+        <variable
+            name="clicklistener"
+            type="android.view.View.OnClickListener"/>
+        <!--<variable-->
+            <!--name="type"-->
+            <!--type="Integer"/>-->
+        <!--<variable-->
+            <!--name="isShow"-->
+            <!--type="boolean"/>-->
+        <!--<variable-->
+            <!--name="position"-->
+            <!--type="int"/>-->
+        <variable
+            name="bean"
+            type="cn.mofufin.morf.ui.entity.LoanApplyRecord.ApplyLoansListBean"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+
+        <androidx.cardview.widget.CardView
+            tools:targetApi="lollipop"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/default_padding"
+            android:layout_marginRight="@dimen/default_padding"
+            android:layout_marginBottom="@dimen/default_padding"
+            android:clickable="true"
+            android:onClick="@{clicklistener}"
+            android:tag="@{bean}"
+            android:elevation="1.5dp"
+            android:stateListAnimator="@drawable/lift_on_touch"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:cardCornerRadius="4dp"
+            app:cardUseCompatPadding="true"
+            app:cardPreventCornerOverlap="false">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:elevation="1dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:text="@{bean.productName}"
+                        android:gravity="center"
+                        android:background="@drawable/shape_loan_red"
+                        android:layout_marginLeft="@dimen/default_item_margin"
+                        android:textSize="@dimen/text_size_normal"/>
+
+
+                    <View
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"/>
+
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical|right"
+                        android:orientation="horizontal">
+
+
+                        <cn.mofufin.morf.ui.widget.OrderIconWidget
+                            android:id="@+id/status"
+                            android:layout_width="60dp"
+                            android:layout_height="20dp"
+                            android:layout_marginEnd="@dimen/default_margin"
+                            android:background="@drawable/order_mpos_icon"
+                            android:textSize="@dimen/text_size_small"
+                            android:textColor="@{bean.applyState==0?@color/app_blue:bean.applyState==1?@color/loan_red:@color/ok}"
+                            android:text="@{bean.applyState==0?@string/loan_apply_ok:bean.applyState==1?@string/loan_apply_fail:@string/loan_apply_ing}"
+                            android:gravity="center"
+                            apps:textTouchColor="#000"
+                            apps:radius="20dp"
+                            apps:strokeWith="3"
+                            apps:solidColor="@color/white"
+                            apps:solidTouchColor="#ffffff"
+                            apps:strokeColor="@color/loan_red"
+                            apps:strokeTouchColor="#000000"
+                            apps:shapeTpe="rectangle"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingTop="@dimen/default_margin"
+                    android:paddingBottom="@dimen/default_margin"
+                    android:background="@color/white">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:baselineAligned="true"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text='@{(bean.applyMoney/10000)+"万"}'
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            android:textColor="@color/loan_red"
+                            android:textSize="26sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="日利率："
+                            android:layout_marginLeft="5dp"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/text_size_normal" />
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="@{DataUtils.scientificMatchPercent(bean.loansRate,5)}"
+                            android:layout_marginLeft="5dp"
+                            android:textColor="@color/dark_gray"
+                            android:textSize="@dimen/text_size_normal" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:baselineAligned="true"
+                        android:paddingTop="@dimen/default_padding"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_weight="1.1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="贷款额度(元)"
+                            android:gravity="center"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/text_size_normal" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="贷款周期："
+                            android:layout_marginLeft="5dp"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/text_size_normal" />
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text='@{bean.loansPeriod+"个月"}'
+                            android:layout_marginLeft="5dp"
+                            android:textColor="@color/dark_gray"
+                            android:textSize="@dimen/text_size_normal" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+</layout>

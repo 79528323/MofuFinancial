@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:ruis="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.mine.MemberInfoActivity"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.mine.MemberInfoActivity"/>
+        <variable
+            name="interval"
+            type="int"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/layout_title"
+            bind:backIcon="@{@drawable/title_back}"
+            bind:handlers="@{handlers}"
+            bind:titleName="@{@string/member_info_title}" />
+
+        <cc.ruis.lib.widget.BannerView
+            android:id="@+id/member_Viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            ruis:ruis_interval="315360000"
+            ruis:ruis_percentSize="false"
+            ruis:ruis_tipDrawable="@drawable/member_pager_tip"
+            ruis:ruis_tipMargin="5dp"
+            ruis:ruis_tip_gravity="center"
+            ruis:ruis_mode="modeLinear"/>
+
+        <ScrollView
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#EFDDC1"
+            android:overScrollMode="never">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/default_margin"
+                    android:orientation="vertical"
+                    android:padding="@dimen/default_margin"
+                    android:background="@drawable/shape_member">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/default_padding"
+                        android:gravity="center_vertical"
+                        android:layout_gravity="center"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_weight="1"
+                            android:layout_width="@dimen/chat_image_min_width"
+                            android:layout_marginRight="@dimen/default_margin"
+                            android:layout_height="1dp"
+                            android:background="#D79939"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/member_info_5"
+                            android:textSize="@dimen/text_size_normal"
+                            android:textColor="#D79939"/>
+
+                        <View
+                            android:layout_weight="1"
+                            android:layout_width="@dimen/chat_image_min_width"
+                            android:layout_marginLeft="@dimen/default_margin"
+                            android:layout_height="1dp"
+                            android:background="#D79939"/>
+
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textColor="#7F6048"
+                        android:padding="@dimen/default_margin"
+                        android:text="@string/member_info_6"
+                        android:textSize="@dimen/text_size_normal"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:paddingBottom="@dimen/default_margin"
+                        android:textColor="#7F6048"
+                        android:text="@string/member_info_7"
+                        android:textSize="@dimen/text_size_normal"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:paddingBottom="@dimen/default_margin"
+                        android:textColor="#7F6048"
+                        android:text="@string/member_info_8"
+                        android:textSize="@dimen/text_size_normal"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textColor="@color/white"
+                        android:onClick="@{handlers.exMemberTicket}"
+                        android:layout_marginBottom="@dimen/default_padding"
+                        android:paddingLeft="40dp"
+                        android:paddingRight="40dp"
+                        android:paddingTop="5dp"
+                        android:gravity="center"
+                        android:paddingBottom="5dp"
+                        android:text="@string/member_info_17"
+                        android:background="@drawable/shape_member_red"
+                        android:textSize="@dimen/text_size_normal"/>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/default_padding"
+                    android:gravity="center_vertical"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+                    <View
+                        android:layout_weight="1"
+                        android:layout_width="@dimen/chat_image_min_width"
+                        android:layout_marginRight="@dimen/default_margin"
+                        android:layout_height="1dp"
+                        android:background="#D79939"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/member_info_9"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="#D79939"/>
+
+                    <View
+                        android:layout_weight="1"
+                        android:layout_width="@dimen/chat_image_min_width"
+                        android:layout_marginLeft="@dimen/default_margin"
+                        android:layout_height="1dp"
+                        android:background="#D79939"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/member_info_10"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/default_margin"
+                    android:textSize="@dimen/text_size_normal"
+                    android:textColor="#D79939"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+
+
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="@string/member_info_11"-->
+                        <!--android:paddingTop="@dimen/default_padding"-->
+                        <!--android:textSize="@dimen/text_size_normal"-->
+                        <!--android:textColor="#7F6048"/>-->
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/member_info_12"
+                        android:paddingTop="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="#7F6048"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/member_info_13"
+                        android:paddingTop="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="#7F6048"/>
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/member_info_14"
+                    android:layout_gravity="center"
+                    android:paddingTop="@dimen/default_item_margin"
+                    android:textSize="@dimen/text_size_normal"
+                    android:layout_marginBottom="50dp"
+                    android:textColor="#AF7A7A"/>
+            </LinearLayout>
+        </ScrollView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="使用升级券升级"
+            android:gravity="center"
+            android:enabled="@{interval==0?false:true}"
+            android:onClick="@{handlers.upgradeMember}"
+            android:padding="@dimen/default_margin"
+            android:background="@{interval==0?@color/app_bg:@color/app_blue}"/>
+
+    </LinearLayout>
+
+</layout>

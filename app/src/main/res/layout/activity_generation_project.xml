@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:apps="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <import type="android.text.TextUtils"/>
+        <import type="cn.mofufin.morf.ui.repayment.GenerationProjectActivity"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.repayment.GenerationProjectActivity"/>
+        <variable
+            name="totalMoney"
+            type="String"/>
+        <variable
+            name="title"
+            type="String"/>
+        <variable
+            name="quota"
+            type="int"/>
+        <variable
+            name="daycount"
+            type="int"/>
+        <variable
+            name="procity"
+            type="String"/>
+        <variable
+            name="channel"
+            type="cn.mofufin.morf.ui.entity.RepayChannel.ChannelListBean"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:fitsSystemWindows="true"
+        android:background="@color/app_background">
+
+
+        <include
+            layout="@layout/layout_title"
+            bind:backIcon="@{@drawable/title_back}"
+            bind:handlers="@{handlers}"
+            bind:canSubmit="@{true}"
+            bind:rightText="@{@string/repay_detials_title}"
+            bind:titleName="@{@string/generation_title}" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="ifContentScrolls">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="#E75A30"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/default_padding">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/attention"/>
+
+                    <TextView
+                        android:layout_marginLeft="@dimen/default_padding"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_small"
+                        android:textColor="@color/white"
+                        android:text="设置计划周期最长为20天"/>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:paddingTop="@dimen/default_padding"
+                    android:paddingLeft="@dimen/default_padding"
+                    android:paddingBottom="@dimen/default_padding"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="@dimen/text_size_title"
+                        android:text="请输入消费金额"/>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:gravity="center_vertical|bottom"
+                        android:layout_height="@dimen/dynamic_image_min_width"
+                        android:layout_gravity="bottom|center_vertical"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:baselineAligned="true">
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/text_size_game_record"
+                                android:layout_gravity="bottom"
+                                android:textColor="@color/dark_gray"
+                                android:text="@string/MPOS7"/>
+
+
+                            <RelativeLayout
+                                android:layout_weight="1"
+                                android:layout_marginLeft="@dimen/default_margin"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp">
+
+
+                                <TextView
+                                    android:layout_alignParentBottom="true"
+                                    android:visibility="@{TextUtils.isEmpty(totalMoney)?View.VISIBLE:View.GONE}"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="最低1000起"
+                                    android:textColor="@color/light_gray"
+                                    android:textSize="@dimen/text_size_game_record"/>
+
+
+                                <EditText
+                                    android:id="@+id/sum"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentBottom="true"
+                                    android:background="@null"
+                                    android:gravity="bottom"
+                                    android:layout_marginBottom="-8dp"
+                                    android:inputType="numberDecimal"
+                                    android:onTextChanged="@{handlers.onTextChanged}"
+                                    android:text="@{totalMoney}"
+                                    android:textColor="@color/dark_gray"
+                                    android:textSize="@dimen/text_size_big" />
+
+                            </RelativeLayout>
+                        </LinearLayout>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="@{handlers.clean}"
+                            android:layout_marginRight="@dimen/default_margin"
+                            android:layout_marginBottom="@dimen/default_padding"
+                            android:visibility="@{totalMoney.length() > 0 ? View.VISIBLE : View.GONE}"
+                            android:background="@drawable/backspace"/>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_marginTop="@dimen/default_padding"
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:background="#EBEBEB"/>
+
+                    <TextView
+                        android:layout_marginTop="@dimen/default_padding"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_small"
+                        android:textColor="@color/light_gray"
+                        android:text='@{"单日最高消费"+channel.rcSingleDayCardQuota+"元，本次计划最高可消费"+(channel.rcSingleDayCardQuota*10)+"元"}'
+                        tools:text="单笔消费最高1000元，单卡单日最高消费5000元"/>
+
+                </LinearLayout>
+
+
+
+                <TextView
+                    android:padding="@dimen/default_margin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/light_gray"
+                    android:textSize="@dimen/text_size_small"
+                    android:text="@string/generation_3"/>
+
+
+                <TextView
+                    android:padding="@dimen/default_margin"
+                    android:drawableRight="@drawable/repay_calendar"
+                    android:gravity="center_vertical"
+                    android:onClick="@{handlers.consumdays}"
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/text_size_normal"
+                    android:hint="例如：8"
+                    android:text='@{String.valueOf(daycount)}'/>
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{channel.rcType == 0?View.VISIBLE:View.GONE}"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:padding="@dimen/default_margin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_small"
+                        android:text="@string/generation_4"/>
+
+
+                    <TextView
+                        android:padding="@dimen/default_margin"
+                        android:drawableRight="@drawable/repay_locate"
+                        android:gravity="center_vertical"
+                        android:background="@color/white"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/dark_gray"
+                        android:onClick="@{handlers.selectCity}"
+                        android:hint="例如：湖南省 常德市"
+                        android:textSize="@dimen/text_size_normal"
+                        android:text="@{procity}"/>
+
+
+                </LinearLayout>
+
+
+                <cn.mofufin.morf.ui.widget.TextButtonWidget
+                    android:id="@+id/next"
+                    apps:enables="false"
+                    android:layout_marginTop="@dimen/button_height"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="@dimen/add_contact_item_width"
+                    android:paddingBottom="@dimen/default_padding"
+                    android:paddingTop="@dimen/default_padding"
+                    android:text="@string/generation_title"
+                    android:onClick="@{handlers.next}"
+                    android:gravity="center"
+                    android:layout_height="wrap_content" />
+
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_marginTop="@dimen/default_item_margin"-->
+                    <!--android:gravity="center">-->
+
+
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:textColor="#914C03"-->
+                        <!--android:onClick="@{handlers.about}"-->
+                        <!--android:padding="@dimen/default_margin"-->
+                        <!--android:textSize="@dimen/text_size_title"-->
+                        <!--android:text="延期说明"/>-->
+                <!--</LinearLayout>-->
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+</layout>

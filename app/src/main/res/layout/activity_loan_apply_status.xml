@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.util.DataUtils"/>
+        <import type="cn.mofufin.morf.ui.loan.LoanApplyStatusActivity"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.loan.LoanApplyStatusActivity"/>
+
+        <variable
+            name="amount"
+            type="String"/>
+        <variable
+            name="ratio"
+            type="double"/>
+        <variable
+            name="months"
+            type="int"/>
+        <variable
+            name="bankinfo"
+            type="String"/>
+        <variable
+            name="status"
+            type="int"/>
+        <variable
+            name="tips"
+            type="String"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:fitsSystemWindows="true"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+
+            <include
+                android:id="@+id/title_layout"
+                layout="@layout/layout_title"
+                bind:handlers="@{handlers}"
+                bind:isTranslate="@{true}"
+                bind:isTitleBlack="@{true}"
+                bind:rightText="@{@string/service_number}"
+                bind:canSubmit="@{true}"
+                bind:isRightTextBlack="@{true}"
+                bind:titleName="@{@string/loan_apply_status_title}"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+        </LinearLayout>
+
+
+        <!--转账后反馈页面-->
+        <LinearLayout
+            style="@style/BalanceTranPwdStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/menu_item_height">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@{status==0?@drawable/rec_d_fail:@drawable/loan_status_ok}" />
+
+            <TextView
+                android:id="@+id/toast"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_item_margin"
+                android:layout_marginBottom="@dimen/default_padding"
+                android:text='@{status==1?"贷款申请已提交":tips}'
+                android:textColor="@color/dark_gray"
+                android:textSize="@dimen/text_size_title" />
+
+            <TextView
+                android:id="@+id/toast_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="@{status==0?View.GONE:View.VISIBLE}"
+                android:text="贷款审核完工作人员会电话与您联系，请耐心等待！"
+                android:textColor="#FE8107"
+                android:textSize="@dimen/text_size_small" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginTop="@dimen/default_item_margin"
+                android:background="@color/app_background" />
+
+
+            <LinearLayout
+                android:visibility="@{status==0?View.GONE:View.VISIBLE}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/default_padding">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:id="@+id/product_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="贷款金额"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_small" />
+
+                    <TextView
+                        android:id="@+id/product_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@{amount}"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_small" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/default_padding">
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="日利率"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_small" />
+
+                    <TextView
+                        android:id="@+id/inverst_amount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@{DataUtils.scientificMatchPercent(ratio,5)}"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_small" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/default_padding">
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="贷款周期"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_small" />
+
+                    <TextView
+                        android:id="@+id/expincome_year"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text='@{months+"个月"}'
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_small" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/default_padding">
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="到账银行"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_small" />
+
+                    <TextView
+                        android:id="@+id/inverst_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text='@{"(尾号)"+bankinfo}'
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_small" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_marginTop="50dp"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/loan_idval_button"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:paddingBottom="@dimen/default_padding"
+            android:paddingTop="@dimen/default_padding"
+            android:text="返回首页"
+            android:onClick="@{handlers.onPress}"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_normal" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="40dp"
+            android:background="@color/app_background">
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

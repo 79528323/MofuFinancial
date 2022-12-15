@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:apps="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="cn.mofufin.morf.ui.util.DataUtils"/>
+        <import type="cn.mofufin.morf.ui.repayment.fragment.RepayMentHomeFragment"/>
+        <import type="android.view.View"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.repayment.fragment.RepayMentHomeFragment"/>
+        <variable
+            name="bean"
+            type="cn.mofufin.morf.ui.entity.User.DataBean.CardInfoBean"/>
+        <variable
+            name="channel"
+            type="cn.mofufin.morf.ui.entity.RepayChannel.ChannelListBean"/>
+        <variable
+            name="curType"
+            type="int"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:background="#F6F6F6"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="@dimen/default_margin"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/bank_bg"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/menu_width"
+                android:layout_marginLeft="@dimen/default_item_margin"
+                android:layout_marginRight="@dimen/default_item_margin"
+                android:layout_marginTop="@dimen/default_padding"
+                android:background="@drawable/shape_repayment_card">
+
+                <LinearLayout
+                    android:visibility="@{bean==null?View.VISIBLE:View.GONE}"
+                    android:layout_marginTop="@dimen/default_margin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/repayment_card_bg">
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:visibility="@{bean==null?View.GONE:View.VISIBLE}"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:layout_above="@id/transp_layout">
+
+                    <ImageView
+                        android:id="@+id/card_icon"
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="30dp"
+                        android:background="@drawable/logo_other_bank"/>
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/bname"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:text='@{bean==null?"":DataUtils.subString(bean.cardBankName,4)}'
+                            tools:text="@string/card_pingan"
+                            android:textStyle="bold"
+                            android:layout_marginStart="@dimen/default_padding"
+                            android:textSize="@dimen/text_size_game_record"/>
+
+                        <View
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:layout_width="1dp"
+                            android:layout_height="10dp"
+                            android:background="@color/white"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:text='@{"尾号"+(bean==null?"":DataUtils.subString(bean.cardCode,bean.cardCode.length()-4,bean.cardCode.length()))}'
+                            tools:text="@string/card_manager_1"
+                            android:textSize="@dimen/text_size_normal"/>
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/transp_layout"
+                    android:visibility="@{bean==null?View.GONE:View.VISIBLE}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:background="#1C000000">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="@color/white"
+                        android:gravity="center"
+                        tools:text="账单日 每月10号"
+                        android:text='@{"账单日 "+bean.accountDay+"号"}'
+                        android:padding="@dimen/default_margin"/>
+
+                    <TextView
+                        android:id="@+id/rpdays"
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="@color/white"
+                        android:gravity="center"
+                        tools:text="账单日 次月10号"
+                        android:text='@{"还款日 "+bean.repaymentDay+"号"}'
+                        android:padding="@dimen/default_margin"/>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+
+            <LinearLayout
+                android:layout_below="@id/bank_bg"
+                android:layout_alignStart="@id/bank_bg"
+                android:layout_alignEnd="@id/bank_bg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:background="#F6F6F6 ">
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_normal"
+                        android:onClick="@{handlers.selectCard}"
+                        android:textColor="@color/app_blue"
+                        android:gravity="center_vertical"
+                        android:text="@string/repayment_3"
+                        android:padding="@dimen/default_margin"
+                        android:drawablePadding="@dimen/default_padding"
+                        android:drawableLeft="@drawable/creditcard_selector"/>
+
+
+                </LinearLayout>
+
+
+                <View
+                    android:layout_width="1px"
+                    android:layout_height="15dp"
+                    android:background="@color/hint"/>
+
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_normal"
+                        android:onClick="@{handlers.editCard}"
+                        android:textColor="@color/app_blue"
+                        android:text="@string/repayment_4"
+                        android:padding="@dimen/default_margin"
+                        android:gravity="center_vertical"
+                        android:drawablePadding="@dimen/default_padding"
+                        android:drawableLeft="@drawable/editor"/>
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin"
+            android:onClick="@{handlers.addChannel}"
+            android:padding="@dimen/default_padding"
+            android:background="@color/white">
+
+
+            <TextView
+                android:visibility="@{channel==null?View.VISIBLE:View.GONE}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/repayment_5"
+                android:textColor="@color/light_gray"
+                android:gravity="center_vertical"
+                android:layout_centerInParent="true"
+                android:drawablePadding="@dimen/default_padding"
+                android:padding="@dimen/default_margin"
+                android:drawableLeft="@drawable/channel_selector"/>
+
+            <LinearLayout
+                tools:visibility="invisible"
+                android:visibility="@{channel==null?View.INVISIBLE:View.VISIBLE}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:background="@{channel.rcType==0?@drawable/below_merchant:@drawable/online_merchant}"/>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/default_padding"
+                    android:orientation="vertical">
+
+                    <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:textColor="@color/dark_gray"-->
+                        <!--android:text="@{channel.rcName}"-->
+                        <!--android:textStyle="bold"-->
+                        <!--android:textSize="@dimen/text_size_normal"-->
+                        <!--tools:text="银联A（线上商户）"/>-->
+
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/dark_gray"
+                            android:textStyle="bold"
+                            android:textSize="@dimen/text_size_normal"
+                            android:text="@{channel.rcName}"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/dark_gray"
+                            android:textSize="@dimen/text_size_small"
+                            android:text='@{channel.rcType == 0?"（落地商户）":"（线上商户）"}'/>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_marginTop="@dimen/default_padding"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/light_gray"
+                            android:textSize="@dimen/text_size_small"
+                            tools:text="费率0.54%"
+                            android:text='@{"费率"+(curType==1?DataUtils.converOverPercent(channel.rcCommonRate):curType==2?DataUtils.converOverPercent(channel.rcGoldRate):DataUtils.converOverPercent(channel.rcDrillRate))}'/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/light_gray"
+                            android:textSize="@dimen/text_size_small"
+                            android:text='@{"  |  代付费："+channel.rcDaiPayFee+"元/笔"}'/>
+
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:layout_marginTop="@dimen/default_padding"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_small"
+                        android:text='@{"单笔消费最高"+channel.rcSinglePenQuota+"元，单卡单日最高消费"+channel.rcSingleDayCardQuota+"元"}'
+                        tools:text="单笔消费最高1000元，单卡单日最高消费5000元"/>
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+
+
+
+        <cn.mofufin.morf.ui.widget.TextButtonWidget
+            android:id="@+id/next"
+            apps:enables="false"
+            android:layout_marginTop="@dimen/folder_menu_item_height"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="@dimen/add_contact_item_width"
+            android:paddingBottom="@dimen/default_padding"
+            android:paddingTop="@dimen/default_padding"
+            android:text="@string/register6"
+            android:onClick="@{handlers.next}"
+            android:gravity="center"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</layout>

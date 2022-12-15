@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.util.DataUtils"/>
+        <import type="cn.mofufin.morf.ui.mine.BalanceTransferStatusActivity"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.mine.BalanceTransferStatusActivity"/>
+
+        <variable
+            name="isTransferOK"
+            type="boolean"/>
+        <variable
+            name="tips"
+            type="String"/>
+        <variable
+            name="type"
+            type="int"/>
+        <variable
+            name="title"
+            type="String"/>
+        <variable
+            name="btntx"
+            type="String"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:fitsSystemWindows="true"
+        android:background="@color/app_bg">
+
+
+        <include
+            layout="@layout/layout_title"
+            bind:backIcon="@{@drawable/title_back}"
+            bind:handlers="@{handlers}"
+            bind:invisiableBack="@{true}"
+            bind:titleName="@{title}" />
+
+
+        <!--转账后反馈页面-->
+        <LinearLayout
+            style="@style/BalanceTranPwdStyle"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/menu_item_height"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="@dimen/icon_large"
+                android:layout_height="@dimen/icon_large"
+                android:background="@{isTransferOK?@drawable/rec_d_ok:@drawable/rec_d_fail}"
+                tools:background="@drawable/rec_d_ok"/>
+
+            <TextView
+                android:id="@+id/toast"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_item_margin"
+                android:textSize="@dimen/text_size_title"
+                android:textColor="@color/dark_gray"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="@dimen/default_padding"/>
+
+            <TextView
+                android:id="@+id/toast_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/light_gray"
+                android:layout_centerInParent="true"
+                tools:text="预计2018-11-11 23:59:59前到账"
+                android:text='@{"预计"+DataUtils.GetDateOrTime("yyyy-MM-dd")+" 23:59:59前到账"}'/>
+
+            <View
+                android:layout_marginTop="@dimen/default_item_margin"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/light_gray"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@{isTransferOK?@color/light_gray:@color/pink}"
+                android:textSize="@dimen/text_size_normal"
+                android:padding="@dimen/default_padding"
+                tools:text="成功转出"
+                android:visibility="@{type==handlers.TYPE_INVERSTMENT_PAYMENT?View.GONE:View.VISIBLE}"
+                android:text="@{tips}"/>
+
+
+            <LinearLayout
+                android:id="@+id/inverst_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/default_padding"
+                android:visibility="@{type==handlers.TYPE_INVERSTMENT_PAYMENT?View.VISIBLE:View.GONE}"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:id="@+id/product_name"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_small"
+                        android:textColor="@color/light_gray"/>
+
+                    <TextView
+                        android:id="@+id/product_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textSize="@dimen/text_size_small"
+                        android:textColor="@color/light_gray"/>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/default_padding"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_small"
+                        android:textColor="@color/light_gray"
+                        android:text="投资金额"/>
+
+                    <TextView
+                        android:id="@+id/inverst_amount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textSize="@dimen/text_size_small"
+                        android:textColor="@color/light_gray"/>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/default_padding"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_small"
+                        android:textColor="@color/light_gray"
+                        android:text="预期年化收益"/>
+
+                    <TextView
+                        android:id="@+id/expincome_year"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textSize="@dimen/text_size_small"
+                        android:textColor="@color/light_gray"/>
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/default_padding"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_small"
+                        android:textColor="@color/light_gray"
+                        android:text="投资期限"/>
+
+                    <TextView
+                        android:id="@+id/inverst_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textSize="@dimen/text_size_small"
+                        android:textColor="@color/light_gray"
+                        android:text=""/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_marginTop="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/menu_delete_width"
+            android:paddingRight="@dimen/menu_delete_width"
+            android:background="@drawable/login_button"
+            android:layout_gravity="center_horizontal"
+            android:paddingBottom="@dimen/default_padding"
+            android:paddingTop="@dimen/default_padding"
+            android:text="@{btntx}"
+            android:onClick="@{handlers.onPress}"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_normal" />
+
+
+    </LinearLayout>
+</layout>

@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.RegisterActivity"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.RegisterActivity"/>
+        <variable
+            name="isNext"
+            type="boolean"/>
+
+        <variable
+            name="isAgree"
+            type="boolean"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+
+        <include
+            layout="@layout/layout_title"
+            bind:backIcon="@{@drawable/title_back}"
+            bind:handlers="@{handlers}"
+            bind:titleName="@{@string/register0}" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/default_margin"
+            android:background="@color/app_blue">
+
+            <ImageView
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:background="@drawable/register_logo"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_padding"
+                android:textColor="#FFC8DFF4"
+                android:textSize="@dimen/text_size_normal"
+                android:text="@string/register1"/>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="@dimen/default_item_margin"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/register_phoneNum_panel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="@{!isNext?View.VISIBLE:View.GONE}"
+                tools:visibility="visible"
+                android:paddingLeft="@dimen/default_item_margin"
+                android:paddingRight="@dimen/default_item_margin"
+                android:orientation="vertical"
+                android:background="@drawable/login_panel_bg">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:gravity="bottom"
+                    android:padding="@dimen/default_padding">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="@dimen/text_size_title"
+                        android:text="@string/register2"/>
+
+                    <EditText
+                        android:layout_weight="1"
+                        android:id="@+id/register_number"
+                        style="@style/InputStyle.Welcome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/default_padding"
+                        android:hint="手机号"
+                        android:text=""
+                        android:padding="@dimen/default_padding"
+                        android:inputType="number"
+                        android:maxLength="11"
+                        android:textColor="@color/dark_gray"
+                        android:textColorHint="@color/hint"
+                        android:textSize="@dimen/text_size_title" />
+
+                    <TextView
+                        android:id="@+id/sms_code"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="验证码"
+                        android:layout_marginLeft="@dimen/default_padding"
+                        android:onClick="@{handlers.getSmsCode}"
+                        android:textColor="@color/app_blue"
+                        android:textSize="@dimen/text_size_title"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:gravity="bottom"
+                    android:layout_gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/default_padding">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="@dimen/text_size_title"
+                        android:text="@string/register3"/>
+
+                    <EditText
+                        android:layout_weight="1"
+                        android:id="@+id/register_valCode"
+                        style="@style/InputStyle.Welcome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/default_padding"
+                        android:hint="请输入验证码"
+                        android:padding="@dimen/default_padding"
+                        android:inputType="number"
+                        android:maxLength="6"
+                        android:text=""
+                        android:textColor="@color/dark_gray"
+                        android:textColorHint="@color/hint"
+                        android:textSize="@dimen/text_size_title" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_padding"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/default_padding"
+                    android:paddingRight="@dimen/default_padding">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical">
+
+                        <!--<ImageView-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:background="@drawable/register_noselect" />-->
+
+                        <LinearLayout
+                            android:paddingTop="@dimen/default_padding"
+                            android:paddingBottom="@dimen/default_padding"
+                            android:id="@+id/register_agree"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <CheckBox
+                                android:text="@string/register4"
+                                android:textSize="@dimen/text_size_title"
+                                android:drawablePadding="@dimen/default_padding"
+                                android:textColor="@color/dark_gray"
+                                android:onClick="@{handlers.Agreement}"
+                                style="@style/pwd_check"
+                                android:checked="@{isAgree}"/>
+
+                            <!--<TextView-->
+                                <!--android:layout_width="wrap_content"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_gravity="right"-->
+                                <!--android:layout_marginLeft="5dp"-->
+                                <!--android:text="@string/register4"-->
+                                <!--android:textSize="@dimen/text_size_title"-->
+                                <!--android:textColor="@color/dark_gray" />-->
+                        </LinearLayout>
+
+                        <TextView
+                            android:paddingTop="@dimen/default_padding"
+                            android:paddingBottom="@dimen/default_padding"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/default_padding"
+                            android:onClick="@{handlers.readAgreement}"
+                            android:layout_gravity="right|center_vertical"
+                            android:text="@string/register5"
+                            android:textColor="@color/app_blue" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_marginTop="50dp"
+                    android:layout_width="@dimen/add_contact_item_width"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="70dp"
+                    android:paddingRight="70dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/login_button"
+                    android:gravity="center"
+                    android:onClick="@{handlers.next}"
+                    android:paddingBottom="@dimen/default_padding"
+                    android:paddingTop="@dimen/default_padding"
+                    android:text="@string/register6"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_normal" />
+            </LinearLayout>
+
+            <!--下一步-->
+            <LinearLayout
+                android:id="@+id/login_panel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="@{isNext?View.VISIBLE:View.GONE}"
+                tools:visibility="visible"
+                android:background="@drawable/login_panel_bg">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/default_item_margin"
+                    android:layout_marginRight="@dimen/default_item_margin"
+                    android:gravity="bottom"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/default_padding">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="@dimen/text_size_title"
+                        android:text="@string/register7"/>
+
+                    <EditText
+                        android:layout_weight="1"
+                        android:id="@+id/login_number"
+                        style="@style/InputStyle.Welcome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/default_padding"
+                        android:hint="@string/register8"
+                        android:inputType="number"
+                        android:maxLength="11"
+                        android:text=""
+                        android:padding="@dimen/default_padding"
+                        android:textColor="@color/dark_gray"
+                        android:textColorHint="@color/light_gray"
+                        android:textSize="@dimen/text_size_title" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/default_item_margin"
+                    android:layout_marginRight="@dimen/default_item_margin"
+                    android:orientation="horizontal"
+                    android:gravity="bottom"
+                    android:padding="@dimen/default_padding">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="@dimen/text_size_title"
+                        android:text="@string/register9"/>
+
+                    <EditText
+                        android:layout_weight="1"
+                        android:id="@+id/login_pwd"
+                        style="@style/InputStyle.Welcome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"
+                        android:padding="@dimen/default_padding"
+                        android:hint="@string/register10"
+                        android:inputType="textPassword"
+                        android:text=""
+                        android:maxLength="11"
+                        android:textColor="@color/dark_gray"
+                        android:textColorHint="@color/light_gray"
+                        android:textSize="@dimen/text_size_title" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_marginTop="40dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    android:background="@drawable/login_button"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/default_padding"
+                    android:paddingTop="@dimen/default_padding"
+                    android:text="@string/register6"
+                    android:onClick="@{handlers.registers}"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_game_record" />
+
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="@dimen/add_contact_item_width"
+                android:layout_height="wrap_content"
+                android:textColor="@color/light_gray"
+                android:gravity="center"
+                android:textSize="@dimen/text_size_normal"
+                android:visibility="@{isNext?View.VISIBLE:View.GONE}"
+                tools:visibility="gone"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/default_padding"
+                android:text="@string/register11"/>
+        </RelativeLayout>
+
+
+
+
+    </LinearLayout>
+</layout>

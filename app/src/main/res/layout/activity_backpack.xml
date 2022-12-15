@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.mine.BackpackActivity"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.mine.BackpackActivity"/>
+        <variable
+            name="hasData"
+            type="boolean"/>
+        <variable
+            name="isShowRight"
+            type="boolean"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:background="@color/app_background"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/layout_title"
+            bind:backIcon="@{@drawable/title_back}"
+            bind:handlers="@{handlers}"
+            bind:canSubmit="@{isShowRight}"
+            bind:rightText='@{isShowRight?@string/backpack_1:""}'
+            bind:titleName="@{@string/backpack_title}" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <cc.ruis.lib.widget.WrapRecyclerView
+                android:id="@+id/coupon_list"
+                android:padding="@dimen/default_padding"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:visibility="@{hasData?View.VISIBLE:View.GONE}"
+                android:overScrollMode="never"
+                tools:listitem="@layout/layout_coupon_item"/>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                tools:visibility="gone"
+                android:visibility="@{!hasData?View.VISIBLE:View.GONE}"
+                android:orientation="vertical">
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/no_data"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/light_gray"
+                    android:textSize="@dimen/text_size_small"
+                    android:text="@string/nodata"/>
+            </LinearLayout>
+        </FrameLayout>
+
+    </LinearLayout>
+</layout>

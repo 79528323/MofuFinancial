@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="cn.mofufin.morf.ui.fragment.CreatImageFragment"/>
+
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.fragment.CreatImageFragment"/>
+        <variable
+            name="money"
+            type="String"/>
+        <variable
+            name="merchantName"
+            type="String"/>
+        <variable
+            name="type"
+            type="int"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/default_margin">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:gravity="center_horizontal"-->
+                <!--android:padding="@dimen/default_margin"-->
+                <!--android:background="#ff87261d">-->
+
+                <!--<ImageView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:background="@drawable/merchant_logo"/>-->
+            <!--</LinearLayout>-->
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/app_blue"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/titles"
+                    android:paddingTop="@dimen/button_height"
+                    android:paddingBottom="@dimen/button_height"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:text="支持支付宝和微信扫码"
+                    android:textSize="@dimen/location_detail_title"/>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="vertical"
+                    android:layout_margin="@dimen/default_margin"
+                    android:background="@drawable/qr_panel_bg">
+
+                    <TextView
+                        android:id="@+id/merchantName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="打开第三方支付，向我付款！"
+                        android:gravity="center"
+                        android:textColor="@color/dark_gray"
+                        android:padding="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_normal"
+                        android:background="@drawable/qr_head_panel_bg"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="30dp"
+                        android:paddingRight="30dp"
+                        android:paddingBottom="@dimen/default_item_margin"
+                        android:orientation="vertical">
+
+
+                        <TextView
+                            android:id="@+id/money"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            tools:text="￥100.00"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            android:textColor="@color/app_blue"
+                            android:paddingTop="@dimen/default_padding"
+                            android:textSize="@dimen/topic_contat_text"/>
+
+                        <ImageView
+                            android:id="@+id/createQr"
+                            android:layout_width="@dimen/qrcode_size"
+                            android:layout_height="@dimen/qrcode_size"
+                            tools:background="@drawable/icon_wechat_rec"
+                            android:layout_gravity="center"/>
+
+                    </LinearLayout>
+
+
+                    <!--<LinearLayout-->
+                        <!--android:visibility="gone"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:layout_marginTop="@dimen/default_item_margin"-->
+                        <!--android:paddingBottom="@dimen/default_item_margin"-->
+                        <!--android:orientation="horizontal">-->
+
+                        <!--<TextView-->
+                            <!--android:layout_weight="1"-->
+                            <!--android:gravity="center"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:textColor="@color/dark_gray"-->
+                            <!--android:textSize="@dimen/text_size_normal"-->
+                            <!--android:onClick="@{handlers.setTotal}"-->
+                            <!--android:text="设置金额"/>-->
+
+                        <!--<View-->
+                            <!--android:layout_width="1dp"-->
+                            <!--android:layout_height="fill_parent"-->
+                            <!--android:layout_gravity="center"-->
+                            <!--android:background="@color/line"/>-->
+
+                        <!--<TextView-->
+                            <!--android:layout_weight="1"-->
+                            <!--android:gravity="center"-->
+                            <!--android:onClick="@{handlers.saveQR}"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:textSize="@dimen/text_size_normal"-->
+                            <!--android:textColor="@color/dark_gray"-->
+                            <!--android:text="保存图片"/>-->
+
+                    <!--</LinearLayout>-->
+                </LinearLayout>
+
+                <!--<LinearLayout-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:orientation="vertical"-->
+                    <!--android:paddingBottom="@dimen/default_item_margin"-->
+                    <!--android:layout_margin="@dimen/chat_image_min_width"-->
+                    <!--android:background="@drawable/qr_panel_bg">-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/merchantName"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="打开第三方支付，向我付款！"-->
+                        <!--android:gravity="center"-->
+                        <!--android:textColor="@color/dark_gray"-->
+                        <!--android:padding="@dimen/default_padding"-->
+                        <!--android:textSize="@dimen/text_size_normal"-->
+                        <!--android:background="@drawable/qr_head_panel_bg"/>-->
+
+                    <!--<LinearLayout-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:paddingLeft="@dimen/default_item_margin"-->
+                        <!--android:paddingRight="@dimen/default_item_margin"-->
+                        <!--android:orientation="vertical">-->
+
+
+                        <!--<TextView-->
+                            <!--android:id="@+id/money"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--tools:text="￥100.00"-->
+                            <!--android:gravity="center"-->
+                            <!--android:textStyle="bold"-->
+                            <!--android:textColor="@color/app_blue"-->
+                            <!--android:paddingTop="@dimen/default_padding"-->
+                            <!--android:textSize="@dimen/topic_contat_text"/>-->
+
+                        <!--<ImageView-->
+                            <!--android:id="@+id/createQr"-->
+                            <!--android:layout_width="250dp"-->
+                            <!--android:layout_height="250dp"-->
+                            <!--tools:background="@drawable/icon_wechat_rec"-->
+                            <!--android:layout_gravity="center"/>-->
+
+                    <!--</LinearLayout>-->
+
+
+                    <!--<LinearLayout-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:layout_marginTop="@dimen/default_item_margin"-->
+                        <!--android:paddingBottom="@dimen/default_item_margin"-->
+                        <!--android:orientation="horizontal">-->
+
+                        <!--<TextView-->
+                            <!--android:layout_weight="1"-->
+                            <!--android:gravity="center"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:textColor="@color/dark_gray"-->
+                            <!--android:textSize="@dimen/text_size_normal"-->
+                            <!--android:onClick="@{handlers.setTotal}"-->
+                            <!--android:text="设置金额"/>-->
+
+                        <!--<View-->
+                            <!--android:layout_width="1dp"-->
+                            <!--android:layout_height="fill_parent"-->
+                            <!--android:layout_gravity="center"-->
+                            <!--android:background="@color/line"/>-->
+
+                        <!--<TextView-->
+                            <!--android:layout_weight="1"-->
+                            <!--android:gravity="center"-->
+                            <!--android:onClick="@{handlers.saveQR}"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:textSize="@dimen/text_size_normal"-->
+                            <!--android:textColor="@color/dark_gray"-->
+                            <!--android:text="保存图片"/>-->
+
+                    <!--</LinearLayout>-->
+                <!--</LinearLayout>-->
+
+
+
+                <LinearLayout
+                    android:layout_marginTop="@dimen/chat_image_min_width"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:background="@color/white"
+                    android:padding="@dimen/default_margin">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/merchant_logo"/>
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

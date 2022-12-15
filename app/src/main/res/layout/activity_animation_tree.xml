@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.AnimationTreeActivity"/>
+        <import type="cn.mofufin.morf.ui.util.DataUtils"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.AnimationTreeActivity"/>
+        <variable
+            name="count"
+            type="int"/>
+        <variable
+            name="day"
+            type="int"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:background="@drawable/tree_anim_bg">
+
+        <ImageView
+            android:id="@+id/tree_bgd"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"/>
+
+        <include
+            layout="@layout/layout_title"
+            bind:backIcon="@{@drawable/title_back}"
+            bind:handlers="@{handlers}"
+            bind:isTranslate="@{true}"
+            bind:rightText="@{@string/coin_2}"
+            bind:canSubmit="@{true}"
+            android:layout_alignParentTop="true"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent" />
+
+        <ImageView
+            android:id="@+id/tree"
+            android:layout_width="160dp"
+            android:layout_height="260dp"
+            android:background="@drawable/frame_1"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="90dp"/>
+
+        <TextView
+            android:id="@+id/ball"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/tree"
+            android:text="+1"
+            android:layout_marginBottom="-20dp"
+            android:drawableBottom="@drawable/tree_coin"
+            android:gravity="center"
+            android:typeface="sans"
+            android:textStyle="bold"
+            android:textColor="@color/yellow"
+            android:textSize="@dimen/topic_contat_text"
+            android:layout_alignLeft="@id/tree"
+            android:layout_marginLeft="@dimen/default_margin"
+            android:visibility="invisible"
+            tools:visibility="visible"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="30dp"
+            android:layout_alignParentBottom="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/tree_count_bg"
+                android:text='@{"次数："+count}'
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/default_padding"
+                android:textSize="@dimen/text_size_normal"
+                android:textColor="@color/white"
+                android:layout_marginBottom="@dimen/default_padding"
+                tools:text="次数：10"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/tree_vip_bg"
+                android:text='@{"会员日：每月"+day+"日"}'
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/default_padding"
+                android:textSize="@dimen/text_size_normal"
+                android:textColor="@color/white"
+                tools:text="会员日：每月10号"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</layout>

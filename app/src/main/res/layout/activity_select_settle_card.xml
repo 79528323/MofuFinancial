@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.mine.SelectSettleCardActivity"/>
+        <import type="cn.mofufin.morf.ui.util.DataUtils"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.mine.SelectSettleCardActivity"/>
+
+        <!--<variable-->
+            <!--name="commssionMoney"-->
+            <!--type="String"/>-->
+        <!--<variable-->
+            <!--name="totalCommssion"-->
+            <!--type="String"/>-->
+        <!--<variable-->
+            <!--name="position"-->
+            <!--type="int"/>-->
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <include
+            layout="@layout/layout_title"
+            bind:backIcon="@{@drawable/title_back}"
+            bind:handlers="@{handlers}"
+            bind:titleName="@{@string/change_card_13}"/>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <!--<com.scwang.smartrefresh.layout.SmartRefreshLayout-->
+                <!--android:id="@+id/refreshLayout"-->
+                <!--android:layout_above="@+id/btn"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--app:srlAccentColor="#00000000"-->
+                <!--app:srlPrimaryColor="#00000000"-->
+                <!--app:srlEnablePreviewInEditMode="true">-->
+
+                <!--<com.scwang.smartrefresh.layout.header.BezierRadarHeader-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--app:layout_srlBackgroundColor="@color/white"-->
+                    <!--app:srlAccentColor="@color/app_blue"-->
+                    <!--app:srlPrimaryColor="@color/white"-->
+                    <!--app:srlEnableHorizontalDrag="true"/>-->
+
+                <!--<android.support.v4.widget.NestedScrollView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent">-->
+
+                    <!--<LinearLayout-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:orientation="vertical">-->
+
+                        <!--<RelativeLayout-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:background="@drawable/commission_bg"-->
+                            <!--android:orientation="vertical">-->
+
+
+                            <!--<LinearLayout-->
+                                <!--android:id="@+id/position_layout"-->
+                                <!--android:layout_below="@+id/title_layout"-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="match_parent"-->
+                                <!--android:paddingLeft="@dimen/default_margin"-->
+                                <!--android:layout_marginTop="@dimen/default_padding"-->
+                                <!--android:orientation="vertical">-->
+
+                                <!--<LinearLayout-->
+                                    <!--android:layout_width="match_parent"-->
+                                    <!--android:layout_height="match_parent"-->
+                                    <!--android:orientation="horizontal">-->
+
+                                    <!--<TextView-->
+                                        <!--android:layout_weight="1"-->
+                                        <!--android:layout_width="wrap_content"-->
+                                        <!--android:layout_height="wrap_content"-->
+                                        <!--android:textSize="@dimen/niuniu_number"-->
+                                        <!--android:textColor="@color/white"-->
+                                        <!--android:text="@string/commission_1"/>-->
+
+                                    <!--<TextView-->
+                                        <!--android:background="@drawable/commission_ranking_bg"-->
+                                        <!--android:layout_width="wrap_content"-->
+                                        <!--android:layout_height="wrap_content"-->
+                                        <!--android:paddingTop="5dp"-->
+                                        <!--android:paddingBottom="5dp"-->
+                                        <!--android:paddingLeft="@dimen/default_margin"-->
+                                        <!--android:textSize="@dimen/text_size_small"-->
+                                        <!--android:textColor="@color/white"-->
+                                        <!--android:text='@{position>0?"恭喜您本月上榜第"+position+"名！":"很遗憾,本月你还没上榜"}'/>-->
+                                <!--</LinearLayout>-->
+                            <!--</LinearLayout>-->
+
+                            <!--<TextView-->
+                                <!--android:id="@+id/money_text"-->
+                                <!--android:layout_below="@+id/position_layout"-->
+                                <!--android:layout_width="wrap_content"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:textColor="@color/white"-->
+                                <!--android:textSize="28sp"-->
+                                <!--android:paddingTop="5dp"-->
+                                <!--android:paddingLeft="@dimen/default_margin"-->
+                                <!--android:typeface="sans"-->
+                                <!--android:textStyle="bold"-->
+                                <!--android:text="@{commssionMoney}"-->
+                                <!--tools:text="1000000.00"/>-->
+
+                            <!--<TextView-->
+                                <!--android:layout_alignParentBottom="true"-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="match_parent"-->
+                                <!--android:textColor="@color/white"-->
+                                <!--android:textSize="@dimen/niuniu_number"-->
+                                <!--android:layout_gravity="bottom"-->
+                                <!--android:text="@{totalCommssion}"-->
+                                <!--android:layout_marginTop="@dimen/default_item_margin"-->
+                                <!--android:paddingBottom="@dimen/default_margin"-->
+                                <!--android:paddingLeft="@dimen/default_margin"-->
+                                <!--tools:text="@string/commission_history"/>-->
+
+
+                        <!--</RelativeLayout>-->
+
+                        <!--<LinearLayout-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:orientation="horizontal"-->
+                            <!--android:padding="@dimen/default_margin"-->
+                            <!--android:background="#F6F6F6">-->
+
+                            <!--<TextView-->
+                                <!--android:layout_weight="1"-->
+                                <!--android:layout_width="0dp"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:textSize="@dimen/text_size_normal"-->
+                                <!--android:textColor="@color/light_gray"-->
+                                <!--android:text="@string/commission_4"/>-->
+
+                            <!--<TextView-->
+                                <!--android:layout_weight="1"-->
+                                <!--android:layout_width="0dp"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:textSize="@dimen/text_size_normal"-->
+                                <!--android:gravity="center"-->
+                                <!--android:textColor="@color/light_gray"-->
+                                <!--android:text="@string/commission_5"/>-->
+
+                            <!--<TextView-->
+                                <!--android:layout_weight="1.5"-->
+                                <!--android:gravity="right"-->
+                                <!--android:layout_width="0dp"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:textSize="@dimen/text_size_normal"-->
+                                <!--android:textColor="@color/light_gray"-->
+                                <!--android:text="@string/commission_6"/>-->
+
+                        <!--</LinearLayout>-->
+
+
+                        <cc.ruis.lib.widget.WrapRecyclerView
+                            android:id="@+id/selectCard_list"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/white"
+                            android:overScrollMode="never"
+                            android:layout_above="@+id/btn"
+                            tools:listitem="@layout/layout_card_item"/>
+
+                        <!--<TextView-->
+                            <!--android:layout_alignParentBottom="true"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:gravity="center"-->
+                            <!--android:textSize="@dimen/text_size_normal"-->
+                            <!--android:textColor="@color/light_gray"-->
+                            <!--android:padding="@dimen/default_padding"-->
+                            <!--android:text="亲，我们只显示每月前十哦！"/>-->
+
+                    <!--</LinearLayout>-->
+
+                <!--</android.support.v4.widget.NestedScrollView>-->
+
+            <!--</com.scwang.smartrefresh.layout.SmartRefreshLayout>-->
+
+            <TextView
+                android:id="@+id/btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="@color/app_blue"
+                android:gravity="center"
+                android:onClick="@{handlers.addCard}"
+                android:paddingBottom="@dimen/default_margin"
+                android:paddingTop="@dimen/default_margin"
+                android:text="@string/settlement_title"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_game_record" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</layout>

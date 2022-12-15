@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.util.DataUtils"/>
+        <import type="cn.mofufin.morf.ui.repayment.RepayMentProjectDetailsActivity"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.repayment.RepayMentProjectDetailsActivity"/>
+        <variable
+            name="totalBean"
+            type="cn.mofufin.morf.ui.entity.RepayMentProject.PlanListBean"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/app_bg"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <include
+                layout="@layout/layout_title"
+                bind:backIcon="@{@drawable/title_back}"
+                bind:handlers="@{handlers}"
+                bind:titleName="@{@string/project_detials_title}" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="160dp"
+                    app:layout_scrollFlags="scroll|enterAlways"
+                    android:background="@color/app_blue"
+                    android:orientation="vertical">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_weight="3"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:orientation="vertical">
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_weight="1.5"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:gravity="center_horizontal|bottom"
+                            android:background="@color/app_background"
+                            android:orientation="vertical">
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_centerVertical="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:elevation="5dp"
+                        android:layout_marginStart="@dimen/default_item_margin"
+                        android:layout_marginEnd="@dimen/default_item_margin"
+                        android:layout_marginBottom="10dp"
+                        android:paddingTop="@dimen/default_margin"
+                        android:paddingStart="@dimen/default_item_margin"
+                        android:paddingEnd="@dimen/default_item_margin"
+                        android:paddingBottom="@dimen/default_margin"
+                        android:background="@drawable/shape_white"
+                        android:orientation="vertical">
+
+
+                        <LinearLayout
+                            android:gravity="center_vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/default_margin"
+                            android:orientation="vertical">
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/dark_gray"
+                                android:textSize="@dimen/text_size_small"
+                                android:text="延期总额/元"/>
+
+                            <TextView
+                                android:layout_marginTop="@dimen/default_padding"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/dark_gray"
+                                android:textStyle="bold"
+                                android:textSize="@dimen/mall_text_size"
+                                android:text='@{DataUtils.numFormat(totalBean.rpTotalMoney)}'
+                                tools:text="1000.00"/>
+
+
+                            <!--<LinearLayout-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:gravity="end"-->
+                                <!--android:orientation="horizontal">-->
+
+                                <!--<TextView-->
+                                    <!--android:layout_width="wrap_content"-->
+                                    <!--android:layout_height="wrap_content"-->
+                                    <!--android:textColor="@color/dark_gray"-->
+                                    <!--android:textSize="@dimen/text_size_small"-->
+                                    <!--android:layout_marginEnd="@dimen/default_padding"-->
+                                    <!--android:text="总手续费"/>-->
+
+                                <!--<TextView-->
+                                    <!--android:layout_width="wrap_content"-->
+                                    <!--android:layout_height="wrap_content"-->
+                                    <!--android:textColor="@color/dark_gray"-->
+                                    <!--android:textSize="@dimen/text_size_small"-->
+                                    <!--android:onClick="@{handlers.showPop}"-->
+                                    <!--android:background="@drawable/repay_total_fee"/>-->
+                            <!--</LinearLayout>-->
+                        </LinearLayout>
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/text_size_small"
+                            android:text='@{"总延期手续费/元："+DataUtils.numFormat(totalBean.rpTotalFee)}'
+                            tools:text="总延期手续费/元："/>
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/gray"
+                            android:layout_marginTop="5dp"
+                            android:textSize="@dimen/text_size_small"
+                            android:text='@{"总消费手续费/元："+DataUtils.numFormat(totalBean.rpConsumeTotalFee)}'
+                            tools:text="总消费手续费/元："/>
+
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+
+                <cc.ruis.lib.widget.WrapRecyclerView
+                    android:id="@+id/project_details_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/app_background"
+                    android:overScrollMode="never"
+                    tools:listitem="@layout/layout_ranking_item"/>
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/btn"
+            android:layout_marginBottom="@dimen/input_height"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:visibility="@{totalBean.rpState == 0?View.VISIBLE:View.GONE}"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="@dimen/add_contact_item_width"
+                android:layout_height="@dimen/title_height"
+                android:background="@drawable/login_button"
+                android:textColor="@color/white"
+                android:elevation="3dp"
+                android:gravity="center"
+                android:onClick="@{handlers.cancel}"
+                android:layout_margin="8dp"
+                android:textSize="@dimen/text_size_normal"
+                android:text="@string/project_cancel"/>
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</layout>

@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="cn.mofufin.morf.ui.fragment.ReceiVablesFragment"/>
+        <import type="android.view.View"/>
+        <variable
+            name="hasData"
+            type="boolean"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.fragment.ReceiVablesFragment"/>
+        <variable
+            name="onPress"
+            type="boolean"/>
+        <variable
+            name="todayTotalMoney"
+            type="String"/>
+        <variable
+            name="totalMoney"
+            type="String"/>
+        <variable
+            name="totalPenNumber"
+            type="String"/>
+        <variable
+            name="todayTotalPenNumber"
+            type="String"/>
+        <variable
+            name="type"
+            type="int"/>
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/receivable_appbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+
+            <!--<android.support.design.widget.CollapsingToolbarLayout-->
+                <!--android:id="@+id/toolbar_layout"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--app:contentScrim="#00ffffff"-->
+                <!--app:layout_scrollFlags="scroll|exitUntilCollapsed">-->
+
+
+
+
+            <!--</android.support.design.widget.CollapsingToolbarLayout>-->
+
+            <!--头部显示金额-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/app_blue"
+                app:layout_scrollFlags="scroll|enterAlways"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#C8DFF4"
+                    android:textSize="@dimen/text_size_normal"
+                    android:layout_marginTop="@dimen/default_item_margin"
+                    android:layout_marginLeft="@dimen/default_margin"
+                    android:text="@string/receivables_text1"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_big"
+                    android:layout_marginLeft="@dimen/default_margin"
+                    android:text="@{todayTotalMoney}"
+                    tools:text="300000" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#C8DFF4"
+                    android:textSize="@dimen/text_size_normal"
+                    android:layout_marginTop="@dimen/default_padding"
+                    android:layout_marginLeft="@dimen/default_margin"
+                    android:text='@{"共"+todayTotalPenNumber+"笔"}'
+                    android:layout_marginBottom="@dimen/default_item_margin"/>
+            </LinearLayout>
+
+
+            <!--筛选状态栏-->
+            <RelativeLayout
+                android:id="@+id/select_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingRight="@dimen/default_padding"
+                android:paddingTop="@dimen/default_padding"
+                android:paddingBottom="@dimen/default_padding"
+                android:paddingLeft="@dimen/default_margin"
+                android:background="#F6F6F6">
+
+                <TextView
+                    android:id="@+id/timepicker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="2018-10-19~2018-12-19"
+                    android:drawablePadding="@dimen/default_padding"
+                    android:gravity="center_vertical"
+                    android:textSize="@dimen/text_size_normal"
+                    android:textColor="@color/dark_gray"
+                    android:onClick="@{handlers.showCustomTimePicker}"
+                    android:drawableLeft="@drawable/rec_calendar"/>
+
+                <TextView
+                    android:layout_below="@+id/timepicker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/light_gray"
+                    android:layout_marginTop="5dp"
+                    android:textSize="@dimen/text_size_small"
+                    tools:text="收入/元："
+                    android:text='@{"收入/元："+totalMoney+"   共"+totalPenNumber+"笔"}'/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:orientation="vertical">
+
+                    <CheckBox
+                        android:duplicateParentState="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/receivables_text3"
+                        android:textColor="@{onPress?@color/app_blue:@color/dark_gray}"
+                        android:layout_gravity="right"
+                        android:textSize="18sp"
+                        android:checked="@{onPress}"
+                        android:onClick="@{handlers.filterOrderQuery}"
+                        android:button="@null"
+                        android:drawableRight="@drawable/filter_selector"
+                        android:drawablePadding="10dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{type==1?@string/order_default_mpos:type==2?@string/order_default_scan:type==3?@string/order_default_shortpay:@string/order_default_repay}"
+                        android:textSize="@dimen/text_size_small"
+                        android:layout_gravity="right"
+                        android:textColor="@color/light_gray"
+                        android:layout_marginTop="5dp"/>
+                </LinearLayout>
+
+            </RelativeLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+
+        <!--数据显示页面-->
+        <!--<FrameLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent">-->
+
+            <cc.ruis.lib.widget.WrapRecyclerView
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                android:visibility="@{hasData?View.VISIBLE:View.GONE}"
+                android:id="@+id/order_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                tools:visibility="gone"
+                tools:listitem="@layout/layout_order_item"/>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                tools:visibility="gone"
+                android:visibility="@{!hasData?View.VISIBLE:View.GONE}"
+                android:orientation="vertical">
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/no_data"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/light_gray"
+                    android:textSize="@dimen/text_size_small"
+                    android:text="@string/nodata"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/filter_window"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                tools:visibility="gone"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="@dimen/default_padding">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/btn1"
+                            android:textColor="@color/dark_gray"
+                            android:textSize="@dimen/text_size_normal"
+                            android:text="@string/order_mpos"
+                            android:gravity="center"
+                            android:layout_weight="1"
+                            android:tag="1"
+                            android:background="@drawable/filter_btn_selector"
+                            android:onClick="@{handlers.getfindType}"
+                            android:layout_width="0dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_height="@dimen/title_height" />
+
+                        <TextView
+                            android:id="@+id/btn2"
+                            android:textColor="@color/dark_gray"
+                            android:textSize="@dimen/text_size_normal"
+                            android:text="@string/order_scanpay"
+                            android:gravity="center"
+                            android:layout_weight="1"
+                            android:onClick="@{handlers.getfindType}"
+                            android:tag="2"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:background="@drawable/filter_btn_selector"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/title_height" />
+
+                        <TextView
+                            android:id="@+id/btn3"
+                            android:textColor="@color/dark_gray"
+                            android:textSize="@dimen/text_size_normal"
+                            android:text="快捷支付"
+                            android:layout_marginLeft="5dp"
+                            android:background="@drawable/filter_btn_selector"
+                            android:onClick="@{handlers.getfindType}"
+                            android:tag="3"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/title_height" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_marginTop="@dimen/default_padding"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/btn4"
+                            android:textColor="@color/dark_gray"
+                            android:textSize="@dimen/text_size_normal"
+                            android:text="@string/order_default_repay"
+                            android:gravity="center"
+                            android:layout_weight="1"
+                            android:tag="4"
+                            android:background="@drawable/filter_btn_selector"
+                            android:onClick="@{handlers.getfindType}"
+                            android:layout_width="0dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_height="@dimen/title_height" />
+
+                        <Button
+                            android:textColor="@color/dark_gray"
+                            android:textSize="@dimen/text_size_normal"
+                            android:text="@string/order_scanpay"
+                            android:gravity="center"
+                            android:layout_weight="1"
+                            android:visibility="invisible"
+                            android:tag="2"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:background="@drawable/filter_btn_selector"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content" />
+
+                        <Button
+                            android:visibility="invisible"
+                            android:textColor="@color/dark_gray"
+                            android:textSize="@dimen/text_size_normal"
+                            android:text="快捷支付"
+                            android:layout_marginLeft="5dp"
+                            android:background="@drawable/filter_btn_selector"
+                            android:tag="3"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/setdefault"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/icon_normal"
+                        android:text="@string/order_defualt"
+                        android:onClick="@{handlers.setDefaultfindtype}"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="@color/white"
+                        android:background="@color/line"/>
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/icon_normal"
+                        android:text="@string/order_check"
+                        android:onClick="@{handlers.checkOrder}"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="@color/white"
+                        android:background="@color/app_blue"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="@dimen/title_height"-->
+            <!--android:text="交易查询"-->
+            <!--android:background="@color/app_blue"-->
+            <!--android:gravity="center"-->
+            <!--android:elevation="2dp"-->
+            <!--android:textSize="@dimen/text_size_title"-->
+            <!--android:textColor="@color/white"-->
+            <!--app:layout_behavior="@string/behavior_sample_title"/>-->
+
+        <!--</FrameLayout>-->
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

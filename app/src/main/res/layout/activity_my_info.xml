@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.mine.MyInfoActivity"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.mine.MyInfoActivity"/>
+        <variable
+            name="realname"
+            type="int"/>
+
+        <variable
+            name="mpos"
+            type="int"/>
+
+        <variable
+            name="scqr"
+            type="int"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:background="@color/app_background"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/layout_title"
+            bind:backIcon="@{@drawable/title_back}"
+            bind:handlers="@{handlers}"
+            bind:titleName="@{@string/my_info_title}" />
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/default_item_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="@dimen/default_padding"
+                android:background="@color/app_background"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tab_height"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:onClick="@{handlers.push}"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/default_padding">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/my_info_1"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/text_size_normal" />
+
+
+                <View
+                    android:layout_width="10dp"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="@dimen/default_padding"
+                    android:background="@drawable/icon_right"/>
+
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="@dimen/default_padding"
+                android:background="@color/app_background"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tab_height"
+                android:orientation="horizontal"
+                android:onClick="@{handlers.Rate}"
+                android:paddingLeft="@dimen/default_padding"
+                android:background="@color/white"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/my_info_2"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/text_size_normal"/>
+
+                <View
+                    android:layout_width="10dp"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="@dimen/default_padding"
+                    android:background="@drawable/icon_right"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="@dimen/default_padding"
+                android:background="@color/app_background"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tab_height"
+                android:orientation="horizontal"
+                android:onClick="@{handlers.member}"
+                android:paddingLeft="@dimen/default_padding"
+                android:background="@color/white"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/my_info_6"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/text_size_normal"/>
+
+                <View
+                    android:layout_width="10dp"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="@dimen/default_padding"
+                    android:background="@drawable/icon_right"/>
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/default_item_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tab_height"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/default_padding"
+                android:background="@color/white"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/my_info_3"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/text_size_normal"/>
+
+                <TextView
+                    android:layout_width="@dimen/icon_large"
+                    android:layout_height="wrap_content"
+                    android:textColor="@{realname==0?@color/pending:realname==1?@color/ok:realname==2?@color/fail:@color/never}"
+                    tools:textColor="@color/ok"
+                    android:background="@{realname==0?@drawable/pending_bg:realname==1?@drawable/ok_bg:realname==2?@drawable/fail_bg:@drawable/never_bg}"
+                    tools:text="未认证审核"
+                    android:padding="5dp"
+                    android:gravity="center"
+                    android:text="@{realname==0?@string/check_passed:realname==1?@string/mine_text12:realname==2?@string/check_failed:@string/check_never}"
+                    android:layout_marginRight="@dimen/default_padding"
+                    android:textSize="10sp"/>
+
+
+                <View
+                    android:layout_width="10dp"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="@dimen/default_padding"
+                    android:background="@drawable/icon_right"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="@dimen/default_padding"
+                android:background="@color/app_background"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tab_height"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/default_padding"
+                android:background="@color/white"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/my_info_4"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/text_size_normal"/>
+
+                <TextView
+                    android:layout_width="@dimen/icon_large"
+                    android:layout_height="wrap_content"
+                    android:textColor="@{mpos==0?@color/fail:mpos==1?@color/ok:mpos==2?@color/fail:mpos==3?@color/pending:@color/never}"
+                    tools:textColor="@color/ok"
+                    android:background="@{mpos==0?@drawable/fail_bg:mpos==1?@drawable/ok_bg:mpos==2?@drawable/fail_bg:mpos==3?@drawable/pending_bg:@drawable/never_bg}"
+                    tools:text="未认证审核"
+                    android:padding="5dp"
+                    android:gravity="center"
+                    android:text="@{mpos==0?@string/check_failed:mpos==1?@string/mpos_pass:mpos==2?@string/mpos_apply:mpos==3?@string/check_pending:@string/mpos_never}"
+                    android:layout_marginRight="@dimen/default_padding"
+                    android:textSize="10sp"/>
+
+                <View
+                    android:layout_width="10dp"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="@dimen/default_padding"
+                    android:background="@drawable/icon_right"/>
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="@dimen/default_padding"
+                android:background="@color/app_background"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tab_height"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/default_padding"
+                android:background="@color/white"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/my_info_5"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/text_size_normal"/>
+
+                <TextView
+                    android:layout_width="@dimen/icon_large"
+                    android:layout_height="wrap_content"
+                    android:textColor="@{scqr==0?@color/fail:scqr==1?@color/ok:scqr==2?@color/fail:scqr==3?@color/pending:@color/never}"
+                    tools:textColor="@color/ok"
+                    android:background="@{scqr==0?@drawable/fail_bg:scqr==1?@drawable/ok_bg:scqr==2?@drawable/fail_bg:scqr==3?@drawable/pending_bg:@drawable/never_bg}"
+                    tools:text="未认证审核"
+                    android:padding="5dp"
+                    android:gravity="center"
+                    android:text="@{scqr==0?@string/check_failed:scqr==1?@string/mpos_pass:scqr==2?@string/mpos_apply:scqr==3?@string/check_pending:@string/mpos_never}"
+                    android:layout_marginRight="@dimen/default_padding"
+                    android:textSize="10sp"/>
+
+                <View
+                    android:layout_width="10dp"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="@dimen/default_padding"
+                    android:background="@drawable/icon_right"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!--<LinearLayout-->
+            <!--android:layout_marginTop="@dimen/default_item_margin"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@color/white"-->
+            <!--android:orientation="vertical">-->
+
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="@dimen/tab_height"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:paddingLeft="@dimen/default_padding"-->
+                <!--android:background="@color/white"-->
+                <!--android:gravity="center_vertical">-->
+
+                <!--<TextView-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="@string/more_text3"-->
+                    <!--android:textColor="@color/dark_gray"-->
+                    <!--android:textSize="@dimen/text_size_normal"/>-->
+
+                <!--<View-->
+                    <!--android:layout_width="10dp"-->
+                    <!--android:layout_height="20dp"-->
+                    <!--android:layout_marginRight="@dimen/default_padding"-->
+                    <!--android:background="@drawable/icon_right"/>-->
+            <!--</LinearLayout>-->
+
+            <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="1dp"-->
+                <!--android:layout_marginLeft="@dimen/default_padding"-->
+                <!--android:background="@color/app_background"/>-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="@dimen/tab_height"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:paddingLeft="@dimen/default_padding"-->
+                <!--android:onClick="@{handlers.agreement}"-->
+                <!--android:background="@color/white"-->
+                <!--android:gravity="center_vertical">-->
+
+                <!--<TextView-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="@string/more_text4"-->
+                    <!--android:textColor="@color/dark_gray"-->
+                    <!--android:textSize="@dimen/text_size_normal"/>-->
+
+                <!--<View-->
+                    <!--android:layout_width="10dp"-->
+                    <!--android:layout_height="20dp"-->
+                    <!--android:layout_marginRight="@dimen/default_padding"-->
+                    <!--android:background="@drawable/icon_right"/>-->
+            <!--</LinearLayout>-->
+
+            <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="1dp"-->
+                <!--android:layout_marginLeft="@dimen/default_padding"-->
+                <!--android:background="@color/app_background"/>-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="@dimen/tab_height"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:paddingLeft="@dimen/default_padding"-->
+                <!--android:background="@color/white"-->
+                <!--android:gravity="center_vertical">-->
+
+                <!--<TextView-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="@string/more_text5"-->
+                    <!--android:textColor="@color/dark_gray"-->
+                    <!--android:textSize="@dimen/text_size_normal"/>-->
+
+                <!--<View-->
+                    <!--android:layout_width="10dp"-->
+                    <!--android:layout_height="20dp"-->
+                    <!--android:layout_marginRight="@dimen/default_padding"-->
+                    <!--android:background="@drawable/icon_right"/>-->
+            <!--</LinearLayout>-->
+        <!--</LinearLayout>-->
+
+
+        <!--<LinearLayout-->
+            <!--android:layout_marginTop="@dimen/pay_item_height"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="@dimen/tab_height"-->
+            <!--android:onClick="@{handlers.LogOut}"-->
+            <!--android:orientation="horizontal"-->
+            <!--android:background="@color/white"-->
+            <!--android:gravity="center">-->
+
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="@string/more_text6"-->
+                <!--android:textColor="@color/dark_gray"-->
+                <!--android:textSize="@dimen/text_size_normal"/>-->
+
+        <!--</LinearLayout>-->
+
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:textColor="@color/hint"-->
+            <!--android:textSize="@dimen/text_size_title"-->
+            <!--android:gravity="center_horizontal|bottom"-->
+            <!--android:paddingBottom="@dimen/default_item_margin"-->
+            <!--android:layout_marginTop="@dimen/default_item_margin"-->
+            <!--tools:text="v1.0.1"-->
+            <!--android:text="@{version}"/>-->
+    </LinearLayout>
+</layout>

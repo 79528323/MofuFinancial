@@ -1,0 +1,624 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.mine.CreditCardAddActivity"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.mine.CreditCardAddActivity"/>
+        <variable
+            name="cardnum"
+            type="String"/>
+
+        <variable
+            name="name"
+            type="String"/>
+
+        <variable
+            name="isAgree"
+            type="boolean"/>
+        <variable
+            name="pos"
+            type="int"/>
+        
+        <variable
+            name="type"
+            type="String"/>
+        
+        <variable
+            name="statementDay"
+            type="String"/>
+        <variable
+            name="repaymentDay"
+            type="String"/>
+        <variable
+            name="phoneNumber"
+            type="String"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        android:background="@color/app_background">
+
+        <include
+            layout="@layout/layout_title"
+            bind:backIcon="@{@drawable/title_back}"
+            bind:handlers="@{handlers}"
+            bind:titleName="@{@string/credit_card_title}" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:visibility="@{pos==1?View.VISIBLE:View.GONE}"
+                        tools:visibility="visible"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/settlement_1"
+                            android:padding="@dimen/default_padding"
+                            android:textColor="@color/light_gray"
+                            android:textSize="@dimen/text_size_small"/>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/tab_height"
+                                android:orientation="horizontal"
+                                android:paddingLeft="@dimen/default_padding"
+                                android:background="@color/white"
+                                android:gravity="center_vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/settlement_2"
+                                    android:textColor="@color/dark_gray"
+                                    android:textSize="@dimen/text_size_normal"/>
+
+                                <EditText
+                                    android:id="@+id/name"
+                                    android:layout_weight="1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:paddingLeft="@dimen/default_padding"
+                                    android:hint="请输入持卡人姓名"
+                                    android:textSize="@dimen/text_size_normal"
+                                    android:textColorHint="@color/light_gray"
+                                    android:textColor="@color/dark_gray"
+                                    android:gravity="center_vertical"
+                                    android:background="@null"/>
+
+                                <ImageView
+                                    android:onClick="@{handlers.tips}"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:padding="@dimen/default_padding"
+                                    android:src="@drawable/warning"
+                                    android:textSize="@dimen/text_size_normal"/>
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginLeft="@dimen/default_padding"
+                                android:background="@color/app_background"/>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/tab_height"
+                                android:orientation="horizontal"
+                                android:paddingLeft="@dimen/default_padding"
+                                android:background="@color/white"
+                                android:gravity="center_vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/settlement_3"
+                                    android:textColor="@color/dark_gray"
+                                    android:textSize="@dimen/text_size_normal"/>
+
+                                <EditText
+                                    android:id="@+id/num"
+                                    android:layout_weight="1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:text="@{cardnum}"
+                                    android:inputType="number"
+                                    android:paddingLeft="@dimen/default_padding"
+                                    android:hint="请输入银行卡号"
+                                    android:textSize="@dimen/text_size_normal"
+                                    android:textColorHint="@color/light_gray"
+                                    android:gravity="center_vertical"
+                                    android:background="@null"/>
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/default_padding"
+                            android:orientation="horizontal"
+                            android:paddingLeft="@dimen/default_padding"
+                            android:paddingRight="@dimen/default_padding">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical">
+
+                                <!--<ImageView-->
+                                <!--android:layout_width="wrap_content"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:background="@drawable/register_noselect" />-->
+
+                                <LinearLayout
+                                    android:paddingTop="@dimen/default_padding"
+                                    android:paddingBottom="@dimen/default_padding"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <CheckBox
+                                        android:duplicateParentState="true"
+                                        android:onClick="@{handlers.Agreement}"
+                                        style="@style/pwd_check"
+                                        android:checked="@{isAgree}"/>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="right"
+                                        android:layout_marginLeft="5dp"
+                                        android:text="@string/register4"
+                                        android:textSize="@dimen/text_size_title"
+                                        android:textColor="@color/dark_gray" />
+                                </LinearLayout>
+
+                                <TextView
+                                    android:paddingTop="@dimen/default_padding"
+                                    android:paddingBottom="@dimen/default_padding"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/default_padding"
+                                    android:onClick="@{handlers.agreement}"
+                                    android:layout_gravity="right|center_vertical"
+                                    android:text="@string/register5"
+                                    android:textColor="@color/app_blue" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_marginTop="40dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="60dp"
+                            android:layout_marginRight="60dp"
+                            android:background="@drawable/login_button"
+                            android:gravity="center"
+                            android:paddingBottom="@dimen/default_padding"
+                            android:paddingTop="@dimen/default_padding"
+                            android:onClick="@{handlers.firnext}"
+                            android:text="@string/scanning8"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_size_game_record" />
+                    </LinearLayout>
+
+
+                    <!---->
+                    <LinearLayout
+                        android:visibility="@{pos==2?View.VISIBLE:View.GONE}"
+                        tools:visibility="visible"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/credit_card_1"
+                            android:padding="@dimen/default_padding"
+                            android:textColor="@color/light_gray"
+                            android:textSize="@dimen/text_size_small"/>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:orientation="vertical">
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/tab_height"
+                                android:orientation="horizontal"
+                                android:paddingLeft="@dimen/default_padding"
+                                android:background="@color/white"
+                                android:gravity="center_vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/credit_card_3"
+                                    android:textColor="@color/dark_gray"
+                                    android:textSize="@dimen/text_size_normal"/>
+
+                                <EditText
+                                    android:id="@+id/bank"
+                                    android:layout_weight="1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:clickable="false"
+                                    android:focusable="false"
+                                    android:focusableInTouchMode="false"
+                                    android:text="@{type}"
+                                    android:paddingLeft="@dimen/default_padding"
+                                    android:hint="请输入银行卡号"
+                                    android:textSize="@dimen/text_size_normal"
+                                    android:textColorHint="@color/light_gray"
+                                    android:gravity="center_vertical"
+                                    android:background="@null"/>
+
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginLeft="@dimen/default_padding"
+                                android:background="@color/app_background"/>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/tab_height"
+                                android:orientation="horizontal"
+                                android:paddingLeft="@dimen/default_padding"
+                                android:background="@color/white"
+                                android:gravity="center_vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/credit_card_2"
+                                    android:textColor="@color/dark_gray"
+                                    android:textSize="@dimen/text_size_normal"/>
+
+                                <EditText
+                                    android:id="@+id/banktype"
+                                    android:layout_weight="1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:text="@{name}"
+                                    android:paddingLeft="@dimen/default_padding"
+                                    android:hint="请输入持卡人姓名"
+                                    android:clickable="false"
+                                    android:focusable="false"
+                                    android:focusableInTouchMode="false"
+                                    android:textSize="@dimen/text_size_normal"
+                                    android:textColorHint="@color/light_gray"
+                                    android:gravity="center_vertical"
+                                    android:background="@null"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/credit_card_4"
+                            android:padding="@dimen/default_padding"
+                            android:textColor="@color/light_gray"
+                            android:textSize="@dimen/text_size_small"/>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/tab_height"
+                                android:orientation="horizontal"
+                                android:paddingLeft="@dimen/default_padding"
+                                android:background="@color/white"
+                                android:gravity="center_vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/credit_card_5"
+                                    android:textColor="@color/dark_gray"
+                                    android:textSize="@dimen/text_size_normal"/>
+
+                                <EditText
+                                    android:id="@+id/edit_statement"
+                                    android:tag="1"
+                                    android:layout_weight="1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:onClick="@{handlers.statementSelet}"
+                                    android:focusableInTouchMode="false"
+                                    android:editable="false"
+                                    android:paddingLeft="@dimen/default_padding"
+                                    android:hint="@string/credit_card_10"
+                                    android:textSize="@dimen/text_size_normal"
+                                    android:textColorHint="@color/light_gray"
+                                    android:gravity="center_vertical"
+                                    android:background="@null"/>
+
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginLeft="@dimen/default_padding"
+                                android:background="@color/app_background"/>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/tab_height"
+                                android:orientation="horizontal"
+                                android:paddingLeft="@dimen/default_padding"
+                                android:background="@color/white"
+                                android:gravity="center_vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/credit_card_6"
+                                    android:textColor="@color/dark_gray"
+                                    android:textSize="@dimen/text_size_normal"/>
+
+                                <EditText
+                                    android:id="@+id/edit_repayment"
+                                    android:tag="2"
+                                    android:layout_weight="1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:onClick="@{handlers.repaySelect}"
+                                    android:focusableInTouchMode="false"
+                                    android:editable="false"
+                                    android:paddingLeft="@dimen/default_padding"
+                                    android:hint="@string/credit_card_11"
+                                    android:textSize="@dimen/text_size_normal"
+                                    android:textColorHint="@color/light_gray"
+                                    android:gravity="center_vertical"
+                                    android:background="@null"/>
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/credit_card_7"
+                            android:padding="@dimen/default_padding"
+                            android:textColor="@color/light_gray"
+                            android:textSize="@dimen/text_size_small"/>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/tab_height"
+                                android:background="@color/white"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:paddingLeft="@dimen/default_padding">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/credit_card_8"
+                                    android:textColor="@color/dark_gray"
+                                    android:textSize="@dimen/text_size_normal" />
+
+                                <EditText
+                                    android:id="@+id/validity"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:background="@null"
+                                    android:maxLength="4"
+                                    android:inputType="number"
+                                    android:gravity="center_vertical"
+                                    android:hint="@string/credit_card_12"
+                                    android:paddingLeft="@dimen/default_padding"
+                                    android:textColorHint="@color/light_gray"
+                                    android:textSize="@dimen/text_size_normal" />
+
+
+                                <!--<ImageView-->
+                                    <!--android:layout_width="wrap_content"-->
+                                    <!--android:layout_height="wrap_content"-->
+                                    <!--android:gravity="center"-->
+                                    <!--android:padding="@dimen/default_padding"-->
+                                    <!--android:src="@drawable/warning"-->
+                                    <!--android:textSize="@dimen/text_size_normal" />-->
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginLeft="@dimen/default_padding"
+                                android:background="@color/app_background"/>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/tab_height"
+                                android:orientation="horizontal"
+                                android:paddingLeft="@dimen/default_padding"
+                                android:background="@color/white"
+                                android:gravity="center_vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/credit_card_9"
+                                    android:textColor="@color/dark_gray"
+                                    android:textSize="@dimen/text_size_normal"/>
+
+                                <EditText
+                                    android:id="@+id/cvn2"
+                                    android:layout_weight="1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:inputType="number"
+                                    android:layout_marginLeft="6dp"
+                                    android:maxLength="3"
+                                    android:paddingLeft="@dimen/default_padding"
+                                    android:hint="@string/credit_card_13"
+                                    android:textSize="@dimen/text_size_normal"
+                                    android:textColorHint="@color/light_gray"
+                                    android:gravity="center_vertical"
+                                    android:background="@null"/>
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_marginTop="@dimen/default_item_margin"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="60dp"
+                            android:layout_marginRight="60dp"
+                            android:background="@drawable/login_button"
+                            android:gravity="center"
+                            android:paddingBottom="@dimen/default_padding"
+                            android:paddingTop="@dimen/default_padding"
+                            android:onClick="@{handlers.secnext}"
+                            android:text="@string/register6"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_size_game_record" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:visibility="@{pos==3?View.VISIBLE:View.GONE}"
+                        tools:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="请填写办卡时银行预留手机号"
+                            android:padding="@dimen/default_margin"
+                            android:textColor="@color/light_gray"
+                            android:textSize="@dimen/text_size_small"/>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/tab_height"
+                                android:orientation="horizontal"
+                                android:paddingLeft="@dimen/default_padding"
+                                android:background="@color/white"
+                                android:gravity="center_vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/register2"
+                                    android:textColor="@color/dark_gray"
+                                    android:textSize="@dimen/text_size_normal"/>
+
+                                <EditText
+                                    android:id="@+id/phone"
+                                    android:layout_weight="1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:paddingLeft="@dimen/default_padding"
+                                    android:hint="请填写银行预留手机号"
+                                    android:inputType="number"
+                                    android:maxLength="11"
+                                    android:textSize="@dimen/text_size_normal"
+                                    android:textColorHint="@color/light_gray"
+                                    android:gravity="center_vertical"
+                                    android:background="@null"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
+                        <TextView
+                            android:layout_marginTop="40dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="60dp"
+                            android:layout_marginRight="60dp"
+                            android:background="@drawable/login_button"
+                            android:gravity="center"
+                            android:paddingBottom="@dimen/default_padding"
+                            android:paddingTop="@dimen/default_padding"
+                            android:onClick="@{handlers.next}"
+                            android:text="@string/scanning8"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_size_game_record" />
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+        </ScrollView>
+
+
+    </LinearLayout>
+</layout>

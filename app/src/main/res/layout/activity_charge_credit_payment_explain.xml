@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <import type="android.text.TextUtils"/>
+        <import type="cn.mofufin.morf.ui.util.DataUtils"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.mine.ChargeCreditPaymentExplainActivity"/>
+    </data>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/white">
+
+        <include
+            android:id="@+id/title_layout"
+            layout="@layout/layout_title"
+            bind:backIcon="@{@drawable/title_back}"
+            bind:handlers="@{handlers}"
+            bind:titleName="@{@string/charge_credit_payment_1}"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/app_background"
+            android:overScrollMode="never">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_game_record"
+                    android:textColor="@color/light_gray"
+                    android:padding="@dimen/default_padding"
+                    android:text="刷卡相关说明"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_above="@+id/btn"
+                    android:orientation="vertical">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/default_padding"
+                        android:layout_margin="@dimen/default_padding"
+                        android:background="@drawable/shape_white_shadow"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_normal"
+                            android:textColor="@color/dark_gray"
+                            android:text="1.入账补贴按0.0059计算。"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/default_padding"
+                            android:textSize="@dimen/text_size_normal"
+                            android:textColor="@color/dark_gray"
+                            android:lineSpacingExtra="1dp"
+                            android:text="2.包括MPOS和快捷交易额，只统计当天，凌晨24点后自动失效。"/>
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_game_record"
+                        android:textColor="@color/light_gray"
+                        android:padding="@dimen/default_padding"
+                        android:text="操作说明"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/default_padding"
+                        android:layout_margin="@dimen/default_padding"
+                        android:background="@drawable/shape_white_shadow"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_normal"
+                            android:textColor="@color/dark_gray"
+                            android:text="第一步：刷卡金额充值界面“保存图片”。"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/default_margin"
+                            android:textSize="@dimen/text_size_normal"
+                            android:lineSpacingExtra="1dp"
+                            android:textColor="@color/dark_gray"
+                            android:text="第二步：打开支付宝扫一扫，选择刚刚保存到相册的图片。"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/default_margin"
+                            android:textSize="@dimen/text_size_normal"
+                            android:lineSpacingExtra="1dp"
+                            android:textColor="@color/dark_gray"
+                            android:text="第三步：至支付宝交易账单中复制刚刚扫码付款的交易订单号，并返回摩富金服APP中将刚刚复制的交易订单号填写到“交易订单号”内，点击确定按钮完成充值。"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </ScrollView>
+
+    </LinearLayout>
+</layout>

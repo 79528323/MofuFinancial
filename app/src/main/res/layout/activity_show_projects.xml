@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.util.DataUtils"/>
+        <import type="cn.mofufin.morf.ui.repayment.ShowProjectsActivity"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.repayment.ShowProjectsActivity"/>
+        <variable
+            name="totalBean"
+            type="cn.mofufin.morf.ui.entity.ProjectResult.PlanDataListBean.TotalBean"/>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/app_bg"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <include
+                layout="@layout/layout_title"
+                bind:backIcon="@{@drawable/title_back}"
+                bind:handlers="@{handlers}"
+                bind:titleName="@{@string/show_pro_title}" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    app:layout_scrollFlags="scroll|enterAlways"
+                    android:background="@color/app_blue"
+                    android:orientation="vertical">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_weight="3"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:orientation="vertical">
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_weight="1.5"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:gravity="center_horizontal|bottom"
+                            android:background="@color/app_bg"
+                            android:orientation="vertical">
+
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="@dimen/lineSpacingExtra"
+                                android:onClick="@{handlers.refresh}"
+                                android:padding="5dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/light_gray"
+                                    android:textSize="@dimen/text_size_small"
+                                    android:text="@string/show_pro_2"
+                                    android:textStyle="italic"/>
+
+                                <ImageView
+                                    android:id="@+id/icons"
+                                    android:layout_marginStart="@dimen/default_padding"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/refresh_project"/>
+
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_centerVertical="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:elevation="5dp"
+                        android:layout_marginStart="@dimen/default_item_margin"
+                        android:layout_marginEnd="@dimen/default_item_margin"
+                        android:layout_marginBottom="10dp"
+                        android:paddingTop="@dimen/default_margin"
+                        android:paddingStart="@dimen/default_item_margin"
+                        android:paddingEnd="@dimen/default_item_margin"
+                        android:paddingBottom="@dimen/default_margin"
+                        android:background="@drawable/shape_white"
+                        android:orientation="vertical">
+
+
+                        <LinearLayout
+                            android:gravity="center_vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/default_margin"
+                            android:orientation="horizontal">
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/dark_gray"
+                                android:textStyle="bold"
+                                android:textSize="@dimen/niuniu_number"
+                                android:text='@{"延期总额/元："+totalBean.rpTotalMoney}'
+                                tools:text="延期总额/"/>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="end"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/dark_gray"
+                                    android:textSize="@dimen/text_size_small"
+                                    android:layout_marginEnd="@dimen/default_padding"
+                                    android:text="总手续费"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/dark_gray"
+                                    android:textSize="@dimen/text_size_small"
+                                    android:onClick="@{handlers.showPop}"
+                                    android:background="@drawable/repay_total_fee"/>
+                            </LinearLayout>
+                        </LinearLayout>
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/text_size_small"
+                            android:text='@{"消费总额/元："+totalBean.rpConsumeTotalMoney}'
+                            tools:text="消费总额/"/>
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/gray"
+                            android:layout_marginTop="5dp"
+                            android:textSize="@dimen/text_size_small"
+                            android:text='@{"信用卡内最低预留/元："+totalBean.recommendMoney}'
+                            tools:text="信用卡内最低预留/元：/"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/gray"
+                            android:layout_marginTop="5dp"
+                            android:textSize="@dimen/text_size_small"
+                            android:text='@{"延期起止日期："+totalBean.rpBeginDate+"~"+totalBean.rpEndDate}'
+                            tools:text="消费总额/"/>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+
+                <com.scwang.smartrefresh.layout.SmartRefreshLayout
+                    android:id="@+id/refreshLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:srlAccentColor="#00000000"
+                    app:srlPrimaryColor="#00000000"
+                    app:srlEnablePreviewInEditMode="true">
+
+
+                    <com.scwang.smartrefresh.layout.header.BezierRadarHeader
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_srlBackgroundColor="@color/app_bg"
+                        app:srlAccentColor="@color/app_bg"
+                        app:srlPrimaryColor="@color/app_bg"
+                        app:srlEnableHorizontalDrag="true"/>
+
+
+                    <cc.ruis.lib.widget.WrapRecyclerView
+                        android:id="@+id/project_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/transparent"
+                        android:overScrollMode="never"
+                        tools:listitem="@layout/layout_ranking_item"/>
+
+
+                </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/btn"
+            android:layout_marginBottom="@dimen/input_height"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="@dimen/add_contact_item_width"
+                android:layout_height="@dimen/title_height"
+                android:onClick="@{handlers.executeProject}"
+                android:background="@drawable/login_button"
+                android:textColor="@color/white"
+                android:elevation="3dp"
+                android:gravity="center"
+                android:layout_margin="8dp"
+                android:textSize="@dimen/text_size_normal"
+                android:text="@string/show_pro_title"/>
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</layout>

@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:apps="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.util.DataUtils"/>
+        <import type="android.text.TextUtils"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.fragment.InverstMentFragment"/>
+        <variable
+            name="clicklistener"
+            type="android.view.View.OnClickListener"/>
+        <variable
+            name="bean"
+            type="cn.mofufin.morf.ui.entity.RepayMentProject.PlanListBean"/>
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/app_background"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/default_margin"
+            android:layout_marginStart="@dimen/default_item_margin"
+            android:layout_marginEnd="@dimen/default_item_margin"
+            android:layout_marginBottom="5dp"
+            android:elevation="2dp"
+            android:tag="@{bean}"
+            android:onClick="@{clicklistener}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_white"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_padding"
+                    android:layout_marginBottom="@dimen/default_padding"
+                    android:layout_marginStart="@dimen/default_item_margin"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/dark_gray"
+                        android:gravity="left"
+                        android:textStyle="bold"
+                        android:text='@{bean.rpCardBankName+"  尾号"+DataUtils.subString(bean.rpCardCode,bean.rpCardCode.length()-4,bean.rpCardCode.length())}'
+                        android:textSize="@dimen/text_size_normal"/>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@{bean.rpState==0?@color/game_hot:bean.rpState==1?@color/app_blue:bean.rpState==3?@color/dark_gray:@color/fail}"
+                        android:layout_gravity="end"
+                        android:text="@{bean.rpState==0?@string/project_stay:bean.rpState==1?@string/project_handing:bean.rpState==2?@string/project_fail:bean.rpState==3?@string/project_complete:@string/project_cancel}"
+                        android:layout_marginEnd="@dimen/default_item_margin"
+                        android:layout_marginLeft="@dimen/default_padding"
+                        android:textSize="@dimen/text_size_small"/>
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#ebebeb"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/default_margin"
+                android:paddingBottom="@dimen/default_margin"
+                android:paddingStart="@dimen/default_item_margin"
+                android:paddingEnd="@dimen/default_item_margin"
+                android:background="@color/white">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/project_1"
+                        android:gravity="left"
+                        android:textStyle="bold"
+                        android:typeface="monospace"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="@dimen/niuniu_number" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{DataUtils.numFormat(bean.rpConsumeTotalMoney)}"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="@dimen/niuniu_number" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/project_2"
+                        android:gravity="left"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_small" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{DataUtils.numFormat(bean.rpConsumeTotalFee)}"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_small" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_marginTop="@dimen/default_item_margin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/project_3"
+                        android:gravity="left"
+                        android:textStyle="bold"
+                        android:typeface="monospace"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="@dimen/niuniu_number" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{DataUtils.numFormat(bean.rpTotalMoney)}"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="@dimen/niuniu_number" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/project_4"
+                        android:gravity="left"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_small" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{DataUtils.numFormat(bean.rpTotalFee)}"
+                        android:textColor="@color/light_gray"
+                        android:textSize="@dimen/text_size_small" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#ebebeb"/>
+
+
+            <TextView
+                android:paddingTop="@dimen/default_padding"
+                android:paddingStart="@dimen/default_item_margin"
+                android:paddingBottom="@dimen/default_padding"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text='@{DataUtils.conversationDate("yyyy-MM-dd",bean.rpBeginDate)+" ~ "+DataUtils.conversationDate("yyyy-MM-dd",bean.rpEndDate)}'
+                android:gravity="left"
+                android:textColor="@color/light_gray"
+                android:textSize="@dimen/text_size_normal" />
+
+        </LinearLayout>
+    </LinearLayout>
+</layout>

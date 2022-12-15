@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.loan.SpouseUploadPhotoActivity"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.loan.SpouseUploadPhotoActivity"/>
+        <variable
+            name="position"
+            type="int"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <include
+                android:id="@+id/title_layout"
+                layout="@layout/layout_title"
+                bind:backIcon="@{@drawable/financial_back}"
+                bind:handlers="@{handlers}"
+                bind:isTranslate="@{true}"
+                bind:isTitleBlack="@{true}"
+                bind:titleName="@{@string/loan_spouse_img_title}"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@color/loan_red"
+            android:padding="@dimen/default_padding">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/attention"/>
+
+            <TextView
+                android:layout_marginLeft="@dimen/default_padding"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/white"
+                android:text="每张图片大小控制在300KB以内！"/>
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- 上传身份证  -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="@{position==1?View.VISIBLE:View.GONE}"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="260dp"
+                    android:layout_height="130dp"
+                    android:layout_marginTop="@dimen/default_item_margin"
+                    android:background="@drawable/scanning_bg">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:background="@drawable/icon_camer"/>
+
+                        <TextView
+                            android:layout_marginTop="@dimen/default_item_margin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_normal"
+                            android:textColor="@color/light_gray"
+                            android:text="身份证正面照片"/>
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/identityZ"
+                        android:onClick="@{handlers.takeZ}"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="260dp"
+                    android:layout_height="130dp"
+                    android:layout_marginTop="@dimen/default_item_margin"
+                    android:background="@drawable/scanning_bg">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:background="@drawable/icon_camer"/>
+
+                        <TextView
+                            android:layout_marginTop="@dimen/default_item_margin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_normal"
+                            android:textColor="@color/light_gray"
+                            android:text="身份证反面照片"/>
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/identityF"
+                        android:onClick="@{handlers.takeF}"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"/>
+
+                </RelativeLayout>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginTop="25dp"
+                    android:textSize="@dimen/text_size_small"
+                    android:text="注意：身份证四角齐全，内容不模糊，手持照必须\n可见五官并身份证号码清晰可见"
+                    android:textColor="#BBBBBB"/>
+
+
+                <TextView
+                    android:layout_width="220dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="下一步"
+                    android:onClick="@{handlers.next}"
+                    android:textColor="@color/white"
+                    android:paddingBottom="@dimen/default_padding"
+                    android:paddingTop="@dimen/default_padding"
+                    android:paddingStart="60dp"
+                    android:paddingEnd="60dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/default_item_margin"
+                    android:background="@drawable/loan_idval_button"/>
+            </LinearLayout>
+
+
+            <!-- 上传借记卡  -->
+            <LinearLayout
+                android:visibility="@{position==2?View.VISIBLE:View.GONE}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="260dp"
+                    android:layout_height="130dp"
+                    android:layout_marginTop="@dimen/default_item_margin"
+                    android:background="@drawable/scanning_bg">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:background="@drawable/icon_camer"/>
+
+                        <TextView
+                            android:layout_marginTop="@dimen/default_item_margin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_normal"
+                            android:textColor="@color/light_gray"
+                            android:text="个人征信调查报告书照片"/>
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/creditSurvey"
+                        android:onClick="@{handlers.takeCredit}"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="260dp"
+                    android:layout_height="130dp"
+                    android:layout_marginTop="@dimen/default_item_margin"
+                    android:background="@drawable/scanning_bg">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:background="@drawable/icon_camer"/>
+
+                        <TextView
+                            android:layout_marginTop="@dimen/default_item_margin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_normal"
+                            android:textColor="@color/light_gray"
+                            android:text="收入证明或纳税税单照片"/>
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/incomeProve"
+                        android:onClick="@{handlers.takeIncome}"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"/>
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textSize="@dimen/text_size_small"
+                    android:layout_marginTop="25dp"
+                    android:text="注意：照片内容必须清晰可见，不得有遮挡或打马\n赛克等情况"
+                    android:textColor="#BBBBBB"/>
+
+
+                <TextView
+                    android:layout_width="220dp"
+                    android:layout_height="wrap_content"
+                    android:text="下一步"
+                    android:gravity="center"
+                    android:onClick="@{handlers.submit}"
+                    android:textColor="@color/white"
+                    android:paddingBottom="@dimen/default_padding"
+                    android:paddingTop="@dimen/default_padding"
+                    android:paddingStart="60dp"
+                    android:paddingEnd="60dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/default_item_margin"
+                    android:background="@drawable/loan_idval_button"/>
+            </LinearLayout>
+        </FrameLayout>
+
+
+
+    </LinearLayout>
+</layout>

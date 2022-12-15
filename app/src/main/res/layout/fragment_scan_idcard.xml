@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <import type="cn.mofufin.morf.ui.fragment.ScanIDCardFragment"/>
+        <variable
+            name="handlers"
+            type="cn.mofufin.morf.ui.fragment.ScanIDCardFragment"/>
+
+        <variable
+            name="positive"
+            type="String"/>
+        <variable
+            name="back"
+            type="String"/>
+        <variable
+            name="realname"
+            type="String"/>
+        <variable
+            name="idnumber"
+            type="String"/>
+        <variable
+            name="deadline"
+            type="String"/>
+        <variable
+            name="isInfoVisiable"
+            type="boolean"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/white">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/default_margin"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="@dimen/photo_bg_width"
+                        android:layout_height="@dimen/add_contact_item_width"
+                        android:background="@drawable/scanning_bg">
+
+                        <TextView
+                            android:layout_centerHorizontal="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_normal"
+                            android:layout_centerInParent="true"
+                            android:drawableTop="@drawable/scanning"
+                            android:drawablePadding="@dimen/default_margin"
+                            android:textColor="@color/light_gray"
+                            android:text="@string/scanning6"
+                            android:layout_marginTop="@dimen/default_item_margin"/>
+
+
+                        <ImageView
+                            android:id="@+id/positive_card_img"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="fitXY"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="@dimen/photo_bg_width"
+                        android:layout_height="@dimen/add_contact_item_width"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/default_item_margin"
+                        android:background="@drawable/scanning_bg">
+
+
+                        <TextView
+                            android:layout_below="@+id/scan_back_img"
+                            android:layout_centerHorizontal="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:drawableTop="@drawable/scanning"
+                            android:drawablePadding="@dimen/default_margin"
+                            android:textSize="@dimen/text_size_normal"
+                            android:textColor="@color/light_gray"
+                            android:text="@string/scanning7"
+                            android:layout_marginTop="@dimen/default_item_margin"/>
+
+
+                        <ImageView
+                            android:id="@+id/back_card_img"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="fitXY"/>
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:padding="@dimen/default_padding"
+                        tools:visibility="visible"
+                        android:visibility="@{isInfoVisiable?View.VISIBLE:View.GONE}"
+                        android:layout_width="@dimen/photo_bg_width"
+                        android:layout_height="@dimen/search_content_item_width"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="@dimen/default_item_margin"
+                        android:layout_marginRight="@dimen/default_item_margin"
+                        android:orientation="vertical"
+                        android:layout_marginTop="@dimen/default_item_margin"
+                        android:background="@drawable/scanning_bg">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="真实姓名"
+                                android:textSize="@dimen/text_size_normal"
+                                android:textColor="@color/dark_gray"/>
+
+                            <EditText
+                                android:id="@+id/scanId_IDName"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/dark_gray"
+                                android:textSize="@dimen/text_size_normal"
+                                android:padding="@dimen/default_padding"
+                                android:gravity="center_vertical"
+                                android:hint=""
+                                android:singleLine="true"
+                                android:background="@drawable/scanning_editter_bg"
+                                android:layout_marginLeft="10dp"
+                                android:textColorHint="@color/light_gray"/>
+                        </LinearLayout>
+
+                        <!--<View-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="1dp"-->
+                            <!--android:background="@color/line"/>-->
+
+                        <LinearLayout
+                            android:layout_marginTop="@dimen/default_padding"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="身份证号"
+                                android:textSize="@dimen/text_size_normal"
+                                android:textColor="@color/dark_gray"/>
+
+                            <EditText
+                                android:id="@+id/scanId_IDNo"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/dark_gray"
+                                android:padding="@dimen/default_padding"
+                                android:singleLine="true"
+                                android:textSize="@dimen/text_size_normal"
+                                android:gravity="center_vertical"
+                                android:hint=""
+                                android:background="@drawable/scanning_editter_bg"
+                                android:layout_marginLeft="10dp"
+                                android:textColorHint="@color/light_gray"/>
+                        </LinearLayout>
+
+                        <!--<View-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="1dp"-->
+                            <!--android:background="@color/line"/>-->
+
+                        <LinearLayout
+                            android:layout_marginTop="@dimen/default_padding"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="有效日期"
+                                android:textSize="@dimen/text_size_normal"
+                                android:textColor="@color/dark_gray"/>
+
+
+                            <!--android:focusableInTouchMode="false"-->
+                            <!--android:editable="false"-->
+                            <!--android:onClick="@{handlers.selectValidDate}"-->
+                            <EditText
+                                android:id="@+id/scanId_edit"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/dark_gray"
+                                android:padding="@dimen/default_padding"
+                                android:singleLine="true"
+                                android:textSize="@dimen/text_size_normal"
+                                android:gravity="center_vertical"
+                                android:hint=""
+                                android:background="@drawable/scanning_editter_bg"
+                                android:layout_marginLeft="10dp"
+                                android:textColorHint="@color/light_gray"/>
+                        </LinearLayout>
+
+                        <!--<View-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="1dp"-->
+                            <!--android:background="@color/line"/>-->
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/light_gray"
+                            android:gravity="center_horizontal"
+                            android:paddingTop="@dimen/default_padding"
+                            android:textSize="@dimen/text_size_small"
+                            android:text="@string/date_formater"/>
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/next"
+                        android:layout_marginTop="@dimen/default_item_margin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginRight="50dp"
+                        android:background="@drawable/login_button"
+                        android:gravity="center"
+                        android:paddingBottom="@dimen/default_padding"
+                        android:paddingTop="@dimen/default_padding"
+                        android:text="@string/register6"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_game_record" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+</layout>
