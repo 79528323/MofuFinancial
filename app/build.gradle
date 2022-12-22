@@ -187,4 +187,8 @@ dependencies {
     //    implementation 'com.android.support:recyclerview-v7:27.1.1'
     //    implementation 'com.tinkerpatch.sdk:tinkerpatch-android-sdk:1.2.9'
     //    compileOnly("com.tinkerpatch.tinker:tinker-android-anno:1.9.9")
+
+    //增加LeakCanary检测内存
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.1'
+    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.1'
 }
