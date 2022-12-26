@@ -170,28 +170,28 @@
                     android:paddingBottom="@dimen/default_padding">
 
                     <LinearLayout
-                        android:visibility="@{isValidate?View.INVISIBLE:View.VISIBLE}"
                         android:id="@+id/home_record"
                         android:layout_width="wrap_content"
                         android:layout_height="100dp"
                         android:layout_centerInParent="true"
-                        android:orientation="vertical"
+                        android:background="@drawable/loan_id_val"
                         android:gravity="right|bottom"
-                        android:background="@drawable/loan_id_val">
+                        android:orientation="vertical"
+                        android:visibility="@{isValidate?View.INVISIBLE:View.VISIBLE}">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="身份认证"
-                            android:onClick="@{handlers.authValidate}"
-                            android:textColor="@color/white"
-                            android:paddingStart="25dp"
-                            android:paddingEnd="25dp"
-                            android:paddingTop="5dp"
-                            android:paddingBottom="5dp"
                             android:layout_marginEnd="@dimen/default_item_margin"
                             android:layout_marginBottom="@dimen/default_item_margin"
-                            android:background="@drawable/loan_idval_button"/>
+                            android:background="@drawable/loan_idval_button"
+                            android:onClick="@{handlers.authValidate}"
+                            android:paddingStart="25dp"
+                            android:paddingTop="5dp"
+                            android:paddingEnd="25dp"
+                            android:paddingBottom="5dp"
+                            android:text="身份认证"
+                            android:textColor="@color/white" />
 
                     </LinearLayout>
 

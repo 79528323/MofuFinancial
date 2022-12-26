@@ -59,7 +59,8 @@ public class LaucherActivity extends BaseActivity {
         rxPermissions = new RxPermissions(this);
 
         CardInfoDB.clearAllCard();
-        queryVersion();
+//        queryVersion();
+        JumpNext();
         notifys = getIntent().getParcelableExtra(IntentParam.NOTIFYS);
     }
 

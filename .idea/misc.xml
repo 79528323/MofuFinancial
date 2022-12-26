@@ -3,6 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/layout/activity_laucher.xml" value="0.4484375" />
+        <entry key="app/src/main/res/layout/activity_loan_detail.xml" value="0.4661458333333333" />
+        <entry key="app/src/main/res/layout/activity_loan_identity_auth.xml" value="0.4661458333333333" />
+        <entry key="app/src/main/res/layout/activity_loan_payment_details.xml" value="0.4661458333333333" />
+        <entry key="app/src/main/res/layout/activity_mofu_mall.xml" value="0.4484375" />
+        <entry key="app/src/main/res/layout/activity_overseas.xml" value="0.4484375" />
+        <entry key="app/src/main/res/layout/activity_receivables_detail.xml" value="0.4484375" />
+        <entry key="app/src/main/res/layout/fragment_loan_mofu.xml" value="0.375" />
         <entry key="app/src/main/res/layout/fragment_receivables.xml" value="0.33963227783452504" />
       </map>
     </option>
